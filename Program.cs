@@ -7,10 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-builder.Services.Configure<LicentaDatabaseSettings>(
+builder.Services.Configure<DatabaseSettingsModel>(
     builder.Configuration.GetSection("LicentaDatabase"));
-builder.Services.AddSingleton<LicentaService>();
+builder.Services.AddSingleton<UserService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

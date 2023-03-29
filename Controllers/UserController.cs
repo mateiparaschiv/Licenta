@@ -5,17 +5,17 @@ namespace LicentaApp.Controllers
 {
     public class UserController : Controller
     {
-        private readonly LicentaService _licentaService;
+        private readonly UserService _userService;
 
-        public UserController(LicentaService licentaService)
+        public UserController(UserService licentaService)
         {
-            _licentaService = licentaService;
+            _userService = licentaService;
         }
         public async Task<IActionResult> Index()
         {
 
             //var userList = _licentaService.GetAsync();
-            var userList = await _licentaService.GetAsync();
+            var userList = await _userService.GetAsync();
             return View(userList);
         }
     }

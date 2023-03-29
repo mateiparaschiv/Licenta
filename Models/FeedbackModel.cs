@@ -1,8 +1,10 @@
-﻿namespace LicentaApp.Models {
-    public class FeedbackModel {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Email { get; set; }
-        public string Message { get; set; }
+﻿namespace LicentaApp.Models
+{
+    public class FeedbackModel
+    {
+        public int id { get; set; }
+        public string title { get; set; }
+        public string email { get; set; }
+        public string message { get; set; }
     }
 }

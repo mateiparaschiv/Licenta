@@ -4,26 +4,19 @@
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        [BsonElement("id")]
-        public string Id { get; set; }
+        public string id { get; set; }
 
-        [BsonElement("username")]
-        public string UserName { get; set; }
+        public string username { get; set; }
 
-        [BsonElement("email")]
-        public string Email { get; set; }
+        public string email { get; set; }
 
-        [BsonElement("name")]
-        public string? Name { get; set; }
-
-        [BsonElement("surname")]
-        public string? Surname { get; set; }
+        public string? name { get; set; }
+        public string? surname { get; set; }
 
         [BsonRepresentation(BsonType.Decimal128)]
-        [BsonElement("rating")]
-        public double Rating { get; set; }
+        public double rating { get; set; }
         [BsonRepresentation(BsonType.Int32)]
-        [BsonElement("age")]
+        public int age { get; set; }
         public int Age { get; set; }
     }
 }
