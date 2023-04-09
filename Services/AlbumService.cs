@@ -1,5 +1,4 @@
-﻿using LicentaApp.Models;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace LicentaApp.Services
 {

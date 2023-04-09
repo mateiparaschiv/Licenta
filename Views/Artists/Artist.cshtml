@@ -1,0 +1,32 @@
+﻿@model ArtistModel
+@{
+    ViewData["Title"] = "Index Artist";
+    var artist = Model;
+}
+
+<h1>Index Artists</h1>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Artist id
+            </th>
+            <th>
+                Artist name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach (var obj in Model)*@
+        @*{*@
+            <tr>
+                <td width="50%">
+                    @artist.Id
+                </td>
+                <td width="50%">
+                    @artist.Name
+                </td>
+            </tr>
+        @*}*@
+    </tbody>
+</table>
