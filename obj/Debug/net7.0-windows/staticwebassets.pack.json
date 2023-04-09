@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Licenta\\wwwroot\\images\\blackVinyl.svg",
+      "PackagePath": "staticwebassets\\images\\blackVinyl.svg"
+    },
+    {
+      "Id": "D:\\Licenta\\wwwroot\\images\\musicNote.svg",
+      "PackagePath": "staticwebassets\\images\\musicNote.svg"
+    },
+    {
+      "Id": "D:\\Licenta\\wwwroot\\images\\testImage.png",
+      "PackagePath": "staticwebassets\\images\\testImage.png"
+    },
+    {
+      "Id": "D:\\Licenta\\wwwroot\\images\\whiteVinyl.svg",
+      "PackagePath": "staticwebassets\\images\\whiteVinyl.svg"
+    },
+    {
       "Id": "D:\\Licenta\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

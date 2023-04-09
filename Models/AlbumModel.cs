@@ -4,28 +4,30 @@
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string id { get; set; }
-        [BsonRepresentation(BsonType.String)]
-        /*[BsonElement("name")]*/
+        [BsonElement("id")]
+        public string Id { get; set; }
 
-        public string name { get; set; }
-        [BsonRepresentation(BsonType.String)]
-        /*[BsonElement("artist")]*/
+        [BsonElement("name")]
+        public string Name { get; set; }
 
-        public string artist { get; set; }
-        [BsonRepresentation(BsonType.String)]
-        /*[BsonElement("genre")]*/
+        [BsonElement("artist")]
+        public string Artist { get; set; }
 
-        public string genre { get; set; }
-        [BsonRepresentation(BsonType.Int32)]
+        [BsonElement("genre")]
+        public string Genre { get; set; }
 
-        public int year { get; set; }
-        [BsonRepresentation(BsonType.String)]
+        [BsonElement("year")]
+        public int Year { get; set; }
 
-        public string description { get; set; }
-        [BsonRepresentation(BsonType.Decimal128)]
+        [BsonElement("description")]
+        public string Description { get; set; }
 
-        public float rating { get; set; }
+        [BsonElement("rating")]
+        public float Rating { get; set; }
 
+        //public AlbumModel(string name)
+        //{
+        //    this.Name = name ?? throw new ArgumentNullException(nameof(name));
+        //}
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JxcnF+olNuOX9FIpHe3aTo5buMmFO1XEn7Zj+asMPi5Nt6/jopp8Swx1ZDrcISiCAzhJxFT4GLr84r4ox6sJkA==",
+  "dgSpecHash": "vowZ0LZ+tOk84YvES5kPQTqoIxR4GuH+fsAqhQoSBc9vhPqRSApNoisFlSD2ya5IfQoXuESTdHzdNuL9W5KM4g==",
   "success": true,
   "projectFilePath": "D:\\Licenta\\LicentaApp.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\mtpar\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\mtpar\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.4\\microsoft.aspnetcore.jsonpatch.7.0.4.nupkg.sha512",
+    "C:\\Users\\mtpar\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\7.0.4\\microsoft.aspnetcore.mvc.newtonsoftjson.7.0.4.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.0\\microsoft.aspnetcore.mvc.razor.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\7.0.4\\microsoft.aspnetcore.mvc.razor.runtimecompilation.7.0.4.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.11\\microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",
@@ -56,6 +58,7 @@
     "C:\\Users\\mtpar\\.nuget\\packages\\mongodb.libmongocrypt\\1.7.0\\mongodb.libmongocrypt.1.7.0.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\mtpar\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\nuget.common\\6.3.1\\nuget.common.6.3.1.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\nuget.configuration\\6.3.1\\nuget.configuration.6.3.1.nupkg.sha512",
     "C:\\Users\\mtpar\\.nuget\\packages\\nuget.dependencyresolver.core\\6.3.1\\nuget.dependencyresolver.core.6.3.1.nupkg.sha512",

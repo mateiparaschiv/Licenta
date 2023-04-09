@@ -1,5 +1,4 @@
 ﻿using LicentaApp.Models;
-using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace LicentaApp.Services
@@ -8,19 +7,9 @@ namespace LicentaApp.Services
     {
         private readonly IMongoCollection<UserModel> _userCollection;
 
-        public UserService(
-            IOptions<DatabaseSettingsModel> databaseSettings)
+        public UserService(IMongoCollection<UserModel> userCollection)
         {
-            var mongoClient = new MongoClient(
-                databaseSettings.Value.ConnectionString);
-
-            var mongoDatabase = mongoClient.GetDatabase(
-                databaseSettings.Value.DatabaseName);
-
-            _userCollection = mongoDatabase.GetCollection<UserModel>(
-                databaseSettings.Value.);
-            //clasa pentru fiecare obiect ?
-            //cum fac sa folosesc aceeasi clasa si sa trag collection diferit ?
+            _userCollection = userCollection;
         }
 
         public async Task<List<UserModel>> GetAsync() =>

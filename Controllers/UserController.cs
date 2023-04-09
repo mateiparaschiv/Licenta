@@ -1,5 +1,4 @@
-﻿using LicentaApp.Services;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
@@ -7,14 +6,12 @@ namespace LicentaApp.Controllers
     {
         private readonly UserService _userService;
 
-        public UserController(UserService licentaService)
+        public UserController(UserService userService)
         {
-            _userService = licentaService;
+            _userService = userService;
         }
         public async Task<IActionResult> Index()
         {
-
-            //var userList = _licentaService.GetAsync();
             var userList = await _userService.GetAsync();
             return View(userList);
         }

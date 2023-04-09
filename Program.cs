@@ -1,7 +1,7 @@
+global using LicentaApp.Models;
+global using LicentaApp.Services;
 global using MongoDB.Bson;
 global using MongoDB.Bson.Serialization.Attributes;
-using LicentaApp.Models;
-using LicentaApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-builder.Services.Configure<DatabaseSettingsModel>(
-    builder.Configuration.GetSection("LicentaDatabase"));
-builder.Services.AddSingleton<UserService>();
+builder.Services.ConfigureMongoDb(builder.Configuration);
 
 var app = builder.Build();
 

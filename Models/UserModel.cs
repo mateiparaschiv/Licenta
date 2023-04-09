@@ -4,6 +4,7 @@
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("id")]
         public string id { get; set; }
 
         public string username { get; set; }
@@ -18,5 +19,10 @@
         [BsonRepresentation(BsonType.Int32)]
         public int age { get; set; }
         public int Age { get; set; }
+
+        public UserModel(string username)
+        {
+            this.username = username ?? throw new ArgumentNullException(nameof(username));
+        }
     }
 }

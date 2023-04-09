@@ -1114,3 +1114,7 @@ D:\Licenta\obj\Debug\net7.0-windows\refint\LicentaApp.dll
 D:\Licenta\obj\Debug\net7.0-windows\LicentaApp.pdb
 D:\Licenta\obj\Debug\net7.0-windows\LicentaApp.genruntimeconfig.cache
 D:\Licenta\obj\Debug\net7.0-windows\ref\LicentaApp.dll
+D:\Licenta\bin\Debug\net7.0-windows\Microsoft.AspNetCore.JsonPatch.dll
+D:\Licenta\bin\Debug\net7.0-windows\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Licenta\bin\Debug\net7.0-windows\Newtonsoft.Json.Bson.dll
+D:\Licenta\bin\Debug\net7.0-windows\appsettings.Production.json
