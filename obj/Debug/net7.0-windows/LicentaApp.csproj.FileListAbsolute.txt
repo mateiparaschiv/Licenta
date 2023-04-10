@@ -1118,3 +1118,7 @@ D:\Licenta\bin\Debug\net7.0-windows\Microsoft.AspNetCore.JsonPatch.dll
 D:\Licenta\bin\Debug\net7.0-windows\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Licenta\bin\Debug\net7.0-windows\Newtonsoft.Json.Bson.dll
 D:\Licenta\bin\Debug\net7.0-windows\appsettings.Production.json
+Y:\Programare\Licenta\LicentaApp\bin\Debug\net7.0-windows\appsettings.Production.json
+Y:\Programare\Licenta\LicentaApp\bin\Debug\net7.0-windows\Microsoft.AspNetCore.JsonPatch.dll
+Y:\Programare\Licenta\LicentaApp\bin\Debug\net7.0-windows\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+Y:\Programare\Licenta\LicentaApp\bin\Debug\net7.0-windows\Newtonsoft.Json.Bson.dll

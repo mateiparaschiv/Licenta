@@ -1,5 +1,4 @@
-﻿using LicentaApp.Models;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace LicentaApp.Services
 {
@@ -15,8 +14,11 @@ namespace LicentaApp.Services
         public async Task<List<ArtistModel>> GetAsync() =>
             await _artistCollection.Find(_ => true).ToListAsync();
 
-        public async Task<ArtistModel?> GetAsync(string id) =>
+        public async Task<ArtistModel?> GetAsyncById(string id) =>
             await _artistCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+
+        public async Task<ArtistModel?> GetAsyncByName(string name) =>
+            await _artistCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
 
         public async Task CreateAsync(ArtistModel newAlbumModel) =>
             await _artistCollection.InsertOneAsync(newAlbumModel);

@@ -9,61 +9,65 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LicentaApp
 build_property.RootNamespace = LicentaApp
-build_property.ProjectDir = D:\Licenta\
+build_property.ProjectDir = Y:\Programare\Licenta\LicentaApp\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = D:\Licenta
+build_property.MSBuildProjectDirectory = Y:\Programare\Licenta\LicentaApp
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Licenta/Views/Album/Index.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Album/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Artist/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0XEluZGV4LmNzaHRtbA==
+[Y:/Programare/Licenta/LicentaApp/Views/Artists/Artist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0c1xBcnRpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Feedback/Index.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Artists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Y:/Programare/Licenta/LicentaApp/Views/Feedback/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZGJhY2tcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Home/Index.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Home/Privacy.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Review/Index.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Review/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Shared/Error.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Shared/_ValidationScriptsPartial.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Song/Index.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Song/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/User/Index.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/_ViewImports.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/_ViewStart.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Licenta/Views/Shared/_Layout.cshtml]
+[Y:/Programare/Licenta/LicentaApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-y6n7j4kvh3

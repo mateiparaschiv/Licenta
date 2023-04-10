@@ -23,11 +23,7 @@
         public string Description { get; set; }
 
         [BsonElement("rating")]
-        public float Rating { get; set; }
-
-        //public AlbumModel(string name)
-        //{
-        //    this.Name = name ?? throw new ArgumentNullException(nameof(name));
-        //}
+        //make every float double
+        public double Rating { get; set; }
     }
 }

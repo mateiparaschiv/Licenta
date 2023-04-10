@@ -31,15 +31,14 @@
             {
                 <img src="~/images/musicNote.svg" height="250" width="100%" />
             }
-
         </div>
         <div class="col-md-8">
             <div class="card-body">
                 <h1 class="display-4">@obj.Name</h1>
-                <a class="nav-link active" href="/Artist/@obj.Artist">
+                @*href is hardcoded*@
+                <a class="nav-link active" href="/Artists/Artist/@obj.Artist" color="green">
                     <h1 class="display-6">@obj.Artist</h1>
                 </a>
-
                 <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-1 border-top">
                     <span class="text-beginmb-3 mb-md-0 ">@obj.Genre</span>
                     <span class="text-center mb-3 mb-md-0 ">@obj.Year</span>
