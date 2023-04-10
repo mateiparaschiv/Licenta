@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "Y:\\Programare\\Licenta\\LicentaApp\\LicentaApp.csproj": {}
+    "D:\\Licenta\\LicentaApp.csproj": {}
   },
   "projects": {
-    "Y:\\Programare\\Licenta\\LicentaApp\\LicentaApp.csproj": {
+    "D:\\Licenta\\LicentaApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Y:\\Programare\\Licenta\\LicentaApp\\LicentaApp.csproj",
+        "projectUniqueName": "D:\\Licenta\\LicentaApp.csproj",
         "projectName": "LicentaApp",
-        "projectPath": "Y:\\Programare\\Licenta\\LicentaApp\\LicentaApp.csproj",
-        "packagesPath": "C:\\Users\\matei\\.nuget\\packages\\",
-        "outputPath": "Y:\\Programare\\Licenta\\LicentaApp\\obj\\",
+        "projectPath": "D:\\Licenta\\LicentaApp.csproj",
+        "packagesPath": "C:\\Users\\mtpar\\.nuget\\packages\\",
+        "outputPath": "D:\\Licenta\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\matei\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\mtpar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,9 +40,17 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[7.0.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.5, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
@@ -72,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
