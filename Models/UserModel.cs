@@ -13,16 +13,5 @@
 
         public string? name { get; set; }
         public string? surname { get; set; }
-
-        [BsonRepresentation(BsonType.Decimal128)]
-        public double rating { get; set; }
-        [BsonRepresentation(BsonType.Int32)]
-        public int age { get; set; }
-        public int Age { get; set; }
-
-        public UserModel(string username)
-        {
-            this.username = username ?? throw new ArgumentNullException(nameof(username));
-        }
     }
 }

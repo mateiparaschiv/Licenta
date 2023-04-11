@@ -13,7 +13,7 @@
         [BsonElement("description")]
         public string Description { get; set; }
 
-        [BsonElement("rating")]
-        public float Rating { get; set; }
+        [BsonRepresentation(BsonType.Double)]
+        public double Rating { get; set; }
     }
 }

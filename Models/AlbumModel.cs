@@ -23,7 +23,7 @@
         public string Description { get; set; }
 
         [BsonElement("rating")]
-        //make every float double
+        [BsonRepresentation(BsonType.Double)]
         public double Rating { get; set; }
     }
 }
