@@ -4,9 +4,9 @@ namespace LicentaApp.Controllers
 {
     public class ReviewController : Controller
     {
-        private readonly ReviewService _reviewService;
+        private readonly IReviewService _reviewService;
 
-        public ReviewController(ReviewService reviewService)
+        public ReviewController(IReviewService reviewService)
         {
             _reviewService = reviewService;
         }
