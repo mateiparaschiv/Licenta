@@ -1,6 +1,6 @@
 ﻿namespace LicentaApp.Services
 {
-    public class ArtistService
+    public class ArtistService : IArtistService
     {
         private readonly IMongoCollection<ArtistModel> _artistCollection;
 

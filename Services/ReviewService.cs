@@ -1,8 +1,6 @@
-﻿using MongoDB.Driver;
-
-namespace LicentaApp.Services
+﻿namespace LicentaApp.Services
 {
-    public class ReviewService
+    public class ReviewService : IReviewService
     {
         private readonly IMongoCollection<ReviewModel> _reviewCollection;
 

@@ -1,8 +1,6 @@
-﻿using MongoDB.Driver;
-
-namespace LicentaApp.Services
+﻿namespace LicentaApp.Services
 {
-    public class FeedbackService
+    public class FeedbackService : IFeedbackService
     {
         private readonly IMongoCollection<FeedbackModel> _feedbackCollection;
 

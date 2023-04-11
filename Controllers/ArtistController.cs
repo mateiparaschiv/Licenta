@@ -4,11 +4,13 @@ namespace LicentaApp.Controllers
 {
     public class ArtistController : Controller
     {
-        private readonly ArtistService _artistService;
+        private readonly IArtistService _artistService;
+        private readonly IAlbumService _albumService;
 
-        public ArtistController(ArtistService artistService)
+        public ArtistController(IArtistService artistService, IAlbumService albumService)
         {
             _artistService = artistService;
+            _albumService = albumService;
         }
 
         [Route("Artist/{name?}")] /*Index/*/
@@ -18,11 +20,13 @@ namespace LicentaApp.Controllers
             {
                 var artistList = await _artistService.GetAsync();
                 artistList.Sort((x, y) => string.Compare(x.Name, y.Name));
+                var numOfAlbums = _albumService.GetNumOfAlbumsByName(name);
                 return View("~/Views/Artist/Index.cshtml", artistList);
             }
             else
             {
                 var artist = await _artistService.GetAsyncByName(name);
+                //return View("~/Views/Artist/Artist.cshtml", artist);
                 return View("~/Views/Artist/Artist.cshtml", artist);
             }
 

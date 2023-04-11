@@ -1,8 +1,8 @@
-﻿using MongoDB.Driver;
+﻿using LicentaApp.Interfaces;
 
 namespace LicentaApp.Services
 {
-    public class AlbumService
+    public class AlbumService : IAlbumService
     {
         private readonly IMongoCollection<AlbumModel> _albumCollection;
 

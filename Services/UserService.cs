@@ -1,9 +1,6 @@
-﻿using LicentaApp.Models;
-using MongoDB.Driver;
-
-namespace LicentaApp.Services
+﻿namespace LicentaApp.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly IMongoCollection<UserModel> _userCollection;
 

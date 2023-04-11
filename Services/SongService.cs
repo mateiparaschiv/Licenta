@@ -1,8 +1,6 @@
-﻿using MongoDB.Driver;
-
-namespace LicentaApp.Services
+﻿namespace LicentaApp.Services
 {
-    public class SongService
+    public class SongService : ISongService
     {
         private readonly IMongoCollection<SongModel> _songCollection;
 
