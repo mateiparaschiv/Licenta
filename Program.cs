@@ -2,6 +2,7 @@ global using LicentaApp.Models;
 global using LicentaApp.Services;
 global using MongoDB.Bson;
 global using MongoDB.Bson.Serialization.Attributes;
+global using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 

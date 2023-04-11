@@ -1,0 +1,28 @@
+﻿@model List<ArtistModel>
+@{
+    ViewData["Title"] = "Index Artist";
+
+}
+<h1 class="text-center">Index Artists</h1>
+<div class="wrapper d-flex justify-content-center align-items-center">
+    <ul class="list-group list-group-flush justify-content-center text-center">
+        @foreach (var artist in Model)
+        {
+            <li class="list-group-item">
+                @*<a href="Artists/@artist.Name">
+                    @artist.Name
+                </a>*@
+                <a asp-controller="Artist"
+                   asp-action="Index"
+                   asp-route-name="@artist.Name">
+                    @artist.Name
+               </a>
+                @*
+                @{
+                    var numOfAlbums = _albumCollection.GetNumOfAlbumsByName(@artist.Name);
+                }*@
+                <span class="badge badge-primary badge-pill text-black">No of albums</span>
+            </li>
+        }
+    </ul>
+</div>
