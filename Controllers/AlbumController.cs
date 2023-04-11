@@ -13,7 +13,6 @@ namespace LicentaApp.Controllers
         public async Task<IActionResult> Index()
         {
             var albumList = await _albumService.GetAsync();
-            var numOfAlbums = await _albumService.GetNumOfAlbumsByName("Death Grips");
             return View(albumList);
         }
     }
