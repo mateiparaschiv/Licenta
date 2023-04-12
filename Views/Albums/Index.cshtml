@@ -1,7 +1,4 @@
-﻿@*
-	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@using Microsoft.Extensions.Configuration
+﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration _configuration
 @model List<AlbumModel>
 @{
@@ -23,38 +20,31 @@
         </svg>*@
             @if (environment == "Development")
             {
-                <img src="~/images/testImage.png" height="300" width="400" />
+                @*<img src="~/images/testImage.png" height="320" width="320" />*@
+                @*<img href="https://rateyourmusic.com/release/album/pink-floyd/the-dark-side-of-the-moon/" height="auto" width="auto" />*@
+                @*<img src="//e.snmc.io/i/300/w/c8a40548b0fee5fa10095de3b97d3f90/10745116" alt="Pink Floyd - The Dark Side of the Moon">*@
                 @*<img src="https://e.snmc.io/i/600/w/97747c35e070433549c1c691b4d97b28/7024368/death-grips-exmilitary-Cover-Art.jpg" height="350" width="100%" />*@
+                <img src="@artist.Image" alt="Pink Floyd - The Dark Side of the Moon" height="auto" width="auto">
+
 
             }
             @if (environment == "Production")
             {
-                <img src="~/images/musicNote.svg" height="250" width="100" />
+                <img src="~/images/musicNote.svg" height="320" width="320" />
             }
-            <ul class="list-group list-group-flush ">
+            <ul class="list-group list-group-flush list-group-numbered">
                 @*
             justify-content-center text-right
-                *@
-                <li class="list-group-item">
-                    @*<span class="badge badge-primary badge-pill text-black">No of albums</span>*@
-                    <span>Track1</span>
-                </li>
-                <li class="list-group-item">
-                    @*<span class="badge badge-primary badge-pill text-black">No of albums</span>*@
-                    <span>Track1</span>
-                </li>
-                <li class="list-group-item">
-                    @*<span class="badge badge-primary badge-pill text-black">No of albums</span>*@
-                    <span>Track1</span>
-                </li>
-                <li class="list-group-item">
-                    @*<span class="badge badge-primary badge-pill text-black">No of albums</span>*@
-                    <span>Track1</span>
-                </li>
-
+            *@
+                @foreach (var song in @artist.Songs.ToList())
+                {
+                    <li class="list-group-item ">
+                        <span>@song</span>
+                    </li>
+                }
             </ul>
         </div>
-        
+
         <div class="col-md-8">
             <div class="card-body">
                 <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@artist.Name">
@@ -65,8 +55,8 @@
                 </a>
                 <div class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
                     @*<span class="text-begin mb-3 mb-md-0">@artist.Genre</span>
-                    <span class="text-center mb-3 mb-md-0">@artist.Year</span>
-                    <span class="text-end mb-3 mb-md-0">@artist.Rating</span>*@
+                <span class="text-center mb-3 mb-md-0">@artist.Year</span>
+                <span class="text-end mb-3 mb-md-0">@artist.Rating</span>*@
 
                     <div class="container g-0">
                         <div class="row row-cols-3">
