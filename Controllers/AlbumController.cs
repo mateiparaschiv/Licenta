@@ -1,19 +1,33 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
     public class AlbumController : Controller
     {
-        private readonly AlbumService _albumService;
+        private readonly IAlbumService _albumService;
 
-        public AlbumController(AlbumService albumService)
+        public AlbumController(IAlbumService albumService)
         {
             _albumService = albumService;
         }
-        public async Task<IActionResult> Index()
+
+        [Route("Albums/{name?}")] /*Index/*/
+        public async Task<IActionResult> Index(string? name)
         {
-            var albumList = await _albumService.GetAsync();
-            return View(albumList);
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                var albumList = await _albumService.GetAsync();
+                //var numOfAlbums = _albumService.GetNumOfAlbumsByName(name);
+                return View("~/Views/Albums/Index.cshtml", albumList);
+            }
+            else
+            {
+                var album = await _albumService.GetAsyncByName(name);
+                //return View("~/Views/Artist/Artist.cshtml", artist);
+                return View("~/Views/Albums/Album.cshtml", album);
+            }
+
         }
     }
 }

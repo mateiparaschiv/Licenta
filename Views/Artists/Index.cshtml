@@ -1,34 +1,20 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model List<ArtistModel>
+﻿@*@model List<ArtistModel>*@
 @{
-    ViewData["Title"] = "Index Artist";
-}
 
-<h1>Index Artists</h1>
-<table class="table table-bordered table-striped" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                Artist id
-            </th>
-            <th>
-                Artist name
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var obj in Model)
+}
+<h1 class="text-center">Index Artists</h1>
+<div class="wrapper d-flex justify-content-center align-items-center">
+    <ul class="list-group list-group-flush justify-content-center text-center w-50">
+        @foreach (var artist in ViewBag.artistList)
         {
-            <tr>
-                <td width="50%">
-                    @obj.Id
-                </td>
-                <td width="50%">
-                    @obj.Name
-                </td>
-            </tr>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a class="nav-link active p-0" asp-controller="Artist" asp-action="Index" asp-route-name="@artist.Name">
+                    @*<span class="display-6">@artist.Name</span>*@
+                    <span class="display">@artist.Name</span>
+                </a>
+                @*<span class="badge bg-primary rounded-pill display-6 text-end">Albums</span>*@
+                <span class="badge bg-primary rounded-pill display-6 text-end">ViewBag.numOfAlbums</span>
+            </li>
         }
-    </tbody>
-</table>
+    </ul>
+</div>

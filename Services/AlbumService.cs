@@ -1,8 +1,6 @@
-﻿using MongoDB.Driver;
-
-namespace LicentaApp.Services
+﻿namespace LicentaApp.Services
 {
-    public class AlbumService
+    public class AlbumService : IAlbumService
     {
         private readonly IMongoCollection<AlbumModel> _albumCollection;
 
@@ -14,8 +12,15 @@ namespace LicentaApp.Services
         public async Task<List<AlbumModel>> GetAsync() =>
             await _albumCollection.Find(_ => true).ToListAsync();
 
-        public async Task<AlbumModel?> GetAsync(string id) =>
+        public async Task<AlbumModel?> GetAsyncById(string id) =>
             await _albumCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        public async Task<List<AlbumModel>> GetAsyncListByName(string albumName) =>
+            await _albumCollection.Find(x => x.Artist == albumName).ToListAsync();
+        public async Task<int?> GetNumOfAlbumsByName(string albumName)
+        {
+            var albums = await GetAsyncListByName(albumName);
+            return albums.Count();
+        }
 
         public async Task CreateAsync(AlbumModel newAlbumModel) =>
             await _albumCollection.InsertOneAsync(newAlbumModel);
@@ -25,5 +30,8 @@ namespace LicentaApp.Services
 
         public async Task RemoveAsync(string id) =>
             await _albumCollection.DeleteOneAsync(x => x.Id == id);
+
+        public async Task<AlbumModel?> GetAsyncByName(string name) =>
+            await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
     }
 }

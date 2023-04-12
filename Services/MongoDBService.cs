@@ -1,6 +1,4 @@
-﻿using MongoDB.Driver;
-
-namespace LicentaApp.Services
+﻿namespace LicentaApp.Services
 {
     public static class MongoDBService
     {
