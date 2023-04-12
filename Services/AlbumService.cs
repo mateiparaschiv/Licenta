@@ -1,6 +1,4 @@
-﻿using LicentaApp.Interfaces;
-
-namespace LicentaApp.Services
+﻿namespace LicentaApp.Services
 {
     public class AlbumService : IAlbumService
     {
@@ -32,5 +30,8 @@ namespace LicentaApp.Services
 
         public async Task RemoveAsync(string id) =>
             await _albumCollection.DeleteOneAsync(x => x.Id == id);
+
+        public async Task<AlbumModel?> GetAsyncByName(string name) =>
+            await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
     }
 }
