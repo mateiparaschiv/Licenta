@@ -5,8 +5,9 @@
     ViewData["Title"] = "Index Albums";
     var environment = _configuration.GetValue<string>("Environment");
 }
-<div class="row py-4">
-    <div class="col-md-4">
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div class="row py-4 g-0">
+    <div class="col-md-4" id="image_col">
         @*<svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false">
         <title>
         Placeholder

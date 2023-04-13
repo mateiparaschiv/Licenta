@@ -5,13 +5,15 @@
     ViewData["Title"] = "Index Albums";
     var environment = _configuration.GetValue<string>("Environment");
 }
-
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 @*<h1>Index Albums</h1>*@
 @foreach (var artist in Model)
 {
-    <div class="row py-4">
-        <div class="col-md-4">
-            <img src="@artist.Image">
+    <div class="row py-4 g-0">
+        <div class="col-md-4" id="image_col">
+            <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@artist.Name">
+                <img src="@artist.Image">
+            </a>
             @*<ul class="list-group list-group-flush list-group-numbered">
                 @*
             justify-content-center text-right
