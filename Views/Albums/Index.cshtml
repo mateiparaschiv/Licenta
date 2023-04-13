@@ -1,7 +1,4 @@
-﻿@*
-	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@using Microsoft.Extensions.Configuration
+﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration _configuration
 @model List<AlbumModel>
 @{
@@ -9,65 +6,43 @@
     var environment = _configuration.GetValue<string>("Environment");
 }
 
-<h1>Index Albums</h1>
+@*<h1>Index Albums</h1>*@
 @foreach (var artist in Model)
 {
     <div class="row py-4">
         <div class="col-md-4">
-            @*<svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <title>
-        Placeholder
-        </title>
-        <rect width="100%" height="100%" fill="#868e96"></rect>
-        <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text>
-        </svg>*@
-            @if (environment == "Development")
-            {
-                <img src="~/images/testImage.png" height="300" width="400" />
-                @*<img src="https://e.snmc.io/i/600/w/97747c35e070433549c1c691b4d97b28/7024368/death-grips-exmilitary-Cover-Art.jpg" height="350" width="100%" />*@
-
-            }
-            @if (environment == "Production")
-            {
-                <img src="~/images/musicNote.svg" height="250" width="100" />
-            }
-            <ul class="list-group list-group-flush ">
+            <img src="@artist.Image">
+            @*<ul class="list-group list-group-flush list-group-numbered">
                 @*
             justify-content-center text-right
-                *@
-                <li class="list-group-item">
-                    @*<span class="badge badge-primary badge-pill text-black">No of albums</span>*@
-                    <span>Track1</span>
-                </li>
-                <li class="list-group-item">
-                    @*<span class="badge badge-primary badge-pill text-black">No of albums</span>*@
-                    <span>Track1</span>
-                </li>
-                <li class="list-group-item">
-                    @*<span class="badge badge-primary badge-pill text-black">No of albums</span>*@
-                    <span>Track1</span>
-                </li>
-                <li class="list-group-item">
-                    @*<span class="badge badge-primary badge-pill text-black">No of albums</span>*@
-                    <span>Track1</span>
-                </li>
-
+            *@
+            @*
+                @foreach (var song in @artist.Songs.ToList())
+                {
+                    <li class="list-group-item ">
+                        <span>@song</span>
+                    </li>
+                }
             </ul>
+            *@
         </div>
-        
         <div class="col-md-8">
             <div class="card-body">
                 <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@artist.Name">
-                    <h1 class="display-4">@artist.Name</h1>
+                    <h1 class="display-4 text-center">@artist.Name</h1>
                 </a>
                 <a class="nav-link active p-0" asp-controller="Artist" asp-action="Index" asp-route-name="@artist.Artist">
-                    <h1 class="display-6">@artist.Artist</h1>
+                    <h1 class="display-6 text-center">@artist.Artist</h1>
                 </a>
-                <div class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
-                    @*<span class="text-begin mb-3 mb-md-0">@artist.Genre</span>
-                    <span class="text-center mb-3 mb-md-0">@artist.Year</span>
-                    <span class="text-end mb-3 mb-md-0">@artist.Rating</span>*@
+                @*
+                <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
 
+                    @*
+                <span class="text-begin mb-3 mb-md-0">@artist.Genre</span>
+                <span class="text-center mb-3 mb-md-0">@artist.Year</span>
+                <span class="text-end mb-3 mb-md-0">@artist.Rating</span>
+                    *@
+                @*
                     <div class="container g-0">
                         <div class="row row-cols-3">
                             <span class="col text-begin mb-3 mb-md-0">Genre</span>
@@ -79,7 +54,8 @@
                         </div>
                     </div>
                 </div>
-                <p class="card-text indent">@artist.Description</p>
+                *@
+                @*<p class="card-text indent">@artist.Description</p>*@
             </div>
         </div>
     </div>
