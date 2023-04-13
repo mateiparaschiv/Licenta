@@ -37,7 +37,6 @@ namespace LicentaApp.Controllers
                 var artistList = await _artistService.GetAsync();
                 artistList.Sort((x, y) => string.Compare(x.Name, y.Name));
                 var albumsToArtist = await _albumService.GetNumOfAlbumsByNames(artistList);
-                //var numOfAlbums = _albumService.GetNumOfAlbumsByName(name);
                 var tuple = new Tuple<List<ArtistModel>, Dictionary<string, int>>(artistList, albumsToArtist);
                 return View("~/Views/Artists/Index.cshtml", tuple);
             }

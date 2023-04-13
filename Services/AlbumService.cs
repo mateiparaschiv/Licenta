@@ -15,8 +15,12 @@
         public async Task<AlbumModel?> GetAsyncById(string id) =>
             await _albumCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        //public async Task<int?> GetNumOfAlbumsByName(string artistName)=>
-        //    await _albumCollection.Find(x=>x.Name == artistName).;
+        public async Task<int?> GetNumOfAlbumsByName(string artistName)
+        {
+            var albums = await GetAsyncListByName(artistName);
+            return albums.Count();
+        }
+
         public async Task<List<AlbumModel>> GetAsyncListByName(string artistName) =>
             await _albumCollection.Find(x => x.Artist == artistName).ToListAsync();
 
@@ -33,7 +37,7 @@
         }
 
         public async Task CreateAsync(AlbumModel newAlbumModel) =>
-        await _albumCollection.InsertOneAsync(newAlbumModel);
+            await _albumCollection.InsertOneAsync(newAlbumModel);
 
         public async Task UpdateAsync(string id, AlbumModel updatedAlbumModel) =>
             await _albumCollection.ReplaceOneAsync(x => x.Id == id, updatedAlbumModel);
