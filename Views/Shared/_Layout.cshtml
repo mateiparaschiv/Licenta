@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@*@ViewData[environment]*@ @environment- Home</title>
+    <title>@*@ViewData[environment]*@ @environment - Home</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LicentaApp.styles.css" asp-append-version="true" />
@@ -25,11 +25,11 @@
                     @*asp-route-name=""*@
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Artists" asp-action="Index" asp-route-name="">Artists</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Artists" asp-action="Index">Artists</a>
                 </li>
-                <li class="nav-item">
+                @*<li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Feedback" asp-action="Index">Feeback</a>
-                </li>
+                </li>*@
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Genres" asp-action="Index">Genres</a>
                 </li>
