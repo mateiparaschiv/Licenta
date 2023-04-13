@@ -1,32 +1,85 @@
-﻿@model ArtistModel
+﻿@model Tuple<ArtistModel,List<AlbumModel>>
 @{
-    //ViewData["Title"] = "Index Artist";
-    var artist = Model;
+    var artist = Model.Item1;
+    var artistAlbums = Model.Item2;
 }
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+<div class="row py-4 g-0">
+    <div class="col-md-4" id="image_col">
+        <img src="@artist.Image" style="max-width: 300px">
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+            <h1 class="display-4">@artist.Name</h1>
+            <div class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
+                <div class="container g-0">
+                    @{
+                        if (artist.Band == false)
+                        {
+                            @if (artist.DateOfDeath != null)
+                            {
+                                <div class="row row-cols-2">
+                                    <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                    <span class="col text-end mb-3 mb-md-0">Died</span>
+                                    <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                    <span class="col text-end mb-3 mb-md-0">@artist.DateOfDeath?.ToString("dd MMMM yyyy")</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row row-cols-1">
+                                    <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                    <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            @if (artist.Disbanded != null)
+                            {
+                                <div class="row row-cols-2">
+                                    <span class="col text-begin mb-3 mb-md-0">Formed</span>
+                                    <span class="col text-end mb-3 mb-md-0">Disbanded</span>
+                                    <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                                    <span class="col text-end mb-3 mb-md-0">@artist.Disbanded</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row row-cols-1">
+                                    <span class="col text-begin mb-3 mb-md-0">Formed</span>
+                                    <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                                </div>
+                            }
 
-<h1>Index Artists</h1>
-<table class="table table-bordered table-striped" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                Artist id
-            </th>
-            <th>
-                Artist name
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @*@foreach (var obj in Model)*@
-        @*{*@
-            <tr>
-                <td width="50%">
-                    @artist.Id
-                </td>
-                <td width="50%">
-                    @artist.Name
-                </td>
-            </tr>
-        @*}*@
-    </tbody>
-</table>
+                            //<div class="row row-cols-1">
+                            //<span class="col text-begin mb-3 mb-md-0">Formed</span>
+                            //<span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                            //@if (artist.Disbanded != null)
+                            //{
+                            //    <span class="col text-end mb-3 mb-md-0">Disbanded</span>
+                            //    <span class="col text-end mb-3 mb-md-0">@artist.Disbanded</span>
+                            //}
+                        }
+                    }
+                </div>
+            </div>
+            <p class="card-text indent">@artist.Description</p>
+        </div>
+    </div>
+</div>
+<div class=" container g-0">
+    <div class="row justify-content">
+        @foreach(var album in artistAlbums)
+        {
+            <div class="text-center col-md-4 ">
+                <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
+                    <img src="@album.Image" style="max-width: 225px">
+                </a>
+                <p class="text-muted">
+                    @album.Year
+                </p>
+            </div>
+        }
+    </div>
+</div>

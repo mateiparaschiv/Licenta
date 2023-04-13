@@ -1,21 +1,23 @@
-﻿@*@model List<ArtistModel>*@
+﻿@model Tuple<List<ArtistModel>, Dictionary<string, int>>
 @{
-
+    var artistList = Model.Item1;
+    var albumsToArtist = Model.Item2;
+    //var artistList = Model;
 }
-<h1 class="text-center">Index Artists</h1>
+<h1 class="text-muted">Artists</h1>
 <div class="wrapper d-flex justify-content-center align-items-center">
     <ul class="list-group list-group-flush justify-content-center text-center w-50">
-        @foreach (var artist in ViewBag.artistList)
+        @foreach (var artist in artistList)
         {
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a class="nav-link active p-0" asp-controller="Artist" asp-action="Index" asp-route-name="@artist.Name">
-                    @*<span class="display-6">@artist.Name</span>*@
-                    @*<span class="display">@artist.Name</span>*@
-                    <h1 class="display-6">@artist.Name</h1>
-
+                    <h1 class="display-6" id="link">
+                        <u>
+                            @artist.Name
+                        </u>
+                    </h1>
                 </a>
-                @*<span class="badge bg-primary rounded-pill display-6 text-end">Albums</span>*@
-                <span class="badge bg-primary rounded-pill display-6 text-end">ViewBag.numOfAlbums</span>
+                <span class="badge bg-primary rounded-pill display-6 text-end">@albumsToArtist[$"{artist.Name}"]</span>
             </li>
         }
     </ul>

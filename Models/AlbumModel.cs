@@ -8,18 +8,23 @@
         public string Id { get; set; }
 
         [BsonElement("name")]
+        [BsonRepresentation(BsonType.String)]
         public string Name { get; set; }
 
         [BsonElement("artist")]
+        [BsonRepresentation(BsonType.String)]
         public string Artist { get; set; }
 
         [BsonElement("genre")]
+        [BsonRepresentation(BsonType.String)]
         public string Genre { get; set; }
 
         [BsonElement("year")]
+        [BsonRepresentation(BsonType.Int32)]
         public int Year { get; set; }
 
         [BsonElement("description")]
+        [BsonRepresentation(BsonType.String)]
         public string Description { get; set; }
 
         [BsonElement("rating")]
@@ -27,21 +32,11 @@
         public double Rating { get; set; }
 
         [BsonElement("songs")]
+        //[BsonRepresentation(BsonType.Array)]
         public List<string>? Songs { get; set; }
 
         [BsonElement("image")]
+        [BsonRepresentation(BsonType.String)]
         public string Image { get; set; }
-
-
-        //public AlbumModel(string name, string artist, string genre, int year, string description, double rating, List<string> songs)
-        //{
-        //    Name = name ?? throw new ArgumentNullException(nameof(name));
-        //    Artist = artist ?? throw new ArgumentNullException(nameof(artist));
-        //    Genre = genre ?? throw new ArgumentNullException(nameof(genre));
-        //    Year = year;
-        //    Description = description ?? throw new ArgumentNullException(nameof(description));
-        //    Rating = rating;
-        //    Songs = songs ?? throw new ArgumentNullException(nameof(songs));
-        //}
     }
 }
