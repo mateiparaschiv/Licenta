@@ -14,16 +14,26 @@
 
         public async Task<AlbumModel?> GetAsyncById(string id) =>
             await _albumCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-        public async Task<List<AlbumModel>> GetAsyncListByName(string albumName) =>
-            await _albumCollection.Find(x => x.Artist == albumName).ToListAsync();
-        public async Task<int?> GetNumOfAlbumsByName(string albumName)
+
+        //public async Task<int?> GetNumOfAlbumsByName(string artistName)=>
+        //    await _albumCollection.Find(x=>x.Name == artistName).;
+        public async Task<List<AlbumModel>> GetAsyncListByName(string artistName) =>
+            await _albumCollection.Find(x => x.Artist == artistName).ToListAsync();
+
+        public async Task<Dictionary<string, int>> GetNumOfAlbumsByNames(List<ArtistModel> artistList)
         {
-            var albums = await GetAsyncListByName(albumName);
-            return albums.Count();
+            Dictionary<string, int> albumsToArtist = new Dictionary<string, int>();
+            foreach (ArtistModel artist in artistList)
+            {
+                var artistAlbums = await GetAsyncListByName(artist.Name);
+                var numOfAlbums = artistAlbums.Count();
+                albumsToArtist.Add(artist.Name, numOfAlbums);
+            }
+            return albumsToArtist;
         }
 
         public async Task CreateAsync(AlbumModel newAlbumModel) =>
-            await _albumCollection.InsertOneAsync(newAlbumModel);
+        await _albumCollection.InsertOneAsync(newAlbumModel);
 
         public async Task UpdateAsync(string id, AlbumModel updatedAlbumModel) =>
             await _albumCollection.ReplaceOneAsync(x => x.Id == id, updatedAlbumModel);
