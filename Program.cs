@@ -19,6 +19,7 @@ builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<ISongService, SongService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IGenreService, GenreService>();
 
 var app = builder.Build();
 
@@ -40,5 +41,12 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+//TODO: configure lost routes to return not found
+app.MapControllerRoute(
+    "Error",
+    "{*url}",
+     new { controller = "Home", action = "Error" }
+);
 app.Run();
 

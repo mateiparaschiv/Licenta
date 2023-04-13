@@ -20,6 +20,7 @@
             services.addMongoDbService<ReviewService, ReviewModel>(settings.CollectionName.ReviewCollection);
             services.addMongoDbService<SongService, SongModel>(settings.CollectionName.SongCollection);
             services.addMongoDbService<UserService, UserModel>(settings.CollectionName.UserCollection);
+            services.addMongoDbService<GenreService, GenreModel>(settings.CollectionName.GenreCollection);
 
         }
         static void addMongoDbService<TService, TModel>(this IServiceCollection services, string collectionName)
