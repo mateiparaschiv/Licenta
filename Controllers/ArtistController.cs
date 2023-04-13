@@ -13,7 +13,7 @@ namespace LicentaApp.Controllers
             _albumService = albumService;
         }
 
-        [Route("Artists/{name?}")] /*Index/*/
+        [Route("Artists/{name?}")]
         public async Task<IActionResult> Index(string? name)
         {
             if (string.IsNullOrWhiteSpace(name))

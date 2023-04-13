@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
@@ -12,22 +11,21 @@ namespace LicentaApp.Controllers
             _albumService = albumService;
         }
 
-        [Route("Albums/{name?}")] /*Index/*/
+        [Route("Albums/{name?}")]
         public async Task<IActionResult> Index(string? name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 var albumList = await _albumService.GetAsync();
+                albumList.Sort((x, y) => string.Compare(x.Name, y.Name));
                 //var numOfAlbums = _albumService.GetNumOfAlbumsByName(name);
                 return View("~/Views/Albums/Index.cshtml", albumList);
             }
             else
             {
                 var album = await _albumService.GetAsyncByName(name);
-                //return View("~/Views/Artist/Artist.cshtml", artist);
                 return View("~/Views/Albums/Album.cshtml", album);
             }
-
         }
     }
 }
