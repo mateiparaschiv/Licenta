@@ -20,7 +20,8 @@
             var albums = await GetAsyncListByName(artistName);
             return albums.Count();
         }
-
+        public async Task<AlbumModel?> GetAsyncByName(string name) =>
+            await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
         public async Task<List<AlbumModel>> GetAsyncListByName(string artistName) =>
             await _albumCollection.Find(x => x.Artist == artistName).ToListAsync();
 
@@ -44,8 +45,5 @@
 
         public async Task RemoveAsync(string id) =>
             await _albumCollection.DeleteOneAsync(x => x.Id == id);
-
-        public async Task<AlbumModel?> GetAsyncByName(string name) =>
-            await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
     }
 }

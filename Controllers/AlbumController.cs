@@ -18,7 +18,6 @@ namespace LicentaApp.Controllers
             {
                 var albumList = await _albumService.GetAsync();
                 albumList.Sort((x, y) => string.Compare(x.Name, y.Name));
-                //var numOfAlbums = _albumService.GetNumOfAlbumsByName(name);
                 return View("~/Views/Albums/Index.cshtml", albumList);
             }
             else

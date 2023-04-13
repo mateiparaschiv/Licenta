@@ -14,6 +14,7 @@
         public string ReviewCollection { get; set; } = null!;
         public string SongCollection { get; set; } = null!;
         public string UserCollection { get; set; } = null!;
+        public string GenreCollection { get; set; } = null!;
 
     }
 }
