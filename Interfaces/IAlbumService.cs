@@ -5,6 +5,7 @@
         Task<List<AlbumModel>> GetAsync();
         Task<AlbumModel?> GetAsyncById(string id);
         Task<List<AlbumModel>> GetAsyncListByName(string artistName);
+        Task<List<AlbumModel>> GetAsyncListByGenre(string genre);
         Task<Dictionary<string, int>> GetNumOfAlbumsByNames(List<ArtistModel> artistList);
         Task<int?> GetNumOfAlbumsByName(string artistName);
         Task CreateAsync(AlbumModel newAlbumModel);

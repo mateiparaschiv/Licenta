@@ -24,6 +24,8 @@
             await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
         public async Task<List<AlbumModel>> GetAsyncListByName(string artistName) =>
             await _albumCollection.Find(x => x.Artist == artistName).ToListAsync();
+        public async Task<List<AlbumModel>> GetAsyncListByGenre(string genre) =>
+            await _albumCollection.Find(x => x.Genre == genre).ToListAsync();
 
         public async Task<Dictionary<string, int>> GetNumOfAlbumsByNames(List<ArtistModel> artistList)
         {

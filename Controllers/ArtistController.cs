@@ -27,11 +27,11 @@ namespace LicentaApp.Controllers
 
 
                 //var artist = new ArtistModel("Jim Morrison", "James Douglas Morrison (December 8, 1943 – July 3, 1971) was an American singer, poet and songwriter who was the lead vocalist of the rock band the Doors. Due to his wild personality, poetic lyrics, distinctive voice, unpredictable and erratic performances, and the dramatic circumstances surrounding his life and early death, Morrison is regarded by music critics and fans as one of the most influential frontmen in rock history."
-                //    , false, new DateOnly(1943, 12, 8), new DateOnly(1971, 7, 3), null, null);
+                //    , false, new DateTime(1943, 12, 8), new DateTime(1971, 7, 3), null, null);
                 //_artistService.CreateAsync(artist);
 
                 //var artist3 = new ArtistModel("Bladee", "Benjamin Thage Dag Reichwald (born 9 April 1994), professionally known as Bladee, is a Swedish recording artist, graphic designer, and fashion designer from Stockholm.",
-                //    false, new DateOnly(1994, 4, 9), null, null, null);
+                //    false, new DateTime(1994, 4, 9), null, null, null);
                 //_artistService.CreateAsync(artist3);
 
                 var artistList = await _artistService.GetAsync();

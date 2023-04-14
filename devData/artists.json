@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "643968ee4460aa67e33e66dd"
+  },
+  "name": "Pink Floyd",
+  "description": "Pink Floyd is a British rock band who managed to carve a path for progressive and psychedelic music in a way that was uniquely fascinating at the time and has remained equally momentous in the modern age. The name “Pink Floyd” came from two blues musicians that founding member Syd Barrett idolized—Pink Anderson and Floyd Council.",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": 1963,
+  "disbanded": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?20210720144017"
+},{
+  "_id": {
+    "$oid": "643968ee4460aa67e33e66de"
+  },
+  "name": "Death Grips",
+  "description": "Death Grips is an experimental multi-genre group from Sacramento, CA, formed in 2010. Their music and live performances consist of vocals from Stefan “MC Ride” Burnett and production from Zach Hill and Andy Morin. They released their first mixtape, Exmilitary on April 25, 2011, with their most popular song, Guillotine, on that project.",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": 2010,
+  "disbanded": null,
+  "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.genius.com%2Fde4ca387303c4b46007ca1072c2e57d0.600x600x1.jpg&f=1&nofb=1&ipt=0aa2e14c5a2bcb7847266a24930b1620fe3a90fa2218d3addb1402556c9ce22e&ipo=images"
+},{
+  "_id": {
+    "$oid": "643968ee4460aa67e33e66df"
+  },
+  "name": "Bladee",
+  "description": "Benjamin Thage Dag Reichwald (born 9 April 1994), professionally known as Bladee, is a Swedish recording artist, graphic designer, and fashion designer from Stockholm.",
+  "band": false,
+  "dob": {
+    "$date": "1994-04-08T21:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flastfm.freetls.fastly.net%2Fi%2Fu%2Far0%2F474e6db5ec3c4e010a3700c51419182b.jpg&f=1&nofb=1&ipt=0425893f3883fdce2b5a5ad8ece4c36644a409ece424b02b43a472c6b311d4c1&ipo=images"
+}]

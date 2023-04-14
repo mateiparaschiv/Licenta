@@ -45,7 +45,7 @@ app.MapControllerRoute(
 //TODO: configure lost routes to return not found
 app.MapControllerRoute(
     "Error",
-    "{*url}",
+    "/{*url}",
      new { controller = "Home", action = "Error" }
 );
 app.Run();

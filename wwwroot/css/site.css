@@ -31,3 +31,42 @@ body {
 #link{
     color:#212529;
 }
+
+#album_col {
+    max-width: 250px;
+}
+
+#artist-album_image {
+    max-width: 300px;
+}
+#genre-album_image {
+    max-height: 200px;
+}
+
+.photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+
+.photo-container img {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.photo-container img:nth-child(3) {
+    transform: translate(-50px, -50px);
+}
+
+.photo-container img:nth-child(1) {
+    transform: translate(50px, 50px);
+}
+
+.badge {
+    background-color: #6c757d !important;
+}

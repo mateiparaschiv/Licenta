@@ -34,29 +34,29 @@
     <div class="row justify-content-center py-4 g-0">
         <div class="col-4" id="image_col">
             <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
-                <img src="@album.Image">
+                <img src="@album.Image" id="artist-album_image">
             </a>
         </div>
         <div class="col-4 justify-content-center flex-column d-inline-flex">
             <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
                 <h1 class="text-center" id="link">
-                    <u>
+                    <i>
                         @album.Name
-                    </u>
+                    </i>
                 </h1>
             </a>
             <a class="nav-link active p-0" asp-controller="Artist" asp-action="Index" asp-route-name="@album.Artist">
                 <h3 class="text-center" id="link">
-                    <u>
+                    <i>
                         @album.Artist
-                    </u>
+                    </i>
                 </h3>
             </a>
             <a class="nav-link active p-0" asp-controller="Genre" asp-action="Index" asp-route-name="@album.Genre">
                 <h5 class="text-center" id="link">
-                    <u>
+                    <i>
                         @album.Genre
-                    </u>
+                    </i>
                 </h5>
             </a>
         </div>

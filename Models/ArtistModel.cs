@@ -20,14 +20,14 @@
         public Boolean? Band { get; set; }
 
         [BsonElement("dob")]
-        //[BsonRepresentation(BsonType.Object)] 
+        [BsonRepresentation(BsonType.DateTime)]
 
         // TODO: [BsonRepresentation(BsonType.Object)] 
-        public DateOnly? DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         [BsonElement("dod")]
-        //[BsonRepresentation(BsonType.DateTime)]
-        public DateOnly? DateOfDeath { get; set; }
+        [BsonRepresentation(BsonType.DateTime)]
+        public DateTime? DateOfDeath { get; set; }
 
         [BsonElement("formed")]
         [BsonRepresentation(BsonType.Int32)]
@@ -41,7 +41,7 @@
         [BsonRepresentation(BsonType.String)]
         public string? Image { get; set; }
 
-        public ArtistModel(string name, string description, bool? band, DateOnly? dateOfBirth, DateOnly? dateOfDeath, int? formed, int? disbanded, string? image)
+        public ArtistModel(string name, string description, bool? band, DateTime? dateOfBirth, DateTime? dateOfDeath, int? formed, int? disbanded)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Description = description ?? throw new ArgumentNullException(nameof(description));
@@ -50,7 +50,6 @@
             DateOfDeath = dateOfDeath;
             Formed = formed;
             Disbanded = disbanded;
-            Image = image;
         }
         //Genres
     }

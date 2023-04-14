@@ -4,6 +4,7 @@
     var albumsToArtist = Model.Item2;
     //var artistList = Model;
 }
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="d-flex justify-content-between bd-highlight">
     <div class="d-flex align-items-center justify-content-between">
         <h1 class="text-muted">Artists</h1>
@@ -33,9 +34,9 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a class="nav-link active p-0" asp-controller="Artist" asp-action="Index" asp-route-name="@artist.Name">
                     <h1 id="link">
-                        <u>
+                        <i>
                             @artist.Name
-                        </u>
+                        </i>
                     </h1>
                 </a>
                 <span class="badge bg-primary rounded-pill display-6 text-end">@albumsToArtist[$"{artist.Name}"]</span>

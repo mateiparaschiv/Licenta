@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 <div class="row py-4 g-0">
     <div class="col-md-4" id="image_col">
-        <img src="@artist.Image" style="max-width: 300px">
+        <img src="@artist.Image" id="artist-album_image">
     </div>
     <div class="col-md-8">
         <div class="card-body">
@@ -68,13 +68,18 @@
         </div>
     </div>
 </div>
-<div class=" container g-0">
+<div class=" container py-4 g-0">
     <div class="row justify-content">
         @foreach(var album in artistAlbums)
         {
             <div class="text-center col-md-4 ">
                 <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
-                    <img src="@album.Image" style="max-width: 225px">
+                    <img src="@album.Image" id="album_col">
+                </a>
+                <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
+                    <i class="" id="link">
+                        @album.Name
+                    </i>
                 </a>
                 <p class="text-muted">
                     @album.Year

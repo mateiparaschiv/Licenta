@@ -5,10 +5,12 @@ namespace LicentaApp.Controllers
     public class GenreController : Controller
     {
         private readonly IGenreService _genreService;
+        private readonly IAlbumService _albumService;
 
-        public GenreController(IGenreService genreService)
+        public GenreController(IGenreService genreService, IAlbumService albumService)
         {
             _genreService = genreService;
+            _albumService = albumService;
         }
 
         [Route("Genres/{name?}")]
@@ -23,7 +25,9 @@ namespace LicentaApp.Controllers
             else
             {
                 var genre = await _genreService.GetAsyncByName(name);
-                return View("~/Views/Genres/Genre.cshtml", genre);
+                var genreAlbums = await _albumService.GetAsyncListByGenre(name);
+                var tuple = new Tuple<GenreModel, List<AlbumModel>>(genre, genreAlbums);
+                return View("~/Views/Genres/Genre.cshtml", tuple);
             }
         }
     }
