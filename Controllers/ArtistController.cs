@@ -14,8 +14,9 @@ namespace LicentaApp.Controllers
         }
 
         [Route("Artists/{name?}")]
-        public async Task<IActionResult> Index(string? name)
+        public async Task<IActionResult> Index(string? name, string sortOrder)
         {
+            //sortOrder = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
             if (string.IsNullOrWhiteSpace(name))
             {
                 //var artist1 = new ArtistModel("Pink Floyd", "Pink Floyd is a British rock band who managed to carve a path for progressive and psychedelic music in a way that was uniquely fascinating at the time and has remained equally momentous in the modern age. The name “Pink Floyd” came from two blues musicians that founding member Syd Barrett idolized—Pink Anderson and Floyd Council."
@@ -36,6 +37,18 @@ namespace LicentaApp.Controllers
 
                 var artistList = await _artistService.GetAsync();
                 artistList.Sort((x, y) => string.Compare(x.Name, y.Name));
+                ViewBag.DateSortParm = sortOrder;
+                switch (sortOrder)
+                {
+                    case "name_asc":
+                        artistList.OrderBy(s => s.Name).ToList();
+                        break;
+                    case "name_desc":
+                        artistList.Sort((x, y) => string.Compare(y.Name, x.Name));
+                        //.OrderByDescending(s => s.Name);
+                        break;
+                }
+
                 var albumsToArtist = await _albumService.GetNumOfAlbumsByNames(artistList);
                 var tuple = new Tuple<List<ArtistModel>, Dictionary<string, int>>(artistList, albumsToArtist);
                 return View("~/Views/Artists/Index.cshtml", tuple);
