@@ -32,6 +32,12 @@ body {
     color:#212529;
 }
 
+#index_text {
+    color: white;
+    -webkit-text-stroke: 1px black;
+    font-weight: bold;
+}
+
 #album_col {
     max-width: 250px;
 }
@@ -43,6 +49,14 @@ body {
     max-height: 200px;
 }
 
+#home_image{
+    width:450px;
+    height:450px;
+}
+
+#carousel_item{
+    max-width:450px;
+}
 .photo-container {
     display: flex;
     justify-content: center;

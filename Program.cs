@@ -50,3 +50,11 @@ app.MapControllerRoute(
 );
 app.Run();
 
+//TODO : Feedback form
+//TODO : Review form
+//TODO : Log in && Register form
+//TODO : Log in mechanism
+
+//TODO : Home page
+//TODO : order a->z ; z->a
+

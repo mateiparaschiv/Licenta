@@ -22,7 +22,7 @@
         [BsonElement("dob")]
         [BsonRepresentation(BsonType.DateTime)]
 
-        // TODO: [BsonRepresentation(BsonType.Object)] 
+        // TODO: Remove BsonRepresentation
         public DateTime? DateOfBirth { get; set; }
 
         [BsonElement("dod")]

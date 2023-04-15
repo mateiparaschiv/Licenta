@@ -1,47 +1,62 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration _configuration
+@model List<AlbumModel>
 @{
     ViewData["Title"] = "Home Page";
     var environment = _configuration.GetValue<string>("Environment");
-}
+    var albumList = Model;
+    var rand = new Random();
+    var randomIndex = rand.Next(albumList.Count());
 
+}
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="text-center">
     <h1 class="display-2">Home</h1>
     <h1 class="display-4">In @environment</h1>
 
     <div>
-        <div class="bd-example">
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="d-flex bd-example justify-content-center">
+            @*style="max-width:450px; min-height:450px; min-"*@
+            <div id="carouselExampleCaptions" class="carousel slide align-content-center" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
-
+                <div class="carousel-inner ">
+                    <div class="carousel-item active ">
+                        @*<svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>*@
+                        <img src="@albumList[randomIndex].Image" id="home_image">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <p id="index_text" class="h2 text-center">@albumList[randomIndex].Name</p>
+                            <p id="index_text" class="h3 text-center">@albumList[randomIndex].Artist</p>
                         </div>
+                    </div>
+                    @for (int i = 0; i < 2; i++)
+                    {
+                        var index = rand.Next(albumList.Count());
+                        <div class="carousel-item">
+                            <img src="@albumList[index].Image" id="home_image">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p id="index_text" class="h2 text-center">@albumList[index].Name</p>
+                                <p id="index_text" class="h3 text-center">@albumList[index].Artist</p>
+                            </div>
+                        </div>
+                    }
+                    @*<div class="carousel-item">
+                    <img src="@albumList[rand.Next(albumList.Count())].Image" id="home_image">
+                    <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                    </div>
                     </div>
                     <div class="carousel-item">
-                        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
-
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
+                    <img src="@albumList[rand.Next(albumList.Count())].Image" id="home_image">
+                    <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
                     </div>
-                    <div class="carousel-item">
-                        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"></rect><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
-
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
-                    </div>
+                    </div>*@
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -54,5 +69,4 @@
             </div>
         </div>
     </div>
-
 </div>
