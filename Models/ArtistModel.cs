@@ -7,6 +7,10 @@
         [BsonElement("id")]
         public string Id { get; set; }
 
+        [BsonElement("searchName")]
+        [BsonRepresentation(BsonType.String)]
+        public string SearchName { get; set; }
+
         [BsonElement("name")]
         [BsonRepresentation(BsonType.String)]
         public string Name { get; set; }
@@ -41,16 +45,16 @@
         [BsonRepresentation(BsonType.String)]
         public string? Image { get; set; }
 
-        public ArtistModel(string name, string description, bool? band, DateTime? dateOfBirth, DateTime? dateOfDeath, int? formed, int? disbanded)
-        {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Description = description ?? throw new ArgumentNullException(nameof(description));
-            Band = band;
-            DateOfBirth = dateOfBirth;
-            DateOfDeath = dateOfDeath;
-            Formed = formed;
-            Disbanded = disbanded;
-        }
+        //public ArtistModel(string name, string description, bool? band, DateTime? dateOfBirth, DateTime? dateOfDeath, int? formed, int? disbanded)
+        //{
+        //    searchName = name ?? throw new ArgumentNullException(nameof(name));
+        //    Description = description ?? throw new ArgumentNullException(nameof(description));
+        //    Band = band;
+        //    DateOfBirth = dateOfBirth;
+        //    DateOfDeath = dateOfDeath;
+        //    Formed = formed;
+        //    Disbanded = disbanded;
+        //}
         //Genres
     }
 }

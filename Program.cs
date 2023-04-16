@@ -7,7 +7,6 @@ global using MongoDB.Driver;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// TODO : CLEANUP CODE everywhere at the end
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -54,7 +53,7 @@ app.Run();
 //TODO : Review form
 //TODO : Log in && Register form
 //TODO : Log in mechanism
+// TODO : CLEANUP CODE everywhere at the end
 
-//TODO : Home page
 //TODO : order a->z ; z->a
 
