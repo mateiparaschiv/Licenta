@@ -17,14 +17,12 @@ namespace LicentaApp.Controllers
         [Route("Artists/{sortOrder:regex(name_asc|name_desc)?}")]
         public async Task<IActionResult> Index(string? name, string? sortOrder)
         {
-            //sortOrder = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
             if (string.IsNullOrWhiteSpace(name))
             {
+                sortOrder = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
                 var artistList = await _artistService.GetAsync();
                 //artistList.Sort((x, y) => string.Compare(x.Name, y.Name));
-                //ViewBag.DateSortParm = sortOrder;
-                //TempData["DateSortParm"] = sortOrder;
-                switch (TempData["DateSortParm"])
+                switch (sortOrder)
                 {
                     case "name_asc":
                         artistList.Sort((x, y) => string.Compare(x.Name, y.Name));
@@ -35,7 +33,7 @@ namespace LicentaApp.Controllers
                 }
 
                 var albumsToArtist = await _albumService.GetNumOfAlbumsByNames(artistList);
-                var tuple = new Tuple<List<ArtistModel>, Dictionary<string, int>>(artistList, albumsToArtist);
+                var tuple = new Tuple<List<ArtistModel>, Dictionary<string, int>, string?>(artistList, albumsToArtist, sortOrder);
                 return View("~/Views/Artists/Index.cshtml", tuple);
             }
             else
