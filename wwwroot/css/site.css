@@ -28,8 +28,16 @@ body {
     width :300px;
 }
 
-#link{
-    color:#212529;
+#link {
+    color: #212529;
+    text-decoration: none;
+}
+#link:hover {
+    color: #0d6efd;
+}
+
+#link:active {
+    color: #6c757d;
 }
 
 #index_text {
@@ -57,6 +65,17 @@ body {
 #carousel_item{
     max-width:450px;
 }
+
+#sort_buttons {
+    color:#6c757d;
+}
+#sort_buttons:hover {
+    color: #0d6efd;
+}
+#sort_buttons:active {
+    color: black;
+}
+
 .photo-container {
     display: flex;
     justify-content: center;
