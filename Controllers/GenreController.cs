@@ -31,7 +31,6 @@ namespace LicentaApp.Controllers
                     case "":
                         break;
                 }
-                //genreList.Sort((x, y) => string.Compare(x.Name, y.Name));
                 var tuple = new Tuple<List<GenreModel>, string>(genreList, sortOrder);
                 return View("~/Views/Genres/Index.cshtml", tuple);
             }

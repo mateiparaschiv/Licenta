@@ -14,7 +14,7 @@ namespace LicentaApp.Controllers
         }
 
         [Route("Artists/{name:alpha}")]
-        [Route("Artists/{sortOrder:regex(name_asc|name_desc)?}")]
+        [Route("Artists/{sortOrder:regex(name_asc|name_desc|year_asc|year_desc)?}")]
         public async Task<IActionResult> Index(string? name, string? sortOrder)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -40,10 +40,23 @@ namespace LicentaApp.Controllers
             }
             else
             {
+                sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
                 var artist = await _artistService.GetAsyncByName(name);
                 var artistAlbums = await _albumService.GetAsyncListByName(name);
-                artistAlbums.Sort((x, y) => x.Year - y.Year);
-                var tuple = new Tuple<ArtistModel, List<AlbumModel>>(artist, artistAlbums);
+                artistAlbums.Sort((x, y) => y.Year - x.Year);
+
+                switch (sortOrder)
+                {
+                    case "year_asc":
+                        artistAlbums.Sort((x, y) => x.Year - y.Year);
+                        break;
+                    case "year_desc":
+                        artistAlbums.Sort((x, y) => y.Year - x.Year);
+                        break;
+                    case "":
+                        break;
+                }
+                var tuple = new Tuple<ArtistModel, List<AlbumModel>, string>(artist, artistAlbums, sortOrder);
                 return View("~/Views/Artists/Artist.cshtml", tuple);
             }
 
