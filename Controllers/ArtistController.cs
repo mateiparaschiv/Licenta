@@ -19,9 +19,8 @@ namespace LicentaApp.Controllers
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                sortOrder = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
+                sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
                 var artistList = await _artistService.GetAsync();
-                //artistList.Sort((x, y) => string.Compare(x.Name, y.Name));
                 switch (sortOrder)
                 {
                     case "name_asc":
@@ -29,6 +28,8 @@ namespace LicentaApp.Controllers
                         break;
                     case "name_desc":
                         artistList.Sort((x, y) => string.Compare(y.Name, x.Name));
+                        break;
+                    case "":
                         break;
                 }
 
@@ -38,6 +39,7 @@ namespace LicentaApp.Controllers
             }
             else
             {
+                //good code
                 var artist = await _artistService.GetAsyncByName(name);
                 var artistAlbums = await _albumService.GetAsyncListByName(name);
                 artistAlbums.Sort((x, y) => x.Year - y.Year);
