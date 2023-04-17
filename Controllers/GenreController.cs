@@ -14,13 +14,26 @@ namespace LicentaApp.Controllers
         }
 
         [Route("Genres/{name?}")]
-        public async Task<IActionResult> Index(string? name)
+        public async Task<IActionResult> Index(string? name, string? sortOrder)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
+                sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
                 var genreList = await _genreService.GetAsync();
-                genreList.Sort((x, y) => string.Compare(x.Name, y.Name));
-                return View("~/Views/Genres/Index.cshtml", genreList);
+                switch (sortOrder)
+                {
+                    case "name_asc":
+                        genreList.Sort((x, y) => string.Compare(x.Name, y.Name));
+                        break;
+                    case "name_desc":
+                        genreList.Sort((x, y) => string.Compare(y.Name, x.Name));
+                        break;
+                    case "":
+                        break;
+                }
+                //genreList.Sort((x, y) => string.Compare(x.Name, y.Name));
+                var tuple = new Tuple<List<GenreModel>, string>(genreList, sortOrder);
+                return View("~/Views/Genres/Index.cshtml", tuple);
             }
             else
             {

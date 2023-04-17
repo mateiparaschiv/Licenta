@@ -23,10 +23,10 @@
         public DateTime? DateOfDeath { get; set; }
 
         [BsonElement("formed")]
-        public string? Formed { get; set; }
+        public string Formed { get; set; }
 
         [BsonElement("disbanded")]
-        public string? Disbanded { get; set; }
+        public string Disbanded { get; set; }
 
         [BsonElement("image")]
         public string? Image { get; set; }

@@ -21,6 +21,7 @@ namespace LicentaApp.Controllers
             {
                 sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
                 var artistList = await _artistService.GetAsync();
+                _artistService.Shuffle(artistList);
                 switch (sortOrder)
                 {
                     case "name_asc":
@@ -34,12 +35,11 @@ namespace LicentaApp.Controllers
                 }
 
                 var albumsToArtist = await _albumService.GetNumOfAlbumsByNames(artistList);
-                var tuple = new Tuple<List<ArtistModel>, Dictionary<string, int>, string?>(artistList, albumsToArtist, sortOrder);
+                var tuple = new Tuple<List<ArtistModel>, Dictionary<string, int>, string>(artistList, albumsToArtist, sortOrder);
                 return View("~/Views/Artists/Index.cshtml", tuple);
             }
             else
             {
-                //good code
                 var artist = await _artistService.GetAsyncByName(name);
                 var artistAlbums = await _albumService.GetAsyncListByName(name);
                 artistAlbums.Sort((x, y) => x.Year - y.Year);

@@ -8,5 +8,7 @@
         Task CreateAsync(ArtistModel newAlbumModel);
         Task UpdateAsync(string id, ArtistModel updatedAlbumModel);
         Task RemoveAsync(string id);
+        void Shuffle<T>(IList<T> list);
     }
+
 }
