@@ -7,42 +7,28 @@
         [BsonElement("id")]
         public string Id { get; set; }
 
-        [BsonElement("searchName")]
-        [BsonRepresentation(BsonType.String)]
-        public string SearchName { get; set; }
-
         [BsonElement("name")]
-        [BsonRepresentation(BsonType.String)]
         public string Name { get; set; }
 
         [BsonElement("description")]
-        [BsonRepresentation(BsonType.String)]
         public string Description { get; set; }
 
         [BsonElement("band")]
-        [BsonRepresentation(BsonType.Boolean)]
         public Boolean? Band { get; set; }
 
         [BsonElement("dob")]
-        [BsonRepresentation(BsonType.DateTime)]
-
-        // TODO: Remove BsonRepresentation
         public DateTime? DateOfBirth { get; set; }
 
         [BsonElement("dod")]
-        [BsonRepresentation(BsonType.DateTime)]
         public DateTime? DateOfDeath { get; set; }
 
         [BsonElement("formed")]
-        [BsonRepresentation(BsonType.Int32)]
-        public int? Formed { get; set; }
+        public string? Formed { get; set; }
 
         [BsonElement("disbanded")]
-        [BsonRepresentation(BsonType.Int32)]
-        public int? Disbanded { get; set; }
+        public string? Disbanded { get; set; }
 
         [BsonElement("image")]
-        [BsonRepresentation(BsonType.String)]
         public string? Image { get; set; }
 
         //public ArtistModel(string name, string description, bool? band, DateTime? dateOfBirth, DateTime? dateOfDeath, int? formed, int? disbanded)
