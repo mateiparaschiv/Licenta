@@ -53,7 +53,7 @@ app.Run();
 //TODO : Review form
 //TODO : Log in && Register form
 //TODO : Log in mechanism
-// TODO : CLEANUP CODE everywhere at the end
-
+//TODO : CLEANUP CODE everywhere at the end
+//TODO : NEXT PAGE BUTTONS
 //TODO : order a->z ; z->a
 

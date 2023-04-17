@@ -15,7 +15,7 @@
         public async Task<ArtistModel?> GetAsyncById(string id) =>
             await _artistCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task<ArtistModel?> GetAsyncByName(string name) =>
+        public async Task<ArtistModel> GetAsyncByName(string name) =>
             await _artistCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
 
         public async Task CreateAsync(ArtistModel newAlbumModel) =>
