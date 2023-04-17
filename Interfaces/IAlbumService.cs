@@ -12,5 +12,6 @@
         Task UpdateAsync(string id, AlbumModel updatedAlbumModel);
         Task RemoveAsync(string id);
         Task<AlbumModel?> GetAsyncByName(string name);
+        void Shuffle<T>(IList<T> list);
     }
 }

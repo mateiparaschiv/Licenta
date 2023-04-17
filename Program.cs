@@ -56,4 +56,5 @@ app.Run();
 //TODO : CLEANUP CODE everywhere at the end
 //TODO : NEXT PAGE BUTTONS
 //TODO : order a->z ; z->a
+//TODO : validation on hrefs
 
