@@ -3,6 +3,7 @@
     public interface IArtistService
     {
         Task<List<ArtistModel>> GetAsync();
+        //Task<IMongoQueryable<ArtistModel>> GetAsync();
         Task<ArtistModel?> GetAsyncById(string id);
         Task<ArtistModel> GetAsyncByName(string name);
         Task CreateAsync(ArtistModel newAlbumModel);

@@ -8,15 +8,16 @@ html {
   }
 }
 
-html {
+/*html {
   position: relative;
   min-height: 100%;
-}
+}*/
 
-body {
+/*body {
   margin-bottom: 60px;
-}
+}*/
 
+/*test*/
 /*#categories {
     background-color: yellow;
     display: flex;
@@ -102,4 +103,37 @@ body {
 
 .badge {
     background-color: #6c757d !important;
+}
+
+#body {
+
+}
+
+#header {
+    position: fixed;
+    height: 107.8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#content {
+    overflow-y: scroll;
+    position: absolute;
+    top: 108px;
+    bottom: 65px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: calc(100vh - 167.4px);
+}
+
+#footer {
+    position: fixed;
+    margin-top: 907px;
+    height: 60px;
+    width: 100%;
+    box-sizing: border-box;
 }

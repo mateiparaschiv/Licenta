@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ContosoUniversity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
@@ -15,12 +16,15 @@ namespace LicentaApp.Controllers
 
         [Route("Artists/{name:alpha}")]
         [Route("Artists/{sortOrder:regex(name_asc|name_desc|year_asc|year_desc)?}")]
-        public async Task<IActionResult> Index(string? name, string? sortOrder)
+        public async Task<IActionResult> Index(string? name, string? sortOrder, int? pageNumber)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
+                int pageSize = 9;
                 var artistList = await _artistService.GetAsync();
+                //.AsNoTracking()
+                var paginatedArtistList = await PaginatedList<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);
                 _artistService.Shuffle(artistList);
                 switch (sortOrder)
                 {
@@ -35,7 +39,8 @@ namespace LicentaApp.Controllers
                 }
 
                 var albumsToArtist = await _albumService.GetNumOfAlbumsByNames(artistList);
-                var tuple = new Tuple<List<ArtistModel>, Dictionary<string, int>, string>(artistList, albumsToArtist, sortOrder);
+                var tuple = new Tuple<PaginatedList<ArtistModel>, Dictionary<string, int>, string>(paginatedArtistList, albumsToArtist, sortOrder);
+
                 return View("~/Views/Artists/Index.cshtml", tuple);
             }
             else

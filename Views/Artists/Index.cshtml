@@ -1,6 +1,8 @@
-﻿@model Tuple<List<ArtistModel>, Dictionary<string, int>,string>
+﻿@using ContosoUniversity;
+@*@model Tuple<List<ArtistModel>, Dictionary<string, int>,string>*@
+@model Tuple<PaginatedList<ArtistModel>, Dictionary<string, int>,string>
 @{
-    var artistList = Model.Item1;
+    var paginatedArtistList = Model.Item1;
     var albumsToArtist = Model.Item2;
     var sortOrder = Model.Item3;
 }
@@ -41,12 +43,12 @@
 @*<h1 class="text-muted">Artists</h1>*@
 <div class="wrapper d-flex justify-content-center align-items-center">
     <ul class="list-group list-group-flush justify-content-center text-center w-50">
-        @foreach (var artist in artistList)
+        @foreach (var artist in paginatedArtistList)
         {
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a id="link" asp-controller="Artist" asp-action="Index" asp-route-name="@artist.Name">
-                    @*class="nav-link active p-0" asp-controller="Artist" asp-action="Index" asp-route-name="@artist.Name"*@
-                    @*href="@Url.Action("Index","Artist",new {name = @artist.Name})"*@
+                @*class="nav-link active p-0" asp-controller="Artist" asp-action="Index" asp-route-name="@artist.Name"*@
+                @*href="@Url.Action("Index","Artist",new {name = @artist.Name})"*@
                     <h1>
                         <i>
                             @artist.Name
@@ -58,3 +60,20 @@
         }
     </ul>
 </div>
+@*@{
+    var prevDisabled = !paginatedArtistList.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !paginatedArtistList.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@sortOrder"
+   asp-route-pageNumber="@(paginatedArtistList.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@sortOrder"
+   asp-route-pageNumber="@(paginatedArtistList.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>*@
