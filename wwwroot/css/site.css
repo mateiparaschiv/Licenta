@@ -105,7 +105,51 @@ html {
     background-color: #6c757d !important;
 }
 
-#body {
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+#header {
+    overflow: hidden;
+    position: absolute;
+    height: auto;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+#content {
+    overflow: auto;
+    position: absolute;
+    top: 107.8px;
+    bottom: 82.6px;
+}
+
+#footer {
+    overflow: hidden;
+    position: absolute;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#body {
 
 }
 
@@ -118,10 +162,10 @@ html {
 
 #content {
     overflow-y: scroll;
-    position: absolute;
-    top: 108px;
-    bottom: 65px;
-    left: 0;
+    position: relative;
+    top: 108px;*/
+    /*bottom: 65px;*/
+    /*left: 0;
     right: 0;
     background-color: #fff;
     box-sizing: border-box;
@@ -131,9 +175,8 @@ html {
 }
 
 #footer {
-    position: fixed;
-    margin-top: 907px;
-    height: 60px;
+    position: fixed;*/
+    /*height: 60px;
     width: 100%;
-    box-sizing: border-box;
-}
+    box-sizing: border-box;*/
+/*}*/
