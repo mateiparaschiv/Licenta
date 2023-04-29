@@ -1,4 +1,6 @@
-﻿namespace LicentaApp.Services
+﻿using LicentaApp.Identity;
+
+namespace LicentaApp.Services
 {
     public static class MongoDBService
     {
@@ -16,11 +18,13 @@
             _db = CreateMongoDatabase(settings);
             services.addMongoDbService<AlbumService, AlbumModel>(settings.CollectionName.AlbumCollection);
             services.addMongoDbService<ArtistService, ArtistModel>(settings.CollectionName.ArtistCollection);
-            services.addMongoDbService<FeedbackService, FeedbackModel>(settings.CollectionName.FeedbackCollection);
+            services.addMongoDbService<FeedbackService, FeedbackModel>(settings.CollectionName.FeedbackCollection);//TODO : schimbat de la collection la db names?
             services.addMongoDbService<ReviewService, ReviewModel>(settings.CollectionName.ReviewCollection);
             services.addMongoDbService<SongService, SongModel>(settings.CollectionName.SongCollection);
             services.addMongoDbService<UserService, UserModel>(settings.CollectionName.UserCollection);
             services.addMongoDbService<GenreService, GenreModel>(settings.CollectionName.GenreCollection);
+            services.AddIdentity<ApplicationUser, ApplicationRole>().AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(settings.ConnectionString, settings.DatabaseName);
+
 
         }
         static void addMongoDbService<TService, TModel>(this IServiceCollection services, string collectionName)

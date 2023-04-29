@@ -47,8 +47,11 @@
                 </ul>
 
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                    <button type="button" class="btn btn-primary">Sign-up</button>
+                    @*<button type="button" class="btn btn-outline-primary me-2">Login</button>
+                    <button type="button" class="btn btn-primary">Sign-up</button>*@
+                    <a class="btn btn-outline-primary me-2" asp-area="" asp-controller="Operations" asp-action="Create">Sign in</a>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Operations" asp-action="Create">Sign up</a>
+
                 </div>
             </header>
         </div>
@@ -56,7 +59,7 @@
     <div id="content" class="container-fluid">
         @*style="min-height:80vh;"*@
         <div class="container" >
-            <main role="main" class="pb-3">
+            <main role="main" class="">
         @RenderBody()
             </main>
         </div>

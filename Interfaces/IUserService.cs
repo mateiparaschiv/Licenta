@@ -3,9 +3,9 @@
     public interface IUserService
     {
         Task<List<UserModel>> GetAsync();
-        Task<UserModel?> GetAsync(string id);
+        Task<UserModel?> GetAsync(string UserName);
         Task CreateAsync(UserModel newUserModel);
-        Task UpdateAsync(string id, UserModel updatedUserModel);
-        Task RemoveAsync(string id);
+        Task UpdateAsync(string UserName, UserModel updatedUserModel);
+        Task RemoveAsync(string UserName);
     }
 }

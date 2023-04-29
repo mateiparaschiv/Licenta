@@ -4,6 +4,8 @@ global using LicentaApp.Services;
 global using MongoDB.Bson;
 global using MongoDB.Bson.Serialization.Attributes;
 global using MongoDB.Driver;
+global using MongoDbGenericRepository.Attributes;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
