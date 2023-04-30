@@ -23,5 +23,7 @@
 
         public async Task RemoveAsync(string id) =>
             await _reviewCollection.DeleteOneAsync(x => x.Id == id);
+        public async Task<List<ReviewModel>> GetAsyncListByAlbum(string albumName) =>
+            await _reviewCollection.Find(x => x.Subject == albumName).ToListAsync();
     }
 }

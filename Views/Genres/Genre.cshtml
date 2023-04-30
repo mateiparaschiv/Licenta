@@ -9,17 +9,16 @@
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="row py-4 g-0">
-    <div class="col-md-4" id="image_col">
+    <div class="col-md-3" id="image_col">
         <div class="photo-container">
             @for(int i = 0; i < 3; i++)
             {
-                <img src="@genreAlbums[rand.Next(genreAlbums.Count())].Image">
-                @*<img src="@album2.Image" alt="photo 2">
-                <img src="@album2.Image" alt="photo 3">*@
+                @*<img src="@genreAlbums[rand.Next(genreAlbums.Count())].Image">*@
+                <img src="~/images/Albums/@(genreAlbums[rand.Next(genreAlbums.Count())].Name).jpg">
             }
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="card-body">
             <p class="display-4">@genre.Name</p>
             <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
@@ -53,7 +52,7 @@
         {
             <div class="text-center col-md-4 ">
                 <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
-                    <img src="@album.Image" style="max-width: 225px">
+                    <img src="~/images/Albums/@(album.Name).jpg" id="album_col">
                 </a>
                 <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
                     <i class="" id="link">

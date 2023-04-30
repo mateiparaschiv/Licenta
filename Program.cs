@@ -58,6 +58,7 @@ app.Run();
 //TODO : CLEANUP CODE everywhere at the end
 //TODO : NEXT PAGE BUTTONS
 //TODO : PADDING ON FOOTER ???????????????
-//TODO : SIZE = 0 
+//TODO : MAIN SIZE = 0 
 //TODO : validation on hrefs
+//TODO : CHECK RATING 
 

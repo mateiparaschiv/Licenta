@@ -5,10 +5,12 @@ namespace LicentaApp.Controllers
     public class AlbumController : Controller
     {
         private readonly IAlbumService _albumService;
+        private readonly IReviewService _reviewService;
 
-        public AlbumController(IAlbumService albumService)
+        public AlbumController(IAlbumService albumService, IReviewService reviewService)
         {
             _albumService = albumService;
+            _reviewService = reviewService;
         }
 
         [Route("Albums/{name?}")]
@@ -37,7 +39,9 @@ namespace LicentaApp.Controllers
             else
             {
                 var album = await _albumService.GetAsyncByName(name);
-                return View("~/Views/Albums/Album.cshtml", album);
+                var review = await _reviewService.GetAsyncListByAlbum(name);
+                var tuple = new Tuple<AlbumModel, List<ReviewModel>>(album, review);
+                return View("~/Views/Albums/Album.cshtml", tuple);
             }
         }
     }

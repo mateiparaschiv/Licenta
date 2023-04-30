@@ -7,11 +7,13 @@ namespace LicentaApp.Controllers
     {
         private readonly IArtistService _artistService;
         private readonly IAlbumService _albumService;
+        private readonly IReviewService _reviewService;
 
-        public ArtistController(IArtistService artistService, IAlbumService albumService)
+        public ArtistController(IArtistService artistService, IAlbumService albumService, IReviewService reviewService)
         {
             _artistService = artistService;
             _albumService = albumService;
+            _reviewService = reviewService;
         }
 
         [Route("Artists/{name:alpha}")]
@@ -48,6 +50,7 @@ namespace LicentaApp.Controllers
                 sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
                 var artist = await _artistService.GetAsyncByName(name);
                 var artistAlbums = await _albumService.GetAsyncListByName(name);
+                var reviews = await _reviewService.GetAsyncListByAlbum(name);
                 artistAlbums.Sort((x, y) => y.Year - x.Year);
 
                 switch (sortOrder)
@@ -61,7 +64,7 @@ namespace LicentaApp.Controllers
                     case "":
                         break;
                 }
-                var tuple = new Tuple<ArtistModel, List<AlbumModel>, string>(artist, artistAlbums, sortOrder);
+                var tuple = new Tuple<ArtistModel, List<AlbumModel>, string, List<ReviewModel>>(artist, artistAlbums, sortOrder, reviews);
                 return View("~/Views/Artists/Artist.cshtml", tuple);
             }
 

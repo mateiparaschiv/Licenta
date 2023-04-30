@@ -58,7 +58,8 @@
     <div class="row justify-content-center py-4 g-0">
         <div class="col-4" id="image_col">
             <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
-                <img src="@album.Image" id="artist-album_image">
+                @*<img src="@album.Image" id="artist-album_image">*@
+                <img src="~/images/Albums/@(album.Name).jpg" id="artist-album_image">
             </a>
         </div>
         <div class="col-4 justify-content-center flex-column d-inline-flex">

@@ -15,5 +15,11 @@ namespace LicentaApp.Controllers
             var feedbackList = await _feedbackService.GetAsync();
             return View(feedbackList);
         }
+        public async Task<IActionResult> AddFeeback()
+        {
+
+            return View();
+        }
+
     }
 }
