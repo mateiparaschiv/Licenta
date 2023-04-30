@@ -1,4 +1,7 @@
-﻿namespace LicentaApp.Repositories
+﻿using LicentaApp.Interfaces.IRepository;
+using LicentaApp.Interfaces.IService;
+
+namespace LicentaApp.Repositories
 {
     public class GenreRepository : IGenreRepository
     {

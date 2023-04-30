@@ -1,4 +1,7 @@
-﻿namespace LicentaApp.Repositories
+﻿using LicentaApp.Interfaces.IRepository;
+using LicentaApp.Interfaces.IService;
+
+namespace LicentaApp.Repositories
 {
     public class AlbumRepository : IAlbumRepository
     {
@@ -32,8 +35,8 @@
         public async Task<Tuple<AlbumModel, List<ReviewModel>>> IndexAlbumName(string? name)
         {
             var album = await _albumService.GetAsyncByName(name);
-            var review = await _reviewService.GetAsyncListByAlbum(name);
-            var tuple = new Tuple<AlbumModel, List<ReviewModel>>(album, review);
+            var reviewList = await _reviewService.GetAsyncListByAlbum(name);
+            var tuple = new Tuple<AlbumModel, List<ReviewModel>>(album, reviewList);
             return tuple;
         }
     }

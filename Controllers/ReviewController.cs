@@ -4,25 +4,29 @@ namespace LicentaApp.Controllers
 {
     public class ReviewController : Controller
     {
-        private readonly IReviewService _reviewService;
+        private readonly IReviewRepository _reviewRepository;
 
-        public ReviewController(IReviewService reviewService)
+        public ReviewController(IReviewRepository reviewRepository)
         {
-            _reviewService = reviewService;
+            _reviewRepository = reviewRepository;
         }
 
-        [Route("/Reviews/Index")]
+        [Route("/Reviews")]
         public async Task<IActionResult> Index()
         {
-            //ReviewModel r = new ReviewModel("paraschivmatei20@stud.ase.ro", "ReviewTest", "Testing Review", "I am testing the review model.");
-            //await _reviewService.CreateAsync(r);
-            var reviewList = await _reviewService.GetAsync();
-            return View("~/Views/Reviews/Index.cshtml", reviewList);
+            return View("~/Views/Reviews/Index.cshtml", await _reviewRepository.IndexReviewList());
         }
-        [Route("/Reviews/AddReview", Name = "AddReview")]
-        public async Task<IActionResult> AddReview()
+
+        [HttpPost]
+        [Route("/Reviews/AddReview")]
+        public async Task<IActionResult> AddReview(ReviewModel newReview)
         {
-            return View("~/Views/Reviews/AddReview.cshtml");
+            //if (ModelState.IsValid)
+            //{
+            //    // logic to store form data in DB
+            //    _reviewRepository.AddReview(newReview);
+            //}
+            return PartialView("~/Views/Reviews/AddReview.cshtml", newReview);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LicentaApp.Interfaces.IRepository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
@@ -22,8 +23,8 @@ namespace LicentaApp.Controllers
             else
             {
                 return View("~/Views/Albums/Album.cshtml", await _albumRepository.IndexAlbumName(name));
+                //TODO : E OK ASA ?
             }
-            //TODO : E OK ASA ?
         }
     }
 }

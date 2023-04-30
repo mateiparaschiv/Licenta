@@ -1,4 +1,6 @@
-﻿namespace LicentaApp.Services
+﻿using LicentaApp.Interfaces.IService;
+
+namespace LicentaApp.Services
 {
     public class FeedbackService : IFeedbackService
     {

@@ -1,4 +1,5 @@
-global using LicentaApp.Interfaces;
+global using LicentaApp.Interfaces.IRepository;
+global using LicentaApp.Interfaces.IService;
 global using LicentaApp.Models;
 global using LicentaApp.Repositories;
 global using LicentaApp.Services;
@@ -6,7 +7,6 @@ global using MongoDB.Bson;
 global using MongoDB.Bson.Serialization.Attributes;
 global using MongoDB.Driver;
 global using MongoDbGenericRepository.Attributes;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +23,10 @@ builder.Services.AddScoped<IArtistService, ArtistService>();
 builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
 
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+
 builder.Services.AddScoped<IReviewService, ReviewService>();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+
 builder.Services.AddScoped<ISongService, SongService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
