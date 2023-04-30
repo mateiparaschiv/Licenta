@@ -1,5 +1,4 @@
-﻿using ContosoUniversity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
@@ -26,7 +25,7 @@ namespace LicentaApp.Controllers
                 int pageSize = 9;
                 var artistList = await _artistService.GetAsync();
                 //.AsNoTracking()
-                var paginatedArtistList = await PaginatedList<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);
+                var paginatedArtistList = await PaginatedListModel<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);
                 _artistService.Shuffle(artistList);
                 switch (sortOrder)
                 {
@@ -41,7 +40,7 @@ namespace LicentaApp.Controllers
                 }
 
                 var albumsToArtist = await _albumService.GetNumOfAlbumsByNames(artistList);
-                var tuple = new Tuple<PaginatedList<ArtistModel>, Dictionary<string, int>, string>(paginatedArtistList, albumsToArtist, sortOrder);
+                var tuple = new Tuple<PaginatedListModel<ArtistModel>, Dictionary<string, int>, string>(paginatedArtistList, albumsToArtist, sortOrder);
 
                 return View("~/Views/Artists/Index.cshtml", tuple);
             }

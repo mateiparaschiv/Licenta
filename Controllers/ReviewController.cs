@@ -10,23 +10,19 @@ namespace LicentaApp.Controllers
         {
             _reviewService = reviewService;
         }
-        [Route("/Reviews/")]
+
+        [Route("/Reviews/Index")]
         public async Task<IActionResult> Index()
         {
             //ReviewModel r = new ReviewModel("paraschivmatei20@stud.ase.ro", "ReviewTest", "Testing Review", "I am testing the review model.");
             //await _reviewService.CreateAsync(r);
             var reviewList = await _reviewService.GetAsync();
-            return View(reviewList);
+            return View("~/Views/Reviews/Index.cshtml", reviewList);
         }
-
-        [HttpPost]
         [Route("/Reviews/AddReview", Name = "AddReview")]
         public async Task<IActionResult> AddReview()
         {
-            //reviewModel = new ReviewModel("paraschivmatei20@stud.ase.ro", "ReviewTest", "Testing Review", "I am testing the review model.");
-            //await _reviewService.CreateAsync(reviewModel);
-            ////return View(reviewModel);
-            return View("~/Review/AddReview.cshtml");
+            return View("~/Views/Reviews/AddReview.cshtml");
         }
     }
 }

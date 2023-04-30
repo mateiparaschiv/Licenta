@@ -1,6 +1,6 @@
-﻿@using ContosoUniversity;
+﻿@    using ContosoUniversity;
 @*@model Tuple<List<ArtistModel>, Dictionary<string, int>,string>*@
-@model Tuple<PaginatedList<ArtistModel>, Dictionary<string, int>,string>
+@model Tuple<PaginatedListModel<ArtistModel>, Dictionary<string, int>,string>
 @{
     var paginatedArtistList = Model.Item1;
     var albumsToArtist = Model.Item2;
