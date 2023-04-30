@@ -64,7 +64,7 @@
 
                     @*<input asp-for="Password" class="form-control" />*@
                     <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password"
-                           type="password" data-val="true" data-val-equalto="The password and confirmation password do not match." 
+                           type="password" data-val="true" data-val-equalto="The password and confirmation password do not match."
                            data-val-equalto-other="*.Password" />
                     <label asp-for="ConfirmPassword">Confirm Password</label>
                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>

@@ -4,13 +4,11 @@ namespace LicentaApp.Controllers
 {
     public class AlbumController : Controller
     {
-        private readonly IAlbumService _albumService;
-        private readonly IReviewService _reviewService;
+        private readonly IAlbumRepository _albumRepository;
 
-        public AlbumController(IAlbumService albumService, IReviewService reviewService)
+        public AlbumController(IAlbumRepository albumRepository)
         {
-            _albumService = albumService;
-            _reviewService = reviewService;
+            _albumRepository = albumRepository;
         }
 
         [Route("Albums/{name?}")]
@@ -19,30 +17,13 @@ namespace LicentaApp.Controllers
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
-                var albumList = await _albumService.GetAsync();
-                _albumService.Shuffle(albumList);
-                switch (sortOrder)
-                {
-                    case "name_asc":
-                        albumList.Sort((x, y) => string.Compare(x.Name, y.Name));
-                        break;
-                    case "name_desc":
-                        albumList.Sort((x, y) => string.Compare(y.Name, x.Name));
-                        break;
-                    case "":
-                        break;
-                }
-                var tuple = new Tuple<List<AlbumModel>, string>(albumList, sortOrder);
-                return View("~/Views/Albums/Index.cshtml", tuple);
+                return View("~/Views/Albums/Index.cshtml", await _albumRepository.IndexAlbumList(name, sortOrder));
             }
             else
             {
-                var album = await _albumService.GetAsyncByName(name);
-                var review = await _reviewService.GetAsyncListByAlbum(name);
-                var tuple = new Tuple<AlbumModel, List<ReviewModel>>(album, review);
-                return View("~/Views/Albums/Album.cshtml", tuple);
+                return View("~/Views/Albums/Album.cshtml", await _albumRepository.IndexAlbumName(name));
             }
+            //TODO : E OK ASA ?
         }
     }
 }
