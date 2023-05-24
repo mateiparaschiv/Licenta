@@ -1,0 +1,175 @@
+﻿@model Tuple<ArtistModel, List<AlbumModel>,string,List<ReviewModel>>
+@{
+    var artist = Model.Item1;
+    var artistAlbums = Model.Item2;
+    var sortOrder = Model.Item3;
+    var reviews = Model.Item4;
+}
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<div class="row justify-content-center py-4 g-0">
+    <div class="col-md-3" id="image_col">
+        <img src="@artist.Image" id="artist-album_image">
+    </div>
+    <div class="col-md-9">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col">
+                    <p class="display-4">@artist.Name</p>
+                </div>
+                <div class="col-auto">
+                    <form class="col h-25" method="post">
+                        <button asp-route="Custom" class="btn btn-outline-primary">Rate this artist</button>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top">
+                <div class="container g-0">
+                    @{
+                        if (artist.Band == false)
+                        {
+                            @if (artist.DateOfDeath != null)
+                            {
+                                <div class="row row-cols-2">
+                                    <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                    <span class="col text-end mb-3 mb-md-0">Died</span>
+                                    <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                    <span class="col text-end mb-3 mb-md-0">@artist.DateOfDeath?.ToString("dd MMMM yyyy")</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row row-cols-1">
+                                    <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                    <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            @if (artist.Disbanded != null)
+                            {
+                                <div class="row row-cols-2">
+                                    <span class="col text-begin mb-3 mb-md-0">Formed</span>
+                                    <span class="col text-end mb-3 mb-md-0">Disbanded</span>
+                                    <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                                    <span class="col text-end mb-3 mb-md-0">@artist.Disbanded</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row row-cols-1">
+                                    <span class="col text-begin mb-3 mb-md-0">Formed</span>
+                                    <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                                </div>
+                            }
+
+                            //<div class="row row-cols-1">
+                            //<span class="col text-begin mb-3 mb-md-0">Formed</span>
+                            //<span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                            //@if (artist.Disbanded != null)
+                            //{
+                            //    <span class="col text-end mb-3 mb-md-0">Disbanded</span>
+                            //    <span class="col text-end mb-3 mb-md-0">@artist.Disbanded</span>
+                            //}
+                        }
+                    }
+                </div>
+            </div>
+            <p class="card-text indent">@artist.Description</p>
+        </div>
+    </div>
+</div>
+
+<div>
+    <nav>
+        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-albums-tab" data-bs-toggle="tab" data-bs-target="#nav-albums" type="button" role="tab" aria-controls="nav-albums" aria-selected="true">Albums</button>
+            <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews" type="button" role="tab" aria-controls="nav-reviews" aria-selected="false" tabindex="-1">Reviews</button>
+            @*<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" tabindex="-1">Contact</button>*@
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade active show" id="nav-albums" role="tabpanel" aria-labelledby="nav-albums-tab">
+            @*<p>This is some placeholder content the <strong>Home tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>*@
+            <div class="d-flex justify-content-between bd-highlight">
+                <div class=" ms-auto d-flex align-items-center justify-content-between">
+                    <span class="text-muted">
+                        @{
+                            if (sortOrder.Equals("year_asc"))
+                            {
+                                <a id="sort_buttons" asp-controller="Artist" asp-action="Artist" asp-route-sortOrder="year_desc">
+                                    @*href="@Url.Action("Index","Artist",new {sortOrder = "name_desc"})"*@
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-sort-numeric-up-alt" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M11.36 7.098c-1.137 0-1.708-.657-1.762-1.278h1.004c.058.223.343.45.773.45.824 0 1.164-.829 1.133-1.856h-.059c-.148.39-.57.742-1.261.742-.91 0-1.72-.613-1.72-1.758 0-1.148.848-1.836 1.973-1.836 1.09 0 2.063.637 2.063 2.688 0 1.867-.723 2.848-2.145 2.848zm.062-2.735c.504 0 .933-.336.933-.972 0-.633-.398-1.008-.94-1.008-.52 0-.927.375-.927 1 0 .64.418.98.934.98z" />
+                                        <path d="M12.438 8.668V14H11.39V9.684h-.051l-1.211.859v-.969l1.262-.906h1.046zM4.5 13.5a.5.5 0 0 1-1 0V3.707L2.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L4.5 3.707V13.5z" />
+                                    </svg>
+                                </a>
+                            }
+                            else
+                            {
+                                <a id="sort_buttons" asp-controller="Artist" asp-action="Artist" asp-route-sortOrder="year_asc">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-sort-numeric-down" viewBox="0 0 16 16">
+                                        <path d="M12.438 1.668V7H11.39V2.684h-.051l-1.211.859v-.969l1.262-.906h1.046z" />
+                                        <path fill-rule="evenodd" d="M11.36 14.098c-1.137 0-1.708-.657-1.762-1.278h1.004c.058.223.343.45.773.45.824 0 1.164-.829 1.133-1.856h-.059c-.148.39-.57.742-1.261.742-.91 0-1.72-.613-1.72-1.758 0-1.148.848-1.835 1.973-1.835 1.09 0 2.063.636 2.063 2.687 0 1.867-.723 2.848-2.145 2.848zm.062-2.735c.504 0 .933-.336.933-.972 0-.633-.398-1.008-.94-1.008-.52 0-.927.375-.927 1 0 .64.418.98.934.98z" />
+                                        <path d="M4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z" />
+                                    </svg>
+                                </a>
+                            }
+                        }
+                    </span>
+                </div>
+            </div>
+
+            <div class="container py-4 g-0">
+                <div class="row justify-content">
+                    @foreach (var album in artistAlbums)
+                    {
+                        <div class="text-center col-md-4">
+                            <a class="nav-link active p-0" asp-controller="Album" asp-action="Album" asp-route-name="@album.Name">
+                                <img src="~/images/Albums/@(album.Name).jpg" id="album_col">
+                            </a>
+                            <a class="nav-link active p-0" asp-controller="Album" asp-action="Album" asp-route-name="@album.Name">
+                                <i class="" id="link">
+                                    @album.Name
+                                </i>
+                            </a>
+                            <p class="text-muted">
+                                @album.Year
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+            @{
+                if (@reviews.Count > 0)
+                {
+                    <h3 class="text-muted ps-4">@reviews.Count() Reviews</h3>
+                }
+                else
+                {
+                    <h3 class="text-muted ps-4">There are no reviews for this artist. You can write a review by pressing the "Rate this artist" button above.</h3>
+                }
+            }
+            @foreach (var review in @reviews)
+            {
+                <div class="ps-3 pt-3">
+                    <p class="h2">@review.Username</p>
+
+                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+                        <p class="h3">@review.Title</p>
+                        <div class="container g-0">
+                            <span class="card-text indent">@review.Message</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        @*<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+        </div>*@
+    </div>
+</div>
