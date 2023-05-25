@@ -10,9 +10,10 @@ namespace LicentaApp.Controllers
             _artistRepository = artistRepository;
         }
 
-        [Route("Artists/{name:alpha}")]
-        [Route("Artists/{sortOrder:regex(name_asc|name_desc|year_asc|year_desc)?}")]
-        //[Route("Artists/{pageNumber}")]   
+        [Route("Artists/{name:alpha}/{sortOrder:regex(name_asc|name_desc|year_asc|year_desc)?}/{pageNumber:int?}")]
+        [Route("Artists/{name:alpha}/{pageNumber:int?}")]
+        [Route("Artists/{sortOrder:regex(name_asc|name_desc|year_asc|year_desc)?}/{pageNumber:int?}")]
+        [Route("Artists/{pageNumber:int?}")]
         public async Task<IActionResult> Index(string? name, string? sortOrder, int pageNumber)
         {
             if (string.IsNullOrWhiteSpace(name))

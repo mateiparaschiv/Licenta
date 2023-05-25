@@ -17,12 +17,10 @@ namespace LicentaApp.Repositories
         public async Task<IndexArtistListViewModel> IndexArtistList(string? name, string? sortOrder, int pageNumber)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
-            var perPage = 9;
-            //pageNumber = pageNumber == 0 ? pageNumber : 0;
-            //var artistList = await _artistService.GetAsync();
-            //var paginatedArtistList = await PaginatedListModel<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);//TODO : PAGINATION
-            //var paginatedArtistList = await PaginatedListModel<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);//TODO : PAGINATION
+            var artistList2 = await _artistService.GetAsync();
+            var perPage = 10;
             var artistList = await _artistService.GetPaginatedListAsync(perPage, pageNumber);
+            var maxPages = artistList2.Count() / perPage;
             //_artistService.Shuffle(artistList);
             switch (sortOrder)
             {
@@ -41,7 +39,9 @@ namespace LicentaApp.Repositories
             {
                 ArtistList = artistList,
                 AlbumsToArtist = albumsToArtist,
-                SortOrder = sortOrder
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages
             };
             return indexArtistListViewModel;
         }
