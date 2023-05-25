@@ -45,7 +45,7 @@ namespace LicentaApp.Repositories
             {
                 Album = album,
                 ReviewList = reviewList,
-                NewReview = new ReviewModel()
+                NewReview = new ReviewModel { Subject = album.Name }
             };
             return indexAlbumNameViewModel;
         }

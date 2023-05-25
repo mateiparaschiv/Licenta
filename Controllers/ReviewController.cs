@@ -21,12 +21,12 @@ namespace LicentaApp.Controllers
         [Route("/Reviews/AddReview")]
         public async Task<IActionResult> AddReview(ReviewModel newReview)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    // logic to store form data in DB
-            //    _reviewRepository.AddReview(newReview);
-            //}
-            return PartialView("~/Views/Reviews/AddReview.cshtml", newReview);
+            if (ModelState.IsValid)
+            {
+                _reviewRepository.AddReview(newReview);
+            }
+            return View("~/Views/Reviews/Index.cshtml", await _reviewRepository.IndexReviewList());
         }
+
     }
 }

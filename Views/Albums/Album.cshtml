@@ -124,8 +124,14 @@
 }*@
 
 <!-- Modal -->
-<div class="modal fade" id="albumModal" tabindex="-1" aria-labelledby="albumModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    @*@Html.Partial("~/Views/Reviews/_AddReview.cshtml",album)*@
-    @*@Html.Action("AddReview", "Reviews", new { review = new ReviewModel { Email="paraschivmatei@stud.ase.ro"} })*@
-    @Url.Action("AddReview","Reviews",new { newReview = new ReviewModel { Email="paraschivmatei@stud.ase.ro"}})
+@*<div class="modal fade" id="albumModal" tabindex="-1" aria-labelledby="albumModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    @Html.Partial("~/Views/Shared/_AddReview.cshtml",newReview)
 </div>
+*@
+<!-- Modal -->
+<div class="modal fade" id="albumModal" tabindex="-1" aria-labelledby="albumModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    @Html.Partial("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
+</div>
+
+
+

@@ -18,7 +18,7 @@ namespace LicentaApp.Repositories
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
             var artistList2 = await _artistService.GetAsync();
-            var perPage = 10;
+            var perPage = 9;
             var artistList = await _artistService.GetPaginatedListAsync(perPage, pageNumber);
             var maxPages = artistList2.Count() / perPage;
             //_artistService.Shuffle(artistList);
@@ -72,7 +72,6 @@ namespace LicentaApp.Repositories
                 SortOrder = sortOrder,
                 Reviews = reviews
             };
-            //var tuple = new Tuple<ArtistModel, List<AlbumModel>, string, List<ReviewModel>>(artist, artistAlbums, sortOrder, reviews);
             return indexArtistNameViewModel;
         }
     }
