@@ -11,7 +11,7 @@ namespace LicentaApp.Controllers
             _albumRepository = albumRepository;
         }
 
-        [Route("Albums/{name?}")]
+        [Route("Albums/{name}")]
         [Route("Albums/{sortOrder:regex(name_asc|name_desc)?}")]
         public async Task<IActionResult> Index(string? name, string? sortOrder)
         {

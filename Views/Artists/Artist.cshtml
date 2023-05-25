@@ -1,9 +1,10 @@
-﻿@model Tuple<ArtistModel, List<AlbumModel>,string,List<ReviewModel>>
+﻿@using LicentaApp.Models.ViewModels
+@model IndexArtistNameViewModel
 @{
-    var artist = Model.Item1;
-    var artistAlbums = Model.Item2;
-    var sortOrder = Model.Item3;
-    var reviews = Model.Item4;
+    var artist = Model.Artist;
+    var artistAlbums = Model.ArtistAlbums;
+    var sortOrder = Model.SortOrder;
+    var reviews = Model.Reviews;
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

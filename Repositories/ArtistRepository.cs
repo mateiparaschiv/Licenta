@@ -14,16 +14,16 @@ namespace LicentaApp.Repositories
             _reviewService = reviewService;
         }
 
-        public async Task<IndexArtistListViewModel> IndexArtistList(string? name, string? sortOrder, int? pageNumber)
+        public async Task<IndexArtistListViewModel> IndexArtistList(string? name, string? sortOrder, int pageNumber)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
             var perPage = 9;
-            var page = 1;
-            var artistList = await _artistService.GetAsync();
+            //pageNumber = pageNumber == 0 ? pageNumber : 0;
+            //var artistList = await _artistService.GetAsync();
             //var paginatedArtistList = await PaginatedListModel<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);//TODO : PAGINATION
             //var paginatedArtistList = await PaginatedListModel<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);//TODO : PAGINATION
-            var paginatedArtistList = await _artistService.GetPaginatedListAsync(perPage, page);
-            _artistService.Shuffle(artistList);
+            var artistList = await _artistService.GetPaginatedListAsync(perPage, pageNumber);
+            //_artistService.Shuffle(artistList);
             switch (sortOrder)
             {
                 case "name_asc":

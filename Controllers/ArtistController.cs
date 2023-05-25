@@ -1,5 +1,4 @@
-﻿using LicentaApp.Interfaces.IRepository;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
@@ -13,7 +12,8 @@ namespace LicentaApp.Controllers
 
         [Route("Artists/{name:alpha}")]
         [Route("Artists/{sortOrder:regex(name_asc|name_desc|year_asc|year_desc)?}")]
-        public async Task<IActionResult> Index(string? name, string? sortOrder, int? pageNumber)
+        //[Route("Artists/{pageNumber}")]   
+        public async Task<IActionResult> Index(string? name, string? sortOrder, int pageNumber)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
