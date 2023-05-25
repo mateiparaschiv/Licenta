@@ -1,5 +1,4 @@
-﻿using LicentaApp.Interfaces.IRepository;
-using LicentaApp.Interfaces.IService;
+﻿using LicentaApp.Models.ViewModels;
 
 namespace LicentaApp.Repositories
 {
@@ -15,13 +14,15 @@ namespace LicentaApp.Repositories
             _reviewService = reviewService;
         }
 
-        public async Task<Tuple<PaginatedListModel<ArtistModel>, Dictionary<string, int>, string>> IndexArtistList(string? name, string? sortOrder, int? pageNumber)
+        public async Task<IndexArtistListViewModel> IndexArtistList(string? name, string? sortOrder, int? pageNumber)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
-            int pageSize = 9;
+            var perPage = 9;
+            var page = 1;
             var artistList = await _artistService.GetAsync();
-            //.AsNoTracking()
-            var paginatedArtistList = await PaginatedListModel<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);//TODO : PAGINATION
+            //var paginatedArtistList = await PaginatedListModel<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);//TODO : PAGINATION
+            //var paginatedArtistList = await PaginatedListModel<ArtistModel>.CreateAsync(artistList, pageNumber ?? 1, pageSize);//TODO : PAGINATION
+            var paginatedArtistList = await _artistService.GetPaginatedListAsync(perPage, page);
             _artistService.Shuffle(artistList);
             switch (sortOrder)
             {
@@ -36,11 +37,16 @@ namespace LicentaApp.Repositories
             }
 
             var albumsToArtist = await _albumService.GetNumOfAlbumsByNames(artistList);
-            var tuple = new Tuple<PaginatedListModel<ArtistModel>, Dictionary<string, int>, string>(paginatedArtistList, albumsToArtist, sortOrder);
-            return tuple;
+            IndexArtistListViewModel indexArtistListViewModel = new IndexArtistListViewModel
+            {
+                ArtistList = artistList,
+                AlbumsToArtist = albumsToArtist,
+                SortOrder = sortOrder
+            };
+            return indexArtistListViewModel;
         }
 
-        public async Task<Tuple<ArtistModel, List<AlbumModel>, string, List<ReviewModel>>> IndexArtistName(string? name, string? sortOrder)
+        public async Task<IndexArtistNameViewModel> IndexArtistName(string? name, string? sortOrder)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
             var artist = await _artistService.GetAsyncByName(name);
@@ -59,8 +65,15 @@ namespace LicentaApp.Repositories
                 case "":
                     break;
             }
-            var tuple = new Tuple<ArtistModel, List<AlbumModel>, string, List<ReviewModel>>(artist, artistAlbums, sortOrder, reviews);
-            return tuple;
+            IndexArtistNameViewModel indexArtistNameViewModel = new IndexArtistNameViewModel
+            {
+                Artist = artist,
+                ArtistAlbums = artistAlbums,
+                SortOrder = sortOrder,
+                Reviews = reviews
+            };
+            //var tuple = new Tuple<ArtistModel, List<AlbumModel>, string, List<ReviewModel>>(artist, artistAlbums, sortOrder, reviews);
+            return indexArtistNameViewModel;
         }
     }
 }

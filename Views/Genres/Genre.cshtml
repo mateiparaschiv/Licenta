@@ -1,9 +1,9 @@
-﻿@*@model GenreModel*@
-@model Tuple<GenreModel, List<AlbumModel>>
+﻿@using LicentaApp.Models.ViewModels
+@model IndexGenreNameViewModel
 @{
     //ViewData["Title"] = "Index Albums";
-    var genre = Model.Item1;
-    var genreAlbums = Model.Item2;
+    var genre = Model.Genre;
+    var genreAlbums = Model.GenreAlbums;
     var rand = new Random();
     //var album2 = genreAlbums[1];
 }

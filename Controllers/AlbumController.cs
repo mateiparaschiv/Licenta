@@ -1,5 +1,4 @@
-﻿using LicentaApp.Interfaces.IRepository;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {

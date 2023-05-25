@@ -1,5 +1,4 @@
-﻿using LicentaApp.Interfaces.IService;
-using MongoDB.Driver.Linq;
+﻿using MongoDB.Driver.Linq;
 
 namespace LicentaApp.Services
 {
@@ -14,8 +13,19 @@ namespace LicentaApp.Services
         //IMongoQueryable<T>
         public async Task<List<ArtistModel>> GetAsync() =>
             await _artistCollection.Find(_ => true).ToListAsync();
+
         //public async Task<IMongoQueryable<ArtistModel>> GetAsync() =>
         //    await _artistCollection.Find(_ => true).ToListAsync();
+        //public async Task<List<ArtistModel>> GetPaginatedListAsync()
+        //{
+        //    //var query = _artistCollection.Find(_ => true);
+        //    var perPage = 10;
+        //    var page = 1;
+        //    await _artistCollection.Find(_ => true).Skip(perPage * page).Limit(perPage).ToListAsync();
+        //} 
+        public async Task<List<ArtistModel>> GetPaginatedListAsync(int perPage, int page) =>
+            await _artistCollection.Find(_ => true).Skip(perPage * page).Limit(perPage).ToListAsync();
+
 
         public async Task<ArtistModel?> GetAsyncById(string id) =>
             await _artistCollection.Find(x => x.Id == id).FirstOrDefaultAsync();

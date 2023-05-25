@@ -1,12 +1,13 @@
 ﻿@using Microsoft.Extensions.Configuration
+@using LicentaApp.Models.ViewModels
 @inject IConfiguration _configuration
-@model Tuple<List<AlbumModel>,string>
+@model IndexAlbumListViewModel
 @{
     ViewData["Title"] = "Index Albums";
     var environment = _configuration.GetValue<string>("Environment");
     //var albumList = Model;
-    var albumList = Model.Item1;
-    var sortOrder = Model.Item2;
+    var albumList = Model.AlbumList;
+    var sortOrder = Model.SortOrder;
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="d-flex justify-content-between bd-highlight">

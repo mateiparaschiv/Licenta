@@ -1,5 +1,4 @@
-﻿using LicentaApp.Interfaces.IRepository;
-using LicentaApp.Interfaces.IService;
+﻿using LicentaApp.Models.ViewModels;
 
 namespace LicentaApp.Repositories
 {
@@ -12,7 +11,7 @@ namespace LicentaApp.Repositories
             _albumService = albumService;
             _reviewService = reviewService;
         }
-        public async Task<Tuple<List<AlbumModel>, string>> IndexAlbumList(string? name, string? sortOrder)
+        public async Task<IndexAlbumListViewModel> IndexAlbumList(string? name, string? sortOrder)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
             var albumList = await _albumService.GetAsync();
@@ -28,16 +27,27 @@ namespace LicentaApp.Repositories
                 case "":
                     break;
             }
-            var tuple = new Tuple<List<AlbumModel>, string>(albumList, sortOrder);
-            return tuple;
+            IndexAlbumListViewModel indexAlbumListViewModel = new IndexAlbumListViewModel
+            {
+                AlbumList = albumList,
+                SortOrder = sortOrder
+            };
+            //var tuple = new Tuple<List<AlbumModel>, string>(albumList, sortOrder);
+            return indexAlbumListViewModel;
         }
 
-        public async Task<Tuple<AlbumModel, List<ReviewModel>>> IndexAlbumName(string? name)
+        public async Task<IndexAlbumNameViewModel> IndexAlbumName(string? name)
         {
             var album = await _albumService.GetAsyncByName(name);
             var reviewList = await _reviewService.GetAsyncListByAlbum(name);
-            var tuple = new Tuple<AlbumModel, List<ReviewModel>>(album, reviewList);
-            return tuple;
+            //var tuple = new Tuple<AlbumModel, List<ReviewModel>>(album, reviewList);
+            IndexAlbumNameViewModel indexAlbumNameViewModel = new IndexAlbumNameViewModel
+            {
+                Album = album,
+                ReviewList = reviewList,
+                NewReview = new ReviewModel()
+            };
+            return indexAlbumNameViewModel;
         }
     }
 }

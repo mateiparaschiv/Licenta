@@ -2,7 +2,7 @@
 {
     public class IndexAlbumListViewModel
     {
-        public List<AlbumModel> Albums { get; set; }
+        public List<AlbumModel> AlbumList { get; set; }
         public string SortOrder { get; set; }
     }
 }

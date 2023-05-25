@@ -1,8 +1,10 @@
-﻿namespace LicentaApp.Interfaces.IRepository
+﻿using LicentaApp.Models.ViewModels;
+
+namespace LicentaApp.Interfaces.IRepository
 {
     public interface IGenreRepository
     {
-        Task<Tuple<List<GenreModel>, string>> IndexGenreList(string? name, string? sortOrder);
-        Task<Tuple<GenreModel, List<AlbumModel>>> IndexGenreName(string? name);
+        Task<IndexGenreListViewModel> IndexGenreList(string? name, string? sortOrder);
+        Task<IndexGenreNameViewModel> IndexGenreName(string? name);
     }
 }

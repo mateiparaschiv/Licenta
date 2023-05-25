@@ -1,8 +1,9 @@
-﻿@model Tuple<AlbumModel, List<ReviewModel>>
+﻿@using LicentaApp.Models.ViewModels
+@model IndexAlbumNameViewModel
 @{
-    var album = Model.Item1;
-    var reviewList = Model.Item2;
-    //var newReview = Model.Item3;
+    var album = Model.Album;
+    var reviewList = Model.ReviewList;
+    var newReview = Model.NewReview;//TODO 
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <script src="~/lib/js/site.js"></script>

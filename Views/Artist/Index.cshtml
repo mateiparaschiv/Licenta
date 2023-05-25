@@ -1,9 +1,9 @@
-﻿@*@model Tuple<List<ArtistModel>, Dictionary<string, int>,string>*@
-@model Tuple<PaginatedListModel<ArtistModel>, Dictionary<string, int>,string>
+﻿@using LicentaApp.Models.ViewModels
+@model IndexArtistListViewModel
 @{
-    var paginatedArtistList = Model.Item1;
-    var albumsToArtist = Model.Item2;
-    var sortOrder = Model.Item3;
+    var artistList = Model.ArtistList;
+    var albumsToArtist = Model.AlbumsToArtist;
+    var sortOrder = Model.SortOrder;
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="d-flex justify-content-between bd-highlight">
@@ -42,7 +42,7 @@
 @*<h1 class="text-muted">Artists</h1>*@
 <div class="wrapper d-flex justify-content-center align-items-center">
     <ul class="list-group list-group-flush justify-content-center text-center w-50">
-        @foreach (var artist in paginatedArtistList)
+        @foreach (var artist in artistList)
         {
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <a id="link" asp-controller="Artist" asp-action="Artist" asp-route-name="@artist.Name">

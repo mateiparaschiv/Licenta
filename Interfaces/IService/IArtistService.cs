@@ -10,6 +10,7 @@
         Task UpdateAsync(string id, ArtistModel updatedAlbumModel);
         Task RemoveAsync(string id);
         void Shuffle<T>(IList<T> list);
+        Task<List<ArtistModel>> GetPaginatedListAsync(int perPage, int page);
     }
 
 }
