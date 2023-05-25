@@ -11,10 +11,7 @@
             </div>
             <div class="modal-body" id="form-container">
                 <p>_AddReview from Shared</p>
-                <div class="mb-3">
-                    <label for="Subject" class="col-form-label">Subject</label>
-                    <input id="Subject" name="Subject" class="form-control" autocomplete="off" required placeholder="Enter the subject" value="@Model.Subject" />
-                </div>
+                <input type="hidden" id="Subject" name="Subject" value="@Model.Subject" />
                 <div class="mb-3">
                     <label for="@Model.Title" class="col-form-label">Title</label>
                     <input id="@Model.Title" name="Title" class="form-control" autocomplete="off" required placeholder="Enter the title" value="@Model.Title" />
@@ -30,17 +27,5 @@
             </div>
         </div>
     </div>
+
 }
-
-
-<script>
-    $(document).ready(function () {
-        $('#albumModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); // Button that triggered the modal
-            var albumName = button.data('bs-whatever'); // Extract album name from data-bs-whatever attribute
-            var modal = $(this);
-            modal.find('.modal-title').text('Add review for ' + albumName);
-            modal.find('#Subject').val(albumName); // Set the Subject field value to the album name
-        });
-    });
-</script>
