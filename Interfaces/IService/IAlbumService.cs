@@ -1,4 +1,4 @@
-﻿namespace LicentaApp.Interfaces
+﻿namespace LicentaApp.Interfaces.IService
 {
     public interface IAlbumService
     {

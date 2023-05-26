@@ -1,9 +1,13 @@
-global using LicentaApp.Interfaces;
+global using LicentaApp.Interfaces.IRepository;
+global using LicentaApp.Interfaces.IService;
 global using LicentaApp.Models;
+global using LicentaApp.Repositories;
 global using LicentaApp.Services;
 global using MongoDB.Bson;
 global using MongoDB.Bson.Serialization.Attributes;
 global using MongoDB.Driver;
+global using MongoDbGenericRepository.Attributes;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,12 +17,21 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 builder.Services.ConfigureMongoDb(builder.Configuration);
 
 builder.Services.AddScoped<IAlbumService, AlbumService>();
+builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
+
 builder.Services.AddScoped<IArtistService, ArtistService>();
+builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
+
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+
 builder.Services.AddScoped<IReviewService, ReviewService>();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+
 builder.Services.AddScoped<ISongService, SongService>();
 builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 
 var app = builder.Build();
 
@@ -55,6 +68,8 @@ app.Run();
 //TODO : Log in mechanism
 //TODO : CLEANUP CODE everywhere at the end
 //TODO : NEXT PAGE BUTTONS
-//TODO : order a->z ; z->a
+//TODO : PADDING ON FOOTER ???????????????
+//TODO : MAIN SIZE = 0 
 //TODO : validation on hrefs
+//TODO : CHECK RATING 
 

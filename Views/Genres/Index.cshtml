@@ -1,13 +1,14 @@
-﻿@model Tuple<List<GenreModel>, string>
+﻿@using LicentaApp.Models.ViewModels
+@model IndexGenreListViewModel
 @{
     //ViewData["Title"] = "Index Albums";
-    var genreList = Model.Item1;
-    var sortOrder = Model.Item2;
+    var genreList = Model.GenreList;
+    var sortOrder = Model.SortOrder;
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="d-flex justify-content-between bd-highlight">
     <div class="d-flex align-items-center justify-content-between">
-        <h1 class="text-muted">Genres</h1>
+        <h2 class="text-muted">Genres</h2>
     </div>
     <div class="d-flex align-items-center justify-content-between">
         <span class="text-muted">

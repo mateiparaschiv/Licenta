@@ -1,4 +1,6 @@
-﻿namespace LicentaApp.Services
+﻿using LicentaApp.Interfaces.IService;
+
+namespace LicentaApp.Services
 {
     public class UserService : IUserService
     {
@@ -12,16 +14,16 @@
         public async Task<List<UserModel>> GetAsync() =>
             await _userCollection.Find(_ => true).ToListAsync();
 
-        public async Task<UserModel?> GetAsync(string id) =>
-            await _userCollection.Find(x => x.id == id).FirstOrDefaultAsync();
+        public async Task<UserModel?> GetAsync(string UserName) =>
+            await _userCollection.Find(x => x.UserName == UserName).FirstOrDefaultAsync();
 
         public async Task CreateAsync(UserModel newUserModel) =>
             await _userCollection.InsertOneAsync(newUserModel);
 
-        public async Task UpdateAsync(string id, UserModel updatedUserModel) =>
-            await _userCollection.ReplaceOneAsync(x => x.id == id, updatedUserModel);
+        public async Task UpdateAsync(string UserName, UserModel updatedUserModel) =>
+            await _userCollection.ReplaceOneAsync(x => x.UserName == UserName, updatedUserModel);
 
-        public async Task RemoveAsync(string id) =>
-            await _userCollection.DeleteOneAsync(x => x.id == id);
+        public async Task RemoveAsync(string UserName) =>
+            await _userCollection.DeleteOneAsync(x => x.UserName == UserName);
     }
 }

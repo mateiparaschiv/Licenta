@@ -1,5 +1,6 @@
 ﻿namespace LicentaApp.Models
 {
+    [CollectionName("feedback")]
     public class FeedbackModel
     {
         [BsonId]

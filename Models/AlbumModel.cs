@@ -26,7 +26,7 @@
         public double Rating { get; set; }
 
         [BsonElement("songs")]
-        public List<string>? Songs { get; set; }
+        public List<string> Songs { get; set; }
 
         [BsonElement("image")]
         public string Image { get; set; }

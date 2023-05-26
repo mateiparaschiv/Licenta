@@ -1,0 +1,31 @@
+﻿@model ReviewModel
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+@using (Html.BeginForm("AddReview", "Reviews", FormMethod.Post))
+{
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="albumModalLabel">Add review for @Model.Subject</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="form-container">
+                <p>_AddReview from Shared</p>
+                <input type="hidden" id="Subject" name="Subject" value="@Model.Subject" />
+                <div class="mb-3">
+                    <label for="@Model.Title" class="col-form-label">Title</label>
+                    <input id="@Model.Title" name="Title" class="form-control" autocomplete="off" required placeholder="Enter the title" value="@Model.Title" />
+                </div>
+                <div class="mb-3">
+                    <label for="@Model.Message" class="col-form-label">What do you have to say about it?</label>
+                    <textarea id="@Model.Message" name="Message" class="form-control" id="message-text" placeholder="Enter your message">@Model.Message</textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Post review</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+}

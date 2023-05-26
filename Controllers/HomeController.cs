@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LicentaApp.Interfaces.IService;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace LicentaApp.Controllers
@@ -30,6 +31,11 @@ namespace LicentaApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        [Route("/Home/Test", Name = "Custom")]
+        public string Test()
+        {
+            return "This is the test page and indicates work in progress.";
         }
     }
 }

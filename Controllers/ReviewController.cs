@@ -4,16 +4,28 @@ namespace LicentaApp.Controllers
 {
     public class ReviewController : Controller
     {
-        private readonly IReviewService _reviewService;
+        private readonly IReviewRepository _reviewRepository;
 
-        public ReviewController(IReviewService reviewService)
+        public ReviewController(IReviewRepository reviewRepository)
         {
-            _reviewService = reviewService;
+            _reviewRepository = reviewRepository;
         }
+
+        [Route("/Reviews")]
         public async Task<IActionResult> Index()
         {
-            var reviewList = await _reviewService.GetAsync();
-            return View(reviewList);
+            return View("~/Views/Reviews/Index.cshtml", await _reviewRepository.IndexReviewList());
+        }
+
+        [HttpPost]
+        [Route("/Reviews/AddReview")]
+        public async Task<IActionResult> AddReview(ReviewModel newReview)
+        {
+            if (ModelState.IsValid)
+            {
+                _reviewRepository.AddReview(newReview);
+            }
+            return RedirectToAction("Index", "Albums", new { name = newReview.Subject });
         }
     }
 }

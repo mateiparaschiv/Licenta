@@ -8,15 +8,16 @@ html {
   }
 }
 
-html {
+/*html {
   position: relative;
   min-height: 100%;
-}
+}*/
 
-body {
+/*body {
   margin-bottom: 60px;
-}
+}*/
 
+/*test*/
 /*#categories {
     background-color: yellow;
     display: flex;
@@ -24,13 +25,15 @@ body {
     align-items: center;
 }*/
 
-#image_col{
-    width :300px;
+#image_col {
+    width: 324px;
+    height: 324px;
 }
 
 #link {
     color: #212529;
     text-decoration: none;
+    /*width: max-content;*/
 }
 #link:hover {
     color: #0d6efd;
@@ -48,10 +51,12 @@ body {
 
 #album_col {
     max-width: 250px;
+    min-height: 250px;
 }
 
 #artist-album_image {
-    max-width: 300px;
+    max-width: 324px;
+    min-height: 324px;
 }
 #genre-album_image {
     max-height: 200px;
@@ -80,15 +85,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    height: 300px;
+    width: 324px;
+    height: 324px;
     position: relative;
 }
 
 .photo-container img {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 224px;
+    height: 224px;
     object-fit: cover;
 }
 
@@ -103,3 +108,81 @@ body {
 .badge {
     background-color: #6c757d !important;
 }
+
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+#header {
+    overflow: hidden;
+    position: absolute;
+    height: auto;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+#content {
+    overflow: auto;
+    position: absolute;
+    top: 107px;
+    bottom: 59px;
+}
+
+#footer {
+    overflow: hidden;
+    position: absolute;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#body {
+
+}
+
+#header {
+    position: fixed;
+    height: 107.8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#content {
+    overflow-y: scroll;
+    position: relative;
+    top: 108px;*/
+    /*bottom: 65px;*/
+    /*left: 0;
+    right: 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: calc(100vh - 167.4px);
+}
+
+#footer {
+    position: fixed;*/
+    /*height: 60px;
+    width: 100%;
+    box-sizing: border-box;*/
+/*}*/
