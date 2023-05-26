@@ -27,20 +27,5 @@ namespace LicentaApp.Controllers
             }
             return RedirectToAction("Index", "Albums", new { name = newReview.Subject });
         }
-
-
-        //[HttpPost]
-        //[Route("/Reviews/AddReview")]
-
-        //public async Task<IActionResult> AddReview(ReviewModel newReview)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        _reviewRepository.AddReview(newReview);
-        //    }
-        //    return View("~/Views/Reviews/Index.cshtml", await _reviewRepository.IndexReviewList());
-        //}
-
     }
 }
