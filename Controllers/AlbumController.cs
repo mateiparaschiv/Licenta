@@ -17,7 +17,7 @@ namespace LicentaApp.Controllers
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return View("~/Views/Albums/Index.cshtml", await _albumRepository.IndexAlbumList(name, sortOrder));
+                return View("~/Views/Albums/Index.cshtml", await _albumRepository.IndexAlbumList(sortOrder));
             }
             else
             {

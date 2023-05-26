@@ -11,7 +11,7 @@ namespace LicentaApp.Repositories
             _albumService = albumService;
             _reviewService = reviewService;
         }
-        public async Task<IndexAlbumListViewModel> IndexAlbumList(string? name, string? sortOrder)
+        public async Task<IndexAlbumListViewModel> IndexAlbumList(string? sortOrder)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
             var albumList = await _albumService.GetAsync();
@@ -36,7 +36,7 @@ namespace LicentaApp.Repositories
             return indexAlbumListViewModel;
         }
 
-        public async Task<IndexAlbumNameViewModel> IndexAlbumName(string? name)
+        public async Task<IndexAlbumNameViewModel> IndexAlbumName(string name)
         {
             var album = await _albumService.GetAsyncByName(name);
             var reviewList = await _reviewService.GetAsyncListByAlbum(name);

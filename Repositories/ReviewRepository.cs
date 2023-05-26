@@ -10,8 +10,7 @@
         private readonly IReviewService _reviewService;
         public async void AddReview(ReviewModel newReview)
         {
-            //newReview = new ReviewModel("paraschivmatei20@stud.ase.ro", "mateematy", "ReviewTest", "Testing Review", "I am testing the review model.");
-            _reviewService.CreateAsync(newReview);
+            await _reviewService.CreateAsync(newReview);
         }
 
         public Task<List<ReviewModel>> IndexReviewList()
