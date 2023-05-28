@@ -1,6 +1,4 @@
 ﻿@model UserModel
-@*<h1 class="bg-info text-white">Create User</h1>*@
-@*<div asp-validation-summary="All" class="text-danger"></div>*@
 
 @if (ViewBag.Message != null)
 {
@@ -10,12 +8,10 @@
 <div class="container my-3 text-center">
     <div class="row d-flex bd-example justify-content-center">
         <div class="col-4">
-            @*action="/Operations/Create"*@
-            @*asp-route-returnUrl="@Model.ReturnUrl"*@
             <form id="registerForm" method="post" novalidate="novalidate">
                 <h class="display-4">Create a new account.</h>
                 <hr>
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div asp-validation-summary="All" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
                     @*<input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com"
                     type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address."

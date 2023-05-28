@@ -1,4 +1,5 @@
-﻿namespace LicentaApp.Interfaces.IService
+﻿using LicentaApp.Models;
+namespace LicentaApp.Interfaces.IService
 {
     public interface ISongService
     {

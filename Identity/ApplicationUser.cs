@@ -1,5 +1,5 @@
-﻿
-using AspNetCore.Identity.MongoDbCore.Models;
+﻿using AspNetCore.Identity.MongoDbCore.Models;
+using MongoDbGenericRepository.Attributes;
 
 namespace LicentaApp.Identity
 {

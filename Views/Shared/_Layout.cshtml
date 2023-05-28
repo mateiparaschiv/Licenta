@@ -58,9 +58,11 @@
     </div>
     <div id="content" class="container-fluid">
         @*style="min-height:80vh;"*@
+        @*style="height: 100%;"*@
         <div class="container" >
-            <main role="main" class="">
-        @RenderBody()
+            @*class="d-flex justify-content-center align-items-center" style="height: 100%;"*@
+            <main role="main" >
+                @RenderBody()
             </main>
         </div>
     </div>

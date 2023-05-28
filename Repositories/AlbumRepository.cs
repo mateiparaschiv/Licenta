@@ -1,4 +1,5 @@
-﻿using LicentaApp.Models.ViewModels;
+﻿using LicentaApp.Models;
+using LicentaApp.Models.ViewModels;
 
 namespace LicentaApp.Repositories
 {
