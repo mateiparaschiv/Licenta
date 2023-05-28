@@ -67,5 +67,3 @@ app.Run();
 //TODO : PADDING ON FOOTER ???????????????
 //TODO : MAIN SIZE = 0 
 //TODO : validation on hrefs
-//TODO : CHECK RATING 
-

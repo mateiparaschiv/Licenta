@@ -1,5 +1,4 @@
-﻿using LicentaApp.Interfaces.IService;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
@@ -18,7 +17,6 @@ namespace LicentaApp.Controllers
         }
         public async Task<IActionResult> AddFeeback()
         {
-
             return View();
         }
 
