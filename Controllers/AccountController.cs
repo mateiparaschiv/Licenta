@@ -8,16 +8,16 @@ namespace LicentaApp.Controllers
 {
     public class AccountController : Controller
     {
-        private UserManager<ApplicationUser> userManager;
-        private SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
@@ -25,14 +25,14 @@ namespace LicentaApp.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Required][EmailAddress] string email, [Required] string password, string returnurl)
+        public async Task<IActionResult> Login([Required][EmailAddress] string email, [Required] string password, string? returnurl)
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser appUser = await userManager.FindByEmailAsync(email);
+                ApplicationUser appUser = await _userManager.FindByEmailAsync(email);
                 if (appUser != null)
                 {
-                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(appUser, password, false, false);
+                    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(appUser, password, false, false);
                     if (result.Succeeded)
                     {
                         return Redirect(returnurl ?? "/");
@@ -47,7 +47,7 @@ namespace LicentaApp.Controllers
         [Authorize]
         public async Task<IActionResult> Logout()
         {
-            await signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
     }

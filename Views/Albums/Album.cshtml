@@ -3,7 +3,7 @@
 @{
     var album = Model.Album;
     var reviewList = Model.ReviewList;
-    var newReview = Model.NewReview;//TODO 
+    var newReview = Model.NewReview;//TODO
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <script src="~/lib/js/site.js"></script>
@@ -31,9 +31,15 @@
                     @*<button asp-route="Custom" class="btn btn-outline-primary">Rate this album</button>
                     <button asp-route="AddReview" class="btn btn-outline-primary">Rate this album</button>
                     </form>*@
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#albumModal" data-bs-whatever="@album.Name">
-                        Rate this album
-                    </button>
+                    @{
+                        if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#albumModal" data-bs-whatever="@album.Name">
+                                Rate this album
+                            </button>
+                        }
+                    }
+
                 </div>
             </div>
 

@@ -47,13 +47,16 @@
                 </ul>
 
                 <div class="text-end">
-                    <a class="btn btn-outline-primary me-2" asp-controller="Account" asp-action="Login">Sign in</a>
-                    <a class="btn btn-primary" asp-area="" asp-controller="Operations" asp-action="Create">Sign up</a>
                     @{
                         if (User?.Identity?.IsAuthenticated ?? false)
                         {
                             <u>Welcome: @User.Identity.Name</u>
                             <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-primary me-2" asp-controller="Account" asp-action="Login">Sign in</a>
+                            <a class="btn btn-primary" asp-area="" asp-controller="Operations" asp-action="Create">Sign up</a>
                         }
                     }
                 </div>
