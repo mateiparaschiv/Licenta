@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     [Authorize]
     public class SecuredController : Controller
     {

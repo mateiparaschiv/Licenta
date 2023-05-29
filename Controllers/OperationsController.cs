@@ -8,13 +8,13 @@ namespace LicentaApp.Controllers
 {
     public class OperationsController : Controller
     {
-        private UserManager<ApplicationUser> userManager;
-        private RoleManager<ApplicationRole> roleManager;
+        private UserManager<ApplicationUser> _userManager;
+        private RoleManager<ApplicationRole> _roleManager;
 
         public OperationsController(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
         {
-            this.userManager = userManager;
-            this.roleManager = roleManager;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public ViewResult Create() => View();
@@ -30,7 +30,8 @@ namespace LicentaApp.Controllers
                     Email = userModel.Email
                 };
 
-                IdentityResult result = await userManager.CreateAsync(appUser, userModel.Password);
+                IdentityResult result = await _userManager.CreateAsync(appUser, userModel.Password);
+                //await _userManager.AddToRoleAsync(appUser, "Admin");
                 if (result.Succeeded)
                     ViewBag.Message = "User Created Successfully";
                 else
@@ -49,7 +50,7 @@ namespace LicentaApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                IdentityResult result = await roleManager.CreateAsync(new ApplicationRole() { Name = name });
+                IdentityResult result = await _roleManager.CreateAsync(new ApplicationRole() { Name = name });
                 if (result.Succeeded)
                     ViewBag.Message = "Role Created Successfully";
                 else
