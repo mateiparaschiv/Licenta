@@ -17,6 +17,12 @@ namespace LicentaApp.Repositories
             _userService = userService;
             _httpContextAccessor = httpContextAccessor;
         }
+
+        public async Task CreateAsync(AlbumModel newAlbumModel)
+        {
+            _albumService.CreateAsync(newAlbumModel);
+        }
+
         public async Task<IndexAlbumListViewModel> IndexAlbumList(string? sortOrder)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;

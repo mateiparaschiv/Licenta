@@ -1,4 +1,5 @@
-﻿using LicentaApp.Models.ViewModels;
+﻿using LicentaApp.Models;
+using LicentaApp.Models.ViewModels;
 
 namespace LicentaApp.Interfaces.IRepository
 {
@@ -6,5 +7,6 @@ namespace LicentaApp.Interfaces.IRepository
     {
         Task<IndexAlbumListViewModel> IndexAlbumList(string? sortOrder);
         Task<IndexAlbumNameViewModel> IndexAlbumName(string name);
+        Task CreateAsync(AlbumModel newAlbumModel);
     }
 }

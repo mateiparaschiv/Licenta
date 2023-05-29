@@ -1,0 +1,50 @@
+﻿@model AlbumModel
+
+<h2>Create Album</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label for="Name">Name:</label>
+        @*<input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required>*@
+        <input asp-for="@Model.Name" class="form-control" autocomplete="" aria-required="true" placeholder="text" />
+
+    </div>
+
+    <div class="form-group">
+        <label for="Artist">Artist:</label>
+        <input type="text" class="form-control" id="Artist" name="Artist" value="@Model.Artist" required>
+    </div>
+
+    <div class="form-group">
+        <label for="Genre">Genre:</label>
+        <input type="text" class="form-control" id="Genre" name="Genre" value="@Model.Genre" required>
+    </div>
+
+    <div class="form-group">
+        <label for="Year">Year:</label>
+        <input type="number" class="form-control" id="Year" name="Year" value="@Model.Year" required>
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description:</label>
+        <textarea class="form-control" id="Description" name="Description">@Model.Description</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Rating">Rating:</label>
+        <input type="number" class="form-control" id="Rating" name="Rating" step="0.1" min="0" max="10" value="@Model.Rating" required>
+    </div>
+
+    <div class="form-group">
+        <label for="Songs">Songs:</label>
+        <textarea class="form-control" id="Songs" name="Songs">@Model.Songs</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Image">Image:</label>
+        <input type="text" class="form-control" id="Image" name="Image" value="@Model.Image" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+}

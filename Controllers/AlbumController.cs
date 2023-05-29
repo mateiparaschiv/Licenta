@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LicentaApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LicentaApp.Controllers
 {
@@ -25,6 +26,22 @@ namespace LicentaApp.Controllers
                 return View("~/Views/Albums/Album.cshtml", await _albumRepository.IndexAlbumName(name));
                 //TODO : E OK ASA ?
             }
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(AlbumModel album)
+        {
+            if (ModelState.IsValid)
+            {
+                await _albumRepository.CreateAsync(album);
+            }
+            return View("CreateAlbum", album);
         }
     }
 }
