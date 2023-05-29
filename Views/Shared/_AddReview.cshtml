@@ -12,6 +12,8 @@
             <div class="modal-body" id="form-container">
                 <p>_AddReview from Shared</p>
                 <input type="hidden" id="Subject" name="Subject" value="@Model.Subject" />
+                <input type="hidden" id="Email" name="Email" value="@Model.Email" />
+                <input type="hidden" id="Username" name="Username" value="@Model.Username" />
                 <div class="mb-3">
                     <label for="@Model.Title" class="col-form-label">Title</label>
                     <input id="@Model.Title" name="Title" class="form-control" autocomplete="off" required placeholder="Enter the title" value="@Model.Title" />
@@ -27,5 +29,4 @@
             </div>
         </div>
     </div>
-
 }

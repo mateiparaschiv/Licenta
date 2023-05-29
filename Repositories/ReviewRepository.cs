@@ -1,4 +1,5 @@
-﻿namespace LicentaApp.Repositories
+﻿using LicentaApp.Models;
+namespace LicentaApp.Repositories
 {
     public class ReviewRepository : IReviewRepository
     {

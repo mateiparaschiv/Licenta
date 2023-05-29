@@ -1,4 +1,4 @@
-﻿using LicentaApp.Interfaces.IService;
+﻿using LicentaApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

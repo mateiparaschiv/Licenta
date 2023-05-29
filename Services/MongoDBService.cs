@@ -1,4 +1,6 @@
 ﻿using LicentaApp.Identity;
+using LicentaApp.Models;
+using MongoDB.Driver;
 
 namespace LicentaApp.Services
 {

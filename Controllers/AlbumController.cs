@@ -21,6 +21,7 @@ namespace LicentaApp.Controllers
             }
             else
             {
+                string username = User.Identity.Name;
                 return View("~/Views/Albums/Album.cshtml", await _albumRepository.IndexAlbumName(name));
                 //TODO : E OK ASA ?
             }

@@ -1,5 +1,6 @@
-﻿using MongoDB.Driver.Linq;
-
+﻿using LicentaApp.Models;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 namespace LicentaApp.Services
 {
     public class ArtistService : IArtistService

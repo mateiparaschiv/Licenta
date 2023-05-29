@@ -1,4 +1,5 @@
-﻿namespace LicentaApp.Interfaces.IRepository
+﻿using LicentaApp.Models;
+namespace LicentaApp.Interfaces.IRepository
 {
     public interface IReviewRepository
     {

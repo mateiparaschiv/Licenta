@@ -1,12 +1,7 @@
 global using LicentaApp.Interfaces.IRepository;
 global using LicentaApp.Interfaces.IService;
-global using LicentaApp.Models;
-global using LicentaApp.Repositories;
-global using LicentaApp.Services;
-global using MongoDB.Bson;
-global using MongoDB.Bson.Serialization.Attributes;
-global using MongoDB.Driver;
-global using MongoDbGenericRepository.Attributes;
+using LicentaApp.Repositories;
+using LicentaApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +43,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -71,5 +67,3 @@ app.Run();
 //TODO : PADDING ON FOOTER ???????????????
 //TODO : MAIN SIZE = 0 
 //TODO : validation on hrefs
-//TODO : CHECK RATING 
-

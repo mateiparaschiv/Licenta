@@ -7,28 +7,28 @@
 
 
 //TODO : TO BE IMPROVED
-$(document).ready(function () {
-    $('#albumModal').on('shown.bs.modal', function () {
-        $('#myInput').focus();
-    });
+//$(document).ready(function () {
+//    $('#albumModal').on('shown.bs.modal', function () {
+//        $('#myInput').focus();
+//    });
 
-    $("#albumModal").on("submit", "#form-addReview", function (e) {
-        e.preventDefault();  // prevent standard form submission
+//    $("#albumModal").on("submit", "#form-addReview", function (e) {
+//        e.preventDefault();  // prevent standard form submission
 
-        var form = $(this);
-        var albumName = form.find("#albumModalLabel").text().replace("Add review for ", "");
-        form.find("#Subject").val(albumName);
+//        var form = $(this);
+//        var albumName = form.find("#albumModalLabel").text().replace("Add review for ", "");
+//        form.find("#Subject").val(albumName);
 
-        $.ajax({
-            url: form.attr("action"),
-            method: form.attr("method"),  // post
-            data: form.serialize(),
-            success: function (partialResult) {
-                $("#formContent").html(partialResult);
-            }
-        });
-    });
-});
+//        $.ajax({
+//            url: form.attr("action"),
+//            method: form.attr("method"),  // post
+//            data: form.serialize(),
+//            success: function (partialResult) {
+//                $("#formContent").html(partialResult);
+//            }
+//        });
+//    });
+//});
 
 //$(document).ready(function () {
 //    $('#albumModal').on('shown.bs.modal', function () {

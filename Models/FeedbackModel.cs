@@ -1,4 +1,8 @@
-﻿namespace LicentaApp.Models
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDbGenericRepository.Attributes;
+
+namespace LicentaApp.Models
 {
     [CollectionName("feedback")]
     public class FeedbackModel
