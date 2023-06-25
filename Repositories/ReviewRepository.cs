@@ -33,9 +33,6 @@ namespace LicentaApp.Repositories
             ReviewModel model = new ReviewModel();
             ProcessStartInfo start = new ProcessStartInfo();
 
-            //start.FileName = @"C:\Users\mtpar\AppData\Local\Programs\Python\Python311\python.exe";
-            //start.Arguments = string.Format("{0} \"{1}\"", @"D:\Licenta\sentiment_analysis.py", text);
-
             start.FileName = "python";
             start.Arguments = $"\"{Path.GetFullPath("sentiment_analysis.py")}\" \"{text}\"";
             start.UseShellExecute = false;
