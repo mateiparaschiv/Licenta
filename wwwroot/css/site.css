@@ -109,34 +109,36 @@ html {
     background-color: #6c757d !important;
 }
 
-body {
-    height: 100%;
-    overflow: hidden;
-}
 
 #header {
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     height: auto;
     top: 0;
     left: 0;
     box-sizing: border-box;
+    background-color: white;
+    z-index :200;
 }
 
 #content {
-    overflow: auto;
-    position: absolute;
-    top: 107px;
-    bottom: 59px;
+    position: relative;
+    margin-top:108px;
+    margin-bottom:60px;
+   /* top: 107px;
+    bottom: 59px;*/
+
 }
 
 #footer {
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     height: auto;
     bottom: 0;
     left: 0;
     box-sizing: border-box;
+    background-color: white;
+    z-index: 200;
 }
 
 

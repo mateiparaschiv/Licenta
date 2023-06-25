@@ -25,7 +25,8 @@ namespace LicentaApp.Services
         //    await _artistCollection.Find(_ => true).Skip(perPage * page).Limit(perPage).ToListAsync();
         //} 
         public async Task<List<ArtistModel>> GetPaginatedListAsync(int perPage, int page) =>
-            await _artistCollection.Find(_ => true).Skip(perPage * page).Limit(perPage).ToListAsync();
+        //await _artistCollection.Find(_ => true).Skip(perPage * page).Limit(perPage).ToListAsync();
+        await _artistCollection.Find(_ => true).SortBy(x => x.Name).Skip(perPage * page).Limit(perPage).ToListAsync();
 
 
         public async Task<ArtistModel?> GetAsyncById(string id) =>

@@ -44,7 +44,6 @@ namespace LicentaApp.Repositories
                 AlbumList = albumList,
                 SortOrder = sortOrder
             };
-            //var tuple = new Tuple<List<AlbumModel>, string>(albumList, sortOrder);
             return indexAlbumListViewModel;
         }
 

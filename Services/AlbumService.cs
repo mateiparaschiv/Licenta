@@ -12,8 +12,12 @@ namespace LicentaApp.Services
             _albumCollection = albumCollection;
         }
 
+        //sort primit ca parametru
         public async Task<List<AlbumModel>> GetAsync() =>
-            await _albumCollection.Find(_ => true).ToListAsync();
+        await _albumCollection.Find(_ => true).ToListAsync();
+
+        //await _albumCollection.Find(_ => true).SortBy(x => x.Name).ToListAsync();
+        //await _albumCollection.Find(_ => true).SortByDescending(x => x.Name).ToListAsync();
 
         public async Task<AlbumModel?> GetAsyncById(string id) =>
             await _albumCollection.Find(x => x.Id == id).FirstOrDefaultAsync();

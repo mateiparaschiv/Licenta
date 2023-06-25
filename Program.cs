@@ -58,12 +58,7 @@ app.MapControllerRoute(
 );
 app.Run();
 
-//TODO : Feedback form
-//TODO : Review form
-//TODO : Log in && Register form
-//TODO : Log in mechanism
+
+
 //TODO : CLEANUP CODE everywhere at the end
-//TODO : NEXT PAGE BUTTONS
 //TODO : PADDING ON FOOTER ???????????????
-//TODO : MAIN SIZE = 0 
-//TODO : validation on hrefs

@@ -7,24 +7,25 @@ namespace LicentaApp.Controllers
     {
         private readonly IAlbumRepository _albumRepository;
 
+        //
         public AlbumController(IAlbumRepository albumRepository)
         {
             _albumRepository = albumRepository;
         }
 
+        //split!!!!!!!!!!!!!!!!!!!!!
         [Route("Albums/{name}")]
         [Route("Albums/{sortOrder:regex(name_asc|name_desc)?}")]
         public async Task<IActionResult> Index(string? name, string? sortOrder)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return View("~/Views/Albums/Index.cshtml", await _albumRepository.IndexAlbumList(sortOrder));
+                return View(await _albumRepository.IndexAlbumList(sortOrder));
             }
             else
             {
-                string username = User.Identity.Name;
+
                 return View("~/Views/Albums/Album.cshtml", await _albumRepository.IndexAlbumName(name));
-                //TODO : E OK ASA ?
             }
         }
 
