@@ -27,11 +27,7 @@ namespace LicentaApp.Services
             services.addMongoDbService<GenreService, GenreModel>(settings.CollectionName.GenreCollection);
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(settings.ConnectionString, settings.DatabaseName);
-<<<<<<< HEAD
-=======
 
-
->>>>>>> d3835056e5728798a5fc55659048d3491db432f9
         }
         static void addMongoDbService<TService, TModel>(this IServiceCollection services, string collectionName)
         {

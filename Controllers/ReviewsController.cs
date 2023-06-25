@@ -24,7 +24,7 @@ namespace LicentaApp.Controllers
             {
                 _reviewRepository.AddReview(newReview);
             }
-            return RedirectToAction("Index", "Albums", new { name = newReview.Subject });
+            return RedirectToAction("Album", "Albums", new { name = newReview.Subject });
         }
     }
 }

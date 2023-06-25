@@ -11,7 +11,6 @@ namespace LicentaApp.Services
         {
             _reviewCollection = reviewCollection;
         }
-
         public async Task<List<ReviewModel>> GetAsync() =>
             await _reviewCollection.Find(_ => true).ToListAsync();
 

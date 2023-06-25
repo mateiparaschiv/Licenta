@@ -28,7 +28,7 @@ namespace LicentaApp.Repositories
             await _reviewService.CreateAsync(newReview);
         }
 
-        public async Task<ReviewModel> SentimentAnalysis(string text)
+        private async Task<ReviewModel> SentimentAnalysis(string text)
         {
             ReviewModel model = new ReviewModel();
             ProcessStartInfo start = new ProcessStartInfo();

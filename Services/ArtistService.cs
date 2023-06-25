@@ -11,7 +11,6 @@ namespace LicentaApp.Services
         {
             _artistCollection = artistCollection;
         }
-        //IMongoQueryable<T>
         public async Task<List<ArtistModel>> GetAsync() =>
             await _artistCollection.Find(_ => true).ToListAsync();
 

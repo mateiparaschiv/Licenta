@@ -60,3 +60,5 @@ app.Run();
 
 //TODO : CLEANUP CODE everywhere at the end
 //TODO : PADDING ON FOOTER ???????????????
+//TODO : dupa ce postez review cum fac sa il vad in pagina (trebuie dat refresh)?
+//TODO : Services sunt Repo si Repo sunt services ?
