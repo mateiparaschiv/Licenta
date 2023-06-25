@@ -25,7 +25,8 @@ namespace LicentaApp.Services
             services.addMongoDbService<SongService, SongModel>(settings.CollectionName.SongCollection);
             services.addMongoDbService<UserService, UserModel>(settings.CollectionName.UserCollection);
             services.addMongoDbService<GenreService, GenreModel>(settings.CollectionName.GenreCollection);
-            services.AddIdentity<ApplicationUser, ApplicationRole>().AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(settings.ConnectionString, settings.DatabaseName);
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(settings.ConnectionString, settings.DatabaseName);
 
 
         }
