@@ -25,13 +25,19 @@ namespace LicentaApp.Models
         [BsonElement("message")]
         public string? Message { get; set; }
 
-        //public ReviewModel(string email, string username, string subject, string title, string message)
-        //{
-        //    Email = email ?? throw new ArgumentNullException(nameof(email));
-        //    Username = username ?? throw new ArgumentNullException(nameof(username));
-        //    Subject = subject ?? throw new ArgumentNullException(nameof(subject));
-        //    Title = title ?? throw new ArgumentNullException(nameof(title));
-        //    Message = message ?? throw new ArgumentNullException(nameof(message));
-        //}
+        [BsonElement("sentiment")]
+        public string? Sentiment { get; set; }
+
+        [BsonElement("negativeScore")]
+        public double? NegativeScore { get; set; }
+
+        [BsonElement("neutralScore")]
+        public double? NeutralScore { get; set; }
+
+        [BsonElement("positiveScore")]
+        public double? PositiveScore { get; set; }
+
+        [BsonElement("compoundScore")]
+        public double? CompoundScore { get; set; }
     }
 }
