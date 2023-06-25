@@ -12,7 +12,7 @@ namespace LicentaApp.Repositories
             _albumService = albumService;
         }
 
-        public async Task<IndexGenreListViewModel> IndexGenreList(string? name, string? sortOrder)
+        public async Task<IndexGenreListViewModel> IndexGenreList(string? sortOrder)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
             var genreList = await _genreService.GetAsync();
@@ -27,7 +27,6 @@ namespace LicentaApp.Repositories
                 case "":
                     break;
             }
-            //var tuple = new Tuple<List<GenreModel>, string>(genreList, sortOrder);
             IndexGenreListViewModel indexGenreListViewModel = new IndexGenreListViewModel
             {
                 GenreList = genreList,
@@ -36,11 +35,10 @@ namespace LicentaApp.Repositories
             return indexGenreListViewModel;
         }
 
-        public async Task<IndexGenreNameViewModel> IndexGenreName(string? name)
+        public async Task<IndexGenreNameViewModel> IndexGenreName(string name)
         {
             var genre = await _genreService.GetAsyncByName(name);
             var genreAlbums = await _albumService.GetAsyncListByGenre(name);
-            //var tuple = new Tuple<GenreModel, List<AlbumModel>>(genre, genreAlbums);
             IndexGenreNameViewModel indexGenreNameViewModel = new IndexGenreNameViewModel
             {
                 Genre = genre,

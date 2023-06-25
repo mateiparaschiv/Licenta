@@ -72,7 +72,8 @@ html {
 }
 
 #sort_buttons {
-    color:#6c757d;
+    color: #6c757d;
+    font-size: 32px;
 }
 #sort_buttons:hover {
     color: #0d6efd;
@@ -140,51 +141,3 @@ html {
     background-color: white;
     z-index: 200;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*#body {
-
-}
-
-#header {
-    position: fixed;
-    height: 107.8px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#content {
-    overflow-y: scroll;
-    position: relative;
-    top: 108px;*/
-    /*bottom: 65px;*/
-    /*left: 0;
-    right: 0;
-    background-color: #fff;
-    box-sizing: border-box;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    min-height: calc(100vh - 167.4px);
-}
-
-#footer {
-    position: fixed;*/
-    /*height: 60px;
-    width: 100%;
-    box-sizing: border-box;*/
-/*}*/

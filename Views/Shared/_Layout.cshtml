@@ -52,11 +52,11 @@
                         if (User?.Identity?.IsAuthenticated ?? false)
                         {
                             <u>Welcome: @User.Identity.Name</u>
-                            <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+                            <a asp-controller="Accounts" asp-action="Logout" class="btn btn-danger">Logout</a>
                         }
                         else
                         {
-                            <a class="btn btn-outline-primary me-2" asp-controller="Account" asp-action="Login">Sign in</a>
+                            <a class="btn btn-outline-primary me-2" asp-controller="Accounts" asp-action="Login">Sign in</a>
                             <a class="btn btn-primary" asp-area="" asp-controller="Operations" asp-action="Create">Sign up</a>
                         }
                     }
@@ -84,7 +84,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <span>
                             <a href="https://github.com/mateiparaschiv/Licenta.git" id="link">
-                                <i class=" bi bi-github"></i> @*TODO: modifica fiecare svg*@
+                                <i id="sort_buttons" class=" bi bi-github"></i>
                             </a>
                         </span>
                     </div>

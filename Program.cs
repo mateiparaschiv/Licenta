@@ -58,7 +58,5 @@ app.MapControllerRoute(
 );
 app.Run();
 
-
-
 //TODO : CLEANUP CODE everywhere at the end
 //TODO : PADDING ON FOOTER ???????????????

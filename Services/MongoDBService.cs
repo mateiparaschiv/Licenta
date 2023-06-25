@@ -25,9 +25,8 @@ namespace LicentaApp.Services
             services.addMongoDbService<SongService, SongModel>(settings.CollectionName.SongCollection);
             services.addMongoDbService<UserService, UserModel>(settings.CollectionName.UserCollection);
             services.addMongoDbService<GenreService, GenreModel>(settings.CollectionName.GenreCollection);
-            services.AddIdentity<ApplicationUser, ApplicationRole>().AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(settings.ConnectionString, settings.DatabaseName);
-
-
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(settings.ConnectionString, settings.DatabaseName);
         }
         static void addMongoDbService<TService, TModel>(this IServiceCollection services, string collectionName)
         {
@@ -36,7 +35,6 @@ namespace LicentaApp.Services
         }
         private static DatabaseSettingsModel getMongoDbSettings(IConfiguration configuration) =>
             configuration.GetSection(nameof(DatabaseSettingsModel)).Get<DatabaseSettingsModel>();
-
 
         private static IMongoDatabase CreateMongoDatabase(DatabaseSettingsModel settings)
         {

@@ -14,7 +14,7 @@ namespace LicentaApp.Repositories
             _reviewService = reviewService;
         }
 
-        public async Task<IndexArtistListViewModel> IndexArtistList(string? name, string? sortOrder, int pageNumber)
+        public async Task<IndexArtistListViewModel> IndexArtistList(string? sortOrder, int pageNumber)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
             var artistList2 = await _artistService.GetAsync();
@@ -46,7 +46,7 @@ namespace LicentaApp.Repositories
             return indexArtistListViewModel;
         }
 
-        public async Task<IndexArtistNameViewModel> IndexArtistName(string? name, string? sortOrder)
+        public async Task<IndexArtistNameViewModel> IndexArtistName(string name, string? sortOrder)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
             var artist = await _artistService.GetAsyncByName(name);
