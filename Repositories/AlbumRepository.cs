@@ -14,12 +14,14 @@ namespace LicentaApp.Repositories
         }
 
         public async Task<List<AlbumModel>> GetAsync() =>
-        await _albumCollection.Find(_ => true).ToListAsync();
+            await _albumCollection.Find(_ => true).ToListAsync();
 
         public async Task<AlbumModel?> GetAlbumByName(string name) =>
-                            await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
+            await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
+
         public async Task<List<AlbumModel>> GetListByArtist(string artistName) =>
             await _albumCollection.Find(x => x.Artist == artistName).ToListAsync();
+
         public async Task<List<AlbumModel>> GetListByGenre(string genre) =>
             await _albumCollection.Find(x => x.Genre == genre).ToListAsync();
 
