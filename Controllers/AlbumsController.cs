@@ -16,7 +16,7 @@ namespace LicentaApp.Controllers
         }
         public async Task<IActionResult> Album(string name)
         {
-            return View(await _albumRepository.IndexAlbumName(name));
+            return View(await _albumRepository.AlbumName(name));
         }
     }
 }

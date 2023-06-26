@@ -17,7 +17,7 @@ namespace LicentaApp.Controllers
         }
         public async Task<IActionResult> Genre(string name)
         {
-            return View(await _genreRepository.IndexGenreName(name));
+            return View(await _genreRepository.GenreName(name));
         }
     }
 }

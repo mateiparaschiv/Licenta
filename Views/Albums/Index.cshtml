@@ -17,15 +17,15 @@
     <div class="d-flex align-items-center justify-content-between">
         <span class="text-muted">
             @{
-                if (sortOrder.Equals("name_asc"))
+                if (sortOrder.Equals("asc"))
                 {
-                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="name_desc">
+                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="desc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
                     </a>
                 }
                 else
                 {
-                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="name_asc">
+                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="asc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down"></i>
                     </a>
                 }

@@ -1,4 +1,5 @@
-﻿using LicentaApp.Models.ViewModels;
+﻿using LicentaApp.Models;
+using LicentaApp.Models.ViewModels;
 
 namespace LicentaApp.Repositories
 {
@@ -14,19 +15,19 @@ namespace LicentaApp.Repositories
 
         public async Task<IndexGenreListViewModel> IndexGenreList(string? sortOrder)
         {
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
-            var genreList = await _genreService.GetAsync();
+            List<GenreModel> genreList;
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+
             switch (sortOrder)
             {
-                case "name_asc":
-                    genreList.Sort((x, y) => string.Compare(x.Name, y.Name));
+                case "desc":
+                    genreList = await _genreService.GetAsyncListDescending();
                     break;
-                case "name_desc":
-                    genreList.Sort((x, y) => string.Compare(y.Name, x.Name));
-                    break;
-                case "":
+                default: // default is ascending
+                    genreList = await _genreService.GetAsyncListAscending();
                     break;
             }
+
             IndexGenreListViewModel indexGenreListViewModel = new IndexGenreListViewModel
             {
                 GenreList = genreList,
@@ -35,7 +36,7 @@ namespace LicentaApp.Repositories
             return indexGenreListViewModel;
         }
 
-        public async Task<IndexGenreNameViewModel> IndexGenreName(string name)
+        public async Task<IndexGenreNameViewModel> GenreName(string name)
         {
             var genre = await _genreService.GetAsyncByName(name);
             var genreAlbums = await _albumService.GetAsyncListByGenre(name);

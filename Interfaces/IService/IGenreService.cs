@@ -9,5 +9,7 @@ namespace LicentaApp.Interfaces.IService
         Task UpdateAsync(string id, GenreModel updatedGenreModel);
         Task RemoveAsync(string id);
         Task<GenreModel?> GetAsyncByName(string name);
+        Task<List<GenreModel>> GetAsyncListAscending();
+        Task<List<GenreModel>> GetAsyncListDescending();
     }
 }

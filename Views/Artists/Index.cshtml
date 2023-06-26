@@ -15,15 +15,15 @@
     <div class="d-flex align-items-center justify-content-between">
         <span class="text-muted">
             @{
-                if (sortOrder.Equals("name_asc"))
+                if (sortOrder.Equals("asc"))
                 {
-                    <a id="sort_buttons" asp-controller="Artists" asp-action="Index" asp-route-sortOrder="name_desc">
+                    <a id="sort_buttons" asp-controller="Artists" asp-action="Index" asp-route-sortOrder="desc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
                     </a>
                 }
                 else
                 {
-                    <a id="sort_buttons" asp-controller="Artists" asp-action="Index" asp-route-sortOrder="name_asc">
+                    <a id="sort_buttons" asp-controller="Artists" asp-action="Index" asp-route-sortOrder="asc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down"></i>
                     </a>
                 }
@@ -53,7 +53,7 @@
 
     @if (pageNumber == 0)
     {
-        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-pageNumber="@(pageNumber+1)">
+        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber+1)">
             <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
             @*forwards*@
         </a>
@@ -61,12 +61,12 @@
 
     @if (pageNumber > 0 && pageNumber < maxPages)
     {
-        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-pageNumber="@(pageNumber-1)">
+        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber-1)">
             <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
             @*backwards*@
         </a>
 
-        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-pageNumber="@(pageNumber + 1)">
+        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber + 1)">
             <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
             @*forwards*@
         </a>
@@ -74,7 +74,7 @@
 
     @if (pageNumber == maxPages)
     {
-        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-pageNumber="@(pageNumber-1)">
+        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber-1)">
             <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
             @*backwards*@
         </a>

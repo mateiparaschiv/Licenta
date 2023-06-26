@@ -5,6 +5,6 @@ namespace LicentaApp.Interfaces.IRepository
     public interface IArtistRepository
     {
         Task<IndexArtistListViewModel> IndexArtistList(string? sortOrder, int pageNumber);
-        Task<IndexArtistNameViewModel> IndexArtistName(string name, string? sortOrder);
+        Task<IndexArtistNameViewModel> ArtistName(string name, string? sortOrder);
     }
 }

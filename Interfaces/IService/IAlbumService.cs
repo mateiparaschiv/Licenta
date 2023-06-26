@@ -13,6 +13,9 @@ namespace LicentaApp.Interfaces.IService
         Task UpdateAsync(string id, AlbumModel updatedAlbumModel);
         Task RemoveAsync(string id);
         Task<AlbumModel?> GetAsyncByName(string name);
-        void Shuffle<T>(IList<T> list);
+        Task<List<AlbumModel>> GetAsyncListByYearAscending(string artistName);
+        Task<List<AlbumModel>> GetAsyncListByYearDescending(string artistName);
+        Task<List<AlbumModel>> GetAsyncListAscending();
+        Task<List<AlbumModel>> GetAsyncListDescending();
     }
 }

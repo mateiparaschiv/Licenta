@@ -1,4 +1,5 @@
-﻿using LicentaApp.Models.ViewModels;
+﻿using LicentaApp.Models;
+using LicentaApp.Models.ViewModels;
 
 namespace LicentaApp.Repositories
 {
@@ -16,21 +17,19 @@ namespace LicentaApp.Repositories
 
         public async Task<IndexArtistListViewModel> IndexArtistList(string? sortOrder, int pageNumber)
         {
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
-            var artistList2 = await _artistService.GetAsync();
-            var perPage = 9;
-            var artistList = await _artistService.GetPaginatedListAsync(perPage, pageNumber);
-            var maxPages = artistList2.Count() / perPage;
-            //_artistService.Shuffle(artistList);
+            List<ArtistModel> artistList;
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int PageSize = 10;
+            int totalArtists = await _artistService.GetTotalCountAsync();
+            int maxPages = (totalArtists + PageSize - 1) / PageSize;
+
             switch (sortOrder)
             {
-                case "name_asc":
-                    artistList.Sort((x, y) => string.Compare(x.Name, y.Name));
+                case "desc":
+                    artistList = await _artistService.GetPaginatedListAsyncDescending(pageNumber, PageSize);
                     break;
-                case "name_desc":
-                    artistList.Sort((x, y) => string.Compare(y.Name, x.Name));
-                    break;
-                case "":
+                default: // default is ascending
+                    artistList = await _artistService.GetPaginatedListAsyncAscending(pageNumber, PageSize);
                     break;
             }
 
@@ -46,23 +45,20 @@ namespace LicentaApp.Repositories
             return indexArtistListViewModel;
         }
 
-        public async Task<IndexArtistNameViewModel> IndexArtistName(string name, string? sortOrder)
+        public async Task<IndexArtistNameViewModel> ArtistName(string name, string? sortOrder)
         {
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
             var artist = await _artistService.GetAsyncByName(name);
-            var artistAlbums = await _albumService.GetAsyncListByName(name);
+            List<AlbumModel> artistAlbums;
             var reviews = await _reviewService.GetAsyncListByAlbum(name);
-            artistAlbums.Sort((x, y) => y.Year - x.Year);
 
             switch (sortOrder)
             {
-                case "year_asc":
-                    artistAlbums.Sort((x, y) => x.Year - y.Year);
+                case "desc":
+                    artistAlbums = await _albumService.GetAsyncListByYearDescending(name);
                     break;
-                case "year_desc":
-                    artistAlbums.Sort((x, y) => y.Year - x.Year);
-                    break;
-                case "":
+                default: // default is ascending
+                    artistAlbums = await _albumService.GetAsyncListByYearAscending(name);
                     break;
             }
             IndexArtistNameViewModel indexArtistNameViewModel = new IndexArtistNameViewModel

@@ -25,18 +25,15 @@ namespace LicentaApp.Repositories
 
         public async Task<IndexAlbumListViewModel> IndexAlbumList(string? sortOrder)
         {
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
-            var albumList = await _albumService.GetAsync();
-            _albumService.Shuffle(albumList);
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            List<AlbumModel> albumList;
             switch (sortOrder)
             {
-                case "name_asc":
-                    albumList.Sort((x, y) => string.Compare(x.Name, y.Name));
+                case "desc":
+                    albumList = await _albumService.GetAsyncListDescending();
                     break;
-                case "name_desc":
-                    albumList.Sort((x, y) => string.Compare(y.Name, x.Name));
-                    break;
-                case "":
+                default: // default is ascending
+                    albumList = await _albumService.GetAsyncListAscending();
                     break;
             }
             IndexAlbumListViewModel indexAlbumListViewModel = new IndexAlbumListViewModel
@@ -47,7 +44,7 @@ namespace LicentaApp.Repositories
             return indexAlbumListViewModel;
         }
 
-        public async Task<IndexAlbumNameViewModel> IndexAlbumName(string name)
+        public async Task<IndexAlbumNameViewModel> AlbumName(string name)
         {
             var album = await _albumService.GetAsyncByName(name);
             var reviewList = await _reviewService.GetAsyncListByAlbum(name);

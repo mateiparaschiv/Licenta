@@ -27,5 +27,11 @@ namespace LicentaApp.Services
 
         public async Task RemoveAsync(string id) =>
             await _genreCollection.DeleteOneAsync(x => x.Id == id);
+
+        public async Task<List<GenreModel>> GetAsyncListAscending() =>
+            await _genreCollection.Find(_ => true).SortBy(x => x.Name).ToListAsync();
+
+        public async Task<List<GenreModel>> GetAsyncListDescending() =>
+            await _genreCollection.Find(_ => true).SortByDescending(x => x.Name).ToListAsync();
     }
 }

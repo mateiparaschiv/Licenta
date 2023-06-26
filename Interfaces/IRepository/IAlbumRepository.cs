@@ -6,7 +6,7 @@ namespace LicentaApp.Interfaces.IRepository
     public interface IAlbumRepository
     {
         Task<IndexAlbumListViewModel> IndexAlbumList(string? sortOrder);
-        Task<IndexAlbumNameViewModel> IndexAlbumName(string name);
+        Task<IndexAlbumNameViewModel> AlbumName(string name);
         Task CreateAsync(AlbumModel newAlbumModel);
     }
 }

@@ -13,15 +13,15 @@
     <div class="d-flex align-items-center justify-content-between">
         <span class="text-muted">
             @{
-                if (sortOrder.Equals("name_asc") || sortOrder.Equals(""))
+                if (sortOrder.Equals("asc") || sortOrder.Equals(""))
                 {
-                    <a id="sort_buttons" asp-controller="Genres" asp-action="Index" asp-route-sortOrder="name_desc">
+                    <a id="sort_buttons" asp-controller="Genres" asp-action="Index" asp-route-sortOrder="desc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
                     </a>
                 }
                 else
                 {
-                    <a id="sort_buttons" asp-controller="Genres" asp-action="Index" asp-route-sortOrder="">
+                    <a id="sort_buttons" asp-controller="Genres" asp-action="Index" asp-route-sortOrder="asc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down"></i>
                     </a>
                 }

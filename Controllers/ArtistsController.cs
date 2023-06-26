@@ -10,13 +10,14 @@ namespace LicentaApp.Controllers
             _artistRepository = artistRepository;
         }
 
-        public async Task<IActionResult> Index(string? sortOrder, int pageNumber)
+        public async Task<IActionResult> Index(string? sortOrder, int page)
         {
-            return View(await _artistRepository.IndexArtistList(sortOrder, pageNumber));
+            return View(await _artistRepository.IndexArtistList(sortOrder, page));
         }
+
         public async Task<IActionResult> Artist(string name, string? sortOrder)
         {
-            return View(await _artistRepository.IndexArtistName(name, sortOrder));
+            return View(await _artistRepository.ArtistName(name, sortOrder));
         }
     }
 }

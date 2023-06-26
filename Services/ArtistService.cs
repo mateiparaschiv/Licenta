@@ -11,22 +11,35 @@ namespace LicentaApp.Services
         {
             _artistCollection = artistCollection;
         }
+
         public async Task<List<ArtistModel>> GetAsync() =>
             await _artistCollection.Find(_ => true).ToListAsync();
 
-        //public async Task<IMongoQueryable<ArtistModel>> GetAsync() =>
-        //    await _artistCollection.Find(_ => true).ToListAsync();
-        //public async Task<List<ArtistModel>> GetPaginatedListAsync()
-        //{
-        //    //var query = _artistCollection.Find(_ => true);
-        //    var perPage = 10;
-        //    var page = 1;
-        //    await _artistCollection.Find(_ => true).Skip(perPage * page).Limit(perPage).ToListAsync();
-        //} 
-        public async Task<List<ArtistModel>> GetPaginatedListAsync(int perPage, int page) =>
-        //await _artistCollection.Find(_ => true).Skip(perPage * page).Limit(perPage).ToListAsync();
-        await _artistCollection.Find(_ => true).SortBy(x => x.Name).Skip(perPage * page).Limit(perPage).ToListAsync();
+        public async Task<List<ArtistModel>> GetPaginatedListAsync(int pageNumber = 0, int pageSize = 10) =>
+            await _artistCollection.Find(_ => true)
+                .Skip(pageNumber * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
 
+        public async Task<List<ArtistModel>> GetPaginatedListAsyncAscending(int pageNumber = 0, int pageSize = 10) =>
+            await _artistCollection.Find(_ => true)
+                .SortBy(x => x.Name)
+                .Skip(pageNumber * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
+
+        public async Task<List<ArtistModel>> GetPaginatedListAsyncDescending(int pageNumber = 0, int pageSize = 10) =>
+            await _artistCollection.Find(_ => true)
+                .SortByDescending(x => x.Name)
+                .Skip(pageNumber * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
+
+        public async Task<int> GetTotalCountAsync()
+        {
+            var totalCount = await _artistCollection.CountDocumentsAsync(FilterDefinition<ArtistModel>.Empty);
+            return (int)totalCount;
+        }
 
         public async Task<ArtistModel?> GetAsyncById(string id) =>
             await _artistCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
@@ -42,19 +55,5 @@ namespace LicentaApp.Services
 
         public async Task RemoveAsync(string id) =>
             await _artistCollection.DeleteOneAsync(x => x.Id == id);
-
-        public void Shuffle<T>(IList<T> list)
-        {
-            Random rng = new Random();
-            int n = list.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
-        }
     }
 }

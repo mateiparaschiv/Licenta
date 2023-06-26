@@ -16,8 +16,11 @@ namespace LicentaApp.Services
         public async Task<List<AlbumModel>> GetAsync() =>
         await _albumCollection.Find(_ => true).ToListAsync();
 
-        //await _albumCollection.Find(_ => true).SortBy(x => x.Name).ToListAsync();
-        //await _albumCollection.Find(_ => true).SortByDescending(x => x.Name).ToListAsync();
+        public async Task<List<AlbumModel>> GetAsyncListByYearAscending(string artistName) =>
+            await _albumCollection.Find(x => x.Artist == artistName).SortBy(x => x.Year).ToListAsync();
+
+        public async Task<List<AlbumModel>> GetAsyncListByYearDescending(string artistName) =>
+            await _albumCollection.Find(x => x.Artist == artistName).SortByDescending(x => x.Year).ToListAsync();
 
         public async Task<AlbumModel?> GetAsyncById(string id) =>
             await _albumCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
@@ -54,18 +57,11 @@ namespace LicentaApp.Services
 
         public async Task RemoveAsync(string id) =>
             await _albumCollection.DeleteOneAsync(x => x.Id == id);
-        public void Shuffle<T>(IList<T> list)
-        {
-            Random rng = new Random();
-            int n = list.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = rng.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
-        }
+
+        public async Task<List<AlbumModel>> GetAsyncListAscending() =>
+            await _albumCollection.Find(_ => true).SortBy(x => x.Name).ToListAsync();
+
+        public async Task<List<AlbumModel>> GetAsyncListDescending() =>
+            await _albumCollection.Find(_ => true).SortByDescending(x => x.Name).ToListAsync();
     }
 }
