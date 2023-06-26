@@ -4,19 +4,19 @@ namespace LicentaApp.Controllers
 {
     public class AlbumsController : Controller
     {
-        private readonly Interfaces.IRepository.IAlbumService _albumRepository;
+        private readonly IAlbumService _albumService;
 
-        public AlbumsController(Interfaces.IRepository.IAlbumService albumRepository)
+        public AlbumsController(IAlbumService albumService)
         {
-            _albumRepository = albumRepository;
+            _albumService = albumService;
         }
         public async Task<IActionResult> Index(string sortOrder)
         {
-            return View(await _albumRepository.IndexAlbumList(sortOrder));
+            return View(await _albumService.IndexAlbumList(sortOrder));
         }
         public async Task<IActionResult> Album(string name)
         {
-            return View(await _albumRepository.AlbumName(name));
+            return View(await _albumService.AlbumName(name));
         }
     }
 }
