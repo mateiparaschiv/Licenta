@@ -10,7 +10,10 @@ namespace LicentaApp.Services
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AlbumService(IAlbumRepository albumRepository, IReviewRepository reviewRepository, IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
+        public AlbumService(IAlbumRepository albumRepository,
+            IReviewRepository reviewRepository,
+            IUserRepository userRepository,
+            IHttpContextAccessor httpContextAccessor)
         {
             _albumRepository = albumRepository;
             _reviewRepository = reviewRepository;
