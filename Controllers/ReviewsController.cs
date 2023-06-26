@@ -5,9 +5,9 @@ namespace LicentaApp.Controllers
 {
     public class ReviewsController : Controller
     {
-        private readonly IReviewRepository _reviewRepository;
+        private readonly IReviewService _reviewRepository;
 
-        public ReviewsController(IReviewRepository reviewRepository)
+        public ReviewsController(IReviewService reviewRepository)
         {
             _reviewRepository = reviewRepository;
         }

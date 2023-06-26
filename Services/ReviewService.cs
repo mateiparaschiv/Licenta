@@ -1,31 +1,61 @@
 ﻿using LicentaApp.Models;
-using MongoDB.Driver;
+using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 
 namespace LicentaApp.Services
 {
     public class ReviewService : IReviewService
     {
-        private readonly IMongoCollection<ReviewModel> _reviewCollection;
-
-        public ReviewService(IMongoCollection<ReviewModel> reviewCollection)
+        public ReviewService(IReviewRepository reviewService)
         {
-            _reviewCollection = reviewCollection;
+            _reviewService = reviewService;
+
         }
-        public async Task<List<ReviewModel>> GetAsync() =>
-            await _reviewCollection.Find(_ => true).ToListAsync();
+        private readonly IReviewRepository _reviewService;
+        public Task<List<ReviewModel>> IndexReviewList()
+        {
+            return _reviewService.GetAsync();
+        }
+        public async Task AddReview(ReviewModel newReview)
+        {
+            ReviewModel sentimentReview = await SentimentAnalysis(newReview.Message);
+            newReview.NegativeScore = sentimentReview.NegativeScore;
+            newReview.NeutralScore = sentimentReview.NeutralScore;
+            newReview.PositiveScore = sentimentReview.PositiveScore;
+            newReview.CompoundScore = sentimentReview.CompoundScore;
+            newReview.Sentiment = sentimentReview.Sentiment;
 
-        public async Task<ReviewModel?> GetAsync(string id) =>
-            await _reviewCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            await _reviewService.CreateAsync(newReview);
+        }
+        private async Task<ReviewModel> SentimentAnalysis(string text)
+        {
+            ReviewModel model = new ReviewModel();
+            ProcessStartInfo start = new ProcessStartInfo();
 
-        public async Task CreateAsync(ReviewModel newReviewModel) =>
-            await _reviewCollection.InsertOneAsync(newReviewModel);
+            start.FileName = "python";
+            start.Arguments = $"\"{Path.GetFullPath("sentiment_analysis.py")}\" \"{text}\"";
+            start.UseShellExecute = false;
+            start.CreateNoWindow = true;
+            start.RedirectStandardOutput = true;
+            start.RedirectStandardError = true;
 
-        public async Task UpdateAsync(string id, ReviewModel updatedReviewModel) =>
-            await _reviewCollection.ReplaceOneAsync(x => x.Id == id, updatedReviewModel);
+            using (Process process = Process.Start(start))
+            {
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    string stderr = await process.StandardError.ReadToEndAsync();
+                    string result = await reader.ReadToEndAsync();
 
-        public async Task RemoveAsync(string id) =>
-            await _reviewCollection.DeleteOneAsync(x => x.Id == id);
-        public async Task<List<ReviewModel>> GetAsyncListByAlbum(string albumName) =>
-            await _reviewCollection.Find(x => x.Subject == albumName).ToListAsync();
+                    JObject json = JObject.Parse(result);
+
+                    model.NegativeScore = (double)json["negative"];
+                    model.NeutralScore = (double)json["neutral"];
+                    model.PositiveScore = (double)json["positive"];
+                    model.CompoundScore = (double)json["compound"];
+                    model.Sentiment = (string)json["overall_sentiment"];
+                }
+            }
+            return model;
+        }
     }
 }

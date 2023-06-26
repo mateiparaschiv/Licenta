@@ -1,21 +1,12 @@
 ﻿using LicentaApp.Models;
-namespace LicentaApp.Interfaces.IService
+using LicentaApp.Models.ViewModels;
+
+namespace LicentaApp.Interfaces.IRepository
 {
     public interface IAlbumService
     {
-        Task<List<AlbumModel>> GetAsync();
-        Task<AlbumModel?> GetAsyncById(string id);
-        Task<List<AlbumModel>> GetAsyncListByName(string artistName);
-        Task<List<AlbumModel>> GetAsyncListByGenre(string genre);
-        Task<Dictionary<string, int>> GetNumOfAlbumsByNames(List<ArtistModel> artistList);
-        Task<int?> GetNumOfAlbumsByName(string artistName);
+        Task<IndexAlbumListViewModel> IndexAlbumList(string sortOrder);
+        Task<IndexAlbumNameViewModel> AlbumName(string name);
         Task CreateAsync(AlbumModel newAlbumModel);
-        Task UpdateAsync(string id, AlbumModel updatedAlbumModel);
-        Task RemoveAsync(string id);
-        Task<AlbumModel?> GetAsyncByName(string name);
-        Task<List<AlbumModel>> GetAsyncListByYearAscending(string artistName);
-        Task<List<AlbumModel>> GetAsyncListByYearDescending(string artistName);
-        Task<List<AlbumModel>> GetAsyncListAscending();
-        Task<List<AlbumModel>> GetAsyncListDescending();
     }
 }

@@ -1,67 +1,64 @@
 ﻿using LicentaApp.Models;
-using MongoDB.Driver;
+using LicentaApp.Models.ViewModels;
 
 namespace LicentaApp.Services
 {
     public class AlbumService : IAlbumService
     {
-        private readonly IMongoCollection<AlbumModel> _albumCollection;
+        private readonly IAlbumRepository _albumRepository;
+        private readonly IReviewRepository _reviewRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AlbumService(IMongoCollection<AlbumModel> albumCollection)
+        public AlbumService(IAlbumRepository albumRepository, IReviewRepository reviewRepository, IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
         {
-            _albumCollection = albumCollection;
+            _albumRepository = albumRepository;
+            _reviewRepository = reviewRepository;
+            _userRepository = userRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        //sort primit ca parametru
-        public async Task<List<AlbumModel>> GetAsync() =>
-        await _albumCollection.Find(_ => true).ToListAsync();
-
-        public async Task<List<AlbumModel>> GetAsyncListByYearAscending(string artistName) =>
-            await _albumCollection.Find(x => x.Artist == artistName).SortBy(x => x.Year).ToListAsync();
-
-        public async Task<List<AlbumModel>> GetAsyncListByYearDescending(string artistName) =>
-            await _albumCollection.Find(x => x.Artist == artistName).SortByDescending(x => x.Year).ToListAsync();
-
-        public async Task<AlbumModel?> GetAsyncById(string id) =>
-            await _albumCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-
-        public async Task<int?> GetNumOfAlbumsByName(string artistName)
+        public async Task CreateAsync(AlbumModel newAlbumModel)
         {
-            var albums = await GetAsyncListByName(artistName);
-            return albums.Count();
+            await _albumRepository.CreateAsync(newAlbumModel);
         }
-        public async Task<AlbumModel?> GetAsyncByName(string name) =>
-            await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
-        public async Task<List<AlbumModel>> GetAsyncListByName(string artistName) =>
-            await _albumCollection.Find(x => x.Artist == artistName).ToListAsync();
-        public async Task<List<AlbumModel>> GetAsyncListByGenre(string genre) =>
-            await _albumCollection.Find(x => x.Genre == genre).ToListAsync();
 
-        public async Task<Dictionary<string, int>> GetNumOfAlbumsByNames(List<ArtistModel> artistList)
+        public async Task<IndexAlbumListViewModel> IndexAlbumList(string sortOrder)
         {
-            Dictionary<string, int> albumsToArtist = new Dictionary<string, int>();
-            foreach (ArtistModel artist in artistList)
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            return new IndexAlbumListViewModel
             {
-                var artistAlbums = await GetAsyncListByName(artist.Name);
-                var numOfAlbums = artistAlbums.Count();
-                albumsToArtist.Add(artist.Name, numOfAlbums);
-            }
-            return albumsToArtist;
+                AlbumList = await _albumRepository.GetFilteredListByName(sortOrder),
+                SortOrder = sortOrder
+            };
         }
 
-        public async Task CreateAsync(AlbumModel newAlbumModel) =>
-            await _albumCollection.InsertOneAsync(newAlbumModel);
+        public async Task<IndexAlbumNameViewModel> AlbumName(string name)
+        {
+            var album = await _albumRepository.GetAlbumByName(name);
+            var reviewList = await _reviewRepository.GetAsyncListByAlbum(name);
+            var newReview = new ReviewModel
+            {
+                Subject = album.Name,
+                Username = null,
+                Email = null
+            };
 
-        public async Task UpdateAsync(string id, AlbumModel updatedAlbumModel) =>
-            await _albumCollection.ReplaceOneAsync(x => x.Id == id, updatedAlbumModel);
+            if (_httpContextAccessor.HttpContext.User?.Identity?.IsAuthenticated ?? false)
+            {
+                var username = _httpContextAccessor.HttpContext.User.Identity.Name;
+                var user = await _userRepository.GetAsync(username);
+                newReview.Username = username;
+                newReview.Email = user.Email;
+            }
 
-        public async Task RemoveAsync(string id) =>
-            await _albumCollection.DeleteOneAsync(x => x.Id == id);
-
-        public async Task<List<AlbumModel>> GetAsyncListAscending() =>
-            await _albumCollection.Find(_ => true).SortBy(x => x.Name).ToListAsync();
-
-        public async Task<List<AlbumModel>> GetAsyncListDescending() =>
-            await _albumCollection.Find(_ => true).SortByDescending(x => x.Name).ToListAsync();
+            IndexAlbumNameViewModel indexAlbumNameViewModel = new IndexAlbumNameViewModel
+            {
+                Album = album,
+                ReviewList = reviewList,
+                NewReview = newReview
+            };
+            return indexAlbumNameViewModel;
+        }
     }
 }

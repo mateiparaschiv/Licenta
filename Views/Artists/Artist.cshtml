@@ -121,11 +121,11 @@
                     @foreach (var album in artistAlbums)
                     {
                         <div class="text-center col-md-4 ">
-                            <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
+                            <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
                                 @*<img src="@album.Image" id="album_col">*@
                                 <img src="~/images/Albums/@(album.Name).jpg" id="album_col">
                             </a>
-                            <a class="nav-link active p-0" asp-controller="Album" asp-action="Index" asp-route-name="@album.Name">
+                            <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
                                 <i class="" id="link">
                                     @album.Name
                                 </i>

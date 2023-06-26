@@ -4,9 +4,9 @@ namespace LicentaApp.Controllers
 {
     public class FeedbackController : Controller
     {
-        private readonly IFeedbackService _feedbackService;
+        private readonly IFeedbackRepository _feedbackService;
 
-        public FeedbackController(IFeedbackService feedbackService)
+        public FeedbackController(IFeedbackRepository feedbackService)
         {
             _feedbackService = feedbackService;
         }

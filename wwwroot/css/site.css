@@ -8,23 +8,6 @@ html {
   }
 }
 
-/*html {
-  position: relative;
-  min-height: 100%;
-}*/
-
-/*body {
-  margin-bottom: 60px;
-}*/
-
-/*test*/
-/*#categories {
-    background-color: yellow;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}*/
-
 #image_col {
     width: 324px;
     height: 324px;
@@ -128,7 +111,6 @@ html {
     margin-bottom:60px;
    /* top: 107px;
     bottom: 59px;*/
-
 }
 
 #footer {

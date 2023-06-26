@@ -1,10 +1,10 @@
-﻿using LicentaApp.Models.ViewModels;
-
-namespace LicentaApp.Interfaces.IRepository
+﻿using LicentaApp.Models;
+namespace LicentaApp.Interfaces.IService
 {
     public interface IArtistRepository
     {
-        Task<IndexArtistListViewModel> IndexArtistList(string? sortOrder, int pageNumber);
-        Task<IndexArtistNameViewModel> ArtistName(string name, string? sortOrder);
+        Task<ArtistModel> GetAsyncByName(string name);
+        Task<int> GetTotalCountAsync();
+        Task<List<ArtistModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10);
     }
 }

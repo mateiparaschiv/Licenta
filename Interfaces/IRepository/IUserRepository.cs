@@ -1,7 +1,7 @@
 ﻿using LicentaApp.Models;
 namespace LicentaApp.Interfaces.IService
 {
-    public interface IUserService
+    public interface IUserRepository
     {
         Task<List<UserModel>> GetAsync();
         Task<UserModel?> GetAsync(string UserName);

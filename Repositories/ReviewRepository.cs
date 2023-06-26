@@ -1,62 +1,24 @@
 ﻿using LicentaApp.Models;
-using Newtonsoft.Json.Linq;
-using System.Diagnostics;
+using MongoDB.Driver;
 
 namespace LicentaApp.Repositories
 {
     public class ReviewRepository : IReviewRepository
     {
-        public ReviewRepository(IReviewService reviewService)
-        {
-            _reviewService = reviewService;
+        private readonly IMongoCollection<ReviewModel> _reviewCollection;
 
-        }
-        private readonly IReviewService _reviewService;
-        public Task<List<ReviewModel>> IndexReviewList()
+        public ReviewRepository(IMongoCollection<ReviewModel> reviewCollection)
         {
-            return _reviewService.GetAsync();
-        }
-        public async Task AddReview(ReviewModel newReview)
-        {
-            ReviewModel sentimentReview = await SentimentAnalysis(newReview.Message);
-            newReview.NegativeScore = sentimentReview.NegativeScore;
-            newReview.NeutralScore = sentimentReview.NeutralScore;
-            newReview.PositiveScore = sentimentReview.PositiveScore;
-            newReview.CompoundScore = sentimentReview.CompoundScore;
-            newReview.Sentiment = sentimentReview.Sentiment;
-
-            await _reviewService.CreateAsync(newReview);
+            _reviewCollection = reviewCollection;
         }
 
-        private async Task<ReviewModel> SentimentAnalysis(string text)
-        {
-            ReviewModel model = new ReviewModel();
-            ProcessStartInfo start = new ProcessStartInfo();
+        public async Task CreateAsync(ReviewModel newReviewModel) =>
+            await _reviewCollection.InsertOneAsync(newReviewModel);
 
-            start.FileName = "python";
-            start.Arguments = $"\"{Path.GetFullPath("sentiment_analysis.py")}\" \"{text}\"";
-            start.UseShellExecute = false;
-            start.CreateNoWindow = true;
-            start.RedirectStandardOutput = true;
-            start.RedirectStandardError = true;
+        public async Task<List<ReviewModel>> GetAsync() =>
+            await _reviewCollection.Find(_ => true).ToListAsync();
 
-            using (Process process = Process.Start(start))
-            {
-                using (StreamReader reader = process.StandardOutput)
-                {
-                    string stderr = await process.StandardError.ReadToEndAsync();
-                    string result = await reader.ReadToEndAsync();
-
-                    JObject json = JObject.Parse(result);
-
-                    model.NegativeScore = (double)json["negative"];
-                    model.NeutralScore = (double)json["neutral"];
-                    model.PositiveScore = (double)json["positive"];
-                    model.CompoundScore = (double)json["compound"];
-                    model.Sentiment = (string)json["overall_sentiment"];
-                }
-            }
-            return model;
-        }
+        public async Task<List<ReviewModel>> GetAsyncListByAlbum(string albumName) =>
+            await _reviewCollection.Find(x => x.Subject == albumName).ToListAsync();
     }
 }

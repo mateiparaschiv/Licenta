@@ -7,19 +7,18 @@ namespace LicentaApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IAlbumService _albumService;
+        private readonly IAlbumRepository _albumRepository;
 
 
-        public HomeController(ILogger<HomeController> logger, IAlbumService albumService)
+        public HomeController(ILogger<HomeController> logger, IAlbumRepository albumRepository)
         {
             _logger = logger;
-            _albumService = albumService;
+            _albumRepository = albumRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            var albumList = await _albumService.GetAsync();
-            return View(albumList);
+            return View(await _albumRepository.GetRandomAlbums(3));
         }
 
         public IActionResult Privacy()

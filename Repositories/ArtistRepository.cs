@@ -1,74 +1,34 @@
 ﻿using LicentaApp.Models;
-using LicentaApp.Models.ViewModels;
+using MongoDB.Driver;
 
 namespace LicentaApp.Repositories
 {
     public class ArtistRepository : IArtistRepository
     {
-        private readonly IArtistService _artistService;
-        private readonly IAlbumService _albumService;
-        private readonly IReviewService _reviewService;
-        public ArtistRepository(IArtistService artistService, IAlbumService albumService, IReviewService reviewService)
+        private readonly IMongoCollection<ArtistModel> _artistCollection;
+
+        public ArtistRepository(IMongoCollection<ArtistModel> artistCollection)
         {
-            _artistService = artistService;
-            _albumService = albumService;
-            _reviewService = reviewService;
+            _artistCollection = artistCollection;
         }
 
-        public async Task<IndexArtistListViewModel> IndexArtistList(string? sortOrder, int pageNumber)
+        public async Task<ArtistModel> GetAsyncByName(string name) =>
+            await _artistCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
+
+        public async Task<List<ArtistModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)
         {
-            List<ArtistModel> artistList;
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
-            const int PageSize = 10;
-            int totalArtists = await _artistService.GetTotalCountAsync();
-            int maxPages = (totalArtists + PageSize - 1) / PageSize;
+            var sortDefinition = sortOrder.Equals("asc")
+                ? Builders<ArtistModel>.Sort.Ascending(x => x.Name)
+                : Builders<ArtistModel>.Sort.Descending(x => x.Name);
 
-            switch (sortOrder)
-            {
-                case "desc":
-                    artistList = await _artistService.GetPaginatedListAsyncDescending(pageNumber, PageSize);
-                    break;
-                default: // default is ascending
-                    artistList = await _artistService.GetPaginatedListAsyncAscending(pageNumber, PageSize);
-                    break;
-            }
-
-            var albumsToArtist = await _albumService.GetNumOfAlbumsByNames(artistList);
-            IndexArtistListViewModel indexArtistListViewModel = new IndexArtistListViewModel
-            {
-                ArtistList = artistList,
-                AlbumsToArtist = albumsToArtist,
-                SortOrder = sortOrder,
-                PageNumber = pageNumber,
-                MaxPages = maxPages
-            };
-            return indexArtistListViewModel;
+            return await _artistCollection.Find(_ => true)
+            .Sort(sortDefinition)
+                .Skip(pageNumber * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
         }
 
-        public async Task<IndexArtistNameViewModel> ArtistName(string name, string? sortOrder)
-        {
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
-            var artist = await _artistService.GetAsyncByName(name);
-            List<AlbumModel> artistAlbums;
-            var reviews = await _reviewService.GetAsyncListByAlbum(name);
-
-            switch (sortOrder)
-            {
-                case "desc":
-                    artistAlbums = await _albumService.GetAsyncListByYearDescending(name);
-                    break;
-                default: // default is ascending
-                    artistAlbums = await _albumService.GetAsyncListByYearAscending(name);
-                    break;
-            }
-            IndexArtistNameViewModel indexArtistNameViewModel = new IndexArtistNameViewModel
-            {
-                Artist = artist,
-                ArtistAlbums = artistAlbums,
-                SortOrder = sortOrder,
-                Reviews = reviews
-            };
-            return indexArtistNameViewModel;
-        }
+        public async Task<int> GetTotalCountAsync() =>
+            (int)await _artistCollection.CountDocumentsAsync(FilterDefinition<ArtistModel>.Empty);
     }
 }

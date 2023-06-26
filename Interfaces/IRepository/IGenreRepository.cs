@@ -1,10 +1,11 @@
-﻿using LicentaApp.Models.ViewModels;
-
-namespace LicentaApp.Interfaces.IRepository
+﻿using LicentaApp.Models;
+namespace LicentaApp.Interfaces.IService
 {
     public interface IGenreRepository
     {
-        Task<IndexGenreListViewModel> IndexGenreList(string? sortOrder);
-        Task<IndexGenreNameViewModel> GenreName(string name);
+        Task<GenreModel> GetAsyncByName(string name);
+        Task<List<GenreModel>> GetAsyncListAscending();
+        Task<List<GenreModel>> GetAsyncListDescending();
+        Task<List<GenreModel>> GetFilteredListByName(string sortOrder);
     }
 }

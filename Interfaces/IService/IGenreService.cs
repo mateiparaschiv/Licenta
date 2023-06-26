@@ -1,15 +1,10 @@
-﻿using LicentaApp.Models;
-namespace LicentaApp.Interfaces.IService
+﻿using LicentaApp.Models.ViewModels;
+
+namespace LicentaApp.Interfaces.IRepository
 {
     public interface IGenreService
     {
-        Task<List<GenreModel>> GetAsync();
-        Task<GenreModel?> GetAsync(string id);
-        Task CreateAsync(GenreModel newGenreModel);
-        Task UpdateAsync(string id, GenreModel updatedGenreModel);
-        Task RemoveAsync(string id);
-        Task<GenreModel?> GetAsyncByName(string name);
-        Task<List<GenreModel>> GetAsyncListAscending();
-        Task<List<GenreModel>> GetAsyncListDescending();
+        Task<IndexGenreListViewModel> IndexGenreList(string? sortOrder);
+        Task<IndexGenreNameViewModel> GenreName(string name);
     }
 }

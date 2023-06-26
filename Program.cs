@@ -11,22 +11,23 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 builder.Services.ConfigureMongoDb(builder.Configuration);
 
-builder.Services.AddScoped<IAlbumService, AlbumService>();
 builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
+builder.Services.AddScoped<IAlbumService, AlbumService>();
 
-builder.Services.AddScoped<IArtistService, ArtistService>();
 builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
+builder.Services.AddScoped<IArtistService, ArtistService>();
 
-builder.Services.AddScoped<IFeedbackService, FeedbackService>();
-
-builder.Services.AddScoped<IReviewService, ReviewService>();
-builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
-
-builder.Services.AddScoped<ISongService, SongService>();
-builder.Services.AddScoped<IUserService, UserService>();
-
-builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+builder.Services.AddScoped<IGenreService, GenreService>();
+
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
+
+builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+
+builder.Services.AddScoped<ISongRepository, SongRepository>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
@@ -56,6 +57,7 @@ app.MapControllerRoute(
     "/{*url}",
      new { controller = "Home", action = "Error" }
 );
+
 app.Run();
 
 //TODO : CLEANUP CODE everywhere at the end

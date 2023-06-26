@@ -1,59 +1,49 @@
 ﻿using LicentaApp.Models;
-using MongoDB.Driver;
-using MongoDB.Driver.Linq;
+using LicentaApp.Models.ViewModels;
+
 namespace LicentaApp.Services
 {
     public class ArtistService : IArtistService
     {
-        private readonly IMongoCollection<ArtistModel> _artistCollection;
-
-        public ArtistService(IMongoCollection<ArtistModel> artistCollection)
+        private readonly IArtistRepository _artistRepository;
+        private readonly IAlbumRepository _albumRepository;
+        private readonly IReviewRepository _reviewRepository;
+        public ArtistService(IArtistRepository artistService, IAlbumRepository albumService, IReviewRepository reviewService)
         {
-            _artistCollection = artistCollection;
+            _artistRepository = artistService;
+            _albumRepository = albumService;
+            _reviewRepository = reviewService;
         }
 
-        public async Task<List<ArtistModel>> GetAsync() =>
-            await _artistCollection.Find(_ => true).ToListAsync();
-
-        public async Task<List<ArtistModel>> GetPaginatedListAsync(int pageNumber = 0, int pageSize = 10) =>
-            await _artistCollection.Find(_ => true)
-                .Skip(pageNumber * pageSize)
-                .Limit(pageSize)
-                .ToListAsync();
-
-        public async Task<List<ArtistModel>> GetPaginatedListAsyncAscending(int pageNumber = 0, int pageSize = 10) =>
-            await _artistCollection.Find(_ => true)
-                .SortBy(x => x.Name)
-                .Skip(pageNumber * pageSize)
-                .Limit(pageSize)
-                .ToListAsync();
-
-        public async Task<List<ArtistModel>> GetPaginatedListAsyncDescending(int pageNumber = 0, int pageSize = 10) =>
-            await _artistCollection.Find(_ => true)
-                .SortByDescending(x => x.Name)
-                .Skip(pageNumber * pageSize)
-                .Limit(pageSize)
-                .ToListAsync();
-
-        public async Task<int> GetTotalCountAsync()
+        public async Task<IndexArtistListViewModel> IndexArtistList(string sortOrder, int pageNumber)
         {
-            var totalCount = await _artistCollection.CountDocumentsAsync(FilterDefinition<ArtistModel>.Empty);
-            return (int)totalCount;
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int pageSize = 9;
+            int totalArtists = await _artistRepository.GetTotalCountAsync();
+            int maxPages = (totalArtists + pageSize - 1) / pageSize;
+
+            List<ArtistModel> artistList = await _artistRepository.GetPaginatedFilteredList(sortOrder, pageNumber, pageSize);
+
+            return new IndexArtistListViewModel
+            {
+                ArtistList = artistList,
+                AlbumsToArtist = await _albumRepository.GetNumOfAlbumsByNames(artistList),
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages
+            };
         }
-
-        public async Task<ArtistModel?> GetAsyncById(string id) =>
-            await _artistCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-
-        public async Task<ArtistModel> GetAsyncByName(string name) =>
-            await _artistCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
-
-        public async Task CreateAsync(ArtistModel newAlbumModel) =>
-            await _artistCollection.InsertOneAsync(newAlbumModel);
-
-        public async Task UpdateAsync(string id, ArtistModel updatedAlbumModel) =>
-            await _artistCollection.ReplaceOneAsync(x => x.Id == id, updatedAlbumModel);
-
-        public async Task RemoveAsync(string id) =>
-            await _artistCollection.DeleteOneAsync(x => x.Id == id);
+        public async Task<IndexArtistNameViewModel> ArtistName(string name, string sortOrder)
+        {
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "desc" : sortOrder;
+            var artistName = (await _artistRepository.GetAsyncByName(name)).Name;
+            return new IndexArtistNameViewModel
+            {
+                Artist = await _artistRepository.GetAsyncByName(name),
+                ArtistAlbums = await _albumRepository.GetFilteredListByArtist(artistName, sortOrder),
+                SortOrder = sortOrder,
+                Reviews = await _reviewRepository.GetAsyncListByAlbum(name)
+            };
+        }
     }
 }

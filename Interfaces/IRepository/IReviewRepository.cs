@@ -1,9 +1,10 @@
 ﻿using LicentaApp.Models;
-namespace LicentaApp.Interfaces.IRepository
+namespace LicentaApp.Interfaces.IService
 {
     public interface IReviewRepository
     {
-        Task AddReview(ReviewModel newReview);
-        Task<List<ReviewModel>> IndexReviewList();
+        Task<List<ReviewModel>> GetAsync();
+        Task CreateAsync(ReviewModel newReviewModel);
+        Task<List<ReviewModel>> GetAsyncListByAlbum(string albumName);
     }
 }

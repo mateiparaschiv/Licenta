@@ -1,37 +1,34 @@
-﻿using LicentaApp.Models;
-using MongoDB.Driver;
+﻿using LicentaApp.Models.ViewModels;
 
 namespace LicentaApp.Services
 {
     public class GenreService : IGenreService
     {
-        private readonly IMongoCollection<GenreModel> _genreCollection;
-
-        public GenreService(IMongoCollection<GenreModel> genreCollection)
+        private readonly IGenreRepository _genreRepository;
+        private readonly IAlbumRepository _albumRepository;
+        public GenreService(IGenreRepository genreRepository, IAlbumRepository albumRepository)
         {
-            _genreCollection = genreCollection;
+            _genreRepository = genreRepository;
+            _albumRepository = albumRepository;
         }
-        public async Task<List<GenreModel>> GetAsync() =>
-             await _genreCollection.Find(_ => true).ToListAsync();
 
-        public async Task<GenreModel?> GetAsync(string id) =>
-            await _genreCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-        public async Task<GenreModel?> GetAsyncByName(string name) =>
-            await _genreCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
+        public async Task<IndexGenreListViewModel> IndexGenreList(string? sortOrder)
+        {
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            return new IndexGenreListViewModel
+            {
+                GenreList = await _genreRepository.GetFilteredListByName(sortOrder),
+                SortOrder = sortOrder
+            };
+        }
 
-        public async Task CreateAsync(GenreModel newGenreModel) =>
-            await _genreCollection.InsertOneAsync(newGenreModel);
-
-        public async Task UpdateAsync(string id, GenreModel updatedGenreModel) =>
-            await _genreCollection.ReplaceOneAsync(x => x.Id == id, updatedGenreModel);
-
-        public async Task RemoveAsync(string id) =>
-            await _genreCollection.DeleteOneAsync(x => x.Id == id);
-
-        public async Task<List<GenreModel>> GetAsyncListAscending() =>
-            await _genreCollection.Find(_ => true).SortBy(x => x.Name).ToListAsync();
-
-        public async Task<List<GenreModel>> GetAsyncListDescending() =>
-            await _genreCollection.Find(_ => true).SortByDescending(x => x.Name).ToListAsync();
+        public async Task<IndexGenreNameViewModel> GenreName(string name)
+        {
+            return new IndexGenreNameViewModel
+            {
+                Genre = await _genreRepository.GetAsyncByName(name),
+                GenreAlbums = await _albumRepository.GetListByGenre(name)
+            };
+        }
     }
 }

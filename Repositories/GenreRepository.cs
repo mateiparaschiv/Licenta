@@ -1,51 +1,34 @@
 ﻿using LicentaApp.Models;
-using LicentaApp.Models.ViewModels;
+using MongoDB.Driver;
 
 namespace LicentaApp.Repositories
 {
     public class GenreRepository : IGenreRepository
     {
-        private readonly IGenreService _genreService;
-        private readonly IAlbumService _albumService;
-        public GenreRepository(IGenreService genreService, IAlbumService albumService)
+        private readonly IMongoCollection<GenreModel> _genreCollection;
+
+        public GenreRepository(IMongoCollection<GenreModel> genreCollection)
         {
-            _genreService = genreService;
-            _albumService = albumService;
+            _genreCollection = genreCollection;
         }
 
-        public async Task<IndexGenreListViewModel> IndexGenreList(string? sortOrder)
+        public async Task<GenreModel?> GetAsyncByName(string name) =>
+            await _genreCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
+
+        public async Task<List<GenreModel>> GetAsyncListAscending() =>
+            await _genreCollection.Find(_ => true).SortBy(x => x.Name).ToListAsync();
+
+        public async Task<List<GenreModel>> GetAsyncListDescending() =>
+             await _genreCollection.Find(_ => true).SortByDescending(x => x.Name).ToListAsync();
+
+        public async Task<List<GenreModel>> GetFilteredListByName(string sortOrder)
         {
-            List<GenreModel> genreList;
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            sortOrder = sortOrder?.ToLower() ?? "asc";
+            var sortDefinition = sortOrder == "asc"
+                ? Builders<GenreModel>.Sort.Ascending(x => x.Name)
+                : Builders<GenreModel>.Sort.Descending(x => x.Name);
 
-            switch (sortOrder)
-            {
-                case "desc":
-                    genreList = await _genreService.GetAsyncListDescending();
-                    break;
-                default: // default is ascending
-                    genreList = await _genreService.GetAsyncListAscending();
-                    break;
-            }
-
-            IndexGenreListViewModel indexGenreListViewModel = new IndexGenreListViewModel
-            {
-                GenreList = genreList,
-                SortOrder = sortOrder
-            };
-            return indexGenreListViewModel;
-        }
-
-        public async Task<IndexGenreNameViewModel> GenreName(string name)
-        {
-            var genre = await _genreService.GetAsyncByName(name);
-            var genreAlbums = await _albumService.GetAsyncListByGenre(name);
-            IndexGenreNameViewModel indexGenreNameViewModel = new IndexGenreNameViewModel
-            {
-                Genre = genre,
-                GenreAlbums = genreAlbums
-            };
-            return indexGenreNameViewModel;
+            return await _genreCollection.Find(_ => true).Sort(sortDefinition).ToListAsync();
         }
     }
 }
