@@ -22,7 +22,7 @@ namespace LicentaApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _reviewRepository.AddReview(newReview);
+                await _reviewRepository.AddReview(newReview);
             }
             return RedirectToAction("Album", "Albums", new { name = newReview.Subject });
         }

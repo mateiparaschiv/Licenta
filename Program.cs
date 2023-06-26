@@ -1,5 +1,6 @@
 global using LicentaApp.Interfaces.IRepository;
 global using LicentaApp.Interfaces.IService;
+using LicentaApp.Configuration;
 using LicentaApp.Repositories;
 using LicentaApp.Services;
 
