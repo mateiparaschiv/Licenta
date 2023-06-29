@@ -5,36 +5,38 @@ using MongoDB.Driver;
 
 namespace LicentaApp.Configuration
 {
-    public static class MongoDbConfiguration
+    public static class MongoDBConfiguration
     {
 
         private static IMongoDatabase? _db;
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.ConfigureMongoDb(configuration);
+            services.ConfigureMongoDB(configuration);
             services.AddControllers().AddNewtonsoftJson(options => options.UseMemberCasing());
         }
 
-        public static void ConfigureMongoDb(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureMongoDB(this IServiceCollection services, IConfiguration configuration)
         {
-            var settings = getMongoDbSettings(configuration);
+            var settings = getMongoDBSettings(configuration);
             _db = CreateMongoDatabase(settings);
-            services.addMongoDbRepository<AlbumRepository, AlbumModel>(settings.CollectionName.AlbumCollection);
-            services.addMongoDbRepository<ArtistRepository, ArtistModel>(settings.CollectionName.ArtistCollection);
-            services.addMongoDbRepository<FeedbackRepository, FeedbackModel>(settings.CollectionName.FeedbackCollection);
-            services.addMongoDbRepository<ReviewRepository, ReviewModel>(settings.CollectionName.ReviewCollection);
-            services.addMongoDbRepository<UserRepository, UserModel>(settings.CollectionName.UserCollection);
-            services.addMongoDbRepository<GenreRepository, GenreModel>(settings.CollectionName.GenreCollection);
+            services.addMongoDBRepository<AlbumRepository, AlbumModel>(settings.CollectionName.AlbumCollection);
+            services.addMongoDBRepository<ArtistRepository, ArtistModel>(settings.CollectionName.ArtistCollection);
+            services.addMongoDBRepository<FeedbackRepository, FeedbackModel>(settings.CollectionName.FeedbackCollection);
+            services.addMongoDBRepository<ReviewRepository, ReviewModel>(settings.CollectionName.ReviewCollection);
+            services.addMongoDBRepository<UserRepository, UserModel>(settings.CollectionName.UserCollection);
+            services.addMongoDBRepository<GenreRepository, GenreModel>(settings.CollectionName.GenreCollection);
+            services.addMongoDBRepository<SongRepository, SongModel>(settings.CollectionName.SongCollection);
+
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(settings.ConnectionString, settings.DatabaseName);
 
         }
-        private static void addMongoDbRepository<TRepository, TModel>(this IServiceCollection services, string collectionName)
+        private static void addMongoDBRepository<TRepository, TModel>(this IServiceCollection services, string collectionName)
         {
             services.AddSingleton(_db.GetCollection<TModel>(collectionName));
             services.AddSingleton(typeof(TRepository));
         }
-        private static DatabaseSettingsModel getMongoDbSettings(IConfiguration configuration) =>
+        private static DatabaseSettingsModel getMongoDBSettings(IConfiguration configuration) =>
             configuration.GetSection(nameof(DatabaseSettingsModel)).Get<DatabaseSettingsModel>();
 
         private static IMongoDatabase CreateMongoDatabase(DatabaseSettingsModel settings)
@@ -48,5 +50,4 @@ namespace LicentaApp.Configuration
         }
     }
 
-    //services.addMongoDbRepository<SongRepository, SongModel>(settings.CollectionName.SongCollection);
 }
