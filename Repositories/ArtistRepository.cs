@@ -18,8 +18,8 @@ namespace LicentaApp.Repositories
         public async Task<List<ArtistModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)
         {
             var sortDefinition = sortOrder.Equals("asc")
-                ? Builders<ArtistModel>.Sort.Ascending(x => x.Name)
-                : Builders<ArtistModel>.Sort.Descending(x => x.Name);
+            ? Builders<ArtistModel>.Sort.Ascending(x => x.Name)
+            : Builders<ArtistModel>.Sort.Descending(x => x.Name);
 
             return await _artistCollection.Find(_ => true)
             .Sort(sortDefinition)
