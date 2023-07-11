@@ -50,33 +50,21 @@
     </ul>
 </div>
 <div class="wrapper d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
+        @if (pageNumber > 0)
+        {
+            <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber - 1)">
+                <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
+                @*backwards*@
+            </a>
+        }
 
-    @if (pageNumber == 0)
-    {
-        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber+1)">
-            <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
-            @*forwards*@
-        </a>
-    }
-
-    @if (pageNumber > 0 && pageNumber < maxPages)
-    {
-        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber-1)">
-            <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
-            @*backwards*@
-        </a>
-
-        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber + 1)">
-            <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
-            @*forwards*@
-        </a>
-    }
-
-    @if (pageNumber == maxPages)
-    {
-        <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber-1)">
-            <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
-            @*backwards*@
-        </a>
-    }
+        @if (pageNumber < maxPages - 1)
+        {
+            <a id="link" asp-controller="Artists" asp-action="Index" asp-route-page="@(pageNumber + 1)">
+                <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
+                @*forwards*@
+            </a>
+        }
+    </div>
 </div>
