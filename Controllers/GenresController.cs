@@ -11,9 +11,9 @@ namespace LicentaApp.Controllers
             _genreService = genreRepository;
         }
 
-        public async Task<IActionResult> Index(string? sortOrder)
+        public async Task<IActionResult> Index(string? sortOrder, int page)
         {
-            return View(await _genreService.IndexGenreList(sortOrder));
+            return View(await _genreService.IndexGenreList(sortOrder, page));
         }
         public async Task<IActionResult> Genre(string name)
         {

@@ -1,9 +1,10 @@
 ﻿@using LicentaApp.Models.ViewModels
 @model IndexGenreListViewModel
 @{
-    //ViewData["Title"] = "Index Albums";
     var genreList = Model.GenreList;
     var sortOrder = Model.SortOrder;
+    var pageNumber = Model.PageNumber;
+    var maxPages = Model.MaxPages;
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="d-flex justify-content-between bd-highlight">
@@ -46,3 +47,22 @@
         </div>
     </div>
 }
+<div class="wrapper d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
+        @if (pageNumber > 0)
+        {
+            <a id="link" asp-controller="Genres" asp-action="Index" asp-route-page="@(pageNumber - 1)" asp-route-sortOrder="@sortOrder">
+                <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
+                @*backwards*@
+            </a>
+        }
+
+        @if (pageNumber < maxPages - 1)
+        {
+            <a id="link" asp-controller="Genres" asp-action="Index" asp-route-page="@(pageNumber + 1)" asp-route-sortOrder="@sortOrder">
+                <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
+                @*forwards*@
+            </a>
+        }
+    </div>
+</div>

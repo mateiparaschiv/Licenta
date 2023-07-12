@@ -4,5 +4,8 @@
     {
         public List<GenreModel> GenreList { get; set; }
         public string SortOrder { get; set; }
+        public int PageNumber { get; set; }
+        public int MaxPages { get; set; }
+
     }
 }
