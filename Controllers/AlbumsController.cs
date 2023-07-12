@@ -10,9 +10,9 @@ namespace LicentaApp.Controllers
         {
             _albumService = albumService;
         }
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index(string sortOrder, int page)
         {
-            return View(await _albumService.IndexAlbumList(sortOrder));
+            return View(await _albumService.IndexAlbumList(sortOrder, page));
         }
         public async Task<IActionResult> Album(string name)
         {

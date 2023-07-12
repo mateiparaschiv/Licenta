@@ -3,18 +3,16 @@
 @inject IConfiguration _configuration
 @model IndexAlbumListViewModel
 @{
-    ViewData["Title"] = "Index Albums";
-    var environment = _configuration.GetValue<string>("Environment");
-    //var albumList = Model;
     var albumList = Model.AlbumList;
     var sortOrder = Model.SortOrder;
+    var pageNumber = Model.PageNumber;
+    var maxPages = Model.MaxPages;
 }
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="d-flex justify-content-between bd-highlight">
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="p-2 bd-highlight">
         <h2 class="text-muted">Albums</h2>
     </div>
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="p-2 bd-highlight">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))
@@ -33,38 +31,57 @@
         </span>
     </div>
 </div>
-@*<h1 class="text-muted">Albums</h1>*@
-@foreach (var album in albumList)
-{
-    <div class="row justify-content-center py-4 g-0">
-        <div class="col-4" id="image_col">
-            <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
-                @*<img src="@album.Image" id="artist-album_image">*@
-                <img src="~/images/Albums/@(album.Name).jpg" id="artist-album_image">
-            </a>
+<div class="row row-cols-1 row-cols-md-3 g-4 py-4">
+    @foreach (var album in albumList)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <a class="nav-link p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
+                    <img id="image_col" src="~/images/Albums/@(album.Name).jpg" class="card-img-top" alt="Album @album.Name">
+                </a>
+                <div class="card-body">
+                    <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
+                        <h1 class="text-center" id="link">
+                            <i>
+                                @album.Name
+                            </i>
+                        </h1>
+                    </a>
+                    <a class="nav-link active p-0" asp-controller="Artists" asp-action="Artist" asp-route-name="@album.Artist">
+                        <h3 class="text-center" id="link">
+                            <i>
+                                @album.Artist
+                            </i>
+                        </h3>
+                    </a>
+                    <a class="nav-link active p-0" asp-controller="Genres" asp-action="Genre" asp-route-name="@album.Genre">
+                        <h5 class="text-center" id="link">
+                            <i>
+                                @album.Genre
+                            </i>
+                        </h5>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="col-4 justify-content-center flex-column d-inline-flex">
-            <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
-                <h1 class="text-center" id="link">
-                    <i>
-                        @album.Name
-                    </i>
-                </h1>
+    }
+</div>
+<div class="wrapper d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
+        @if (pageNumber > 0)
+        {
+            <a id="link" asp-controller="Albums" asp-action="Index" asp-route-page="@(pageNumber - 1)" asp-route-sortOrder="@sortOrder">
+                <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
+                @*backwards*@
             </a>
-            <a class="nav-link active p-0" asp-controller="Artists" asp-action="Artist" asp-route-name="@album.Artist">
-                <h3 class="text-center" id="link">
-                    <i>
-                        @album.Artist
-                    </i>
-                </h3>
+        }
+
+        @if (pageNumber < maxPages - 1)
+        {
+            <a id="link" asp-controller="Albums" asp-action="Index" asp-route-page="@(pageNumber + 1)" asp-route-sortOrder="@sortOrder">
+                <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
+                @*forwards*@
             </a>
-            <a class="nav-link active p-0" asp-controller="Genres" asp-action="Genre" asp-route-name="@album.Genre">
-                <h5 class="text-center" id="link">
-                    <i>
-                        @album.Genre
-                    </i>
-                </h5>
-            </a>
-        </div>
+        }
     </div>
-}
+</div>

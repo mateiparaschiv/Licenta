@@ -12,13 +12,19 @@ namespace LicentaApp.Services
             _albumRepository = albumRepository;
         }
 
-        public async Task<IndexGenreListViewModel> IndexGenreList(string? sortOrder)
+        public async Task<IndexGenreListViewModel> IndexGenreList(string sortOrder, int pageNumber)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int pageSize = 5;
+            int totalGenres = await _genreRepository.GetTotalCountAsync();
+            int maxPages = (totalGenres + pageSize - 1) / pageSize;
+
             return new IndexGenreListViewModel
             {
-                GenreList = await _genreRepository.GetFilteredListByName(sortOrder),
-                SortOrder = sortOrder
+                GenreList = await _genreRepository.GetPaginatedFilteredList(sortOrder, pageNumber, pageSize),
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages
             };
         }
 

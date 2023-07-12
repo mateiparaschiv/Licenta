@@ -69,5 +69,21 @@ namespace LicentaApp.Repositories
             var albums = await _albumCollection.Aggregate<AlbumModel>(pipeline).ToListAsync();
             return albums;
         }
+
+        public async Task<List<AlbumModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)
+        {
+            var sortDefinition = sortOrder.Equals("asc")
+                ? Builders<AlbumModel>.Sort.Ascending(x => x.Name)
+                : Builders<AlbumModel>.Sort.Descending(x => x.Name);
+
+            return await _albumCollection.Find(_ => true)
+                .Sort(sortDefinition)
+                .Skip(pageNumber * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetTotalCountAsync() =>
+            (int)await _albumCollection.CountDocumentsAsync(FilterDefinition<AlbumModel>.Empty);
     }
 }

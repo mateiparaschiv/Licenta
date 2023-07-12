@@ -26,13 +26,19 @@ namespace LicentaApp.Services
             await _albumRepository.CreateAsync(newAlbumModel);
         }
 
-        public async Task<IndexAlbumListViewModel> IndexAlbumList(string sortOrder)
+        public async Task<IndexAlbumListViewModel> IndexAlbumList(string sortOrder, int pageNumber)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int pageSize = 9;
+            int totalAlbums = await _albumRepository.GetTotalCountAsync();
+            int maxPages = (totalAlbums + pageSize - 1) / pageSize;
+
             return new IndexAlbumListViewModel
             {
-                AlbumList = await _albumRepository.GetFilteredListByName(sortOrder),
-                SortOrder = sortOrder
+                AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder, pageNumber, pageSize),
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages
             };
         }
 
