@@ -9,21 +9,21 @@
     var maxPages = Model.MaxPages;
 }
 <div class="d-flex justify-content-between bd-highlight">
-    <div class="p-2 bd-highlight">
+    <div class="d-flex align-items-center justify-content-between">
         <h2 class="text-muted">Albums</h2>
     </div>
-    <div class="p-2 bd-highlight">
+    <div class="d-flex align-items-center justify-content-between">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))
                 {
-                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="desc">
+                    <a id="sort_buttons" asp-controller="Artists" asp-action="Index" asp-route-sortOrder="desc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
                     </a>
                 }
                 else
                 {
-                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="asc">
+                    <a id="sort_buttons" asp-controller="Artists" asp-action="Index" asp-route-sortOrder="asc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down"></i>
                     </a>
                 }
