@@ -6,16 +6,24 @@ namespace LicentaApp.Services
 {
     public class ReviewService : IReviewService
     {
-        public ReviewService(IReviewRepository reviewService)
+        private readonly IReviewRepository _reviewService;
+        private readonly IArtistRepository _artistRepository;
+        private readonly IAlbumRepository _albumRepository;
+        public ReviewService(IReviewRepository reviewService,
+            IArtistRepository artistService,
+            IAlbumRepository albumService)
         {
             _reviewService = reviewService;
+            _artistRepository = artistService;
+            _albumRepository = albumService;
 
         }
-        private readonly IReviewRepository _reviewService;
+
         public Task<List<ReviewModel>> IndexReviewList()
         {
             return _reviewService.GetAsync();
         }
+
         public async Task AddReview(ReviewModel newReview)
         {
             ReviewModel sentimentReview = await SentimentAnalysis(newReview.Message);
@@ -24,6 +32,17 @@ namespace LicentaApp.Services
             newReview.PositiveScore = sentimentReview.PositiveScore;
             newReview.CompoundScore = sentimentReview.CompoundScore;
             newReview.Sentiment = sentimentReview.Sentiment;
+
+            if (newReview.SubjectType.Equals("album"))
+            {
+                var album = await _albumRepository.GetAlbumByName(newReview.Subject);
+                await _albumRepository.UpdateAlbumAsync(album.Id, newReview.CompoundScore);
+            }
+            if (newReview.SubjectType.Equals("artist"))
+            {
+                var artist = await _artistRepository.GetArtistByName(newReview.Subject);
+                await _artistRepository.UpdateArtistAsync(artist.Id, newReview.CompoundScore);
+            }
 
             await _reviewService.CreateAsync(newReview);
         }

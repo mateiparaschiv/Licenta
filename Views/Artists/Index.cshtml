@@ -1,6 +1,7 @@
 ﻿@using LicentaApp.Models.ViewModels
 @model IndexArtistListViewModel
 @{
+    ViewData["Title"] = "Artists";
     var artistList = Model.ArtistList;
     var albumsToArtist = Model.AlbumsToArtist;
     var sortOrder = Model.SortOrder;
@@ -31,24 +32,29 @@
         </span>
     </div>
 </div>
-@*<h1 class="text-muted">Artists</h1>*@
+
 <div class="wrapper d-flex justify-content-center align-items-center">
     <ul class="list-group list-group-flush justify-content-center text-center w-50">
         @foreach (var artist in artistList)
         {
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a id="link" asp-controller="Artists" asp-action="Artist" asp-route-name="@artist.Name">
-                    <h1>
-                        <i>
-                            @artist.Name
-                        </i>
-                    </h1>
-                </a>
+                <div class="d-flex align-items-center">
+                    @*<img src="@artist.Image" alt="@artist.Name's picture" style="max-width: 50px; max-height: 50px;">*@
+                    <a id="link" asp-controller="Artists" asp-action="Artist" asp-route-name="@artist.Name">
+                        <h1>
+                            <i>
+                                @artist.Name
+                            </i>
+                        </h1>
+                    </a>
+                </div>
                 <span class="badge bg-primary rounded-pill display-6 text-end p-2">@albumsToArtist[$"{artist.Name}"]</span>
             </li>
         }
     </ul>
 </div>
+
+
 <div class="wrapper d-flex justify-content-center align-items-center">
     <div class="d-flex justify-content-center">
         @if (pageNumber > 0)

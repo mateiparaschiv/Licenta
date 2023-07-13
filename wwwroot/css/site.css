@@ -16,7 +16,6 @@ html {
 #link {
     color: #212529;
     text-decoration: none;
-    /*width: max-content;*/
 }
 #link:hover {
     color: #0d6efd;

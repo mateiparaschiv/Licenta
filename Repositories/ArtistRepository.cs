@@ -12,7 +12,7 @@ namespace LicentaApp.Repositories
             _artistCollection = artistCollection;
         }
 
-        public async Task<ArtistModel> GetAsyncByName(string name) =>
+        public async Task<ArtistModel> GetArtistByName(string name) =>
             await _artistCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
 
         public async Task<List<ArtistModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)
@@ -30,5 +30,15 @@ namespace LicentaApp.Repositories
 
         public async Task<int> GetTotalCountAsync() =>
             (int)await _artistCollection.CountDocumentsAsync(FilterDefinition<ArtistModel>.Empty);
+        public async Task UpdateArtistAsync(string artistId, double compoundScore)
+        {
+            var filter = Builders<ArtistModel>.Filter.Eq(x => x.Id, artistId);
+
+            var update = Builders<ArtistModel>.Update
+                .Inc(x => x.ReviewCount, 1)
+                .Inc(x => x.CompoundScore, compoundScore);
+
+            await _artistCollection.UpdateOneAsync(filter, update);
+        }
     }
 }

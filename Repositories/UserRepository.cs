@@ -15,7 +15,7 @@ namespace LicentaApp.Repositories
         public async Task<List<UserModel>> GetAsync() =>
             await _userCollection.Find(_ => true).ToListAsync();
 
-        public async Task<UserModel?> GetAsync(string UserName) =>
+        public async Task<UserModel> GetAsync(string UserName) =>
             await _userCollection.Find(x => x.UserName == UserName).FirstOrDefaultAsync();
 
         public async Task CreateAsync(UserModel newUserModel) =>

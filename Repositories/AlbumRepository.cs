@@ -16,7 +16,7 @@ namespace LicentaApp.Repositories
         public async Task<List<AlbumModel>> GetAsync() =>
             await _albumCollection.Find(_ => true).ToListAsync();
 
-        public async Task<AlbumModel?> GetAlbumByName(string name) =>
+        public async Task<AlbumModel> GetAlbumByName(string name) =>
             await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
 
         public async Task<List<AlbumModel>> GetListByArtist(string artistName) =>
@@ -85,5 +85,15 @@ namespace LicentaApp.Repositories
 
         public async Task<int> GetTotalCountAsync() =>
             (int)await _albumCollection.CountDocumentsAsync(FilterDefinition<AlbumModel>.Empty);
+        public async Task UpdateAlbumAsync(string albumId, double compoundScore)
+        {
+            var filter = Builders<AlbumModel>.Filter.Eq(x => x.Id, albumId);
+
+            var update = Builders<AlbumModel>.Update
+                .Inc(x => x.ReviewCount, 1)
+                .Inc(x => x.CompoundScore, compoundScore);
+
+            await _albumCollection.UpdateOneAsync(filter, update);
+        }
     }
 }

@@ -1,16 +1,16 @@
 ﻿@using LicentaApp.Models.ViewModels
 @model IndexGenreNameViewModel
 @{
-    //ViewData["Title"] = "Index Albums";
+    ViewData["Title"] = $"Genre - {Model.Genre.Name}";
     var genre = Model.Genre;
     var genreAlbums = Model.GenreAlbums;
-    var rand = new Random();    
+    var rand = new Random();
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="row py-4 g-0">
     <div class="col-md-3" id="image_col">
         <div class="photo-container">
-            @for(int i = 0; i < 3; i++)
+            @for (int i = 0; i < 3; i++)
             {
                 <img src="~/images/Albums/@(genreAlbums[rand.Next(genreAlbums.Count())].Name).jpg">
             }

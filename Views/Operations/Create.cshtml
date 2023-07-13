@@ -1,4 +1,8 @@
 ﻿@model UserModel
+@{
+    ViewData["Title"] = "Sign up";
+
+}
 
 @*https://stackoverflow.com/questions/57024115/how-can-i-set-up-conditional-layouts-with-viewstart-in-asp-net-core-razor-pages*@
 @if (ViewBag.Message != null)
@@ -9,6 +13,10 @@
 <div class="container my-3 text-center">
     <div class="row d-flex bd-example justify-content-center">
         <div class="col-4">
+            @if (ViewBag.Message != null)
+            {
+                <div class="p-1 mb-2 bg-success text-white">@ViewBag.Message</div>
+            }
             <form id="registerForm" method="post" novalidate="novalidate">
                 <h class="display-4">Create a new account.</h>
                 <hr>
@@ -67,7 +75,6 @@
                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
                 <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Sign up</button>
-                <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Lc6T7_BnN1MidZgFPaHGVej7xj_gRyfK38SFSVHv0pixBbmh0Dtthq4yWdBULMQnptO_sNv_b4d290rR9wy6QJHMduHZFTcmLmvt-8XdcM2H7FjO9xPMUyXAiYTM6QXDp5XDjvajedPt8jAgGLBfGk">
             </form>
         </div>
     </div>

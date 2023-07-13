@@ -8,11 +8,22 @@ namespace LicentaApp.Services
         private readonly IArtistRepository _artistRepository;
         private readonly IAlbumRepository _albumRepository;
         private readonly IReviewRepository _reviewRepository;
-        public ArtistService(IArtistRepository artistService, IAlbumRepository albumService, IReviewRepository reviewService)
+        private readonly IUserRepository _userRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+
+        public ArtistService(IArtistRepository artistService,
+            IAlbumRepository albumService,
+            IReviewRepository reviewService,
+            IUserRepository userRepository,
+            IHttpContextAccessor httpContextAccessor)
         {
             _artistRepository = artistService;
             _albumRepository = albumService;
             _reviewRepository = reviewService;
+            _userRepository = userRepository;
+            _httpContextAccessor = httpContextAccessor;
+
         }
 
         public async Task<IndexArtistListViewModel> IndexArtistList(string sortOrder, int pageNumber)
@@ -36,13 +47,30 @@ namespace LicentaApp.Services
         public async Task<IndexArtistNameViewModel> ArtistName(string name, string sortOrder)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "desc" : sortOrder;
-            var artistName = (await _artistRepository.GetAsyncByName(name)).Name;
+            var artist = await _artistRepository.GetArtistByName(name);
+
+            var newReview = new ReviewModel
+            {
+                Subject = artist.Name,
+                Username = null,
+                Email = null
+            };
+
+            if (_httpContextAccessor.HttpContext.User?.Identity?.IsAuthenticated ?? false)
+            {
+                var username = _httpContextAccessor.HttpContext.User.Identity.Name;
+                var user = await _userRepository.GetAsync(username);
+                newReview.Username = username;
+                newReview.Email = user.Email;
+            }
+
             return new IndexArtistNameViewModel
             {
-                Artist = await _artistRepository.GetAsyncByName(name),
-                ArtistAlbums = await _albumRepository.GetFilteredListByArtist(artistName, sortOrder),
+                Artist = artist,
+                ArtistAlbums = await _albumRepository.GetFilteredListByArtist(artist.Name, sortOrder),
                 SortOrder = sortOrder,
-                Reviews = await _reviewRepository.GetAsyncListByAlbum(name)
+                ReviewList = await _reviewRepository.GetAsyncListByAlbum(name),
+                NewReview = newReview
             };
         }
     }

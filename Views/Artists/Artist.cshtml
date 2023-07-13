@@ -1,28 +1,36 @@
 ﻿@using LicentaApp.Models.ViewModels
 @model IndexArtistNameViewModel
 @{
+    ViewData["Title"] = $"Artist - {Model.Artist.Name}";
     var artist = Model.Artist;
     var artistAlbums = Model.ArtistAlbums;
     var sortOrder = Model.SortOrder;
-    var reviews = Model.Reviews;
+    var reviewList = Model.ReviewList;
+    var newReview = Model.NewReview;
 }
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <div class="row py-4 g-0">
     <div class="col-md-3" id="image_col">
         <img src="@artist.Image" id="artist-album_image">
     </div>
     <div class="col-md-9">
         <div class="card-body">
-            @*<p class="display-4">@artist.Name</p>*@
             <div class="row align-items-center">
                 <div class="col">
                     <p class="display-4">@artist.Name</p>
                 </div>
                 <div class="col-auto">
-                    <form class="col h-25" method="post">
-                        <button asp-route="Custom" class="btn btn-outline-primary">Rate this artist</button>
-                    </form>
+                    @*<form class="col h-25" method="post">
+                    @*<button asp-route="Custom" class="btn btn-outline-primary">Rate this album</button>
+                    <button asp-route="AddReview" class="btn btn-outline-primary">Rate this album</button>
+                    </form>*@
+                    @{
+                        if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#artistModal" data-bs-whatever="@artist.Name">
+                                Review @artist.Name
+                            </button>
+                        }
+                    }
                 </div>
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
@@ -41,9 +49,11 @@
                             }
                             else
                             {
-                                <div class="row row-cols-1">
+                                <div class="row row-cols-2">
                                     <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                    <span class="col text-end mb-3 mb-md-0">Sentiment</span>
                                     <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                    <span class="col text-end mb-3 mb-md-0">@artist.Sentiment</span>
                                 </div>
                             }
                         }
@@ -65,15 +75,6 @@
                                     <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
                                 </div>
                             }
-
-                            //<div class="row row-cols-1">
-                            //<span class="col text-begin mb-3 mb-md-0">Formed</span>
-                            //<span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
-                            //@if (artist.Disbanded != null)
-                            //{
-                            //    <span class="col text-end mb-3 mb-md-0">Disbanded</span>
-                            //    <span class="col text-end mb-3 mb-md-0">@artist.Disbanded</span>
-                            //}
                         }
                     }
                 </div>
@@ -88,25 +89,23 @@
         <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-albums-tab" data-bs-toggle="tab" data-bs-target="#nav-albums" type="button" role="tab" aria-controls="nav-albums" aria-selected="true">Albums</button>
             <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews" type="button" role="tab" aria-controls="nav-reviews" aria-selected="false" tabindex="-1">Reviews</button>
-            @*<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" tabindex="-1">Contact</button>*@
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade active show" id="nav-albums" role="tabpanel" aria-labelledby="nav-albums-tab">
-            @*<p>This is some placeholder content the <strong>Home tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>*@
             <div class="d-flex justify-content-between bd-highlight">
                 <div class=" ms-auto d-flex align-items-center justify-content-between">
                     <span class="text-muted">
                         @{
                             if (sortOrder.Equals("asc"))
                             {
-                                <a id="sort_buttons" asp-controller="Artists" asp-action="Artist" asp-route-name = "@artist.Name" asp-route-sortOrder="desc">
+                                <a id="sort_buttons" asp-controller="Artists" asp-action="Artist" asp-route-name="@artist.Name" asp-route-sortOrder="desc">
                                     <i id="sort_buttons" class="bi bi-sort-numeric-up-alt"></i>
                                 </a>
                             }
                             else
                             {
-                                <a id="sort_buttons" asp-controller="Artists" asp-action="Artist" asp-route-name = "@artist.Name" asp-route-sortOrder="asc">
+                                <a id="sort_buttons" asp-controller="Artists" asp-action="Artist" asp-route-name="@artist.Name" asp-route-sortOrder="asc">
                                     <i id="sort_buttons" class="bi bi-sort-numeric-down"></i>
                                 </a>
                             }
@@ -122,7 +121,6 @@
                     {
                         <div class="text-center col-md-4 ">
                             <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
-                                @*<img src="@album.Image" id="album_col">*@
                                 <img src="~/images/Albums/@(album.Name).jpg" id="album_col">
                             </a>
                             <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
@@ -140,16 +138,16 @@
         </div>
         <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
             @{
-                if (@reviews.Count > 0)
+                if (@reviewList.Count > 0)
                 {
-                    <h3 class="text-muted ps-4">@reviews.Count() Reviews</h3>
+                    <h3 class="text-muted ps-4">@reviewList.Count() Reviews</h3>
                 }
                 else
                 {
                     <h3 class="text-muted ps-4">There are no reviews for this artist. You can write a review by pressing the "Rate this artist" button above.</h3>
                 }
             }
-            @foreach (var review in @reviews)
+            @foreach (var review in @reviewList)
             {
                 <div class="ps-3 pt-3">
                     <p class="h2">@review.Username</p>
@@ -163,9 +161,10 @@
                 </div>
             }
         </div>
-
-        @*<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-        <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-        </div>*@
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="artistModal" tabindex="-1" aria-labelledby="artistModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
 </div>

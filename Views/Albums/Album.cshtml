@@ -1,6 +1,7 @@
 ﻿@using LicentaApp.Models.ViewModels
 @model IndexAlbumNameViewModel
 @{
+    ViewData["Title"] = $"Album - {Model.Album.Name}";
     var album = Model.Album;
     var reviewList = Model.ReviewList;
     var newReview = Model.NewReview;
@@ -25,19 +26,14 @@
                     <p class="display-4">@album.Name</p>
                 </div>
                 <div class="col-auto">
-                    @*<form class="col h-25" method="post">
-                    @*<button asp-route="Custom" class="btn btn-outline-primary">Rate this album</button>
-                    <button asp-route="AddReview" class="btn btn-outline-primary">Rate this album</button>
-                    </form>*@
                     @{
                         if (User?.Identity?.IsAuthenticated ?? false)
                         {
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#albumModal" data-bs-whatever="@album.Name">
-                                Rate this album
+                                Review @album.Name
                             </button>
                         }
                     }
-
                 </div>
             </div>
 
@@ -63,7 +59,7 @@
                             </a>
                         </span>
                         <span class="col text-center mb-3 mb-md-0">@album.Year</span>
-                        <span class="col text-end mb-3 mb-md-0">TBD!!!</span>
+                        <span class="col text-end mb-3 mb-md-0">@album.Sentiment</span>
                     </div>
                 </div>
             </div>
@@ -102,8 +98,5 @@
 
 <!-- Modal -->
 <div class="modal fade" id="albumModal" tabindex="-1" aria-labelledby="albumModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    @Html.Partial("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
+    @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
 </div>
-
-
-

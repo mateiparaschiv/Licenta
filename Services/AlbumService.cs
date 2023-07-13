@@ -46,6 +46,7 @@ namespace LicentaApp.Services
         {
             var album = await _albumRepository.GetAlbumByName(name);
             var reviewList = await _reviewRepository.GetAsyncListByAlbum(name);
+
             var newReview = new ReviewModel
             {
                 Subject = album.Name,
@@ -61,13 +62,12 @@ namespace LicentaApp.Services
                 newReview.Email = user.Email;
             }
 
-            IndexAlbumNameViewModel indexAlbumNameViewModel = new IndexAlbumNameViewModel
+            return new IndexAlbumNameViewModel
             {
                 Album = album,
                 ReviewList = reviewList,
                 NewReview = newReview
             };
-            return indexAlbumNameViewModel;
         }
     }
 }

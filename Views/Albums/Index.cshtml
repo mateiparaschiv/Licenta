@@ -3,6 +3,7 @@
 @inject IConfiguration _configuration
 @model IndexAlbumListViewModel
 @{
+    ViewData["Title"] = "Albums";
     var albumList = Model.AlbumList;
     var sortOrder = Model.SortOrder;
     var pageNumber = Model.PageNumber;

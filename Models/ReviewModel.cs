@@ -8,36 +8,39 @@ namespace LicentaApp.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         [BsonElement("id")]
-        public string? Id { get; set; }
+        public string Id { get; set; }
 
         [BsonElement("email")]
-        public string? Email { get; set; }
+        public string Email { get; set; }
 
         [BsonElement("username")]
-        public string? Username { get; set; }
+        public string Username { get; set; }
 
         [BsonElement("subject")]
-        public string? Subject { get; set; }
+        public string Subject { get; set; }
 
         [BsonElement("title")]
-        public string? Title { get; set; }
+        public string Title { get; set; }
 
         [BsonElement("message")]
-        public string? Message { get; set; }
+        public string Message { get; set; }
 
         [BsonElement("sentiment")]
-        public string? Sentiment { get; set; }
+        public string Sentiment { get; set; }
 
         [BsonElement("negativeScore")]
-        public double? NegativeScore { get; set; }
+        public double NegativeScore { get; set; }
 
         [BsonElement("neutralScore")]
-        public double? NeutralScore { get; set; }
+        public double NeutralScore { get; set; }
 
         [BsonElement("positiveScore")]
-        public double? PositiveScore { get; set; }
+        public double PositiveScore { get; set; }
 
         [BsonElement("compoundScore")]
-        public double? CompoundScore { get; set; }
+        public double CompoundScore { get; set; }
+
+        [BsonElement("subjectType")]
+        public string SubjectType { get; set; }
     }
 }
