@@ -1,13 +1,394 @@
 [{
   "_id": {
-    "$oid": "6437afe3f609eb57574057c3"
+    "$oid": "6436d457b43d618d9ae41a59"
+  },
+  "name": "The Money Store",
+  "artist": "Death Grips",
+  "genre": "Hip-hop",
+  "year": 2012,
+  "description": "The Money Store is the debut studio album by American experimental hip hop trio Death Grips. It is the follow-up to their debut mixtape, Exmilitary. The album was officially released on April 24, 2012, but had been leaked to YouTube on April 14, sold by the band at Coachella on cassette on April 20, and made available on vinyl on April 21 to celebrate Record Store Day. The Money Store was announced alongside the group's second album, No Love Deep Web, which was released later in the year.",
+  "rating": 4.07,
+  "songs": [
+    "Get Got",
+    "The Fever",
+    "Lost Boys",
+    "Black Jack",
+    "Hustle Bones",
+    "I've Seen Footage",
+    "Double Helix",
+    "System Blower",
+    "The Cage",
+    "Punk Weight",
+    "Fuck That",
+    "Bitch Please",
+    "Hacker"
+  ],
+  "image": "https://i.discogs.com/BfzaMvlcBRat3xYGRhrjAEYeyWcz5SZF7i-xofZ_d9E/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ3NzAz/NDgtMTQyMDQ3ODE4/My03NTg2LmpwZWc.jpeg",
+  "shortDescription": "Upon its release, Death Grips' debut studio album became their magnum opus. The Money Store instantly marked an evolutionary step forward in experimental, industrial, and underground hip-hop.Death Grips created one of the most innovative musical releases of the decade through utilization of the trio’s individual and collective strengths; MC Ride’s raw, visceral, and abrasive vocals, Andy ‘Flatlander’ Morin’s distorted, mechanical sonics, and Zach Hill’s explosive drumming style, coupled with his adept creative direction.",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "6436d46bb43d618d9ae41a5a"
+  },
+  "name": "No Love Deep Web",
+  "artist": "Death Grips",
+  "genre": "Hip-hop",
+  "year": 2012,
+  "description": "No Love Deep Web is the second studio album by American experimental hip hop group Death Grips, originally released via their website on October 1, 2012. \nRecorded from May to August 2012, it exhibited what the group described as a darker, more minimal style, and was leaked by Death Grips themselves due to complications over its release date with their label Epic Records, who subsequently dropped them; the album was later made available for purchase via the band's own Third Worlds imprint and Harvest Records.",
+  "rating": 3.68,
+  "songs": [
+    "Come Up and Get Me",
+    "Lil Boy",
+    "No Love",
+    "Black Dice",
+    "World of Dogs",
+    "Lock Your Doors",
+    "Whammy",
+    "Hunger Games",
+    "Deep Web",
+    "Stockton",
+    "Pop",
+    "Bass Rattle Stars Out the Sky",
+    "Artificial Death in the West"
+  ],
+  "image": "https://i.discogs.com/vFJISACcmLHgRsge2-kzUaq2NuA4pBx46C63srmx3DE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0MDkz/ODU3LTE2NjczNzQ2/MjQtNjYxOC5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "6437b12ef609eb57574057c7"
+  },
+  "name": "Government Plates",
+  "artist": "Death Grips",
+  "genre": "Hip-hop",
+  "year": 2013,
+  "description": "Government Plates is the third studio album by experimental hip hop group Death Grips. It was released for free download on November 13, 2013. It was also uploaded by the band to multiple file sharing sites, and music videos for every song were uploaded to the band's YouTube page. On January 14, 2014, Government Plates was made available for purchase through iTunes. The album has sold 13,000 copies as of March 2015.",
+  "rating": 3.41,
+  "songs": [
+    "You Might Think He Loves You for Your Money But I Know What He Really Loves You for It's Your Brand New Leopard Skin Pillbox Hat",
+    "Anne Bonny",
+    "Two Heavens",
+    "This Is Violence Now (Don't Get Me Wrong)",
+    "Birds",
+    "Feels Like a Wheel",
+    "I'm Overflow",
+    "Big House",
+    "Government Plates",
+    "Bootleg (Don't Need Your Help)",
+    "Whatever I Want (Fuck Who's Watching)"
+  ],
+  "image": "https://i.discogs.com/nBh5wVSBrox0QH65jlvZ9-Lw_NMYrEkyRMJJ6JBnUL8/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTUwOTY5/MTEtMTM4NDM4NDA4/MC0zMDU2LmpwZWc.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "6437b279f609eb57574057c8"
+  },
+  "name": "Exmilitary",
+  "artist": "Death Grips",
+  "genre": "Hip-hop",
+  "year": 2011,
+  "description": "The mixtape was released for free on April 25, 2011, through the group's official website, thirdworlds.net, and later appeared on the net label Grindcore Karaoke. It was simultaneously released through iTunes. The track \"Guillotine\" was released through iTunes on August 3, 2011. \"Guillotine\" has become one of the band's most recognized songs, with more than fourteen million YouTube views on their music video as of October 28, 2022. Other tracks released as music videos include \"Known for it\", \"Culture Shock\", \"Lord of the Game\", \"Spread Eagle Cross the Block\", \"Takyon (Death Yon)\", and \"Beware\". According to Andy Morin, the cover art \"[is a] photograph that one of our members carried in their wallet for roughly 10 years straight. It’s a power object.\" The photo was eventually identified as \"Bearded Man at Oenpelli\", taken by Douglass Baglin in 1968 for his book \"The Dark Australians\" by him and David R. Moore.\nThe mixtape was later released exclusively through the band's website in vinyl, compact disc and cassette formats.",
+  "rating": 4.1,
+  "songs": [
+    "Beware",
+    "Guillotine",
+    "Spread Eagle Cross the Block",
+    "Lord of the Game",
+    "Takyon (Death Yon)",
+    "Cut Throat (Instrumental)",
+    "Klink",
+    "Culture Shock",
+    "Thru the Walls",
+    "Known for It",
+    "I Want It I Need It (Death Heated)",
+    "Blood Creepin"
+  ],
+  "image": "https://i.discogs.com/HJ9iAr72BZ-8blVbqO7o0Y65pTHMGcTEn5GPnOXU2WE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTY5NzE2/NjQtMTQzMDY5ODQ0/NS05NjA3LmpwZWc.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "64380bcefa0f1d760e393827"
+  },
+  "name": "Bottomless Pit",
+  "artist": "Death Grips",
+  "genre": "Hip-hop",
+  "year": 2016,
+  "description": "Bottomless Pit is the fifth studio album by experimental hip hop group Death Grips, released on May 6, 2016, through Third Worlds and Harvest Records. On October 21, 2015, the group uploaded a video to their YouTube page titled Bottomless Pit. It features footage from 2013 of the late American actress Karen Black reciting lines from a film script that Death Grips drummer Zach Hill wrote months before her death. They also posted on their website and Facebook page that this would be the title for their upcoming fifth official studio album. Later, on December 16, the group posted a tweet containing the phrase 'it won't lit', eventually revealed to be a lyric from the Bottomless Pit track 'BB Poison'. On February 6, 2016, Death Grips released the song 'Hot Head' from their upcoming album onto their SoundCloud and YouTube accounts. The cover art and tracklisting were then revealed on March 18, followed on April 19 by the announcement of a May 6 release date and a download link for a document containing lyrics for each track on the album. On April 29, 2016, the album was leaked in its entirety from the band's SoundCloud page. ",
+  "rating": 3.9,
+  "songs": [
+    "Giving Bad People Good Ideas",
+    "Hot Head",
+    "Spikes",
+    "Warping",
+    "Eh",
+    "Bubbles Buried in This Jungle",
+    "Trash",
+    "Houdini",
+    "BB Poison",
+    "Three Bedrooms in a Good Neighborhood",
+    "Ring a Bell ",
+    "80808",
+    "Bottomless Pit"
+  ],
+  "image": "https://i.discogs.com/6BaFglAmAP1EwsOAu8tcSdiucUY0Aavx6v4pJ_d6yOc/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg0ODQx/NDgtMTQ2MjUyMTU0/MC04NTcxLmpwZWc.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "64380d14fa0f1d760e393828"
+  },
+  "name": "Year of the Snitch",
+  "artist": "Death Grips",
+  "genre": "Hip-hop",
+  "year": 2018,
+  "description": "Year of the Snitch is the sixth studio album by experimental hip hop group Death Grips, released on June 22, 2018, through Third Worlds and Harvest Records. ",
+  "rating": 3.65,
+  "songs": [
+    "Death Grips Is Online",
+    "Flies",
+    "Black Paint",
+    "Linda's in Custody",
+    "The Horn Section",
+    "Hahaha",
+    "Shitshow",
+    "Streaky",
+    "Dilemma",
+    "Little Richard",
+    "The Fear",
+    "Outro",
+    "Disappointed"
+  ],
+  "image": "https://i.discogs.com/IRiz_qbXvXCfZIKqRyibSkgCGH6Lx37svs8aXmMDAsk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyMTY2/Mjg4LTE1Mjk2Mjcz/MDYtOTc3Mi5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643951dfbaa95da954a16705"
+  },
+  "name": "Fashion Week",
+  "artist": "Death Grips",
+  "genre": "Hip-hop",
+  "year": 2015,
+  "description": "Fashion Week is an instrumental 'soundtrack' album by experimental hip hop group Death Grips. It was self-released, available for free, on January 4, 2015, via Third Worlds, without any prior announcement. It was the band's first release after their supposed disbandment in 2014, and also the first release to not feature vocals from frontman MC Ride, which was a major factor in its mixed-to-positive critical reception. Fashion Week was released on vinyl as the first LP in a 2LP package alongside Death Grips' instrumental EP Interview 2016 for Record Store Day 2016.",
+  "rating": 2.94,
+  "songs": [
+    "Runway J",
+    "Runway E",
+    "Runway N",
+    "Runway N",
+    "Runway Y",
+    "Runway D",
+    "Runway E",
+    "Runway A",
+    "Runway T",
+    "Runway H",
+    "Runway W",
+    "Runway H",
+    "Runway E",
+    "Runway N"
+  ],
+  "image": "https://i.discogs.com/ayAxUAJzIXhOiCjg1afPQOwSom_xGVRzU5LuUWhSXGA/rs:fit/g:sm/q:90/h:501/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTY0ODk1/MDUtMTQyMDQzMTM0/NC04ODk1LmpwZWc.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "64395421baa95da954a16706"
+  },
+  "name": "Eversince",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2016,
+  "description": "Eversince (alternatively stylized 3V3R51NC3) is the debut studio album by Swedish rapper and Drain Gang member Bladee. It was released on May 25, 2016 by YEAR0001. The album contains elements of hip hop, R&B, gothic rock, new wave music, and electronic music.",
+  "rating": 3.59,
+  "songs": [
+    "Who Goes There",
+    "So What",
+    "Lovenote",
+    "Missing Person",
+    "Romeo",
+    "Xd Out",
+    "Sick",
+    "Rip",
+    "Bloodveil / Stillborn",
+    "Sugar",
+    "Wrist Cry",
+    "Skin"
+  ],
+  "image": "https://i.discogs.com/tFPKUR5tkjzjXDe_TQQ0_C0C4duYacWjDoyZSHri-Y8/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg5MzY5/NTItMTQ3MTgxNzA2/OC04OTA3LmpwZWc.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "64395581baa95da954a16707"
+  },
+  "name": "Working on Dying",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2017,
+  "description": "",
+  "rating": 3.54,
+  "songs": [
+    "Redlight Moments",
+    "Lordship",
+    "Knightsbridge",
+    "Backstr€€t Boys",
+    "Under Your Spell",
+    "D-925",
+    "Gatekeeper",
+    "Cherry Bracelets",
+    "Best Buy"
+  ],
+  "image": "https://i.discogs.com/_mLwOMIRbvNG-cRtaef04KgFR4mKYxSxi3EIE8TT7eY/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTA2/NjA0LTE1MzY2MjE5/NDEtOTI1NS5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "64395658baa95da954a16708"
+  },
+  "name": "Red Light",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2018,
+  "description": "Red Light is the second studio album by Swedish rapper Bladee. It was released on 11 May 2018 by YEAR0001. The album was released to digital retailers and streaming services along with an announcement that Bladee would be performing his first major solo show at London's O2 Academy Islington the following week.",
+  "rating": 3.28,
+  "songs": [
+    "1d",
+    "Golden Boy",
+    "Westfield",
+    "Fake News",
+    "Steve Jobs",
+    "Obedient",
+    "For You",
+    "Hex",
+    "Nike Just Do It",
+    "That Thing You Do",
+    "Decay",
+    "College Boy",
+    "Puppet Master",
+    "I'm Goofy"
+  ],
+  "image": "https://i.discogs.com/CBap4rhhKlLvqr0_0sZBVYE04gSJ8XBZ16MDsh3dixk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExOTg0/NDk3LTE1MjYwMDUw/MzgtMTI2Mi5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "64395899baa95da954a16709"
+  },
+  "name": "Gluee",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2014,
+  "description": "",
+  "rating": 3.64,
+  "songs": [
+    "Deletee (Intro)",
+    "Safehouse",
+    "Ebay",
+    "Shadowface",
+    "Spellbound",
+    "Everlasting Flames",
+    "Freeze",
+    "Upgrade Enabled",
+    "Unreal"
+  ],
+  "image": "https://i.discogs.com/YCjd-AmlrMeRQzGrxamTxgvNJdwoeSR4OLWG8d_-Plk/rs:fit/g:sm/q:90/h:500/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg5Mzcw/ODAtMTQ3MTgxOTcy/MC04Nzc0LmpwZWc.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643959bcbaa95da954a1670a"
+  },
+  "name": "Exeter",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2020,
+  "description": "Red Light is the second studio album by Swedish rapper Bladee. It was released on 11 May 2018 by YEAR0001. The album was released to digital retailers and streaming services along with an announcement that BlExeter is the third studio album by Swedish rapper Bladee. It was released on 8 April 2020 by YEAR0001. The entirety of the project was produced by Gud. In an interview with Spotify, Bladee revealed that the project was recorded over a week-long period while Gud and Bladee had stayed in Gotland, Sweden. Red Light is the second studio album by Swedish rapper Bladee. It was released on 11 May 2018 by YEAR0001. The album was released to digital retailers and streaming services along with an announcement that BlExeter is the third studio album by Swedish rapper Bladee. It was released on 8 April 2020 by YEAR0001. The entirety of the project was produced by Gud. In an interview with Spotify, Bladee revealed that the project was recorded over a week-long period while Gud and Bladee had stayed in Gotland, Sweden.",
+  "rating": 3.41,
+  "songs": [
+    "Mirror (Hymn) (Intro)",
+    "Wonderland",
+    "Merry-Go-Round",
+    "Rain3ow Star (Love Is All)",
+    "Every Moment Special",
+    "DNA Rain",
+    "Open Symbols (Play) Be in Your Mind",
+    "Lovestory",
+    "Imaginary"
+  ],
+  "image": "https://i.discogs.com/1n8PKtGZDEJILOGFeRoaCzFNV-fntlr2dY5xmaQXjFQ/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE1MDcx/OTc3LTE1ODYzMTAw/NjAtOTM2Ni5wbmc.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "64395a7ebaa95da954a1670b"
+  },
+  "name": "Icedancer",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2018,
+  "description": "",
+  "rating": 3.71,
+  "songs": [
+    "SmartWater",
+    "Okk",
+    "Mallwhore Freeestyle",
+    "Be Nice 2 Me",
+    "Frosty the Snowman",
+    "Inside Out",
+    "Close",
+    "Jaws",
+    "Cartier'God - Icedancer (Intermission)",
+    "Topman",
+    "Waster",
+    "Special Place",
+    "DG Jeans",
+    "Feel Like",
+    "Linkdin",
+    "For Nothing",
+    "Anything",
+    "The Silent Boy Cries (Ripsquadd Outro)"
+  ],
+  "image": "https://i.discogs.com/IXklRuG5Da5xRdSZlgEjmXjEU-PwnuV0qJM10YYEn3g/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzNjMx/OTUzLTE1NTc5MTMz/NjYtMjM3MS5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "64395cefbaa95da954a16711"
   },
   "name": "The Dark Side of the Moon",
   "artist": "Pink Floyd",
   "genre": "Rock",
   "year": 1973,
-  "description": "The Dark Side of the Moon is the eighth studio album by the English rock band Pink Floyd, released on 1 March 1973 by Harvest Records. Developed during live performances before recording began, it was conceived as a concept album that would focus on the pressures faced by the band during their arduous lifestyle, and also deal with the mental health problems of former band member Syd Barrett, who departed the group in 1968. New material was recorded in two sessions in 1972 and 1973 at EMI Studios (now Abbey Road Studios) in London.",
-  "rating": 8.46,
+  "description": "",
+  "rating": 4.23,
   "songs": [
     "Speak to Me",
     "Breathe",
@@ -20,165 +401,127 @@
     "Brain Damage",
     "Eclipse"
   ],
-  "image": "//e.snmc.io/i/300/w/c8a40548b0fee5fa10095de3b97d3f90/10745116"
+  "image": "https://i.discogs.com/pbXBLwvb00FqksB7ILTZMTvXqcV3Fhkr7oHyeX7iVQ8/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2NzEw/NC0xNDU3MDc4MjI4/LTUwOTQuanBlZw.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "6474ea73c3c887cfabce41db"
+    "$oid": "6439602cbaa95da954a1672a"
   },
-  "name": "Wish You Were Here",
-  "artist": "Pink Floyd",
-  "genre": "Rock",
-  "year": 1975,
-  "description": "\"Description\"",
-  "rating": 0,
-  "songs": [
-    "Shine On You Crazy Diamond, Pts.1-5",
-    "Welcome To The Machine",
-    "Have A Cigar",
-    "Wish You Were Here",
-    "Shine On You Crazy Diamond, Pts. 6-9"
-  ],
-  "image": "https://i.discogs.com/YMUBiIscutL11EdQfQddkB8K9NhOgGYByxG9B7EFVrM/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM3NTc1/Ni0xMzk5NzM1MjQy/LTIxNDkuanBlZw.jpeg"
-},{
-  "_id": {
-    "$oid": "6474ebc3c3c887cfabce41dd"
-  },
-  "name": "Animals",
-  "artist": "Pink Floyd",
-  "genre": "Rock",
-  "year": 1977,
-  "description": "\"Description\"",
-  "rating": 0,
-  "songs": [
-    "Pigs on the Wing 1",
-    "Dogs",
-    "Pigs (Three Different Ones)",
-    "Sheep",
-    "Pigs on the Wing 2"
-  ],
-  "image": "https://i.discogs.com/4Hxf3HdivnSYH-o7N3Ri4D3kcrBupW1ZZTbAHaYNmnc/rs:fit/g:sm/q:90/h:600/w:592/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM5MTMy/Mi0xNjQ4NDkwODk1/LTI2NzkuanBlZw.jpeg"
-},{
-  "_id": {
-    "$oid": "6474ed22c3c887cfabce41de"
-  },
-  "name": "Meddle",
-  "artist": "Pink Floyd",
-  "genre": "Rock",
-  "year": 1971,
-  "description": "\"Description\"",
-  "rating": 0,
-  "songs": [
-    "One of These Days",
-    "A Pillow of Winds",
-    "Fearless",
-    "San Tropez",
-    "Seamus",
-    "Echoes"
-  ],
-  "image": "https://i.discogs.com/nlcHURJ-xZgDIezGAne4lRoiOZJYbb-qHxf7NMfwTQw/rs:fit/g:sm/q:90/h:592/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQxMzc0/OTMtMTUzNzIxNjkz/NS05NzUzLmpwZWc.jpeg"
-},{
-  "_id": {
-    "$oid": "6474fa69c3c887cfabce41df"
-  },
-  "name": "The Piper at the Gates of Dawn",
-  "artist": "Pink Floyd",
-  "genre": "Rock",
-  "year": 1967,
-  "description": "\"Description\"",
-  "rating": 0,
-  "songs": [
-    "Astronomy Dominé",
-    "Lucifer Sam",
-    "Matilda Mother",
-    "Pow R. Toc H.",
-    "Take Up Thy Stethoscope and Walk",
-    "Interstellar Overdrive",
-    "The Gnome",
-    "Chapter 24",
-    "The Scarecrow",
-    "Bike"
-  ],
-  "image": "https://i.discogs.com/hb2vfQoi-csFMlMpGEHrDNUFVlOnLUVQgWYyFyXOQNs/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5MDEy/MDMtMTYwNzE4NTk0/OS0xNDMxLmpwZWc.jpeg"
-},{
-  "_id": {
-    "$oid": "6474fc3ac3c887cfabce41e3"
-  },
-  "name": "Random Access Memories",
-  "artist": "Daft Punk",
-  "genre": "Disco",
-  "year": 2013,
+  "name": "333",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2020,
   "description": "",
-  "rating": 0,
+  "rating": 3.49,
   "songs": [
-    "Give Life Back to Music",
-    "The Game of Love",
-    "Giorgio by Moroder",
-    "Within",
-    "Instant Crush",
-    "Lose Yourself to Dance",
-    "Touch",
-    "Get Lucky",
-    "Beyond",
-    "Motherboard",
-    "Fragments of Time",
-    "Doin' It Right",
-    "Contact"
+    "Wings in Motion",
+    "Don't Worry",
+    "Keys to the City",
+    "Hero of My Story 3style3",
+    "100s",
+    "Mean Girls",
+    "Innocent of All Things",
+    "Reality Surf",
+    "Noblest Strive",
+    "It Girl",
+    "Oh Well",
+    "Valerie",
+    "Finder",
+    "Exstasia",
+    "Only One",
+    "Swan Lake"
   ],
-  "image": "https://i.discogs.com/-k1e9_8eWbOqpMVOhIOBbBngcKrOT-k83KxltvbdmbE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkyMTYw/ODgtMTQ4Mzc0NjQy/MC0yODMyLmpwZWc.jpeg"
+  "image": "https://i.discogs.com/PXXDh6DSwY-OMlaQ-bJJg1NGv7J4FEzff-j75m8Si3g/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE1NjMz/NTg2LTE1OTQ5MTc0/NTQtMzkwNy5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "6474fd55c3c887cfabce41e4"
+    "$oid": "64396115baa95da954a1672b"
   },
-  "name": "Discovery",
-  "artist": "Daft Punk",
-  "genre": "French House",
-  "year": 2001,
+  "name": "Good Luck",
+  "artist": "Bladee",
+  "genre": "Pop",
+  "year": 2021,
   "description": "",
-  "rating": 0,
+  "rating": 2.81,
   "songs": [
-    "One More Time",
-    "Aerodynamic",
-    "Digital Love",
-    "Harder, Better, Faster, Stronger",
-    "Crescendolls",
-    "Nightvision",
-    "Superheroes",
-    "High Life",
-    "Something About Us",
-    "Voyager",
-    "Veridis Quo",
-    "Short Circuit",
-    "Face to Face",
-    "Too Long"
+    "Intro",
+    "Rainbow",
+    "Sun",
+    "God",
+    "Drama",
+    "You",
+    "Into One",
+    "Grace"
   ],
-  "image": "https://i.discogs.com/6gMPje3DUKa1LMojsHtGTE5o4fIQon5lYaIJvALlvVM/rs:fit/g:sm/q:90/h:600/w:592/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4Nzkt/MTIzNjAzNTQ3Mi5q/cGVn.jpeg"
+  "image": "https://i.discogs.com/10iOgTFb4P6LAltKp_qw3KRDq8b1BL_ryh7tfNUUHBY/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE2NDIx/NjE2LTE2MDc2Mzgz/OTQtOTg5Ny5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "6474fe76c3c887cfabce41e5"
+    "$oid": "643961d2baa95da954a1672c"
   },
-  "name": "Homework",
-  "artist": "Daft Punk",
-  "genre": "French House",
-  "year": 1997,
+  "name": "The Fool",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2021,
   "description": "",
-  "rating": 0,
+  "rating": 3.5,
   "songs": [
-    "Daftendirekt",
-    "Wdpk 83.7 fm",
-    "Revolution 909",
-    "Da Funk",
-    "Phoenix",
-    "Fresh",
-    "Around the World",
-    "Rollin' & Scratchin'",
-    "Teachers",
-    "High Fidelity",
-    "Rock'n Roll",
-    "Oh Yeah",
-    "Burnin",
-    "Indo Silver Club",
-    "Alive",
-    "Funk Ad"
+    "The Fool Intro",
+    "Let's Ride",
+    "Hotel Breakfast",
+    "I Think...",
+    "Thee 9 Is Up",
+    "desiree",
+    "I Want It That Way",
+    "BBY",
+    "Inspiration Comes",
+    "egobaby",
+    "Trendy",
+    "Search True",
+    "Wett (Water2)"
   ],
-  "image": "https://i.discogs.com/2VO0mCLNP2TIxzPLEbECRQs5emikxhXghNQquabdsJs/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYwODQ4/Ny0xMjAwMjIzMjkx/LmpwZWc.jpeg"
+  "image": "https://i.discogs.com/gYkdMevBoB_EJcoZNXzF9xportxHBuDKnVU_y-JC26A/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4OTE4/MTM2LTE2MjIzNDkz/NzItOTk3OC5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643962d8baa95da954a1672d"
+  },
+  "name": "Spiderr",
+  "artist": "Bladee",
+  "genre": "Trap",
+  "year": 2022,
+  "description": "",
+  "rating": 3.33,
+  "songs": [
+    "Understatement",
+    "Its OK Not to Be OK",
+    "I Am Slowly But Surely Losing Hope",
+    "Icarus 3reestyle",
+    "Nothingg",
+    "Blue Crush Angel",
+    "Disaster Prelude",
+    "Hahah",
+    "Drain Story",
+    "Velociraptor",
+    "Dresden ER",
+    "She's Always Dancing",
+    "Uriel Outro"
+  ],
+  "image": "https://i.discogs.com/oyM4kuHkJ-uaIGCcxUOBtr8oQ8LaOHlSFzT8uhvRrBo/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0NzA2/ODI2LTE2NjQ3OTgw/NDAtNjkyNi5qcGVn.jpeg",
+  "shortDescription": "",
+  "compoundScore": 0,
+  "sentiment": "",
+  "reviewCount": 0
 }]

@@ -1,0 +1,59 @@
+[{
+  "_id": {
+    "$binary": {
+      "base64": "c5GG5yjDQba0ACvfrnHCWw==",
+      "subType": "04"
+    }
+  },
+  "UserName": "superadmin",
+  "NormalizedUserName": "SUPERADMIN",
+  "Email": "ase@ase.ro",
+  "NormalizedEmail": "ASE@ASE.RO",
+  "EmailConfirmed": false,
+  "PasswordHash": "AQAAAAIAAYagAAAAEOEEEoDAwv2LjX3JJIrbCGgcVJu52MMNh5VXvZVvXa7v2q3MbeWq6aE7yNz/v0z1fQ==",
+  "SecurityStamp": "GYHWX6TGO5G3UJE5YGKSAQSULB2S5WYZ",
+  "ConcurrencyStamp": "ed8e847a-826d-4c74-a293-8f6ecdd4f532",
+  "PhoneNumber": null,
+  "PhoneNumberConfirmed": false,
+  "TwoFactorEnabled": false,
+  "LockoutEnd": null,
+  "LockoutEnabled": true,
+  "AccessFailedCount": 0,
+  "Version": 1,
+  "CreatedOn": {
+    "$date": "2023-07-13T08:45:31.280Z"
+  },
+  "Claims": [],
+  "Roles": [],
+  "Logins": [],
+  "Tokens": []
+},{
+  "_id": {
+    "$binary": {
+      "base64": "ZV/ULgd5QoK2BrSnPSeYeQ==",
+      "subType": "04"
+    }
+  },
+  "UserName": "superadmin2",
+  "NormalizedUserName": "SUPERADMIN2",
+  "Email": "ase@ase.ro",
+  "NormalizedEmail": "ASE@ASE.RO",
+  "EmailConfirmed": false,
+  "PasswordHash": "AQAAAAIAAYagAAAAEBciH3RC2WzH9otb/fSuo2vjgRr3LxkfeKRIbVury9fcdR3Exp84TptjA3911sHuRw==",
+  "SecurityStamp": "MT5NYNVPU7CPSZZDOWC4ZEPFVAICHE2P",
+  "ConcurrencyStamp": "5c586a98-7ce5-425b-b93f-7c34d79a7f0f",
+  "PhoneNumber": null,
+  "PhoneNumberConfirmed": false,
+  "TwoFactorEnabled": false,
+  "LockoutEnd": null,
+  "LockoutEnabled": true,
+  "AccessFailedCount": 0,
+  "Version": 1,
+  "CreatedOn": {
+    "$date": "2023-07-13T08:46:24.477Z"
+  },
+  "Claims": [],
+  "Roles": [],
+  "Logins": [],
+  "Tokens": []
+}]

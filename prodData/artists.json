@@ -1,30 +1,6 @@
 [{
   "_id": {
-    "$oid": "6474e2e5c3c887cfabce41d6"
-  },
-  "name": "Pink Floyd",
-  "description": "Pink Floyd is a British rock band who managed to carve a path for progressive and psychedelic music in a way that was uniquely fascinating at the time and has remained equally momentous in the modern age. The name “Pink Floyd” came from two blues musicians that founding member Syd Barrett idolized—Pink Anderson and Floyd Council.",
-  "band": true,
-  "dob": null,
-  "dod": null,
-  "formed": "1963",
-  "disbanded": null,
-  "image": "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?20210720144017"
-},{
-  "_id": {
-    "$oid": "6474fbc9c3c887cfabce41e1"
-  },
-  "name": "Daft Punk",
-  "description": "Description",
-  "band": true,
-  "dob": null,
-  "dod": null,
-  "formed": "1993, Paris, Île-de-France, France",
-  "disbanded": "22 February 2021",
-  "image": ""
-},{
-  "_id": {
-    "$oid": "64750098c3c887cfabce41ef"
+    "$oid": "643c57e9ab7f72e0098a7911"
   },
   "name": "Coldplay",
   "description": "",
@@ -33,10 +9,60 @@
   "dod": null,
   "formed": "1998",
   "disbanded": null,
-  "image": ""
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "647500acc3c887cfabce41f2"
+    "$oid": "643968ee4460aa67e33e66df"
+  },
+  "name": "Bladee",
+  "description": "Benjamin Thage Dag Reichwald (born 9 April 1994), professionally known as Bladee, is a Swedish recording artist, graphic designer, and fashion designer from Stockholm.",
+  "band": false,
+  "dob": {
+    "$date": "1994-04-08T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flastfm.freetls.fastly.net%2Fi%2Fu%2Far0%2F474e6db5ec3c4e010a3700c51419182b.jpg&f=1&nofb=1&ipt=0425893f3883fdce2b5a5ad8ece4c36644a409ece424b02b43a472c6b311d4c1&ipo=images",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643968ee4460aa67e33e66de"
+  },
+  "name": "Death Grips",
+  "description": "Death Grips is an experimental multi-genre group from Sacramento, CA, formed in 2010. Their music and live performances consist of vocals from Stefan “MC Ride” Burnett and production from Zach Hill and Andy Morin. They released their first mixtape, Exmilitary on April 25, 2011, with their most popular song, Guillotine, on that project.",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "2010",
+  "disbanded": null,
+  "image": "https://i.discogs.com/qkmI4A6L5Mq8DRzXCP1PLPqU665LRAF5YVwMcxDP8TQ/rs:fit/g:sm/q:90/h:398/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTIyMjU3/NTYtMTY1MDIxNzQ2/Ni04NTIxLmpwZWc.jpeg",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643968ee4460aa67e33e66dd"
+  },
+  "name": "Pink Floyd",
+  "description": "Pink Floyd is a British rock band who managed to carve a path for progressive and psychedelic music in a way that was uniquely fascinating at the time and has remained equally momentous in the modern age. The name “Pink Floyd” came from two blues musicians that founding member Syd Barrett idolized—Pink Anderson and Floyd Council.",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "1963",
+  "disbanded": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?20210720144017",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643c58ddab7f72e0098a7916"
   },
   "name": "Gorillaz",
   "description": "",
@@ -45,22 +71,98 @@
   "dod": null,
   "formed": "1998",
   "disbanded": null,
-  "image": ""
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "647500c8c3c887cfabce41f5"
+    "$oid": "643c58ffab7f72e0098a7917"
   },
-  "name": "Led Zeppelin",
-  "description": "",
-  "band": true,
-  "dob": null,
+  "name": "Harry Styles",
+  "description": "Harry Edward Styles",
+  "band": false,
+  "dob": {
+    "$date": "1994-02-01T00:00:00.000Z"
+  },
   "dod": null,
-  "formed": "July 1968, London, Greater London, United Kingdom",
-  "disbanded": "4 December 1980",
-  "image": ""
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "647500dec3c887cfabce41f8"
+    "$oid": "643c5978ab7f72e0098a7918"
+  },
+  "name": "Yung Lean",
+  "description": "Jonatan Aron Leandoer Håstad",
+  "band": false,
+  "dob": {
+    "$date": "1996-07-18T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643c59ddab7f72e0098a7919"
+  },
+  "name": "Ecco2k",
+  "description": "Zak Arogundade Gaterud",
+  "band": false,
+  "dob": {
+    "$date": "1994-10-23T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643c5a13ab7f72e0098a791a"
+  },
+  "name": "Thaiboy Digital",
+  "description": "Thanapat Thaothawong",
+  "band": false,
+  "dob": {
+    "$date": "1994-10-11T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643c5a55ab7f72e0098a791b"
+  },
+  "name": "Kendrick Lamar",
+  "description": "Kendrick Lamar Duckworth",
+  "band": false,
+  "dob": {
+    "$date": "1987-07-17T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643c5abcab7f72e0098a791c"
   },
   "name": "Red Hot Chili Peppers",
   "description": "",
@@ -69,10 +171,30 @@
   "dod": null,
   "formed": "1983, Los Angeles, CA, United States",
   "disbanded": null,
-  "image": ""
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "647500f2c3c887cfabce41fb"
+    "$oid": "643c5c5dab7f72e0098a791e"
+  },
+  "name": "Sean Paul",
+  "description": "Sean Paul Ryan Francis Henriques",
+  "band": false,
+  "dob": {
+    "$date": "1970-01-09T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643c5d33ab7f72e0098a791f"
   },
   "name": "Björk",
   "description": "Björk Guðmundsdóttir",
@@ -85,10 +207,28 @@
   "dod": null,
   "formed": null,
   "disbanded": null,
-  "image": ""
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "64750113c3c887cfabce41ff"
+    "$oid": "643cf7bc4b90811d14e9d5b2"
+  },
+  "name": "Arctic Monkeys",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "2002, Sheffield, South Yorkshire, United Kingdom",
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643cf8074b90811d14e9d5b3"
   },
   "name": "Adele",
   "description": "Adele Laurie Blue Adkins",
@@ -99,48 +239,13 @@
   "dod": null,
   "formed": null,
   "disbanded": null,
-  "image": ""
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
 },{
   "_id": {
-    "$oid": "64750122c3c887cfabce4203"
-  },
-  "name": "Metallica",
-  "description": "",
-  "band": true,
-  "dob": null,
-  "dod": null,
-  "formed": "28 October 1981, Los Angeles, CA, United States",
-  "disbanded": null,
-  "image": ""
-},{
-  "_id": {
-    "$oid": "64750132c3c887cfabce4206"
-  },
-  "name": "Nirvana",
-  "description": "",
-  "band": true,
-  "dob": null,
-  "dod": null,
-  "formed": "1987, Aberdeen, WA, United States",
-  "disbanded": "8 April 1994, Seattle, WA, United States",
-  "image": ""
-},{
-  "_id": {
-    "$oid": "64750141c3c887cfabce4209"
-  },
-  "name": "Harry Styles",
-  "description": "Harry Edward Styles",
-  "band": false,
-  "dob": {
-    "$date": "1994-02-01T00:00:00.000Z"
-  },
-  "dod": null,
-  "formed": null,
-  "disbanded": null,
-  "image": ""
-},{
-  "_id": {
-    "$oid": "64750153c3c887cfabce420c"
+    "$oid": "643cf8a04b90811d14e9d5b4"
   },
   "name": "Florence + The Machine",
   "description": "",
@@ -149,5 +254,102 @@
   "dod": null,
   "formed": "2007, Camberwell, Greater London, United Kingdom",
   "disbanded": null,
-  "image": ""
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643cf9a34b90811d14e9d5b5"
+  },
+  "name": "J.Cole",
+  "description": "Jermaine Lamarr Cole",
+  "band": false,
+  "dob": {
+    "$date": "1985-01-28T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643cfa234b90811d14e9d5b6"
+  },
+  "name": "Led Zeppelin",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "July 1968, London, Greater London, United Kingdom",
+  "disbanded": "4 December 1980",
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643cfc334b90811d14e9d5b7"
+  },
+  "name": "Nirvana",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "1987, Aberdeen, WA, United States",
+  "disbanded": "8 April 1994, Seattle, WA, United States",
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643cfc854b90811d14e9d5b9"
+  },
+  "name": "Metallica",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "28 October 1981, Los Angeles, CA, United States",
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643cfd034b90811d14e9d5ba"
+  },
+  "name": "Rosalía",
+  "description": "Rosalia Vila Tobella",
+  "band": false,
+  "dob": {
+    "$date": "1992-09-25T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
+},{
+  "_id": {
+    "$oid": "643cfdbe4b90811d14e9d5bb"
+  },
+  "name": "Queen",
+  "description": "Queen was formed in 1970 by Brian May and Roger Taylor after Brian's previous band, Smile, broke up. They were soon joined by flamboyant Freddie Mercury who shared a flat with Roger at the time. After a rapid succession of bass players came and went, John Deacon was the last member to join. After this, the Queen line-up never changed during their 20-year career.",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "27 June 1970, London, Greater London, United Kingdom",
+  "disbanded": null,
+  "image": "",
+  "sentiment": "",
+  "compoundScore": 0,
+  "reviewCount": 0
 }]
