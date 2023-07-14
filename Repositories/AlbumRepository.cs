@@ -85,15 +85,43 @@ namespace LicentaApp.Repositories
 
         public async Task<int> GetTotalCountAsync() =>
             (int)await _albumCollection.CountDocumentsAsync(FilterDefinition<AlbumModel>.Empty);
-        public async Task UpdateAlbumAsync(string albumId, double compoundScore)
+        public async Task UpdateAlbumAsync(string albumName, double compoundScore)
         {
-            var filter = Builders<AlbumModel>.Filter.Eq(x => x.Id, albumId);
+            var filter = Builders<AlbumModel>.Filter.Eq(x => x.Name, albumName);
+
+            var album = await _albumCollection.Find(filter).FirstOrDefaultAsync();
+
+            // Calculate the new mean compound score based on the current review count and the new compound score
+            var reviewCount = album?.ReviewCount ?? 0;
+            var currentCompoundScore = album?.CompoundScore ?? 0.0;
+
+            var newCompoundScore = (currentCompoundScore * reviewCount + compoundScore) / (reviewCount + 1);
+
+            // Determine the sentiment based on the new compound score
+            string newSentiment = GetSentiment(newCompoundScore);
 
             var update = Builders<AlbumModel>.Update
                 .Inc(x => x.ReviewCount, 1)
-                .Inc(x => x.CompoundScore, compoundScore);
+                .Set(x => x.CompoundScore, newCompoundScore)
+                .Set(x => x.Sentiment, newSentiment);
 
             await _albumCollection.UpdateOneAsync(filter, update);
+        }
+
+        private string GetSentiment(double compoundScore)
+        {
+            if (compoundScore >= 0.5)
+            {
+                return "Positive";
+            }
+            else if (compoundScore > -0.5 && compoundScore < 0.5)
+            {
+                return "Neutral";
+            }
+            else
+            {
+                return "Negative";
+            }
         }
     }
 }

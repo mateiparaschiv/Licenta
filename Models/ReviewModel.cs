@@ -8,7 +8,7 @@ namespace LicentaApp.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         [BsonElement("id")]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [BsonElement("email")]
         public string Email { get; set; }
@@ -20,13 +20,13 @@ namespace LicentaApp.Models
         public string Subject { get; set; }
 
         [BsonElement("title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [BsonElement("message")]
         public string Message { get; set; }
 
         [BsonElement("sentiment")]
-        public string Sentiment { get; set; }
+        public string? Sentiment { get; set; }
 
         [BsonElement("negativeScore")]
         public double NegativeScore { get; set; }

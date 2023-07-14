@@ -9,7 +9,6 @@ namespace LicentaApp.Services
         private readonly IReviewRepository _reviewRepository;
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
         public AlbumService(IAlbumRepository albumRepository,
             IReviewRepository reviewRepository,
             IUserRepository userRepository,
@@ -42,32 +41,46 @@ namespace LicentaApp.Services
             };
         }
 
-        public async Task<IndexAlbumNameViewModel> AlbumName(string name)
+        public async Task<IndexAlbumNameViewModel> AlbumName(string albumName)
         {
-            var album = await _albumRepository.GetAlbumByName(name);
-            var reviewList = await _reviewRepository.GetAsyncListByAlbum(name);
+            var album = await _albumRepository.GetAlbumByName(albumName);
+            var reviewList = await _reviewRepository.GetAsyncListByAlbum(albumName);
 
-            var newReview = new ReviewModel
-            {
-                Subject = album.Name,
-                Username = null,
-                Email = null
-            };
+            var newReview = new ReviewModel();
 
-            if (_httpContextAccessor.HttpContext.User?.Identity?.IsAuthenticated ?? false)
+            if (UserIsAuthenticated())
             {
-                var username = _httpContextAccessor.HttpContext.User.Identity.Name;
+                var username = GetCurrentUserName();
                 var user = await _userRepository.GetAsync(username);
+
+                if (user == null || user.Email == null)
+                {
+                    throw new Exception("Authenticated user not found or user's email is not set.");
+                }
+
+                newReview.Subject = album.Name;
                 newReview.Username = username;
                 newReview.Email = user.Email;
+                newReview.Title = "";
+                newReview.SubjectType = "album";
             }
 
             return new IndexAlbumNameViewModel
             {
                 Album = album,
                 ReviewList = reviewList,
-                NewReview = newReview
+                NewReview = UserIsAuthenticated() ? newReview : null
             };
+        }
+
+        private bool UserIsAuthenticated()
+        {
+            return _httpContextAccessor.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
+        }
+
+        private string GetCurrentUserName()
+        {
+            return _httpContextAccessor.HttpContext?.User?.Identity?.Name ?? string.Empty;
         }
     }
 }

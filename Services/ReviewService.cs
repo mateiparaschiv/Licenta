@@ -1,80 +1,56 @@
 ﻿using LicentaApp.Models;
-using Newtonsoft.Json.Linq;
-using System.Diagnostics;
 
 namespace LicentaApp.Services
 {
     public class ReviewService : IReviewService
     {
-        private readonly IReviewRepository _reviewService;
+        private readonly IReviewRepository _reviewRepository;
         private readonly IArtistRepository _artistRepository;
         private readonly IAlbumRepository _albumRepository;
-        public ReviewService(IReviewRepository reviewService,
-            IArtistRepository artistService,
-            IAlbumRepository albumService)
-        {
-            _reviewService = reviewService;
-            _artistRepository = artistService;
-            _albumRepository = albumService;
+        private readonly ISentimentAnalysisService _sentimentAnalysisService;
 
+        public ReviewService(IReviewRepository reviewRepository,
+            IArtistRepository artistRepository,
+            IAlbumRepository albumRepository,
+            ISentimentAnalysisService sentimentAnalysisService)
+        {
+            _reviewRepository = reviewRepository;
+            _artistRepository = artistRepository;
+            _albumRepository = albumRepository;
+            _sentimentAnalysisService = sentimentAnalysisService;
         }
 
         public Task<List<ReviewModel>> IndexReviewList()
         {
-            return _reviewService.GetAsync();
+            return _reviewRepository.GetAsync();
         }
 
         public async Task AddReview(ReviewModel newReview)
         {
-            ReviewModel sentimentReview = await SentimentAnalysis(newReview.Message);
-            newReview.NegativeScore = sentimentReview.NegativeScore;
-            newReview.NeutralScore = sentimentReview.NeutralScore;
-            newReview.PositiveScore = sentimentReview.PositiveScore;
-            newReview.CompoundScore = sentimentReview.CompoundScore;
-            newReview.Sentiment = sentimentReview.Sentiment;
-
-            if (newReview.SubjectType.Equals("album"))
-            {
-                var album = await _albumRepository.GetAlbumByName(newReview.Subject);
-                await _albumRepository.UpdateAlbumAsync(album.Id, newReview.CompoundScore);
-            }
+            await _sentimentAnalysisService.AnalyzeSentimentAsync(newReview);
+            await _reviewRepository.CreateAsync(newReview);
             if (newReview.SubjectType.Equals("artist"))
             {
-                var artist = await _artistRepository.GetArtistByName(newReview.Subject);
-                await _artistRepository.UpdateArtistAsync(artist.Id, newReview.CompoundScore);
+                await _artistRepository.UpdateArtistAsync(newReview.Subject, newReview.CompoundScore);
             }
-
-            await _reviewService.CreateAsync(newReview);
-        }
-        private async Task<ReviewModel> SentimentAnalysis(string text)
-        {
-            ReviewModel model = new ReviewModel();
-            ProcessStartInfo start = new ProcessStartInfo();
-
-            start.FileName = "python";
-            start.Arguments = $"\"{Path.GetFullPath("sentiment_analysis.py")}\" \"{text}\"";
-            start.UseShellExecute = false;
-            start.CreateNoWindow = true;
-            start.RedirectStandardOutput = true;
-            start.RedirectStandardError = true;
-
-            using (Process process = Process.Start(start))
+            if (newReview.SubjectType.Equals("album"))
             {
-                using (StreamReader reader = process.StandardOutput)
-                {
-                    string stderr = await process.StandardError.ReadToEndAsync();
-                    string result = await reader.ReadToEndAsync();
-
-                    JObject json = JObject.Parse(result);
-
-                    model.NegativeScore = (double)json["negative"];
-                    model.NeutralScore = (double)json["neutral"];
-                    model.PositiveScore = (double)json["positive"];
-                    model.CompoundScore = (double)json["compound"];
-                    model.Sentiment = (string)json["overall_sentiment"];
-                }
+                await _albumRepository.UpdateAlbumAsync(newReview.Subject, newReview.CompoundScore);
             }
-            return model;
+        }
+
+        public async Task<(bool IsSuccess, string ErrorMessage)> AddReviewAndRedirect(ReviewModel newReview)
+        {
+            try
+            {
+                await AddReview(newReview);
+                return (true, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception as needed.
+                return (false, ex.Message);
+            }
         }
     }
 }

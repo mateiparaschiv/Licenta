@@ -30,6 +30,8 @@ builder.Services.AddScoped<ISongRepository, SongRepository>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddScoped<ISentimentAnalysisService, SentimentAnalysisService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

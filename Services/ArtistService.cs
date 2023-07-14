@@ -10,8 +10,6 @@ namespace LicentaApp.Services
         private readonly IReviewRepository _reviewRepository;
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
-
         public ArtistService(IArtistRepository artistService,
             IAlbumRepository albumService,
             IReviewRepository reviewService,
@@ -23,7 +21,6 @@ namespace LicentaApp.Services
             _reviewRepository = reviewService;
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
-
         }
 
         public async Task<IndexArtistListViewModel> IndexArtistList(string sortOrder, int pageNumber)
@@ -44,24 +41,29 @@ namespace LicentaApp.Services
                 MaxPages = maxPages
             };
         }
+
         public async Task<IndexArtistNameViewModel> ArtistName(string name, string sortOrder)
         {
-            sortOrder = String.IsNullOrEmpty(sortOrder) ? "desc" : sortOrder;
+            sortOrder = string.IsNullOrEmpty(sortOrder) ? "desc" : sortOrder;
             var artist = await _artistRepository.GetArtistByName(name);
 
-            var newReview = new ReviewModel
-            {
-                Subject = artist.Name,
-                Username = null,
-                Email = null
-            };
+            var newReview = new ReviewModel();
 
-            if (_httpContextAccessor.HttpContext.User?.Identity?.IsAuthenticated ?? false)
+            if (UserIsAuthenticated())
             {
-                var username = _httpContextAccessor.HttpContext.User.Identity.Name;
+                var username = GetCurrentUserName();
                 var user = await _userRepository.GetAsync(username);
+
+                if (user == null || user.Email == null)
+                {
+                    throw new Exception("Authenticated user not found or user's email is not set.");
+                }
+
+                newReview.Subject = artist.Name;
                 newReview.Username = username;
                 newReview.Email = user.Email;
+                newReview.Title = "";
+                newReview.SubjectType = "artist";
             }
 
             return new IndexArtistNameViewModel
@@ -70,8 +72,18 @@ namespace LicentaApp.Services
                 ArtistAlbums = await _albumRepository.GetFilteredListByArtist(artist.Name, sortOrder),
                 SortOrder = sortOrder,
                 ReviewList = await _reviewRepository.GetAsyncListByAlbum(name),
-                NewReview = newReview
+                NewReview = UserIsAuthenticated() ? newReview : null
             };
+        }
+
+        private bool UserIsAuthenticated()
+        {
+            return _httpContextAccessor.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
+        }
+
+        private string GetCurrentUserName()
+        {
+            return _httpContextAccessor.HttpContext?.User?.Identity?.Name ?? string.Empty;
         }
     }
 }

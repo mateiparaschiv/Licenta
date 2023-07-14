@@ -6,7 +6,7 @@
         public List<AlbumModel> ArtistAlbums { get; set; }
         public string SortOrder { get; set; }
         public List<ReviewModel> ReviewList { get; set; }
-        public ReviewModel NewReview { get; set; }
+        public ReviewModel? NewReview { get; set; }
 
     }
 }

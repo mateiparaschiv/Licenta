@@ -9,14 +9,14 @@ namespace LicentaApp.Models
     {
         [Required]
         //public string Username { get; set; }
-        public override string? UserName { get => base.UserName; set => base.UserName = value; }
+        public override string UserName { get => base.UserName; set => base.UserName = value; }
 
 
         [Required]
         //[EmailAddress]
         [Display(Name = "Email")]
         //public string Email { get; set; }
-        public override string? Email { get => base.Email; set => base.Email = value; }
+        public override string Email { get => base.Email; set => base.Email = value; }
 
 
         [Required]

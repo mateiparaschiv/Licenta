@@ -30,15 +30,56 @@ namespace LicentaApp.Repositories
 
         public async Task<int> GetTotalCountAsync() =>
             (int)await _artistCollection.CountDocumentsAsync(FilterDefinition<ArtistModel>.Empty);
-        public async Task UpdateArtistAsync(string artistId, double compoundScore)
+
+        public async Task UpdateArtistAsync(string artistName, double compoundScore)
         {
-            var filter = Builders<ArtistModel>.Filter.Eq(x => x.Id, artistId);
+            var filter = Builders<ArtistModel>.Filter.Eq(x => x.Name, artistName);
+
+            var artist = await _artistCollection.Find(filter).FirstOrDefaultAsync();
+
+            // Calculate the new mean compound score based on the current review count and the new compound score
+            var reviewCount = artist?.ReviewCount ?? 0;
+            var currentCompoundScore = artist?.CompoundScore ?? 0.0;
+
+            var newCompoundScore = (currentCompoundScore * reviewCount + compoundScore) / (reviewCount + 1);
+
+            // Determine the sentiment based on the new compound score
+            string newSentiment = GetSentiment(newCompoundScore);
 
             var update = Builders<ArtistModel>.Update
                 .Inc(x => x.ReviewCount, 1)
-                .Inc(x => x.CompoundScore, compoundScore);
+                .Set(x => x.CompoundScore, newCompoundScore)
+                .Set(x => x.Sentiment, newSentiment);
 
             await _artistCollection.UpdateOneAsync(filter, update);
         }
+
+        private string GetSentiment(double compoundScore)
+        {
+            if (compoundScore >= 0.5)
+            {
+                return "Positive";
+            }
+            else if (compoundScore > -0.5 && compoundScore < 0.5)
+            {
+                return "Neutral";
+            }
+            else
+            {
+                return "Negative";
+            }
+        }
+
+        //after name
+        //    {
+        //        var filter = Builders<ArtistModel>.Filter.Eq(x => x.Name, artistId);
+
+        //        var update = Builders<ArtistModel>.Update
+        //            .Inc(x => x.ReviewCount, 1)
+        //            .Inc(x => x.CompoundScore, compoundScore);
+
+        //        await _artistCollection.UpdateOneAsync(filter, update);
+        //    }
+        //}
     }
 }

@@ -1,18 +1,25 @@
-﻿@model ReviewModel
-
-@using (Html.BeginForm("AddReview", "ReviewsController", FormMethod.Post))
+﻿@using Microsoft.AspNetCore.Http.Extensions;
+@model ReviewModel
+@{
+    var returnUrl = Context.Request.GetEncodedUrl();
+}
+@using (Html.BeginForm("AddReview", "Reviews", FormMethod.Post))
 {
+    @Html.Hidden("returnUrl", returnUrl)
+    // Rest of your form fields go here...
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="artistModalLabel">Add review for @Model.Subject</h1>
+                <h1 class="modal-title fs-5">Add review for @Model.Subject</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="form-container">
-                <input type="hidden" id="Title" name="Title" value="@Model.Title" />
-                <input type="hidden" id="Subject" name="Subject" value="@Model.Subject" />
                 <input type="hidden" id="Email" name="Email" value="@Model.Email" />
                 <input type="hidden" id="Username" name="Username" value="@Model.Username" />
+                <input type="hidden" id="Subject" name="Subject" value="@Model.Subject" />
+                <input type="hidden" id="SubjectType" name="SubjectType" value="@Model.SubjectType" />
+                <input type="hidden" id="Title" name="Title" value="@Model.Title" />
+
                 @*<div class="mb-3">
                     <label for="@Model.Title" class="col-form-label">Title</label>
                     <input id="@Model.Title" name="Title" class="form-control" autocomplete="off" required placeholder="Enter the title" value="@Model.Title" />

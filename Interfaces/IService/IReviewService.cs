@@ -5,5 +5,6 @@ namespace LicentaApp.Interfaces.IRepository
     {
         Task AddReview(ReviewModel newReview);
         Task<List<ReviewModel>> IndexReviewList();
+        Task<(bool IsSuccess, string ErrorMessage)> AddReviewAndRedirect(ReviewModel newReview);
     }
 }
