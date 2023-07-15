@@ -1,8 +1,8 @@
 ﻿@using LicentaApp.Models.ViewModels
 @model IndexArtistNameViewModel
 @{
-    ViewData["Title"] = $"Artist - {Model.Artist.Name}";
     var artist = Model.Artist;
+    ViewData["Title"] = $"Artist - {artist.Name}";
     var artistAlbums = Model.ArtistAlbums;
     var sortOrder = Model.SortOrder;
     var reviewList = Model.ReviewList;
@@ -19,14 +19,10 @@
                     <p class="display-4">@artist.Name</p>
                 </div>
                 <div class="col-auto">
-                    @*<form class="col h-25" method="post">
-                    @*<button asp-route="Custom" class="btn btn-outline-primary">Rate this album</button>
-                    <button asp-route="AddReview" class="btn btn-outline-primary">Rate this album</button>
-                    </form>*@
                     @{
                         if (User?.Identity?.IsAuthenticated ?? false)
                         {
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#artistModal" data-bs-whatever="@artist.Name">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal" data-bs-whatever="@artist.Name">
                                 Review @artist.Name
                             </button>
                         }
@@ -123,14 +119,16 @@
                             <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
                                 <img src="~/images/Albums/@(album.Name).jpg" id="album_col">
                             </a>
-                            <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
-                                <i class="" id="link">
+                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name" id="link">
+                                <i>
                                     @album.Name
                                 </i>
                             </a>
-                            <p class="text-muted">
-                                @album.Year
-                            </p>
+                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Year" asp-route-year="@album.Year" id="link">
+                                <i>
+                                    @album.Year
+                                </i>
+                            </a>
                         </div>
                     }
                 </div>
@@ -165,6 +163,6 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="artistModal" tabindex="-1" aria-labelledby="artistModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal fade" id="reviewModal" tabindex="-1" artistModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
 </div>

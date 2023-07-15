@@ -42,5 +42,8 @@ namespace LicentaApp.Models
 
         [BsonElement("subjectType")]
         public string SubjectType { get; set; }
+
+        [BsonElement("date")]
+        public DateTime Date { get; set; }
     }
 }

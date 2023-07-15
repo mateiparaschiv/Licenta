@@ -12,6 +12,16 @@ namespace LicentaApp.Repositories
             _genreCollection = genreCollection;
         }
 
+        public async Task<List<GenreModel>> GetAsync()
+        {
+            return await _genreCollection.Find(_ => true).ToListAsync();
+        }
+        public async Task<List<GenreModel>> GetAsyncFilteredByName()
+        {
+            var sortDefinition = Builders<GenreModel>.Sort.Ascending(x => x.Name);
+            return await _genreCollection.Find(x => true).Sort(sortDefinition).ToListAsync();
+        }
+
         public async Task<GenreModel> GetAsyncByName(string name) =>
             await _genreCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
         public async Task<List<GenreModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)

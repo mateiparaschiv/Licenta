@@ -32,6 +32,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddScoped<ISentimentAnalysisService, SentimentAnalysisService>();
 
+builder.Services.AddScoped<IHomeService, HomeService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -8,6 +8,36 @@ html {
   }
 }
 
+#header {
+    overflow: hidden;
+    position: fixed;
+    height: auto;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    background-color: white;
+    z-index: 200;
+}
+
+#content {
+    position: relative;
+    margin-top: 107.8px;
+    margin-bottom: 80.8px;
+    /* top: 107px;
+    bottom: 59px;*/
+}
+
+#footer {
+    overflow: hidden;
+    position: fixed;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    background-color: white;
+    z-index: 200;
+} 
+
 #image_col {
     width: ;
     height: ;
@@ -92,33 +122,27 @@ html {
     background-color: #6c757d !important;
 }
 
-
-#header {
-    overflow: hidden;
-    position: fixed;
-    height: auto;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-    background-color: white;
-    z-index :200;
+#dropdown-menu-scrollable {
+    max-height: 200px; /* adjust this value as per your requirement */
+    overflow-y: auto;
+    width: 225px;
+    z-index: 150;
 }
 
-#content {
-    position: relative;
-    margin-top:107.8px;
-    margin-bottom:80.8px;
-   /* top: 107px;
-    bottom: 59px;*/
+#dropdown-menu {
+    width: 225px;
 }
 
-#footer {
-    overflow: hidden;
-    position: fixed;
-    height: auto;
-    bottom: 0;
-    left: 0;
-    box-sizing: border-box;
-    background-color: white;
-    z-index: 200;
+.carousel-control-next {
+    display: initial !important;
+    position: static !important;
+}
+.carousel-control-prev {
+    display: initial !important;
+    position: static !important;
+}
+
+#card_text {
+    max-height: 200px; /* You can adjust this value as per your requirement */
+    overflow-y: auto;
 }

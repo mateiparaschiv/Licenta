@@ -21,6 +21,7 @@ namespace LicentaApp.Services
 
             return new IndexGenreListViewModel
             {
+                AllGenreList = await _genreRepository.GetAsyncFilteredByName(),
                 GenreList = await _genreRepository.GetPaginatedFilteredList(sortOrder, pageNumber, pageSize),
                 SortOrder = sortOrder,
                 PageNumber = pageNumber,
@@ -33,7 +34,7 @@ namespace LicentaApp.Services
             return new IndexGenreNameViewModel
             {
                 Genre = await _genreRepository.GetAsyncByName(name),
-                GenreAlbums = await _albumRepository.GetListByGenre(name)
+                GenreAlbums = await _albumRepository.GetFilteredListByCompoundScore(9, name)
             };
         }
     }

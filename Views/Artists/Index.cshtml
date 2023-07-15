@@ -2,6 +2,7 @@
 @model IndexArtistListViewModel
 @{
     ViewData["Title"] = "Artists";
+    var allArtistList = Model.AllArtistList;
     var artistList = Model.ArtistList;
     var albumsToArtist = Model.AlbumsToArtist;
     var sortOrder = Model.SortOrder;
@@ -9,11 +10,28 @@
     var maxPages = Model.MaxPages;
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-<div class="d-flex justify-content-between bd-highlight">
-    <div class="d-flex align-items-center justify-content-between">
-        <h2 class="text-muted">Artists</h2>
+<div class="row align-items-center">
+    <div class="col-4 text-start">
+        <h2 class="text-muted m-0">Artists</h2>
     </div>
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="col-4 text-center">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                All artists
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                @foreach (var artist in allArtistList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Artist" asp-route-name="@artist.Name">
+                            @artist.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-4 text-end">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))

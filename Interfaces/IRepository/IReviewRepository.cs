@@ -6,5 +6,6 @@ namespace LicentaApp.Interfaces.IService
         Task<List<ReviewModel>> GetAsync();
         Task CreateAsync(ReviewModel newReviewModel);
         Task<List<ReviewModel>> GetAsyncListByAlbum(string albumName);
+        Task<List<ReviewModel>> GetAsyncFilteredByDate(string? subject = null);
     }
 }

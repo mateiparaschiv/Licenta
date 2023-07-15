@@ -1,21 +1,21 @@
 ﻿@using Microsoft.Extensions.Configuration
 @using LicentaApp.Models.ViewModels
 @inject IConfiguration _configuration
-@model IndexAlbumListViewModel
+@model IndexAlbumYearListViewModel
 @{
-    ViewData["Title"] = "Albums";
-    var allAlbumList = Model.AllAlbumList;
+    ViewData["Title"] = "Year";
     var albumList = Model.AlbumList;
     var sortOrder = Model.SortOrder;
     var pageNumber = Model.PageNumber;
     var maxPages = Model.MaxPages;
+    var year = Model.Year;
 }
 <div class="row align-items-center">
     <div class="col-4 text-start">
-        <h2 class="text-muted m-0">Albums</h2>
+        <h2 class="text-muted m-0">Albums from @year</h2>
     </div>
     <div class="col-4 text-center">
-        <div class="btn-group" id="dropdown-menu">
+        @*<div class="btn-group" id="dropdown-menu">
             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 All albums
             </button>
@@ -29,20 +29,20 @@
                     </li>
                 }
             </ul>
-        </div>
+        </div>*@
     </div>
     <div class="col-4 text-end">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))
                 {
-                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="desc">
+                    <a id="sort_buttons" asp-controller="Albums" asp-action="Year" asp-route-sortOrder="desc" asp-route-year="@year">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
                     </a>
                 }
                 else
                 {
-                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="asc">
+                    <a id="sort_buttons" asp-controller="Albums" asp-action="Year" asp-route-sortOrder="asc" asp-route-year="@year" >
                         <i id="sort_buttons" class="bi bi-sort-alpha-down"></i>
                     </a>
                 }
@@ -90,7 +90,7 @@
     <div class="d-flex justify-content-center">
         @if (pageNumber > 0)
         {
-            <a id="link" asp-controller="Albums" asp-action="Index" asp-route-page="@(pageNumber - 1)" asp-route-sortOrder="@sortOrder">
+            <a id="link" asp-controller="Albums" asp-action="Year" asp-route-page="@(pageNumber - 1)" asp-route-sortOrder="@sortOrder" asp-route-year="@year">
                 <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
                 @*backwards*@
             </a>
@@ -98,7 +98,7 @@
 
         @if (pageNumber < maxPages - 1)
         {
-            <a id="link" asp-controller="Albums" asp-action="Index" asp-route-page="@(pageNumber + 1)" asp-route-sortOrder="@sortOrder">
+            <a id="link" asp-controller="Albums" asp-action="Year" asp-route-page="@(pageNumber + 1)" asp-route-sortOrder="@sortOrder" asp-route-year="@year">
                 <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
                 @*forwards*@
             </a>

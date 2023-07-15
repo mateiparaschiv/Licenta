@@ -34,6 +34,7 @@ namespace LicentaApp.Services
 
             return new IndexArtistListViewModel
             {
+                AllArtistList = await _artistRepository.GetAsyncFilteredByName(),
                 ArtistList = artistList,
                 AlbumsToArtist = await _albumRepository.GetNumOfAlbumsByNames(artistList),
                 SortOrder = sortOrder,
@@ -64,6 +65,7 @@ namespace LicentaApp.Services
                 newReview.Email = user.Email;
                 newReview.Title = "";
                 newReview.SubjectType = "artist";
+                newReview.Date = DateTime.Now;
             }
 
             return new IndexArtistNameViewModel

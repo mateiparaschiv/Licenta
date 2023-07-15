@@ -13,8 +13,11 @@ namespace LicentaApp.Repositories
             _albumCollection = albumCollection;
         }
 
-        public async Task<List<AlbumModel>> GetAsync() =>
-            await _albumCollection.Find(_ => true).ToListAsync();
+        public async Task<List<AlbumModel>> GetAsyncFilteredByName()
+        {
+            var sortDefinition = Builders<AlbumModel>.Sort.Ascending(album => album.Name);
+            return await _albumCollection.Find(album => true).Sort(sortDefinition).ToListAsync();
+        }
 
         public async Task<AlbumModel> GetAlbumByName(string name) =>
             await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
@@ -70,21 +73,38 @@ namespace LicentaApp.Repositories
             return albums;
         }
 
-        public async Task<List<AlbumModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)
+        public async Task<List<AlbumModel>> GetPaginatedFilteredList(string sortOrder, int? year = null, int pageNumber = 0, int pageSize = 10)
         {
             var sortDefinition = sortOrder.Equals("asc")
                 ? Builders<AlbumModel>.Sort.Ascending(x => x.Name)
                 : Builders<AlbumModel>.Sort.Descending(x => x.Name);
 
-            return await _albumCollection.Find(_ => true)
+            FilterDefinition<AlbumModel> filterDefinition;
+            if (year.HasValue && year.Value != 0)
+            {
+                filterDefinition = Builders<AlbumModel>.Filter.Eq(a => a.Year, year.Value);
+            }
+            else
+            {
+                filterDefinition = Builders<AlbumModel>.Filter.Empty;
+            }
+
+            return await _albumCollection.Find(filterDefinition)
                 .Sort(sortDefinition)
                 .Skip(pageNumber * pageSize)
                 .Limit(pageSize)
                 .ToListAsync();
         }
 
-        public async Task<int> GetTotalCountAsync() =>
-            (int)await _albumCollection.CountDocumentsAsync(FilterDefinition<AlbumModel>.Empty);
+        public async Task<int> GetTotalCountAsync(int? year = null)
+        {
+            var filter = year.HasValue
+                         ? Builders<AlbumModel>.Filter.Eq(x => x.Year, year)
+                         : FilterDefinition<AlbumModel>.Empty;
+
+            return (int)await _albumCollection.CountDocumentsAsync(filter);
+        }
+
         public async Task UpdateAlbumAsync(string albumName, double compoundScore)
         {
             var filter = Builders<AlbumModel>.Filter.Eq(x => x.Name, albumName);
@@ -106,6 +126,31 @@ namespace LicentaApp.Repositories
                 .Set(x => x.Sentiment, newSentiment);
 
             await _albumCollection.UpdateOneAsync(filter, update);
+        }
+
+        public async Task<List<AlbumModel>> GetFilteredListByCompoundScore(int? count, string? albumGenre = null)
+        {
+            var sortDefinition = Builders<AlbumModel>.Sort.Descending(x => x.CompoundScore);
+
+            FilterDefinition<AlbumModel> filter;
+
+            if (string.IsNullOrWhiteSpace(albumGenre))
+            {
+                filter = Builders<AlbumModel>.Filter.Empty;
+            }
+            else
+            {
+                filter = Builders<AlbumModel>.Filter.Eq(x => x.Genre, albumGenre);
+            }
+
+            var query = _albumCollection.Find(filter).Sort(sortDefinition);
+
+            if (count.HasValue)
+            {
+                query = query.Limit(count);
+            }
+
+            return await query.ToListAsync();
         }
 
         private string GetSentiment(double compoundScore)

@@ -1,8 +1,8 @@
 ﻿@using LicentaApp.Models.ViewModels
 @model IndexAlbumNameViewModel
 @{
-    ViewData["Title"] = $"Album - {Model.Album.Name}";
     var album = Model.Album;
+    ViewData["Title"] = $"Album - {album.Name}";
     var reviewList = Model.ReviewList;
     var newReview = Model.NewReview;
 }
@@ -29,7 +29,7 @@
                     @{
                         if (User?.Identity?.IsAuthenticated ?? false)
                         {
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#albumModal" data-bs-whatever="@album.Name">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal" data-bs-whatever="@album.Name">
                                 Review @album.Name
                             </button>
                         }
@@ -58,7 +58,13 @@
                                 </i>
                             </a>
                         </span>
-                        <span class="col text-center mb-3 mb-md-0">@album.Year</span>
+                        <span class="col text-center mb-3 mb-md-0">
+                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Year" asp-route-year="@album.Year" id="link">
+                                <i>
+                                    @album.Year
+                                </i>
+                            </a>
+                        </span>
                         <span class="col text-end mb-3 mb-md-0">@album.Sentiment</span>
                     </div>
                 </div>
@@ -97,6 +103,6 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="albumModal" tabindex="-1" aria-labelledby="albumModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
 </div>

@@ -4,14 +4,14 @@ namespace LicentaApp.Controllers
 {
     public class GenresController : Controller
     {
-        private readonly Interfaces.IRepository.IGenreService _genreService;
+        private readonly IGenreService _genreService;
 
-        public GenresController(Interfaces.IRepository.IGenreService genreRepository)
+        public GenresController(IGenreService genreService)
         {
-            _genreService = genreRepository;
+            _genreService = genreService;
         }
 
-        public async Task<IActionResult> Index(string? sortOrder, int page)
+        public async Task<IActionResult> Index(string sortOrder, int page)
         {
             return View(await _genreService.IndexGenreList(sortOrder, page));
         }

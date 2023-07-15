@@ -15,6 +15,12 @@ namespace LicentaApp.Repositories
         public async Task<ArtistModel> GetArtistByName(string name) =>
             await _artistCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
 
+        public async Task<List<ArtistModel>> GetAsyncFilteredByName()
+        {
+            var sortDefinition = Builders<ArtistModel>.Sort.Ascending(x => x.Name);
+            return await _artistCollection.Find(x => true).Sort(sortDefinition).ToListAsync();
+        }
+
         public async Task<List<ArtistModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)
         {
             var sortDefinition = sortOrder.Equals("asc")
@@ -53,6 +59,18 @@ namespace LicentaApp.Repositories
 
             await _artistCollection.UpdateOneAsync(filter, update);
         }
+        public async Task<List<ArtistModel>> GetFilteredListByCompoundScore(int? count)
+        {
+            var sortDefinition = Builders<ArtistModel>.Sort.Descending(x => x.CompoundScore);
+            var query = _artistCollection.Find(_ => true).Sort(sortDefinition);
+
+            if (count.HasValue)
+            {
+                query = query.Limit(count);
+            }
+
+            return await query.ToListAsync();
+        }
 
         private string GetSentiment(double compoundScore)
         {
@@ -69,17 +87,5 @@ namespace LicentaApp.Repositories
                 return "Negative";
             }
         }
-
-        //after name
-        //    {
-        //        var filter = Builders<ArtistModel>.Filter.Eq(x => x.Name, artistId);
-
-        //        var update = Builders<ArtistModel>.Update
-        //            .Inc(x => x.ReviewCount, 1)
-        //            .Inc(x => x.CompoundScore, compoundScore);
-
-        //        await _artistCollection.UpdateOneAsync(filter, update);
-        //    }
-        //}
     }
 }

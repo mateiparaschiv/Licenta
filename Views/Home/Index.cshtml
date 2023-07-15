@@ -1,95 +1,128 @@
-﻿@using Microsoft.Extensions.Configuration
+﻿@using LicentaApp.Models.ViewModels;
+@using Microsoft.Extensions.Configuration
 @inject IConfiguration _configuration
-@model List<AlbumModel>
+@model IndexHomeViewModel
 @{
     ViewData["Title"] = "Home Page";
     var environment = _configuration.GetValue<string>("Environment");
-    var albumList = Model;
+    var albumList = Model.AlbumList;
+    var genreList = Model.GenreList;
 
 }
 @*<div class="carousel-caption d-none d-md-block position-absolute bottom-0 start-0">
 </div>*@
 <h2 class="text-muted">Home</h2>
-<div class="text-center position-relative">
-    <h1 class="display-4">In @environment</h1>
+<div class="position-relative">
+    @if (environment.Equals("Development"))
+    {
+        <h1 class="display-4">In @environment</h1>
+
+    }
+    <h1 class="display-4">Top 10 rated albums</h1>
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            @for (int i = 0; i < albumList.Count(); i++)
-            {
-                <div class="carousel-item @(i == 0 ? "active" : "")">
-                    <div class="card w-100">
-                        <div class="row g-0">
-                            <div class="col-auto position-relative">
-                                <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@albumList[i].Name">
-                                    <img src="~/images/Albums/@(albumList[i].Name).jpg" id="home_image" class="img-fluid">
-                                </a>
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p id="index_text" class="h2 text-center">@albumList[i].Name</p>
-                                    <p id="index_text" class="h3 text-center">@albumList[i].Artist</p>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card-body">
-                                    <a class="nav-link active p-0" id="link" style="width: max-content;" asp-controller="Albums" asp-action="Album" asp-route-name="@albumList[i].Name">
-                                        <p class="display-6">
-                                            <i>
-                                                <p class="display-4">@albumList[i].Name</p>
-                                            </i>
-                                        </p>
-                                    </a>
+        <div class="row align-items-center">
+            <div class="col-1 text-end">
+                <button id="link" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <i id="sort_buttons" class="bi bi-caret-left-fill"></i>
+                </button>
+            </div>
 
-                                    <a class="nav-link active p-0" id="link" style="width: max-content;" asp-controller="Artists" asp-action="Artist" asp-route-name="@albumList[i].Artist">
-                                        <p class="display-6">
-                                            <i>
-                                                @albumList[i].Artist
-                                            </i>
-                                        </p>
-                                    </a>
-
-                                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-                                        <div class="container g-0">
-                                            <div class="row row-cols-3">
-                                                <span class="col text-begin mb-3 mb-md-0">Genre</span>
-                                                <span class="col text-center mb-3 mb-md-0">Year</span>
-                                                <span class="col text-end mb-3 mb-md-0">Sentiment</span>
-                                                <span class="col text-begin mb-3 mb-md-0">
-                                                    <a class="nav-link p-0" asp-controller="Genres" asp-action="Genre" asp-route-name="@albumList[i].Genre" id="link">
-                                                        <i>
-                                                            @albumList[i].Genre
-                                                        </i>
-                                                    </a>
-                                                </span>
-                                                <span class="col text-center mb-3 mb-md-0">@albumList[i].Year</span>
-                                                <span class="col text-end mb-3 mb-md-0">@albumList[i].Sentiment</span>
-                                            </div>
+            <div class="col-10">
+                <div class="carousel-inner">
+                    @for (int i = 0; i < albumList.Count(); i++)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="card w-100">
+                                <div class="row g-0" style="max-height: 450px;">
+                                    <div class="col-auto position-relative">
+                                        <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@albumList[i].Name">
+                                            <img src="~/images/Albums/@(albumList[i].Name).jpg" id="home_image" class="img-fluid">
+                                        </a>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <p id="index_text" class="h2 text-center">@albumList[i].Name</p>
+                                            <p id="index_text" class="h3 text-center">@albumList[i].Artist</p>
                                         </div>
                                     </div>
-                                    <p class="card-text indent">@albumList[i].ShortDescription</p>
+                                    <div class="col">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-start">
+                                                <p class="display-4 pe-3">@(i + 1)</p>
+                                                <a class="nav-link active p-0" id="link" style="width: max-content;" asp-controller="Albums" asp-action="Album" asp-route-name="@albumList[i].Name">
+
+                                                    <p class="display-4">
+                                                        <i>
+                                                            @albumList[i].Name
+                                                        </i>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <a class="nav-link active p-0" id="link" style="width: max-content;" asp-controller="Artists" asp-action="Artist" asp-route-name="@albumList[i].Artist">
+                                                <p class="display-6">
+                                                    <i>
+                                                        @albumList[i].Artist
+                                                    </i>
+                                                </p>
+                                            </a>
+
+                                            <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+                                                <div class="container g-0">
+                                                    <div class="row">
+                                                        <span class="col text-begin mb-3 mb-md-0">Genre</span>
+                                                        <span class="col text-center mb-3 mb-md-0">Year</span>
+                                                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                                                    </div>
+                                                    <div class="row">
+                                                        <span class="col mb-3 mb-md-0">
+                                                            <a class="nav-link p-0" asp-controller="Genres" asp-action="Genre" asp-route-name="@albumList[i].Genre" id="link">
+                                                                <i>
+                                                                    @albumList[i].Genre
+                                                                </i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="col text-center mb-3 mb-md-0">
+                                                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Year" asp-route-year="@albumList[i].Year" id="link">
+                                                                <i>
+                                                                    @albumList[i].Year
+                                                                </i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="col text-end mb-3 mb-md-0">@albumList[i].Sentiment</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="card-text indent" id="card_text">@albumList[i].Description </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
-            }
+            </div>
+
+            <div class="col-1 text-start">
+                <button id="link" class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <i id="sort_buttons" class="bi bi-caret-right-fill"></i>
+                </button>
+            </div>
         </div>
     </div>
-    <div class="bd-example">
-        @*<ul class="list-inline">
-            <li class="list-inline-item">This is a list item.</li>
-            <li class="list-inline-item">And another one.</li>
-            <li class="list-inline-item">But they're displayed inline.</li>
-        *@
-        <ul id="categories" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 list-inline">
-            <li class="nav-item list-inline-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Albums" asp-action="Index">Albums </a>
-                </li>
-            </ul>
-    </div>
 
-    <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" style="left: 10px;">
-        <i class="bi bi-caret-left-fill"></i>
-    </button>
-    <button class="carousel-control-next position-absolute top-50 end-0 translate-middle-y" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" style="right: 10px;">
-        <i class="bi bi-caret-right-fill"></i>
-    </button>
+    <div>
+        <h2 class="text-muted pt-1">Genres</h2>
+        <ul id="categories" class="nav col-12 col-md-auto mb-2 mb-md-0 list-inline d-flex justify-content-around">
+            @foreach (var genre in genreList)
+            {
+                <li class="list-inline-item pe-3 m-0 flex-fill text-center">
+                    <a id="link" asp-controller="Genres" asp-action="Genre" asp-route-name="@genre.Name">
+                        <h1>
+                            <i>
+                                @genre.Name
+                            </i>
+                        </h1>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
 </div>

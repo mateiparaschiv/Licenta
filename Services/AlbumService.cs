@@ -34,7 +34,8 @@ namespace LicentaApp.Services
 
             return new IndexAlbumListViewModel
             {
-                AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder, pageNumber, pageSize),
+                AllAlbumList = await _albumRepository.GetAsyncFilteredByName(),
+                AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder: sortOrder, pageNumber: pageNumber, pageSize: pageSize),
                 SortOrder = sortOrder,
                 PageNumber = pageNumber,
                 MaxPages = maxPages
@@ -44,7 +45,7 @@ namespace LicentaApp.Services
         public async Task<IndexAlbumNameViewModel> AlbumName(string albumName)
         {
             var album = await _albumRepository.GetAlbumByName(albumName);
-            var reviewList = await _reviewRepository.GetAsyncListByAlbum(albumName);
+            var reviewList = await _reviewRepository.GetAsyncFilteredByDate(albumName);
 
             var newReview = new ReviewModel();
 
@@ -63,6 +64,7 @@ namespace LicentaApp.Services
                 newReview.Email = user.Email;
                 newReview.Title = "";
                 newReview.SubjectType = "album";
+                newReview.Date = DateTime.Now;
             }
 
             return new IndexAlbumNameViewModel
@@ -70,6 +72,23 @@ namespace LicentaApp.Services
                 Album = album,
                 ReviewList = reviewList,
                 NewReview = UserIsAuthenticated() ? newReview : null
+            };
+        }
+
+        public async Task<IndexAlbumYearListViewModel> AlbumsYear(int year, string sortOrder, int pageNumber)
+        {
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int pageSize = 9;
+            int totalAlbums = await _albumRepository.GetTotalCountAsync(year);
+            int maxPages = (totalAlbums + pageSize - 1) / pageSize;
+
+            return new IndexAlbumYearListViewModel
+            {
+                AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder, year, pageNumber, pageSize),
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages,
+                Year = year
             };
         }
 
@@ -82,5 +101,7 @@ namespace LicentaApp.Services
         {
             return _httpContextAccessor.HttpContext?.User?.Identity?.Name ?? string.Empty;
         }
+
+
     }
 }
