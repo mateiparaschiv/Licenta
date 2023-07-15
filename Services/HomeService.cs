@@ -17,7 +17,7 @@ namespace LicentaApp.Services
         {
             return new IndexHomeViewModel
             {
-                AlbumList = await _albumRepository.GetFilteredListByCompoundScore(10),
+                AlbumList = await _albumRepository.GetFilteredListByCompoundScore(count: 10),
                 GenreList = await _genreRepository.GetAsync()
             };
         }

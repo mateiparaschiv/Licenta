@@ -22,5 +22,9 @@ namespace LicentaApp.Controllers
         {
             return View(await _albumService.AlbumsYear(year, sortOrder, page));
         }
+        public async Task<IActionResult> Genre(string genre, string sortOrder, int page)
+        {
+            return View(await _albumService.AlbumsGenre(genre, sortOrder, page));
+        }
     }
 }

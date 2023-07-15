@@ -32,6 +32,10 @@
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal" data-bs-whatever="@album.Name">
                                 Review @album.Name
                             </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                                @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
+                            </div>
                         }
                     }
                 </div>
@@ -65,7 +69,14 @@
                                 </i>
                             </a>
                         </span>
-                        <span class="col text-end mb-3 mb-md-0">@album.Sentiment</span>
+                        @if (string.IsNullOrEmpty(album.Sentiment))
+                        {
+                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                        }
+                        else
+                        {
+                            <span class="col text-end mb-3 mb-md-0">@album.Sentiment</span>
+                        }
                     </div>
                 </div>
             </div>
@@ -100,9 +111,4 @@
             </div>
         }
     </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
 </div>

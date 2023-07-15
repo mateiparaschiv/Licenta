@@ -72,6 +72,7 @@ namespace LicentaApp.Services
             {
                 Artist = artist,
                 ArtistAlbums = await _albumRepository.GetFilteredListByArtist(artist.Name, sortOrder),
+                ArtistBestAlbums = await _albumRepository.GetFilteredListByCompoundScore(albumArtist: artist.Name),
                 SortOrder = sortOrder,
                 ReviewList = await _reviewRepository.GetAsyncListByAlbum(name),
                 NewReview = UserIsAuthenticated() ? newReview : null

@@ -39,5 +39,14 @@ namespace LicentaApp.Repositories
 
         public async Task<int> GetTotalCountAsync() =>
             (int)await _genreCollection.CountDocumentsAsync(FilterDefinition<GenreModel>.Empty);
+
+        public async Task<List<string>> GetDistinctGenresAsync()
+        {
+            var filter = Builders<GenreModel>.Filter.Empty;
+            var projection = Builders<GenreModel>.Projection.Include(a => a.Name);
+            var genres = await _genreCollection.Find(filter).Project<GenreModel>(projection).ToListAsync();
+
+            return genres.Select(g => g.Name).Distinct().ToList();
+        }
     }
 }

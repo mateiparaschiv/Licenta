@@ -34,7 +34,7 @@ namespace LicentaApp.Services
             return new IndexGenreNameViewModel
             {
                 Genre = await _genreRepository.GetAsyncByName(name),
-                GenreAlbums = await _albumRepository.GetFilteredListByCompoundScore(9, name)
+                GenreAlbums = await _albumRepository.GetFilteredListByCompoundScore(count: 9, albumGenre: name)
             };
         }
     }

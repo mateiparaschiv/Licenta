@@ -9,12 +9,14 @@
     var sortOrder = Model.SortOrder;
     var pageNumber = Model.PageNumber;
     var maxPages = Model.MaxPages;
+    var yearList = Model.YearList;
+    var genreList = Model.GenreList;
 }
 <div class="row align-items-center">
-    <div class="col-4 text-start">
+    <div class="col-1 text-start">
         <h2 class="text-muted m-0">Albums</h2>
     </div>
-    <div class="col-4 text-center">
+    <div class="col-3 text-center">
         <div class="btn-group" id="dropdown-menu">
             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 All albums
@@ -31,7 +33,41 @@
             </ul>
         </div>
     </div>
-    <div class="col-4 text-end">
+    <div class="col-3 text-center ps-1">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Year
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                @foreach (var year in yearList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Year" asp-route-year="@year">
+                            @year
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-3 text-center ps-1">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class="btn btn-primary     dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Genre
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                @foreach (var genre in genreList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Genre" asp-route-genre="@genre">
+                            @genre
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-2 text-end">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))

@@ -8,15 +8,18 @@ namespace LicentaApp.Services
         private readonly IAlbumRepository _albumRepository;
         private readonly IReviewRepository _reviewRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IGenreRepository _genreRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         public AlbumService(IAlbumRepository albumRepository,
             IReviewRepository reviewRepository,
             IUserRepository userRepository,
+            IGenreRepository genreRepository,
             IHttpContextAccessor httpContextAccessor)
         {
             _albumRepository = albumRepository;
             _reviewRepository = reviewRepository;
             _userRepository = userRepository;
+            _genreRepository = genreRepository;
             _httpContextAccessor = httpContextAccessor;
         }
 
@@ -38,7 +41,9 @@ namespace LicentaApp.Services
                 AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder: sortOrder, pageNumber: pageNumber, pageSize: pageSize),
                 SortOrder = sortOrder,
                 PageNumber = pageNumber,
-                MaxPages = maxPages
+                MaxPages = maxPages,
+                YearList = await _albumRepository.GetDistinctYearsAsync(),
+                GenreList = await _genreRepository.GetDistinctGenresAsync()
             };
         }
 
@@ -79,16 +84,32 @@ namespace LicentaApp.Services
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
             const int pageSize = 9;
-            int totalAlbums = await _albumRepository.GetTotalCountAsync(year);
+            int totalAlbums = await _albumRepository.GetTotalCountAsync(year: year);
             int maxPages = (totalAlbums + pageSize - 1) / pageSize;
 
             return new IndexAlbumYearListViewModel
             {
-                AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder, year, pageNumber, pageSize),
+                AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder: sortOrder, year: year, pageNumber: pageNumber, pageSize: pageSize),
                 SortOrder = sortOrder,
                 PageNumber = pageNumber,
                 MaxPages = maxPages,
                 Year = year
+            };
+        }
+        public async Task<IndexAlbumGenreListViewModel> AlbumsGenre(string genre, string sortOrder, int pageNumber)
+        {
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int pageSize = 9;
+            int totalAlbums = await _albumRepository.GetTotalCountAsync(genre: genre);
+            int maxPages = (totalAlbums + pageSize - 1) / pageSize;
+
+            return new IndexAlbumGenreListViewModel
+            {
+                AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder: sortOrder, genre: genre, pageNumber: pageNumber, pageSize: pageSize),
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages,
+                Genre = genre
             };
         }
 
