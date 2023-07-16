@@ -4,6 +4,7 @@ namespace LicentaApp.Interfaces.IService
     public interface IAlbumRepository
     {
         Task<List<AlbumModel>> GetAsyncFilteredByName();
+        Task UpdateAsync(string id, AlbumModel updatedAlbumModel);
         Task<List<AlbumModel>> GetListByArtist(string artistName);
         Task<List<AlbumModel>> GetListByGenre(string genre);
         Task<Dictionary<string, int>> GetNumOfAlbumsByNames(List<ArtistModel> artistList);

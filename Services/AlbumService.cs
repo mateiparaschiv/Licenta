@@ -50,8 +50,6 @@ namespace LicentaApp.Services
         public async Task<IndexAlbumNameViewModel> AlbumName(string albumName)
         {
             var album = await _albumRepository.GetAlbumByName(albumName);
-            var reviewList = await _reviewRepository.GetAsyncFilteredByDate(albumName);
-
             var newReview = new ReviewModel();
 
             if (UserIsAuthenticated())
@@ -75,7 +73,7 @@ namespace LicentaApp.Services
             return new IndexAlbumNameViewModel
             {
                 Album = album,
-                ReviewList = reviewList,
+                ReviewList = await _reviewRepository.GetAsyncFilteredByDate(albumName),
                 NewReview = UserIsAuthenticated() ? newReview : null
             };
         }

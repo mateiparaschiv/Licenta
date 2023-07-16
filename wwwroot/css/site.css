@@ -125,12 +125,12 @@ html {
 #dropdown-menu-scrollable {
     max-height: 200px; /* adjust this value as per your requirement */
     overflow-y: auto;
-    width: 225px;
+    width: 245px;
     z-index: 150;
 }
 
 #dropdown-menu {
-    width: 225px;
+    width: 245px;
 }
 
 .carousel-control-next {

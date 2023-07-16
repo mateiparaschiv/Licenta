@@ -18,7 +18,8 @@ namespace LicentaApp.Repositories
             var sortDefinition = Builders<AlbumModel>.Sort.Ascending(album => album.Name);
             return await _albumCollection.Find(album => true).Sort(sortDefinition).ToListAsync();
         }
-
+        public async Task UpdateAsync(string id, AlbumModel updatedAlbumModel) =>
+            await _albumCollection.ReplaceOneAsync(x => x.Id == id, updatedAlbumModel);
         public async Task<AlbumModel> GetAlbumByName(string name) =>
             await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
 
@@ -177,7 +178,7 @@ namespace LicentaApp.Repositories
             var projection = Builders<AlbumModel>.Projection.Include(a => a.Year);
             var years = await _albumCollection.Find(filter).Project<AlbumModel>(projection).ToListAsync();
 
-            return years.Select(a => a.Year).Distinct().ToList();
+            return years.Select(a => a.Year).Distinct().OrderByDescending(y => y).ToList();
         }
 
         private string GetSentiment(double compoundScore)

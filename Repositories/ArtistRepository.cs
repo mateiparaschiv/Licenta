@@ -15,6 +15,9 @@ namespace LicentaApp.Repositories
         public async Task<ArtistModel> GetArtistByName(string name) =>
             await _artistCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
 
+        public async Task UpdateAsync(string id, ArtistModel updatedArtistModel) =>
+            await _artistCollection.ReplaceOneAsync(x => x.Id == id, updatedArtistModel);
+
         public async Task<List<ArtistModel>> GetAsyncFilteredByName()
         {
             var sortDefinition = Builders<ArtistModel>.Sort.Ascending(x => x.Name);

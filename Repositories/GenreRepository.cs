@@ -46,7 +46,7 @@ namespace LicentaApp.Repositories
             var projection = Builders<GenreModel>.Projection.Include(a => a.Name);
             var genres = await _genreCollection.Find(filter).Project<GenreModel>(projection).ToListAsync();
 
-            return genres.Select(g => g.Name).Distinct().ToList();
+            return genres.Select(g => g.Name).Distinct().OrderBy(g => g).ToList();
         }
     }
 }
