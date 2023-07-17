@@ -1,7 +1,7 @@
 ﻿using LicentaApp.Models;
 namespace LicentaApp.Interfaces.IService
 {
-    public interface IFeedbackRepository
+    public interface IFeedbackService
     {
         Task<List<FeedbackModel>> GetAsync();
     }

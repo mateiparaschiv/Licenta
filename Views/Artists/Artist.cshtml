@@ -1,79 +1,208 @@
-﻿@using LicentaApp.Models.ViewModels
+﻿@using LicentaApp.Models.ViewModels.ArtistViewModel;
 @model IndexArtistNameViewModel
 @{
     var artist = Model.Artist;
+    ViewData["Title"] = $"Artist | {artist.Name}";
     var artistAlbums = Model.ArtistAlbums;
+    var artistBestAlbums = Model.ArtistBestAlbums;
     var sortOrder = Model.SortOrder;
-    var reviews = Model.Reviews;
+    var reviewList = Model.ReviewList;
+    var newReview = Model.NewReview;
 }
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <div class="row py-4 g-0">
     <div class="col-md-3" id="image_col">
         <img src="@artist.Image" id="artist-album_image">
     </div>
     <div class="col-md-9">
         <div class="card-body">
-            @*<p class="display-4">@artist.Name</p>*@
             <div class="row align-items-center">
                 <div class="col">
                     <p class="display-4">@artist.Name</p>
                 </div>
                 <div class="col-auto">
-                    <form class="col h-25" method="post">
-                        <button asp-route="Custom" class="btn btn-outline-primary">Rate this artist</button>
-                    </form>
+                    @{
+                        if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal" data-bs-whatever="@artist.Name">
+                                Review @artist.Name
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="reviewModal" tabindex="-1" artistModallLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                                @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml", Model.NewReview)
+                            </div>
+                        }
+                    }
                 </div>
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
                 <div class="container g-0">
                     @{
-                        if (artist.Band == false)
+                        @if (User?.Identity?.IsAuthenticated ?? false && User.Identity.Name == "superadmin")
                         {
-                            @if (artist.DateOfDeath != null)
+                            //superadmin
+                            if (artist.Band == false)
                             {
-                                <div class="row row-cols-2">
-                                    <span class="col text-begin mb-3 mb-md-0">Born</span>
-                                    <span class="col text-end mb-3 mb-md-0">Died</span>
-                                    <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
-                                    <span class="col text-end mb-3 mb-md-0">@artist.DateOfDeath?.ToString("dd MMMM yyyy")</span>
-                                </div>
+                                //artist
+                                if (artist.DateOfDeath != null)
+                                {
+                                    <div class="row row-cols-4">
+                                        <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                        <span class="col text-center mb-3 mb-md-0">Died</span>
+                                        <span class="col text-center mb-3 mb-md-0">Compound score</span>
+                                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                                        <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                        <span class="col text-center mb-3 mb-md-0">@artist.DateOfDeath?.ToString("dd MMMM yyyy")</span>
+                                        <span class="col text-center mb-3 mb-md-0">@artist.CompoundScore</span>
+                                        @if (artist.Sentiment.Equals("NoSentiment"))
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">@artist.Sentiment</span>
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row row-cols-3">
+                                        <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                        <span class="col text-center mb-3 mb-md-0">Score</span>
+                                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                                        <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                        <span class="col text-center mb-3 mb-md-0">@artist.CompoundScore</span>
+                                        @if (artist.Sentiment.Equals("NoSentiment"))
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">@artist.Sentiment</span>
+                                        }
+                                    </div>
+                                }
                             }
                             else
                             {
-                                <div class="row row-cols-1">
-                                    <span class="col text-begin mb-3 mb-md-0">Born</span>
-                                    <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
-                                </div>
+                                //band
+                                if (artist.Disbanded != null)
+                                {
+                                    <div class="row row-cols-4">
+                                        <span class="col text-begin mb-3 mb-md-0">Formed</span>
+                                        <span class="col text-center mb-3 mb-md-0">Disbanded</span>
+                                        <span class="col text-center mb-3 mb-md-0">Sentiment</span>
+                                        <span class="col text-end mb-3 mb-md-0">Score</span>
+                                        <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                                        <span class="col text-center mb-3 mb-md-0">@artist.Disbanded</span>
+                                        @if (artist.Sentiment.Equals("NoSentiment"))
+                                        {
+                                            <span class="col text-center mb-3 mb-md-0">Not enough reviews.</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="col text-center mb-3 mb-md-0">@artist.Sentiment</span>
+                                        }
+                                        <span class="col text-end mb-3 mb-md-0">@artist.CompoundScore</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row row-cols-3">
+                                        <span class="col text-begin mb-3 mb-md-0">Formed</span>
+                                        <span class="col text-center mb-3 mb-md-0">Score</span>
+                                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                                        <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                                        <span class="col text-center mb-3 mb-md-0">@artist.CompoundScore</span>
+                                        @if (artist.Sentiment.Equals("NoSentiment"))
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">@artist.Sentiment</span>
+                                        }
+                                    </div>
+                                }
                             }
                         }
                         else
-                        {
-                            @if (artist.Disbanded != null)
+                        {   //not superadmin
+                            if (artist.Band == false)
                             {
-                                <div class="row row-cols-2">
-                                    <span class="col text-begin mb-3 mb-md-0">Formed</span>
-                                    <span class="col text-end mb-3 mb-md-0">Disbanded</span>
-                                    <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
-                                    <span class="col text-end mb-3 mb-md-0">@artist.Disbanded</span>
-                                </div>
+                                //artist
+                                if (artist.DateOfDeath != null)
+                                {
+                                    <div class="row row-cols-3">
+                                        <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                        <span class="col text-center mb-3 mb-md-0">Died</span>
+                                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                                        <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                        <span class="col text-center mb-3 mb-md-0">@artist.DateOfDeath?.ToString("dd MMMM yyyy")</span>
+                                        @if (artist.Sentiment.Equals("NoSentiment"))
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">@artist.Sentiment</span>
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row row-cols-2">
+                                        <span class="col text-begin mb-3 mb-md-0">Born</span>
+                                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                                        <span class="col text-begin mb-3 mb-md-0">@artist.DateOfBirth?.ToString("dd MMMM yyyy")</span>
+                                        @if (artist.Sentiment.Equals("NoSentiment"))
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">@artist.Sentiment</span>
+                                        }
+                                    </div>
+                                }
                             }
                             else
                             {
-                                <div class="row row-cols-1">
-                                    <span class="col text-begin mb-3 mb-md-0">Formed</span>
-                                    <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
-                                </div>
+                                //band
+                                if (artist.Disbanded != null)
+                                {
+                                    <div class="row row-cols-3">
+                                        <span class="col text-begin mb-3 mb-md-0">Formed</span>
+                                        <span class="col text-center mb-3 mb-md-0">Disbanded</span>
+                                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                                        <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                                        <span class="col text-center mb-3 mb-md-0">@artist.Disbanded</span>
+                                        @if (artist.Sentiment.Equals("NoSentiment"))
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">@artist.Sentiment</span>
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="row row-cols-2">
+                                        <span class="col text-begin mb-3 mb-md-0">Formed</span>
+                                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                                        <span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
+                                        @if (artist.Sentiment.Equals("NoSentiment"))
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="col text-end mb-3 mb-md-0">@artist.Sentiment</span>
+                                        }
+                                    </div>
+                                }
                             }
-
-                            //<div class="row row-cols-1">
-                            //<span class="col text-begin mb-3 mb-md-0">Formed</span>
-                            //<span class="col text-begin mb-3 mb-md-0">@artist.Formed</span>
-                            //@if (artist.Disbanded != null)
-                            //{
-                            //    <span class="col text-end mb-3 mb-md-0">Disbanded</span>
-                            //    <span class="col text-end mb-3 mb-md-0">@artist.Disbanded</span>
-                            //}
                         }
                     }
                 </div>
@@ -88,25 +217,24 @@
         <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-albums-tab" data-bs-toggle="tab" data-bs-target="#nav-albums" type="button" role="tab" aria-controls="nav-albums" aria-selected="true">Albums</button>
             <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews" type="button" role="tab" aria-controls="nav-reviews" aria-selected="false" tabindex="-1">Reviews</button>
-            @*<button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" tabindex="-1">Contact</button>*@
+            <button class="nav-link" id="nav-bestAlbums-tab" data-bs-toggle="tab" data-bs-target="#nav-bestAlbums" type="button" role="tab" aria-controls="nav-bestAlbums" aria-selected="true">@artist.Name's best albums</button>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade active show" id="nav-albums" role="tabpanel" aria-labelledby="nav-albums-tab">
-            @*<p>This is some placeholder content the <strong>Home tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>*@
+        <div class="tab-pane fade show active" id="nav-albums" role="tabpanel" aria-labelledby="nav-albums-tab">
             <div class="d-flex justify-content-between bd-highlight">
                 <div class=" ms-auto d-flex align-items-center justify-content-between">
                     <span class="text-muted">
                         @{
                             if (sortOrder.Equals("asc"))
                             {
-                                <a id="sort_buttons" asp-controller="Artists" asp-action="Artist" asp-route-name = "@artist.Name" asp-route-sortOrder="desc">
+                                <a id="sort_buttons" asp-controller="Artists" asp-action="Artist" asp-route-name="@artist.Name" asp-route-sortOrder="desc">
                                     <i id="sort_buttons" class="bi bi-sort-numeric-up-alt"></i>
                                 </a>
                             }
                             else
                             {
-                                <a id="sort_buttons" asp-controller="Artists" asp-action="Artist" asp-route-name = "@artist.Name" asp-route-sortOrder="asc">
+                                <a id="sort_buttons" asp-controller="Artists" asp-action="Artist" asp-route-name="@artist.Name" asp-route-sortOrder="asc">
                                     <i id="sort_buttons" class="bi bi-sort-numeric-down"></i>
                                 </a>
                             }
@@ -115,57 +243,117 @@
                 </div>
             </div>
 
-
             <div class=" container py-4 g-0">
                 <div class="row justify-content">
                     @foreach (var album in artistAlbums)
                     {
                         <div class="text-center col-md-4 ">
                             <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
-                                @*<img src="@album.Image" id="album_col">*@
                                 <img src="~/images/Albums/@(album.Name).jpg" id="album_col">
                             </a>
-                            <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
-                                <i class="" id="link">
+                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name" id="link">
+                                <i>
                                     @album.Name
                                 </i>
                             </a>
-                            <p class="text-muted">
-                                @album.Year
-                            </p>
+                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Year" asp-route-year="@album.Year" id="link">
+                                <i>
+                                    @album.Year
+                                </i>
+                            </a>
                         </div>
                     }
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+        <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">  
             @{
-                if (@reviews.Count > 0)
+                if (@reviewList.Count > 0)
                 {
-                    <h3 class="text-muted ps-4">@reviews.Count() Reviews</h3>
+                    <u class=" h3 text-muted ps-4">@reviewList.Count() Reviews</u>
                 }
                 else
                 {
-                    <h3 class="text-muted ps-4">There are no reviews for this artist. You can write a review by pressing the "Rate this artist" button above.</h3>
+                    <h3 class="text-muted ps-4">There are no reviews for this artist. You can write a review by pressing the "Review @artist.Name" button above.</h3>
                 }
             }
-            @foreach (var review in @reviews)
+            @foreach (var review in @reviewList)
             {
                 <div class="ps-3 pt-3">
-                    <p class="h2">@review.Username</p>
-
-                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-                        <p class="h3">@review.Title</p>
-                        <div class="container g-0">
-                            <span class="card-text indent">@review.Message</span>
+                    @if (User?.Identity?.IsAuthenticated ?? false && User.Identity.Name == "superadmin")
+                    {
+                        <div class="row row-cols-4">
+                            <span class="h2 col text-begin mb-3 mb-md-0">@review.Username</span>
+                            <div class="col text-center d-flex align-items-center">
+                                <span class="h6 col text-center mb-3 mb-md-0">Overall sentiment: @review.Sentiment</span>
+                            </div>
+                            <div class="col text-center d-flex align-items-center">
+                                <span class="h6 col text-center mb-3 mb-md-0">Score: @review.CompoundScore</span>
+                            </div>
+                            <div class="col text-end d-flex align-items-center">
+                                <span class="h6 col text-end mb-3 mb-md-0">
+                                    <a id="deleteReviewLink" data-review-id="@review.Id" class="mb-3 mb-md-0" style="text-decoration:none">
+                                        Delete<i class="bi bi-x-lg"></i>
+                                    </a>
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+                            <p class="h3">@review.Title</p>
+                            <div class="container g-0">
+                                <span class="card-text indent">@review.Message</span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row row-cols-3">
+                            <span class="h2 col text-begin mb-3 mb-md-0">@review.Username</span>
+                            <div class="col text-center d-flex align-items-center">
+                                <span class="h6 col text-center mb-3 mb-md-0">Overall sentiment: Positive</span>
+                            </div>
+                            <div class="col text-end d-flex align-items-center">
+                                <span class="h6 col text-end mb-3 mb-md-0">
+                                    <a id="deleteReviewLink" data-review-id="@review.Id" class="mb-3 mb-md-0" style="text-decoration:none">
+                                        Delete<i class="bi bi-x-lg"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+                            <p class="h3">@review.Title</p>
+                            <div class="container g-0">
+                                <span class="card-text indent">@review.Message</span>
+                            </div>
+                        </div>
+                    }
                 </div>
             }
         </div>
+        <div class="tab-pane fade" id="nav-bestAlbums" role="tabpanel" aria-labelledby="nav-bestAlbums-tab">
 
-        @*<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-        <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-        </div>*@
+            <div class=" container py-4 g-0">
+                <div class="row justify-content">
+                    @foreach (var album in artistBestAlbums)
+                    {
+                        <div class="text-center col-md-4 ">
+                            <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
+                                <img src="~/images/Albums/@(album.Name).jpg" id="album_col">
+                            </a>
+                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name" id="link">
+                                <i>
+                                    @album.Name
+                                </i>
+                            </a>
+                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Year" asp-route-year="@album.Year" id="link">
+                                <i>
+                                    @album.Year
+                                </i>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>        
     </div>
 </div>

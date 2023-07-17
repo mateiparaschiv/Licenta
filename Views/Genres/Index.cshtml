@@ -1,20 +1,39 @@
-﻿@using LicentaApp.Models.ViewModels
+﻿@using LicentaApp.Models.ViewModels.GenreViewModel;
 @model IndexGenreListViewModel
 @{
+    ViewData["Title"] = "Genres";
+    var allGenreList = Model.AllGenreList;
     var genreList = Model.GenreList;
     var sortOrder = Model.SortOrder;
     var pageNumber = Model.PageNumber;
     var maxPages = Model.MaxPages;
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-<div class="d-flex justify-content-between bd-highlight">
-    <div class="d-flex align-items-center justify-content-between">
-        <h2 class="text-muted">Genres</h2>
+<div class="row align-items-center">
+    <div class="col-4 text-start">
+        <h2 class="text-muted m-0">Genres</h2>
     </div>
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="col-4 text-center">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                All genres
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                @foreach (var genre in allGenreList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Genres" asp-action="Genre" asp-route-name="@genre.Name">
+                            @genre.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-4 text-end">
         <span class="text-muted">
             @{
-                if (sortOrder.Equals("asc") || sortOrder.Equals(""))
+                if (sortOrder.Equals("asc"))
                 {
                     <a id="sort_buttons" asp-controller="Genres" asp-action="Index" asp-route-sortOrder="desc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
@@ -30,7 +49,7 @@
         </span>
     </div>
 </div>
-@foreach(var genre in genreList)
+@foreach (var genre in genreList)
 {
     <div class="row justify-content-center py-4 g-0">
         <div class="col-md-8">

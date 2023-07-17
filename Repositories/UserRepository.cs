@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace LicentaApp.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUserService
     {
         private readonly IMongoCollection<UserModel> _userCollection;
 
@@ -15,7 +15,7 @@ namespace LicentaApp.Repositories
         public async Task<List<UserModel>> GetAsync() =>
             await _userCollection.Find(_ => true).ToListAsync();
 
-        public async Task<UserModel?> GetAsync(string UserName) =>
+        public async Task<UserModel> GetAsync(string UserName) =>
             await _userCollection.Find(x => x.UserName == UserName).FirstOrDefaultAsync();
 
         public async Task CreateAsync(UserModel newUserModel) =>

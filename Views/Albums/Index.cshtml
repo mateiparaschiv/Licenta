@@ -1,29 +1,102 @@
-﻿@using Microsoft.Extensions.Configuration
-@using LicentaApp.Models.ViewModels
+﻿@using LicentaApp.Models.ViewModels.AlbumViewModel;
+@using Microsoft.Extensions.Configuration;
 @inject IConfiguration _configuration
 @model IndexAlbumListViewModel
 @{
+    ViewData["Title"] = "Albums";
+    var allAlbumList = Model.AllAlbumList;
     var albumList = Model.AlbumList;
     var sortOrder = Model.SortOrder;
     var pageNumber = Model.PageNumber;
     var maxPages = Model.MaxPages;
+    var yearList = Model.YearList;
+    var genreList = Model.GenreList;
+    List<string> sentimentList = new List<string> { "Positive", "Negative", "Neutral", "No sentiment"};
 }
-<div class="d-flex justify-content-between bd-highlight">
-    <div class="d-flex align-items-center justify-content-between">
-        <h2 class="text-muted">Albums</h2>
+<div class="row align-items-center">
+    <div class="col-2 text-start">
+        <h2 class="text-muted m-0">Albums</h2>
     </div>
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="col-2 text-center">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                All albums
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                @foreach (var album in allAlbumList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
+                            @album.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-2 text-center ps-1">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Year
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                @foreach (var year in yearList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Year" asp-route-year="@year">
+                            @year
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-2 text-center ps-1">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Genre
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                @foreach (var genre in genreList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Genre" asp-route-genre="@genre">
+                            @genre
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-2 text-center ps-1">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Sentiment
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                @foreach (var sentiment in sentimentList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="@sentiment">
+                            @sentiment
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-2 text-end">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))
                 {
-                    <a id="sort_buttons" asp-controller="Artists" asp-action="Index" asp-route-sortOrder="desc">
+                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="desc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
                     </a>
                 }
                 else
                 {
-                    <a id="sort_buttons" asp-controller="Artists" asp-action="Index" asp-route-sortOrder="asc">
+                    <a id="sort_buttons" asp-controller="Albums" asp-action="Index" asp-route-sortOrder="asc">
                         <i id="sort_buttons" class="bi bi-sort-alpha-down"></i>
                     </a>
                 }

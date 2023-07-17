@@ -1,7 +1,7 @@
 ﻿using LicentaApp.Models;
 namespace LicentaApp.Interfaces.IService
 {
-    public interface ISongRepository
+    public interface ISongService
     {
         Task<List<SongModel>> GetAsync();
         Task<SongModel?> GetAsync(string id);

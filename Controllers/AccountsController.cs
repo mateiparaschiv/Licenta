@@ -16,20 +16,18 @@ namespace LicentaApp.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
         public IActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Required][EmailAddress] string email, [Required] string password, string? returnurl)
+        public async Task<IActionResult> Login([Required] string username, [Required] string password, string? returnurl)
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser appUser = await _userManager.FindByEmailAsync(email);
+                ApplicationUser appUser = await _userManager.FindByNameAsync(username);
                 if (appUser != null)
                 {
                     Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(appUser, password, false, false);
@@ -38,12 +36,11 @@ namespace LicentaApp.Controllers
                         return Redirect(returnurl ?? "/");
                     }
                 }
-                ModelState.AddModelError(nameof(email), "Login Failed: Invalid Email or Password");
+                ModelState.AddModelError(nameof(username), "Login Failed: Invalid Username or Password");
             }
 
             return View();
         }
-
         [Authorize]
         public async Task<IActionResult> Logout()
         {

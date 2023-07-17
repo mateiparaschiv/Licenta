@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$binary": {
+      "base64": "c5GG5yjDQba0ACvfrnHCWw==",
+      "subType": "04"
+    }
+  },
+  "UserName": "superadmin",
+  "NormalizedUserName": "SUPERADMIN",
+  "Email": "ase@ase.ro",
+  "NormalizedEmail": "ASE@ASE.RO",
+  "EmailConfirmed": false,
+  "PasswordHash": "AQAAAAIAAYagAAAAEOEEEoDAwv2LjX3JJIrbCGgcVJu52MMNh5VXvZVvXa7v2q3MbeWq6aE7yNz/v0z1fQ==",
+  "SecurityStamp": "GYHWX6TGO5G3UJE5YGKSAQSULB2S5WYZ",
+  "ConcurrencyStamp": "ed8e847a-826d-4c74-a293-8f6ecdd4f532",
+  "PhoneNumber": null,
+  "PhoneNumberConfirmed": false,
+  "TwoFactorEnabled": false,
+  "LockoutEnd": null,
+  "LockoutEnabled": true,
+  "AccessFailedCount": 0,
+  "Version": 1,
+  "CreatedOn": {
+    "$date": "2023-07-13T08:45:31.280Z"
+  },
+  "Claims": [],
+  "Roles": [],
+  "Logins": [],
+  "Tokens": []
+}]

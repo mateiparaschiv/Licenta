@@ -13,10 +13,14 @@ namespace LicentaApp.Repositories
             _albumCollection = albumCollection;
         }
 
-        public async Task<List<AlbumModel>> GetAsync() =>
-            await _albumCollection.Find(_ => true).ToListAsync();
-
-        public async Task<AlbumModel?> GetAlbumByName(string name) =>
+        public async Task<List<AlbumModel>> GetAsyncFilteredByName()
+        {
+            var sortDefinition = Builders<AlbumModel>.Sort.Ascending(album => album.Name);
+            return await _albumCollection.Find(album => true).Sort(sortDefinition).ToListAsync();
+        }
+        public async Task UpdateAsync(string id, AlbumModel updatedAlbumModel) =>
+            await _albumCollection.ReplaceOneAsync(x => x.Id == id, updatedAlbumModel);
+        public async Task<AlbumModel> GetAlbumByName(string name) =>
             await _albumCollection.Find(x => x.Name == name).FirstOrDefaultAsync();
 
         public async Task<List<AlbumModel>> GetListByArtist(string artistName) =>
@@ -70,20 +74,137 @@ namespace LicentaApp.Repositories
             return albums;
         }
 
-        public async Task<List<AlbumModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)
+        public async Task<List<AlbumModel>> GetPaginatedFilteredList(string sortOrder, int? year = null, string? genre = null, string? sentiment = null, int pageNumber = 0, int pageSize = 10)
         {
             var sortDefinition = sortOrder.Equals("asc")
                 ? Builders<AlbumModel>.Sort.Ascending(x => x.Name)
                 : Builders<AlbumModel>.Sort.Descending(x => x.Name);
 
-            return await _albumCollection.Find(_ => true)
+            var filterDefinitionBuilder = Builders<AlbumModel>.Filter;
+            var filterDefinition = filterDefinitionBuilder.Empty;
+
+            if (year.HasValue && year.Value != 0)
+            {
+                var yearFilter = filterDefinitionBuilder.Eq(a => a.Year, year.Value);
+                filterDefinition = filterDefinition & yearFilter;
+            }
+
+            if (!string.IsNullOrEmpty(genre))
+            {
+                var genreFilter = filterDefinitionBuilder.Eq(a => a.Genre, genre);
+                filterDefinition = filterDefinition & genreFilter;
+            }
+
+            if (!string.IsNullOrEmpty(sentiment))
+            {
+                var sentimentFilter = filterDefinitionBuilder.Eq(a => a.Sentiment, sentiment);
+                filterDefinition = filterDefinition & sentimentFilter;
+            }
+
+            return await _albumCollection.Find(filterDefinition)
                 .Sort(sortDefinition)
                 .Skip(pageNumber * pageSize)
                 .Limit(pageSize)
                 .ToListAsync();
         }
 
-        public async Task<int> GetTotalCountAsync() =>
-            (int)await _albumCollection.CountDocumentsAsync(FilterDefinition<AlbumModel>.Empty);
+        public async Task<int> GetTotalCountAsync(int? year = null, string? genre = null, string? sentiment = null)
+        {
+            var filters = new List<FilterDefinition<AlbumModel>>();
+
+            if (year.HasValue)
+            {
+                filters.Add(Builders<AlbumModel>.Filter.Eq(x => x.Year, year));
+            }
+
+            if (!string.IsNullOrEmpty(genre))
+            {
+                filters.Add(Builders<AlbumModel>.Filter.Eq(x => x.Genre, genre));
+            }
+
+            if (!string.IsNullOrEmpty(sentiment))
+            {
+                filters.Add(Builders<AlbumModel>.Filter.Eq(x => x.Sentiment, sentiment));
+            }
+
+            var filter = filters.Any()
+                ? Builders<AlbumModel>.Filter.And(filters)
+                : FilterDefinition<AlbumModel>.Empty;
+
+            return (int)await _albumCollection.CountDocumentsAsync(filter);
+        }
+
+        public async Task UpdateAlbumAsync(string albumName, double compoundScore)
+        {
+            var filter = Builders<AlbumModel>.Filter.Eq(x => x.Name, albumName);
+
+            var album = await _albumCollection.Find(filter).FirstOrDefaultAsync();
+
+            // Calculate the new mean compound score based on the current review count and the new compound score
+            var reviewCount = album?.ReviewCount ?? 0;
+            var currentCompoundScore = album?.CompoundScore ?? 0.0;
+
+            var newCompoundScore = (currentCompoundScore * reviewCount + compoundScore) / (reviewCount + 1);
+
+            // Determine the sentiment based on the new compound score
+            string newSentiment = GetSentiment(newCompoundScore);
+
+            var update = Builders<AlbumModel>.Update
+                .Inc(x => x.ReviewCount, 1)
+                .Set(x => x.CompoundScore, newCompoundScore)
+                .Set(x => x.Sentiment, newSentiment);
+
+            await _albumCollection.UpdateOneAsync(filter, update);
+        }
+
+        public async Task<List<AlbumModel>> GetFilteredListByCompoundScore(int? count = 0, string? albumGenre = null, string? albumArtist = null)
+        {
+            var sortDefinition = Builders<AlbumModel>.Sort.Descending(x => x.CompoundScore);
+
+            FilterDefinition<AlbumModel> filter = Builders<AlbumModel>.Filter.Empty;
+
+            if (!string.IsNullOrWhiteSpace(albumGenre))
+            {
+                filter = filter & Builders<AlbumModel>.Filter.Eq(x => x.Genre, albumGenre);
+            }
+
+            if (!string.IsNullOrWhiteSpace(albumArtist))
+            {
+                filter = filter & Builders<AlbumModel>.Filter.Eq(x => x.Artist, albumArtist);
+            }
+
+            var query = _albumCollection.Find(filter).Sort(sortDefinition);
+
+            if (count.HasValue)
+            {
+                query = query.Limit(count);
+            }
+
+            return await query.ToListAsync();
+        }
+        public async Task<List<int>> GetDistinctYearsAsync()
+        {
+            var filter = Builders<AlbumModel>.Filter.Empty;
+            var projection = Builders<AlbumModel>.Projection.Include(a => a.Year);
+            var years = await _albumCollection.Find(filter).Project<AlbumModel>(projection).ToListAsync();
+
+            return years.Select(a => a.Year).Distinct().OrderByDescending(y => y).ToList();
+        }
+
+        private string GetSentiment(double compoundScore)
+        {
+            if (compoundScore >= 0.5)
+            {
+                return "Positive";
+            }
+            else if (compoundScore > -0.5 && compoundScore < 0.5)
+            {
+                return "Neutral";
+            }
+            else
+            {
+                return "Negative";
+            }
+        }
     }
 }

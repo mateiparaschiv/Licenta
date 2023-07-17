@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace LicentaApp.Repositories
 {
-    public class FeedbackRepository : IFeedbackRepository
+    public class FeedbackRepository : IFeedbackService
     {
         private readonly IMongoCollection<FeedbackModel> _feedbackCollection;
 

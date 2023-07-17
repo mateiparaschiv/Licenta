@@ -7,7 +7,7 @@
   "genre": "Rock",
   "year": 1973,
   "description": "The Dark Side of the Moon is the eighth studio album by the English rock band Pink Floyd, released on 1 March 1973 by Harvest Records. Developed during live performances before recording began, it was conceived as a concept album that would focus on the pressures faced by the band during their arduous lifestyle, and also deal with the mental health problems of former band member Syd Barrett, who departed the group in 1968. New material was recorded in two sessions in 1972 and 1973 at EMI Studios (now Abbey Road Studios) in London.",
-  "rating": 8.46,
+  "rating": 0,
   "songs": [
     "Speak to Me",
     "Breathe",
@@ -20,8 +20,12 @@
     "Brain Damage",
     "Eclipse"
   ],
-  "image": "//e.snmc.io/i/300/w/c8a40548b0fee5fa10095de3b97d3f90/10745116"
-},{
+  "image": "//e.snmc.io/i/300/w/c8a40548b0fee5fa10095de3b97d3f90/10745116",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "6474ea73c3c887cfabce41db"
   },
@@ -38,8 +42,12 @@
     "Wish You Were Here",
     "Shine On You Crazy Diamond, Pts. 6-9"
   ],
-  "image": "https://i.discogs.com/YMUBiIscutL11EdQfQddkB8K9NhOgGYByxG9B7EFVrM/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM3NTc1/Ni0xMzk5NzM1MjQy/LTIxNDkuanBlZw.jpeg"
-},{
+  "image": "https://i.discogs.com/YMUBiIscutL11EdQfQddkB8K9NhOgGYByxG9B7EFVrM/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM3NTc1/Ni0xMzk5NzM1MjQy/LTIxNDkuanBlZw.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "6474ebc3c3c887cfabce41dd"
   },
@@ -56,8 +64,13 @@
     "Sheep",
     "Pigs on the Wing 2"
   ],
-  "image": "https://i.discogs.com/4Hxf3HdivnSYH-o7N3Ri4D3kcrBupW1ZZTbAHaYNmnc/rs:fit/g:sm/q:90/h:600/w:592/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM5MTMy/Mi0xNjQ4NDkwODk1/LTI2NzkuanBlZw.jpeg"
-},{
+  "image": "https://i.discogs.com/4Hxf3HdivnSYH-o7N3Ri4D3kcrBupW1ZZTbAHaYNmnc/rs:fit/g:sm/q:90/h:600/w:592/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM5MTMy/Mi0xNjQ4NDkwODk1/LTI2NzkuanBlZw.jpeg",
+  "shortDescription": null,
+  "compoundScore": 0,
+  "sentiment": "NoSentiment",
+  "reviewCount": 0
+},
+{
   "_id": {
     "$oid": "6474ed22c3c887cfabce41de"
   },
@@ -75,8 +88,12 @@
     "Seamus",
     "Echoes"
   ],
-  "image": "https://i.discogs.com/nlcHURJ-xZgDIezGAne4lRoiOZJYbb-qHxf7NMfwTQw/rs:fit/g:sm/q:90/h:592/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQxMzc0/OTMtMTUzNzIxNjkz/NS05NzUzLmpwZWc.jpeg"
-},{
+  "image": "https://i.discogs.com/nlcHURJ-xZgDIezGAne4lRoiOZJYbb-qHxf7NMfwTQw/rs:fit/g:sm/q:90/h:592/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQxMzc0/OTMtMTUzNzIxNjkz/NS05NzUzLmpwZWc.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "6474fa69c3c887cfabce41df"
   },
@@ -98,8 +115,12 @@
     "The Scarecrow",
     "Bike"
   ],
-  "image": "https://i.discogs.com/hb2vfQoi-csFMlMpGEHrDNUFVlOnLUVQgWYyFyXOQNs/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5MDEy/MDMtMTYwNzE4NTk0/OS0xNDMxLmpwZWc.jpeg"
-},{
+  "image": "https://i.discogs.com/hb2vfQoi-csFMlMpGEHrDNUFVlOnLUVQgWYyFyXOQNs/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5MDEy/MDMtMTYwNzE4NTk0/OS0xNDMxLmpwZWc.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "6474fc3ac3c887cfabce41e3"
   },
@@ -107,7 +128,7 @@
   "artist": "Daft Punk",
   "genre": "Disco",
   "year": 2013,
-  "description": "",
+  "description": "\"Description\"",
   "rating": 0,
   "songs": [
     "Give Life Back to Music",
@@ -124,8 +145,12 @@
     "Doin' It Right",
     "Contact"
   ],
-  "image": "https://i.discogs.com/-k1e9_8eWbOqpMVOhIOBbBngcKrOT-k83KxltvbdmbE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkyMTYw/ODgtMTQ4Mzc0NjQy/MC0yODMyLmpwZWc.jpeg"
-},{
+  "image": "https://i.discogs.com/-k1e9_8eWbOqpMVOhIOBbBngcKrOT-k83KxltvbdmbE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkyMTYw/ODgtMTQ4Mzc0NjQy/MC0yODMyLmpwZWc.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "6474fd55c3c887cfabce41e4"
   },
@@ -133,7 +158,7 @@
   "artist": "Daft Punk",
   "genre": "French House",
   "year": 2001,
-  "description": "",
+  "description": "\"Description\"",
   "rating": 0,
   "songs": [
     "One More Time",
@@ -151,8 +176,12 @@
     "Face to Face",
     "Too Long"
   ],
-  "image": "https://i.discogs.com/6gMPje3DUKa1LMojsHtGTE5o4fIQon5lYaIJvALlvVM/rs:fit/g:sm/q:90/h:600/w:592/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4Nzkt/MTIzNjAzNTQ3Mi5q/cGVn.jpeg"
-},{
+  "image": "https://i.discogs.com/6gMPje3DUKa1LMojsHtGTE5o4fIQon5lYaIJvALlvVM/rs:fit/g:sm/q:90/h:600/w:592/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4Nzkt/MTIzNjAzNTQ3Mi5q/cGVn.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "6474fe76c3c887cfabce41e5"
   },
@@ -160,7 +189,7 @@
   "artist": "Daft Punk",
   "genre": "French House",
   "year": 1997,
-  "description": "",
+  "description": "\"Description\"",
   "rating": 0,
   "songs": [
     "Daftendirekt",
@@ -180,5 +209,8 @@
     "Alive",
     "Funk Ad"
   ],
-  "image": "https://i.discogs.com/2VO0mCLNP2TIxzPLEbECRQs5emikxhXghNQquabdsJs/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYwODQ4/Ny0xMjAwMjIzMjkx/LmpwZWc.jpeg"
+  "image": "https://i.discogs.com/2VO0mCLNP2TIxzPLEbECRQs5emikxhXghNQquabdsJs/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYwODQ4/Ny0xMjAwMjIzMjkx/LmpwZWc.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
 }]

@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace LicentaApp.Models
 {
+    [BsonIgnoreExtraElements]
     public class AlbumModel
     {
         [BsonId]
@@ -33,5 +34,17 @@ namespace LicentaApp.Models
 
         [BsonElement("image")]
         public string Image { get; set; }
+
+        [BsonElement("shortDescription")]
+        public string ShortDescription { get; set; }
+
+        [BsonElement("compoundScore")]
+        public double CompoundScore { get; set; }
+
+        [BsonElement("sentiment")]
+        public string Sentiment { get; set; }
+
+        [BsonElement("reviewCount")]
+        public int ReviewCount { get; set; }
     }
 }

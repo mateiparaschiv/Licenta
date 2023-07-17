@@ -4,9 +4,9 @@ namespace LicentaApp.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly IUserRepository _userService;
+        private readonly IUserService _userService;
 
-        public UsersController(IUserRepository userService)
+        public UsersController(IUserService userService)
         {
             _userService = userService;
         }

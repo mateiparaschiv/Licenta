@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace LicentaApp.Repositories
 {
-    public class SongRepository : ISongRepository
+    public class SongRepository : ISongService
     {
         private readonly IMongoCollection<SongModel> _songCollection;
 

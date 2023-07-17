@@ -1,61 +1,121 @@
 ﻿using LicentaApp.Models;
-using Newtonsoft.Json.Linq;
-using System.Diagnostics;
 
 namespace LicentaApp.Services
 {
     public class ReviewService : IReviewService
     {
-        public ReviewService(IReviewRepository reviewService)
-        {
-            _reviewService = reviewService;
+        private readonly IReviewRepository _reviewRepository;
+        private readonly IArtistRepository _artistRepository;
+        private readonly IAlbumRepository _albumRepository;
+        private readonly ISentimentAnalysisService _sentimentAnalysisService;
 
+        public ReviewService(IReviewRepository reviewRepository,
+            IArtistRepository artistRepository,
+            IAlbumRepository albumRepository,
+            ISentimentAnalysisService sentimentAnalysisService)
+        {
+            _reviewRepository = reviewRepository;
+            _artistRepository = artistRepository;
+            _albumRepository = albumRepository;
+            _sentimentAnalysisService = sentimentAnalysisService;
         }
-        private readonly IReviewRepository _reviewService;
+
         public Task<List<ReviewModel>> IndexReviewList()
         {
-            return _reviewService.GetAsync();
+            return _reviewRepository.GetAsync();
         }
-        public async Task AddReview(ReviewModel newReview)
+
+        private async Task AddReview(ReviewModel newReview)
         {
-            ReviewModel sentimentReview = await SentimentAnalysis(newReview.Message);
-            newReview.NegativeScore = sentimentReview.NegativeScore;
-            newReview.NeutralScore = sentimentReview.NeutralScore;
-            newReview.PositiveScore = sentimentReview.PositiveScore;
-            newReview.CompoundScore = sentimentReview.CompoundScore;
-            newReview.Sentiment = sentimentReview.Sentiment;
-
-            await _reviewService.CreateAsync(newReview);
-        }
-        private async Task<ReviewModel> SentimentAnalysis(string text)
-        {
-            ReviewModel model = new ReviewModel();
-            ProcessStartInfo start = new ProcessStartInfo();
-
-            start.FileName = "python";
-            start.Arguments = $"\"{Path.GetFullPath("sentiment_analysis.py")}\" \"{text}\"";
-            start.UseShellExecute = false;
-            start.CreateNoWindow = true;
-            start.RedirectStandardOutput = true;
-            start.RedirectStandardError = true;
-
-            using (Process process = Process.Start(start))
+            await _sentimentAnalysisService.AnalyzeSentimentAsync(newReview);
+            await _reviewRepository.CreateAsync(newReview);
+            if (newReview.SubjectType.Equals("artist"))
             {
-                using (StreamReader reader = process.StandardOutput)
+                await _artistRepository.UpdateArtistAsync(newReview.Subject, newReview.CompoundScore);
+            }
+            if (newReview.SubjectType.Equals("album"))
+            {
+                await _albumRepository.UpdateAlbumAsync(newReview.Subject, newReview.CompoundScore);
+            }
+        }
+        private async Task DeleteReview(string reviewId)
+        {
+            var review = await _reviewRepository.GetAsyncById(reviewId);
+            if (review == null)
+            {
+                throw new Exception($"No review found with the id: {reviewId}");
+            }
+
+            if (review.SubjectType.Equals("artist"))
+            {
+                var artist = await _artistRepository.GetArtistByName(review.Subject);
+                if (artist != null)
                 {
-                    string stderr = await process.StandardError.ReadToEndAsync();
-                    string result = await reader.ReadToEndAsync();
+                    artist.ReviewCount--;
+                    if (artist.ReviewCount > 0)
+                    {
+                        // Adjust the average compound score after deleting a review
+                        artist.CompoundScore = ((artist.CompoundScore * (artist.ReviewCount + 1)) - review.CompoundScore) / artist.ReviewCount;
+                    }
+                    else
+                    {
+                        artist.Sentiment = "NoSentiment";
+                        artist.CompoundScore = 0;
+                    }
 
-                    JObject json = JObject.Parse(result);
-
-                    model.NegativeScore = (double)json["negative"];
-                    model.NeutralScore = (double)json["neutral"];
-                    model.PositiveScore = (double)json["positive"];
-                    model.CompoundScore = (double)json["compound"];
-                    model.Sentiment = (string)json["overall_sentiment"];
+                    await _artistRepository.UpdateAsync(artist.Id, artist);
                 }
             }
-            return model;
+            else if (review.SubjectType.Equals("album"))
+            {
+                var album = await _albumRepository.GetAlbumByName(review.Subject);
+                if (album != null)
+                {
+                    album.ReviewCount--;
+                    if (album.ReviewCount > 0)
+                    {
+                        // Adjust the average compound score after deleting a review
+                        album.CompoundScore = ((album.CompoundScore * (album.ReviewCount + 1)) - review.CompoundScore) / album.ReviewCount;
+                    }
+                    else
+                    {
+                        //album.Sentiment = string.Empty;
+                        album.Sentiment = "NoSentiment";
+                        album.CompoundScore = 0;
+                    }
+
+                    await _albumRepository.UpdateAsync(album.Id, album);
+                }
+            }
+            await _reviewRepository.DeleteAsync(reviewId);
+        }
+
+
+        public async Task<(bool IsSuccess, string ErrorMessage)> AddReviewAndRedirect(ReviewModel newReview)
+        {
+            try
+            {
+                await AddReview(newReview);
+                return (true, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception as needed.
+                return (false, ex.Message);
+            }
+        }
+        public async Task<(bool IsSuccess, string ErrorMessage)> DeleteReviewAndRedirect(string reviewId)
+        {
+            try
+            {
+                await DeleteReview(reviewId);
+                return (true, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception as needed.
+                return (false, ex.Message);
+            }
         }
     }
 }

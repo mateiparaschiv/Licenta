@@ -3,20 +3,17 @@ using LicentaApp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-
 namespace LicentaApp.Controllers
 {
     public class OperationsController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
         private RoleManager<ApplicationRole> _roleManager;
-
         public OperationsController(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
         }
-
         public ViewResult Create() => View();
 
         [HttpPost]
@@ -42,9 +39,7 @@ namespace LicentaApp.Controllers
             }
             return View(userModel);
         }
-
         public IActionResult CreateRole() => View();
-
         [HttpPost]
         public async Task<IActionResult> CreateRole([Required] string name)
         {

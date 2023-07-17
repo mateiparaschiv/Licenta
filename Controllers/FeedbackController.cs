@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 namespace LicentaApp.Controllers
 {
     public class FeedbackController : Controller
     {
-        private readonly IFeedbackRepository _feedbackService;
-
-        public FeedbackController(IFeedbackRepository feedbackService)
+        private readonly IFeedbackService _feedbackService;
+        public FeedbackController(IFeedbackService feedbackService)
         {
             _feedbackService = feedbackService;
         }
@@ -19,6 +17,5 @@ namespace LicentaApp.Controllers
         {
             return View();
         }
-
     }
 }

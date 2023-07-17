@@ -9,8 +9,12 @@
   "dod": null,
   "formed": "1963",
   "disbanded": null,
-  "image": "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?20210720144017"
-},{
+  "image": "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?20210720144017",
+  "compoundScore": 0,
+  "sentiment": "NoSentiment",
+  "reviewCount": 0
+},
+{
   "_id": {
     "$oid": "6474fbc9c3c887cfabce41e1"
   },
@@ -21,8 +25,12 @@
   "dod": null,
   "formed": "1993, Paris, Île-de-France, France",
   "disbanded": "22 February 2021",
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "64750098c3c887cfabce41ef"
   },
@@ -33,8 +41,12 @@
   "dod": null,
   "formed": "1998",
   "disbanded": null,
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "647500acc3c887cfabce41f2"
   },
@@ -45,8 +57,12 @@
   "dod": null,
   "formed": "1998",
   "disbanded": null,
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "647500c8c3c887cfabce41f5"
   },
@@ -57,8 +73,12 @@
   "dod": null,
   "formed": "July 1968, London, Greater London, United Kingdom",
   "disbanded": "4 December 1980",
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "647500dec3c887cfabce41f8"
   },
@@ -69,8 +89,12 @@
   "dod": null,
   "formed": "1983, Los Angeles, CA, United States",
   "disbanded": null,
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "647500f2c3c887cfabce41fb"
   },
@@ -85,8 +109,12 @@
   "dod": null,
   "formed": null,
   "disbanded": null,
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "64750113c3c887cfabce41ff"
   },
@@ -99,8 +127,12 @@
   "dod": null,
   "formed": null,
   "disbanded": null,
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "64750122c3c887cfabce4203"
   },
@@ -111,8 +143,12 @@
   "dod": null,
   "formed": "28 October 1981, Los Angeles, CA, United States",
   "disbanded": null,
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "64750132c3c887cfabce4206"
   },
@@ -123,8 +159,12 @@
   "dod": null,
   "formed": "1987, Aberdeen, WA, United States",
   "disbanded": "8 April 1994, Seattle, WA, United States",
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "64750141c3c887cfabce4209"
   },
@@ -137,8 +177,12 @@
   "dod": null,
   "formed": null,
   "disbanded": null,
-  "image": ""
-},{
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
   "_id": {
     "$oid": "64750153c3c887cfabce420c"
   },
@@ -149,5 +193,8 @@
   "dod": null,
   "formed": "2007, Camberwell, Greater London, United Kingdom",
   "disbanded": null,
-  "image": ""
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
 }]

@@ -1,0 +1,87 @@
+﻿@using LicentaApp.Models.ViewModels.ArtistViewModel;
+@model IndexArtistFormationListViewModel
+@{
+    var artistList = Model.ArtistList;
+    var albumsToArtist = Model.AlbumsToArtist;
+    var sortOrder = Model.SortOrder;
+    var pageNumber = Model.PageNumber;
+    var maxPages = Model.MaxPages;
+    var band = Model.Band;
+    if (band)
+    {
+        ViewData["Title"] = "Artists | Bands";
+    }
+    else
+    {
+        ViewData["Title"] = "Artists | Solo artists";
+    }
+}
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div class="row align-items-center">
+    <div class="col-6 text-start d-flex align-items-center">
+        @if (band)
+        {
+            <h2 class="text-muted m-0">Bands</h2>
+        }
+        else
+        {
+            <h2 class="text-muted m-0">Solo artists</h2>
+        }
+    </div>
+    <div class="col-6 text-end">
+        <span class="text-muted">
+            @{
+                if (sortOrder.Equals("asc"))
+                {
+                    <a id="sort_buttons" asp-controller="Artists" asp-action="Formation" asp-route-sortOrder="desc" asp-route-band="@band">
+                        <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
+                    </a>
+                }
+                else
+                {
+                    <a id="sort_buttons" asp-controller="Artists" asp-action="Formation" asp-route-sortOrder="asc" asp-route-band="@band">
+                        <i id="sort_buttons" class="bi bi-sort-alpha-down"></i>
+                    </a>
+                }
+            }
+        </span>
+    </div>
+</div>
+<div class="wrapper d-flex justify-content-center align-items-center">
+    <ul class="list-group list-group-flush justify-content-center text-center w-50">
+        @foreach (var artist in artistList)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    @*<img src="@artist.Image" alt="@artist.Name's picture" style="max-width: 50px; max-height: 50px;">*@
+                    <a id="link" asp-controller="Artists" asp-action="Artist" asp-route-name="@artist.Name">
+                        <h1>
+                            <i>
+                                @artist.Name
+                            </i>
+                        </h1>
+                    </a>
+                </div>
+                <span class="badge bg-primary rounded-pill display-6 text-end p-2">@albumsToArtist[$"{artist.Name}"]</span>
+            </li>
+        }
+    </ul>
+</div>
+<div class="wrapper d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
+        @if (pageNumber > 0)
+        {
+            <a id="link" asp-controller="Artists" asp-action="Formation" asp-route-page="@(pageNumber - 1)" asp-route-sortOrder="@sortOrder" asp-route-band="@band">
+                <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
+                @*backwards*@
+            </a>
+        }
+        @if (pageNumber < maxPages - 1)
+        {
+            <a id="link" asp-controller="Artists" asp-action="Formation" asp-route-page="@(pageNumber + 1)" asp-route-sortOrder="@sortOrder" asp-route-band="@band">
+                <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
+                @*forwards*@
+            </a>
+        }
+    </div>
+</div>

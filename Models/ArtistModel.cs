@@ -34,16 +34,13 @@ namespace LicentaApp.Models
         [BsonElement("image")]
         public string? Image { get; set; }
 
-        //public ArtistModel(string name, string description, bool? band, DateTime? dateOfBirth, DateTime? dateOfDeath, int? formed, int? disbanded)
-        //{
-        //    searchName = name ?? throw new ArgumentNullException(nameof(name));
-        //    Description = description ?? throw new ArgumentNullException(nameof(description));
-        //    Band = band;
-        //    DateOfBirth = dateOfBirth;
-        //    DateOfDeath = dateOfDeath;
-        //    Formed = formed;
-        //    Disbanded = disbanded;
-        //}
-        //Genres
+        [BsonElement("compoundScore")]
+        public double CompoundScore { get; set; }
+
+        [BsonElement("sentiment")]
+        public string Sentiment { get; set; }
+
+        [BsonElement("reviewCount")]
+        public int ReviewCount { get; set; }
     }
 }

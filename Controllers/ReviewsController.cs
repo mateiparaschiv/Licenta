@@ -1,30 +1,67 @@
 ﻿using LicentaApp.Models;
 using Microsoft.AspNetCore.Mvc;
-
 namespace LicentaApp.Controllers
 {
     public class ReviewsController : Controller
     {
-        private readonly IReviewService _reviewRepository;
-
-        public ReviewsController(IReviewService reviewRepository)
+        private readonly IReviewService _reviewService;
+        public ReviewsController(IReviewService reviewService)
         {
-            _reviewRepository = reviewRepository;
+            _reviewService = reviewService;
         }
-
         public async Task<IActionResult> Index()
         {
-            return View(await _reviewRepository.IndexReviewList());
+            return View(await _reviewService.IndexReviewList());
         }
-
         [HttpPost]
-        public async Task<IActionResult> AddReview(ReviewModel newReview)
+        public async Task<IActionResult> AddReview(ReviewModel newReview, string returnUrl)
         {
-            if (ModelState.IsValid)
+            var result = await _reviewService.AddReviewAndRedirect(newReview);
+
+            if (ModelState.IsValid && result.IsSuccess)
             {
-                await _reviewRepository.AddReview(newReview);
+                return RedirectToReturnUrl(returnUrl);
             }
-            return RedirectToAction("Album", "Albums", new { name = newReview.Subject });
+            else
+            {
+                // Handle the failure case as needed, e.g., show an error message.
+            }
+
+            // If we got this far, something failed; redisplay the form.
+            // You may want to redirect to the returnUrl, or some other error page.
+            return RedirectToReturnUrl(returnUrl);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteReview(string reviewId, string returnUrl)
+        {
+            //var result = await _reviewService.DeleteReviewAndRedirect(reviewId);
+
+            //if (result.IsSuccess)
+            //{
+            //    return RedirectToReturnUrl(returnUrl);
+            //}
+            //else
+            //{
+            //    // Handle the failure case as needed, e.g., show an error message.
+            //}
+
+            //// If we got this far, something failed; redisplay the form.
+            //// You may want to redirect to the returnUrl, or some other error page.
+            //return RedirectToReturnUrl(returnUrl);
+            await _reviewService.DeleteReviewAndRedirect(reviewId);
+            return Json(new { success = true });
+        }
+        private IActionResult RedirectToReturnUrl(string returnUrl)
+        {
+            if (!string.IsNullOrEmpty(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                // Fallback redirect if returnUrl is not available
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
