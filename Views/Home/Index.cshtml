@@ -1,9 +1,9 @@
-﻿@using LicentaApp.Models.ViewModels;
-@using Microsoft.Extensions.Configuration
-@inject IConfiguration _configuration
+﻿@using LicentaApp.Models.ViewModels.HomeViewModel;
+@using Microsoft.Extensions.Configuration;
+@inject IConfiguration _configuration;
 @model IndexHomeViewModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
     var environment = _configuration.GetValue<string>("Environment");
     var albumList = Model.AlbumList;
     var genreList = Model.GenreList;

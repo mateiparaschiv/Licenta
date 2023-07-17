@@ -1,22 +1,18 @@
 ﻿using LicentaApp.Models;
 using Microsoft.AspNetCore.Mvc;
-
 namespace LicentaApp.Controllers
 {
     public class ReviewsController : Controller
     {
         private readonly IReviewService _reviewService;
-
-        public ReviewsController(IReviewService reviewRepository)
+        public ReviewsController(IReviewService reviewService)
         {
-            _reviewService = reviewRepository;
+            _reviewService = reviewService;
         }
-
         public async Task<IActionResult> Index()
         {
             return View(await _reviewService.IndexReviewList());
         }
-
         [HttpPost]
         public async Task<IActionResult> AddReview(ReviewModel newReview, string returnUrl)
         {
@@ -55,7 +51,6 @@ namespace LicentaApp.Controllers
             await _reviewService.DeleteReviewAndRedirect(reviewId);
             return Json(new { success = true });
         }
-
         private IActionResult RedirectToReturnUrl(string returnUrl)
         {
             if (!string.IsNullOrEmpty(returnUrl))

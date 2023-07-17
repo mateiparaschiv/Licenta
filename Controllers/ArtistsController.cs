@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 namespace LicentaApp.Controllers
 {
     public class ArtistsController : Controller
@@ -9,12 +8,10 @@ namespace LicentaApp.Controllers
         {
             _artistService = artistService;
         }
-
         public async Task<IActionResult> Index(string sortOrder, int page)
         {
             return View(await _artistService.IndexArtistList(sortOrder, page));
         }
-
         public async Task<IActionResult> Artist(string name, string sortOrder)
         {
             return View(await _artistService.ArtistsName(name, sortOrder));

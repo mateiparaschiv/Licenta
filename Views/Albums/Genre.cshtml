@@ -1,20 +1,17 @@
-﻿@using Microsoft.Extensions.Configuration
-@using LicentaApp.Models.ViewModels
+﻿@using LicentaApp.Models.ViewModels.AlbumViewModel;
+@using Microsoft.Extensions.Configuration;
 @inject IConfiguration _configuration
 @model IndexAlbumGenreListViewModel
 @{
-    ViewData["Title"] = "Genre";
     var albumList = Model.AlbumList;
     var sortOrder = Model.SortOrder;
     var pageNumber = Model.PageNumber;
     var maxPages = Model.MaxPages;
     var genre = Model.Genre;
+    ViewData["Title"] = $"Albums | {genre}";
 }
 <div class="row align-items-center">
     <div class="col-6 text-start d-flex align-items-center">
-        <a asp-controller="Albums" asp-action="Index" id="sort_buttons">
-            <i class="bi bi-arrow-return-left"></i>
-        </a>
         <h2 class="text-muted m-0">Albums from @genre</h2>
     </div>
     <div class="col-6 text-end">

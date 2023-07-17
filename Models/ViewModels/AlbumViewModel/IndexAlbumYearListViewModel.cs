@@ -1,4 +1,4 @@
-﻿namespace LicentaApp.Models.ViewModels
+﻿namespace LicentaApp.Models.ViewModels.AlbumViewModel
 {
     public class IndexAlbumYearListViewModel
     {

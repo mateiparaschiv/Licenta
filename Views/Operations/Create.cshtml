@@ -1,13 +1,11 @@
 ﻿@model UserModel
 @{
     ViewData["Title"] = "Sign up";
-
 }
-
 @*https://stackoverflow.com/questions/57024115/how-can-i-set-up-conditional-layouts-with-viewstart-in-asp-net-core-razor-pages*@
 @if (ViewBag.Message != null)
 {
-    <div class="p-1 mb-2 bg-success text-white">@ViewBag.Message</div>
+    @*<div class="p-1 mb-2 bg-success text-white">@ViewBag.Message</div>*@
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="container my-3 text-center">

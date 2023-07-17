@@ -1,6 +1,5 @@
-﻿@using Microsoft.AspNetCore.Http.Extensions;
-@using Microsoft.Extensions.Configuration
-@using LicentaApp.Models.ViewModels
+﻿@using LicentaApp.Models.ViewModels.AlbumViewModel;
+@using Microsoft.Extensions.Configuration;
 @inject IConfiguration _configuration
 @model IndexAlbumListViewModel
 @{
@@ -12,9 +11,8 @@
     var maxPages = Model.MaxPages;
     var yearList = Model.YearList;
     var genreList = Model.GenreList;
-    var returnUrl = Context.Request.GetEncodedUrl();
+    List<string> sentimentList = new List<string> { "Positive", "Negative", "Neutral", "No sentiment"};
 }
-@*@Html.Hidden("returnUrl", returnUrl)*@
 <div class="row align-items-center">
     <div class="col-2 text-start">
         <h2 class="text-muted m-0">Albums</h2>
@@ -28,7 +26,7 @@
                 @foreach (var album in allAlbumList)
                 {
                     <li>
-                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name" asp-route-returnUrl="@Context.Request.GetEncodedUrl()">
+                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
                             @album.Name
                         </a>
                     </li>
@@ -55,7 +53,7 @@
     </div>
     <div class="col-2 text-center ps-1">
         <div class="btn-group" id="dropdown-menu">
-            <button type="button" class="btn btn-primary     dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Genre
             </button>
             <ul class="dropdown-menu" id="dropdown-menu-scrollable">
@@ -76,26 +74,14 @@
                 Sentiment
             </button>
             <ul class="dropdown-menu" id="dropdown-menu-scrollable">
-                <li>
-                    <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="Positive">
-                        Positive
-                    </a>
-                </li>
-                <li>
-                    <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="Neutral">
-                        Neutral
-                    </a>
-                </li>
-                <li>
-                    <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="Negative">
-                        Negative
-                    </a>
-                </li>
-                <li>
-                    <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="NoSentiment">
-                        No sentiment
-                    </a>
-                </li>
+                @foreach (var sentiment in sentimentList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="@sentiment">
+                            @sentiment
+                        </a>
+                    </li>
+                }
             </ul>
         </div>
     </div>
@@ -118,7 +104,6 @@
         </span>
     </div>
 </div>
-
 <div class="row row-cols-1 row-cols-md-3 g-4 py-4">
     @foreach (var album in albumList)
     {

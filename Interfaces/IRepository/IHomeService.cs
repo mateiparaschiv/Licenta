@@ -1,4 +1,4 @@
-﻿using LicentaApp.Models.ViewModels;
+﻿using LicentaApp.Models.ViewModels.HomeViewModel;
 
 namespace LicentaApp.Interfaces.IRepository
 {

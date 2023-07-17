@@ -1,21 +1,14 @@
 ﻿@using LicentaApp.Models.ViewModels
 @using Microsoft.AspNetCore.Http.Extensions;
+@using LicentaApp.Models.ViewModels.AlbumViewModel;
 @model IndexAlbumNameViewModel
 @{
     var album = Model.Album;
-    ViewData["Title"] = $"Album - {album.Name}";
+    ViewData["Title"] = $"Album | {album.Name}";
     var reviewList = Model.ReviewList;
     var newReview = Model.NewReview;
-    var returnUrl = Model.ReturnUrl; 
 }
-@*@Html.Hidden("returnUrl", returnUrl)*@
-<a asp-controller="Albums" asp-action="Index" id="sort_buttons">
-    <i class="bi bi-arrow-return-left"></i>
-</a>
-<a href="@returnUrl" id="sort_buttons">
-    <i class="bi bi-arrow-return-left"></i>
-</a>
-<div class="row pb-4 g-0">
+<div class="row py-4 g-0">
     <div class="col-md-3" id="image_col">
         <img src="~/images/Albums/@(album.Name).jpg" id="artist-album_image">
         <ul class="pt-3 list-group list-group-flush list-group-numbered">
@@ -48,7 +41,6 @@
                     }
                 </div>
             </div>
-
             <a class="nav-link active p-0" id="link" style="width: max-content;" asp-controller="Artists" asp-action="Artist" asp-route-name="@album.Artist">
                 <p class="display-6">
                     <i>
@@ -56,7 +48,6 @@
                     </i>
                 </p>
             </a>
-
             <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
                 <div class="container g-0">
                     @if (User?.Identity?.IsAuthenticated ?? false && User.Identity.Name == "superadmin")
@@ -80,7 +71,7 @@
                                     </i>
                                 </a>
                             </span>
-                            @if (string.IsNullOrEmpty(album.Sentiment))
+                            @if (album.Sentiment.Equals("NoSentiment"))
                             {
                                 <span class="col text-center mb-3 mb-md-0">Not enough reviews.</span>
                             }
@@ -89,7 +80,6 @@
                                 <span class="col text-center mb-3 mb-md-0">@album.Sentiment</span>
                             }
                             <span class="col text-end mb-3 mb-md-0">@album.CompoundScore</span>
-
                         </div>
                     }
                     else
@@ -112,7 +102,7 @@
                                     </i>
                                 </a>
                             </span>
-                            @if (string.IsNullOrEmpty(album.Sentiment))
+                            @if (album.Sentiment.Equals("NoSentiment"))
                             {
                                 <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
                             }
@@ -121,13 +111,11 @@
                                 <span class="col text-end mb-3 mb-md-0">@album.Sentiment</span>
                             }
                         </div>
-
                     }
                 </div>
             </div>
             <p class="card-text indent">@album.Description</p>
         </div>
-
         @{
             if (@reviewList.Count > 0)
             {
@@ -138,29 +126,56 @@
                 <h3 class="text-muted ps-4">There are no reviews for this issue. You can write a review by pressing the "Review @album.Name" button above.</h3>
             }
         }
-
         @foreach (var review in @reviewList)
         {
             <div class="ps-3 pt-3">
-                <div class="row row-cols-3">
-                    <span class="h2 col text-begin mb-3 mb-md-0">@review.Username</span>
-                    <div class="col text-center d-flex align-items-center">
-                        <span class="h6 col text-center mb-3 mb-md-0">Overall sentiment: Positive</span>
+                @if (User?.Identity?.IsAuthenticated ?? false && User.Identity.Name == "superadmin")
+                {
+                    <div class="row row-cols-4">
+                        <span class="h2 col text-begin mb-3 mb-md-0">@review.Username</span>
+                        <div class="col text-center d-flex align-items-center">
+                            <span class="h6 col text-center mb-3 mb-md-0">Overall sentiment: @review.Sentiment</span>
+                        </div>
+                        <div class="col text-center d-flex align-items-center">
+                            <span class="h6 col text-center mb-3 mb-md-0">Score: @review.CompoundScore</span>
+                        </div>
+                        <div class="col text-end d-flex align-items-center">
+                            <span class="h6 col text-end mb-3 mb-md-0">
+                                <a id="deleteReviewLink" data-review-id="@review.Id" class="mb-3 mb-md-0" style="text-decoration:none">
+                                    Delete<i class="bi bi-x-lg"></i>
+                                </a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="col text-end d-flex align-items-center">
-                        <span class="h6 col text-end mb-3 mb-md-0">
-                            <a id="deleteReviewLink" data-review-id="@review.Id" class="mb-3 mb-md-0" style="text-decoration:none">
-                                Delete<i class="bi bi-x-lg"></i>
-                            </a>
-                        </span>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+                        <p class="h3">@review.Title</p>
+                        <div class="container g-0">
+                            <span class="card-text indent">@review.Message</span>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-                    <p class="h3">@review.Title</p>
-                    <div class="container g-0">
-                        <span class="card-text indent">@review.Message</span>
+                }
+                else
+                {
+                    <div class="row row-cols-3">
+                        <span class="h2 col text-begin mb-3 mb-md-0">@review.Username</span>
+                        <div class="col text-center d-flex align-items-center">
+                            <span class="h6 col text-center mb-3 mb-md-0">Overall sentiment: Positive</span>
+                        </div>
+                        <div class="col text-end d-flex align-items-center">
+                            <span class="h6 col text-end mb-3 mb-md-0">
+                                <a id="deleteReviewLink" data-review-id="@review.Id" class="mb-3 mb-md-0" style="text-decoration:none">
+                                    Delete<i class="bi bi-x-lg"></i>
+                                </a>
+                            </span>
+                        </div>
                     </div>
-                </div>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+                        <p class="h3">@review.Title</p>
+                        <div class="container g-0">
+                            <span class="card-text indent">@review.Message</span>
+                        </div>
+                    </div>
+                }
             </div>
         }
     </div>

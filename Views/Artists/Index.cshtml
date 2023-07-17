@@ -1,4 +1,4 @@
-﻿@using LicentaApp.Models.ViewModels
+﻿@using LicentaApp.Models.ViewModels.ArtistViewModel;
 @model IndexArtistListViewModel
 @{
     ViewData["Title"] = "Artists";
@@ -8,6 +8,7 @@
     var sortOrder = Model.SortOrder;
     var pageNumber = Model.PageNumber;
     var maxPages = Model.MaxPages;
+    List<string> sentimentList = new List<string> { "Positive", "Negative", "Neutral", "No sentiment" };
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="row align-items-center">
@@ -37,26 +38,14 @@
                 Sentiment
             </button>
             <ul class="dropdown-menu" id="dropdown-menu-scrollable">
-                <li>
-                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="Positive">
-                        Positive
-                    </a>
-                </li>
-                <li>
-                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="Neutral">
-                        Neutral
-                    </a>
-                </li>
-                <li>
-                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="Negative">
-                        Negative
-                    </a>
-                </li>
-                <li>
-                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="NoSentiment">
-                        No sentiment
-                    </a>
-                </li>
+                @foreach (var sentiment in sentimentList)
+                {
+                    <li>
+                        <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="@sentiment">
+                            @sentiment
+                        </a>
+                    </li>
+                }
             </ul>
         </div>
     </div>

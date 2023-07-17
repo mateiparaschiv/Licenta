@@ -1,4 +1,4 @@
-﻿using LicentaApp.Models.ViewModels;
+﻿using LicentaApp.Models.ViewModels.GenreViewModel;
 
 namespace LicentaApp.Services
 {

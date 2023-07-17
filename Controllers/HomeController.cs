@@ -1,7 +1,6 @@
 ﻿using LicentaApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-
 namespace LicentaApp.Controllers
 {
     public class HomeController : Controller
@@ -13,17 +12,14 @@ namespace LicentaApp.Controllers
             _logger = logger;
             _homeService = homeService;
         }
-
         public async Task<IActionResult> Index()
         {
             return View(await _homeService.IndexHome());
         }
-
         public IActionResult Privacy()
         {
             return View();
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

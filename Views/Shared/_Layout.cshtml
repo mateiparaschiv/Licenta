@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LicentaApp.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="~/images/Icons/musicNote.ico"/>
 </head>
 <body id="body">
     <div id="header" class="container-fluid">
@@ -81,23 +82,25 @@
                     </div>
                     <div class="d-flex align-items-center justify-content-between">
                         <span class="text-muted">
-                            @*<a id="link" role="button" class="btn nav-link p-0" data-bs-toggle="modal" data-bs-target="#reviewModal" data-bs-whatever="333">
-                            <i>
-                            Feedback
-                            </i>
-                            </a>*@
+                            <a id="link" role="button" class="btn nav-link p-0" data-bs-toggle="modal" data-bs-target="#reviewModal" data-bs-whatever="">
+                                <i>
+                                    Feedback
+                                </i>
+                            </a>
                         </span>
+                        !-- Modal -->
+                        @*<div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                            @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml")
+                        </div>*@
                     </div>
                 </div>
             </footer>
         </div>
     </div>
-
     <!-- Modal -->
     @*<div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     @await Html.PartialAsync("~/Views/Shared/_AddReview.cshtml",Model.NewReview)
     </div>*@
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

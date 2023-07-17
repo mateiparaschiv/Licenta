@@ -1,4 +1,4 @@
-﻿namespace LicentaApp.Models.ViewModels
+﻿namespace LicentaApp.Models.ViewModels.ArtistViewModel
 {
     public class IndexArtistNameViewModel
     {

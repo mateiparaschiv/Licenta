@@ -1,5 +1,5 @@
 ﻿using LicentaApp.Models;
-using LicentaApp.Models.ViewModels;
+using LicentaApp.Models.ViewModels.ArtistViewModel;
 
 namespace LicentaApp.Services
 {
@@ -8,12 +8,12 @@ namespace LicentaApp.Services
         private readonly IArtistRepository _artistRepository;
         private readonly IAlbumRepository _albumRepository;
         private readonly IReviewRepository _reviewRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly IUserService _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         public ArtistService(IArtistRepository artistService,
             IAlbumRepository albumService,
             IReviewRepository reviewService,
-            IUserRepository userRepository,
+            IUserService userRepository,
             IHttpContextAccessor httpContextAccessor)
         {
             _artistRepository = artistService;

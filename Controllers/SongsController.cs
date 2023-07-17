@@ -4,9 +4,8 @@ namespace LicentaApp.Controllers
 {
     public class SongsController : Controller
     {
-        private readonly ISongRepository _songService;
-
-        public SongsController(ISongRepository songService)
+        private readonly ISongService _songService;
+        public SongsController(ISongService songService)
         {
             _songService = songService;
         }

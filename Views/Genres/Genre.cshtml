@@ -1,8 +1,8 @@
-﻿@using LicentaApp.Models.ViewModels
+﻿@using LicentaApp.Models.ViewModels.GenreViewModel;
 @model IndexGenreNameViewModel
 @{
     var genre = Model.Genre;
-    ViewData["Title"] = $"Genre - {genre.Name}";
+    ViewData["Title"] = $"Genre | {genre.Name}";
     var genreAlbums = Model.GenreAlbums;
     var rand = new Random();
 }

@@ -1,5 +1,5 @@
 ﻿using LicentaApp.Models;
-using LicentaApp.Models.ViewModels;
+using LicentaApp.Models.ViewModels.AlbumViewModel;
 
 namespace LicentaApp.Services
 {
@@ -7,12 +7,12 @@ namespace LicentaApp.Services
     {
         private readonly IAlbumRepository _albumRepository;
         private readonly IReviewRepository _reviewRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly IUserService _userRepository;
         private readonly IGenreRepository _genreRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         public AlbumService(IAlbumRepository albumRepository,
             IReviewRepository reviewRepository,
-            IUserRepository userRepository,
+            IUserService userRepository,
             IGenreRepository genreRepository,
             IHttpContextAccessor httpContextAccessor)
         {
@@ -47,7 +47,7 @@ namespace LicentaApp.Services
             };
         }
 
-        public async Task<IndexAlbumNameViewModel> AlbumName(string albumName, string? returnUrl)
+        public async Task<IndexAlbumNameViewModel> AlbumName(string albumName)
         {
             var album = await _albumRepository.GetAlbumByName(albumName);
             var newReview = new ReviewModel();
@@ -74,8 +74,7 @@ namespace LicentaApp.Services
             {
                 Album = album,
                 ReviewList = await _reviewRepository.GetAsyncFilteredByDate(albumName),
-                NewReview = UserIsAuthenticated() ? newReview : null,
-                ReturnUrl = returnUrl
+                NewReview = UserIsAuthenticated() ? newReview : null
             };
         }
 

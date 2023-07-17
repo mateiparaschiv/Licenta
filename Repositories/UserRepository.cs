@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace LicentaApp.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUserService
     {
         private readonly IMongoCollection<UserModel> _userCollection;
 

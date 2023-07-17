@@ -16,12 +16,10 @@ namespace LicentaApp.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
         public IActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -43,8 +41,6 @@ namespace LicentaApp.Controllers
 
             return View();
         }
-
-
         [Authorize]
         public async Task<IActionResult> Logout()
         {
