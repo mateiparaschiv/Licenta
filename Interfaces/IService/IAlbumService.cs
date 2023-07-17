@@ -10,5 +10,6 @@ namespace LicentaApp.Interfaces.IRepository
         Task CreateAsync(AlbumModel newAlbumModel);
         Task<IndexAlbumYearListViewModel> AlbumsYear(int year, string sortOrder, int pageNumber);
         Task<IndexAlbumGenreListViewModel> AlbumsGenre(string genre, string sortOrder, int pageNumber);
+        Task<IndexAlbumSentimentListViewModel> AlbumsSentiment(string sentiment, string sortOrder, int pageNumber);
     }
 }

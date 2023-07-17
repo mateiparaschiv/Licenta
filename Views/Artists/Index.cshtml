@@ -11,10 +11,10 @@
 }
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 <div class="row align-items-center">
-    <div class="col-4 text-start">
+    <div class="col-2 text-start">
         <h2 class="text-muted m-0">Artists</h2>
     </div>
-    <div class="col-4 text-center">
+    <div class="col-3 text-center">
         <div class="btn-group" id="dropdown-menu">
             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 All artists
@@ -31,23 +31,56 @@
             </ul>
         </div>
     </div>
-
-    @*<div class="col-3">
-        <div class="form-check">
-            <input type="radio" class="form-check-input" id="allCheck" name="artistType" checked>
-            <label class="form-check-label" for="allCheck">All artists</label>
+    <div class="col-3 text-center ps-1">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Sentiment
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="Positive">
+                        Positive
+                    </a>
+                </li>
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="Neutral">
+                        Neutral
+                    </a>
+                </li>
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="Negative">
+                        Negative
+                    </a>
+                </li>
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Sentiment" asp-route-sentiment="NoSentiment">
+                        No sentiment
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="form-check">
-            <input type="radio" class="form-check-input" id="bandCheck" name="artistType">
-            <label class="form-check-label" for="bandCheck">Band</label>
+    </div>
+    <div class="col-3 text-center ps-1">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Solo artist/Band
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Formation" asp-route-band="false">
+                        Solo artist
+                    </a>
+                </li>
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Artists" asp-action="Formation" asp-route-band="true">
+                        Band
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="form-check">
-            <input type="radio" class="form-check-input" id="soloArtistCheck" name="artistType">
-            <label class="form-check-label" for="soloArtistCheck">Solo artist</label>
-        </div>        
-    </div>*@
+    </div>
 
-    <div class="col-4 text-end">
+    <div class="col-1 text-end">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))

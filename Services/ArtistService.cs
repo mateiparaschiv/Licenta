@@ -26,11 +26,11 @@ namespace LicentaApp.Services
         public async Task<IndexArtistListViewModel> IndexArtistList(string sortOrder, int pageNumber)
         {
             sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
-            const int pageSize = 9;
+            const int pageSize = 10;
             int totalArtists = await _artistRepository.GetTotalCountAsync();
             int maxPages = (totalArtists + pageSize - 1) / pageSize;
 
-            List<ArtistModel> artistList = await _artistRepository.GetPaginatedFilteredList(sortOrder, pageNumber, pageSize);
+            List<ArtistModel> artistList = await _artistRepository.GetPaginatedFilteredList(sortOrder: sortOrder, pageNumber: pageNumber, pageSize: pageSize);
 
             return new IndexArtistListViewModel
             {
@@ -42,8 +42,46 @@ namespace LicentaApp.Services
                 MaxPages = maxPages
             };
         }
+        public async Task<IndexArtistSentimentListViewModel> ArtistsSentiment(string sentiment, string sortOrder, int pageNumber)
+        {
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int pageSize = 10;
+            int totalArtists = await _artistRepository.GetTotalCountAsync(sentiment: sentiment);
+            int maxPages = (totalArtists + pageSize - 1) / pageSize;
 
-        public async Task<IndexArtistNameViewModel> ArtistName(string name, string sortOrder)
+            List<ArtistModel> artistList = await _artistRepository.GetPaginatedFilteredList(sentiment: sentiment, sortOrder: sortOrder, pageNumber: pageNumber, pageSize: pageSize);
+
+            return new IndexArtistSentimentListViewModel
+            {
+                ArtistList = artistList,
+                AlbumsToArtist = await _albumRepository.GetNumOfAlbumsByNames(artistList),
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages,
+                Sentiment = sentiment
+            };
+        }
+        public async Task<IndexArtistFormationListViewModel> ArtistsFormation(bool band, string sortOrder, int pageNumber)
+        {
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int pageSize = 10;
+            int totalArtists = await _artistRepository.GetTotalCountAsync(band: band);
+            int maxPages = (totalArtists + pageSize - 1) / pageSize;
+
+            List<ArtistModel> artistList = await _artistRepository.GetPaginatedFilteredList(band: band, sortOrder: sortOrder, pageNumber: pageNumber, pageSize: pageSize);
+
+            return new IndexArtistFormationListViewModel
+            {
+                ArtistList = artistList,
+                AlbumsToArtist = await _albumRepository.GetNumOfAlbumsByNames(artistList),
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages,
+                Band = band
+            };
+        }
+
+        public async Task<IndexArtistNameViewModel> ArtistsName(string name, string sortOrder)
         {
             sortOrder = string.IsNullOrEmpty(sortOrder) ? "desc" : sortOrder;
             var artist = await _artistRepository.GetArtistByName(name);

@@ -32,9 +32,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Genres" asp-action="Index">Genres</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a>
-                    </li>
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <li class="nav-item text-decoration-underline">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a>
+                        </li>
+                    }
                 </ul>
 
                 <div class="text-end">
@@ -79,9 +82,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <span class="text-muted">
                             @*<a id="link" role="button" class="btn nav-link p-0" data-bs-toggle="modal" data-bs-target="#reviewModal" data-bs-whatever="333">
-                                <i>
-                                    Feedback
-                                </i>
+                            <i>
+                            Feedback
+                            </i>
                             </a>*@
                         </span>
                     </div>

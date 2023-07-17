@@ -24,21 +24,53 @@ namespace LicentaApp.Repositories
             return await _artistCollection.Find(x => true).Sort(sortDefinition).ToListAsync();
         }
 
-        public async Task<List<ArtistModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10)
+        public async Task<List<ArtistModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10, string? sentiment = null, bool? band = null)
         {
             var sortDefinition = sortOrder.Equals("asc")
-            ? Builders<ArtistModel>.Sort.Ascending(x => x.Name)
-            : Builders<ArtistModel>.Sort.Descending(x => x.Name);
+                ? Builders<ArtistModel>.Sort.Ascending(x => x.Name)
+                : Builders<ArtistModel>.Sort.Descending(x => x.Name);
 
-            return await _artistCollection.Find(_ => true)
-            .Sort(sortDefinition)
+            var filterDefinitionBuilder = Builders<ArtistModel>.Filter;
+            var filterDefinition = filterDefinitionBuilder.Empty;
+
+            if (!string.IsNullOrEmpty(sentiment))
+            {
+                var sentimentFilter = filterDefinitionBuilder.Eq(a => a.Sentiment, sentiment);
+                filterDefinition = filterDefinition & sentimentFilter;
+            }
+
+            if (band.HasValue)
+            {
+                var bandFilter = filterDefinitionBuilder.Eq(a => a.Band, band.Value);
+                filterDefinition = filterDefinition & bandFilter;
+            }
+
+            return await _artistCollection.Find(filterDefinition)
+                .Sort(sortDefinition)
                 .Skip(pageNumber * pageSize)
                 .Limit(pageSize)
                 .ToListAsync();
         }
 
-        public async Task<int> GetTotalCountAsync() =>
-            (int)await _artistCollection.CountDocumentsAsync(FilterDefinition<ArtistModel>.Empty);
+        public async Task<int> GetTotalCountAsync(string? sentiment = null, bool? band = null)
+        {
+            var filterDefinitionBuilder = Builders<ArtistModel>.Filter;
+            var filterDefinition = filterDefinitionBuilder.Empty;
+
+            if (!string.IsNullOrEmpty(sentiment))
+            {
+                var sentimentFilter = filterDefinitionBuilder.Eq(a => a.Sentiment, sentiment);
+                filterDefinition = filterDefinition & sentimentFilter;
+            }
+
+            if (band.HasValue)
+            {
+                var bandFilter = filterDefinitionBuilder.Eq(a => a.Band, band.Value);
+                filterDefinition = filterDefinition & bandFilter;
+            }
+
+            return (int)await _artistCollection.CountDocumentsAsync(filterDefinition);
+        }
 
         public async Task UpdateArtistAsync(string artistName, double compoundScore)
         {

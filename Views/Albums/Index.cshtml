@@ -16,7 +16,7 @@
     <div class="col-2 text-start">
         <h2 class="text-muted m-0">Albums</h2>
     </div>
-    <div class="col-3 text-center">
+    <div class="col-2 text-center">
         <div class="btn-group" id="dropdown-menu">
             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 All albums
@@ -33,7 +33,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-3 text-center ps-1">
+    <div class="col-2 text-center ps-1">
         <div class="btn-group" id="dropdown-menu">
             <button type="button" class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Year
@@ -50,7 +50,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-3 text-center ps-1">
+    <div class="col-2 text-center ps-1">
         <div class="btn-group" id="dropdown-menu">
             <button type="button" class="btn btn-primary     dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Genre
@@ -67,7 +67,36 @@
             </ul>
         </div>
     </div>
-    <div class="col-1 text-end">
+    <div class="col-2 text-center ps-1">
+        <div class="btn-group" id="dropdown-menu">
+            <button type="button" class=" btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Sentiment
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu-scrollable">
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="Positive">
+                        Positive
+                    </a>
+                </li>
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="Neutral">
+                        Neutral
+                    </a>
+                </li>
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="Negative">
+                        Negative
+                    </a>
+                </li>
+                <li>
+                    <a id="link" class="dropdown-item text-center" asp-controller="Albums" asp-action="Sentiment" asp-route-sentiment="NoSentiment">
+                        No sentiment
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-2 text-end">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))

@@ -1,11 +1,11 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 #header {
@@ -36,22 +36,37 @@ html {
     box-sizing: border-box;
     background-color: white;
     z-index: 200;
-} 
+}
 
 #image_col {
-    width: ;
-    height: ;
+    width:;
+    height:;
 }
 
 #link {
     color: #212529;
     text-decoration: none;
 }
+
 #link:hover {
     color: #0d6efd;
 }
 
 #link:active {
+    color: #6c757d;
+}
+
+#deleteReviewLink {
+    color: #212529;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#deleteReviewLink:hover {
+    color: #0d6efd;
+}
+
+#deleteReviewLink:active {
     color: #6c757d;
 }
 
@@ -70,26 +85,29 @@ html {
     max-width: 324px;
     min-height: 324px;
 }
+
 #genre-album_image {
     max-height: 200px;
 }
 
-#home_image{
-    width:450px;
-    height:450px;
+#home_image {
+    width: 450px;
+    height: 450px;
 }
 
-#carousel_item{
-    max-width:450px;
+#carousel_item {
+    max-width: 450px;
 }
 
 #sort_buttons {
     color: #6c757d;
     font-size: 32px;
 }
+
 #sort_buttons:hover {
-    color: #0d6efd;
+   color: #0d6efd;
 }
+
 #sort_buttons:active {
     color: black;
 }
@@ -103,20 +121,20 @@ html {
     position: relative;
 }
 
-.photo-container img {
-    position: absolute;
-    width: 224px;
-    height: 224px;
-    object-fit: cover;
-}
+    .photo-container img {
+        position: absolute;
+        width: 224px;
+        height: 224px;
+        object-fit: cover;
+    }
 
-.photo-container img:nth-child(3) {
-    transform: translate(-50px, -50px);
-}
+        .photo-container img:nth-child(3) {
+            transform: translate(-50px, -50px);
+        }
 
-.photo-container img:nth-child(1) {
-    transform: translate(50px, 50px);
-}
+        .photo-container img:nth-child(1) {
+            transform: translate(50px, 50px);
+        }
 
 .badge {
     background-color: #6c757d !important;
@@ -130,13 +148,14 @@ html {
 }
 
 #dropdown-menu {
-    width: 245px;
+    width: 200px;
 }
 
 .carousel-control-next {
     display: initial !important;
     position: static !important;
 }
+
 .carousel-control-prev {
     display: initial !important;
     position: static !important;

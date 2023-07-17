@@ -54,11 +54,12 @@ namespace LicentaApp.Services
                     artist.ReviewCount--;
                     if (artist.ReviewCount > 0)
                     {
-                        var reviews = await _reviewRepository.GetAsyncListBySubject(artist.Name);
-                        artist.CompoundScore = reviews.Average(r => r.CompoundScore);
+                        // Adjust the average compound score after deleting a review
+                        artist.CompoundScore = ((artist.CompoundScore * (artist.ReviewCount + 1)) - review.CompoundScore) / artist.ReviewCount;
                     }
                     else
                     {
+                        artist.Sentiment = "NoSentiment";
                         artist.CompoundScore = 0;
                     }
 
@@ -73,11 +74,13 @@ namespace LicentaApp.Services
                     album.ReviewCount--;
                     if (album.ReviewCount > 0)
                     {
-                        var reviews = await _reviewRepository.GetAsyncListBySubject(album.Name);
-                        album.CompoundScore = reviews.Average(r => r.CompoundScore);
+                        // Adjust the average compound score after deleting a review
+                        album.CompoundScore = ((album.CompoundScore * (album.ReviewCount + 1)) - review.CompoundScore) / album.ReviewCount;
                     }
                     else
                     {
+                        //album.Sentiment = string.Empty;
+                        album.Sentiment = "NoSentiment";
                         album.CompoundScore = 0;
                     }
 
@@ -86,6 +89,7 @@ namespace LicentaApp.Services
             }
             await _reviewRepository.DeleteAsync(reviewId);
         }
+
 
         public async Task<(bool IsSuccess, string ErrorMessage)> AddReviewAndRedirect(ReviewModel newReview)
         {

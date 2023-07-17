@@ -1,11 +1,15 @@
 ﻿@using LicentaApp.Models.ViewModels
+@using Microsoft.AspNetCore.Http.Extensions;
 @model IndexAlbumNameViewModel
 @{
     var album = Model.Album;
     ViewData["Title"] = $"Album - {album.Name}";
     var reviewList = Model.ReviewList;
     var newReview = Model.NewReview;
+    var returnUrl = Context.Request.GetEncodedUrl();
+
 }
+@Html.Hidden("returnUrl", returnUrl)
 
 <div class="row py-4 g-0">
     <div class="col-md-3" id="image_col">
@@ -51,33 +55,70 @@
 
             <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
                 <div class="container g-0">
-                    <div class="row row-cols-3">
-                        <span class="col text-begin mb-3 mb-md-0">Genre</span>
-                        <span class="col text-center mb-3 mb-md-0">Year</span>
-                        <span class="col text-end mb-3 mb-md-0">Sentiment</span>
-                        <span class="col text-begin mb-3 mb-md-0">
-                            <a class="nav-link p-0" asp-controller="Genres" asp-action="Genre" asp-route-name="@album.Genre" id="link">
-                                <i>
-                                    @album.Genre
-                                </i>
-                            </a>
-                        </span>
-                        <span class="col text-center mb-3 mb-md-0">
-                            <a class="nav-link p-0" asp-controller="Albums" asp-action="Year" asp-route-year="@album.Year" id="link">
-                                <i>
-                                    @album.Year
-                                </i>
-                            </a>
-                        </span>
-                        @if (string.IsNullOrEmpty(album.Sentiment))
-                        {
-                            <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
-                        }
-                        else
-                        {
-                            <span class="col text-end mb-3 mb-md-0">@album.Sentiment</span>
-                        }
-                    </div>
+                    @if (User?.Identity?.IsAuthenticated ?? false && User.Identity.Name == "superadmin")
+                    {
+                        <div class="row row-cols-4">
+                            <span class="col text-begin mb-3 mb-md-0">Genre</span>
+                            <span class="col text-center mb-3 mb-md-0">Year</span>
+                            <span class="col text-center mb-3 mb-md-0">Sentiment</span>
+                            <span class="col text-end mb-3 mb-md-0">Compound score</span>
+                            <span class="col text-begin mb-3 mb-md-0">
+                                <a class="nav-link p-0" asp-controller="Genres" asp-action="Genre" asp-route-name="@album.Genre" id="link">
+                                    <i>
+                                        @album.Genre
+                                    </i>
+                                </a>
+                            </span>
+                            <span class="col text-center mb-3 mb-md-0">
+                                <a class="nav-link p-0" asp-controller="Albums" asp-action="Year" asp-route-year="@album.Year" id="link">
+                                    <i>
+                                        @album.Year
+                                    </i>
+                                </a>
+                            </span>
+                            @if (string.IsNullOrEmpty(album.Sentiment))
+                            {
+                                <span class="col text-center mb-3 mb-md-0">Not enough reviews.</span>
+                            }
+                            else
+                            {
+                                <span class="col text-center mb-3 mb-md-0">@album.Sentiment</span>
+                            }
+                            <span class="col text-end mb-3 mb-md-0">@album.CompoundScore</span>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row row-cols-3">
+                            <span class="col text-begin mb-3 mb-md-0">Genre</span>
+                            <span class="col text-center mb-3 mb-md-0">Year</span>
+                            <span class="col text-end mb-3 mb-md-0">Sentiment</span>
+                            <span class="col text-begin mb-3 mb-md-0">
+                                <a class="nav-link p-0" asp-controller="Genres" asp-action="Genre" asp-route-name="@album.Genre" id="link">
+                                    <i>
+                                        @album.Genre
+                                    </i>
+                                </a>
+                            </span>
+                            <span class="col text-center mb-3 mb-md-0">
+                                <a class="nav-link p-0" asp-controller="Albums" asp-action="Year" asp-route-year="@album.Year" id="link">
+                                    <i>
+                                        @album.Year
+                                    </i>
+                                </a>
+                            </span>
+                            @if (string.IsNullOrEmpty(album.Sentiment))
+                            {
+                                <span class="col text-end mb-3 mb-md-0">Not enough reviews.</span>
+                            }
+                            else
+                            {
+                                <span class="col text-end mb-3 mb-md-0">@album.Sentiment</span>
+                            }
+                        </div>
+
+                    }
                 </div>
             </div>
             <p class="card-text indent">@album.Description</p>
@@ -86,7 +127,7 @@
         @{
             if (@reviewList.Count > 0)
             {
-                <h3 class="text-muted ps-4">@reviewList.Count() Reviews</h3>
+                <u class="h3 text-muted ps-4">@reviewList.Count() Reviews</u>
             }
             else
             {
@@ -97,14 +138,19 @@
         @foreach (var review in @reviewList)
         {
             <div class="ps-3 pt-3">
-                <div class="d-flex justify-content-between align-items-end">
-                    <p class="h2">@review.Username</p>
-                    <p class="h6">Overall sentiment: @review.Sentiment</p>
-                    <a asp-controller="Reviews" asp-action="DeleteReview" asp-route-reviewId="@review.Id">
-                        <i class="bi bi-x-lg"></i>
-                    </a>
+                <div class="row row-cols-3">
+                    <span class="h2 col text-begin mb-3 mb-md-0">@review.Username</span>
+                    <div class="col text-center d-flex align-items-center">
+                        <span class="h6 col text-center mb-3 mb-md-0">Overall sentiment: Positive</span>
+                    </div>
+                    <div class="col text-end d-flex align-items-center">
+                        <span class="h6 col text-end mb-3 mb-md-0">
+                            <a id="deleteReviewLink" data-review-id="@review.Id" class="mb-3 mb-md-0" style="text-decoration:none">
+                                Delete<i class="bi bi-x-lg"></i>
+                            </a>
+                        </span>
+                    </div>
                 </div>
-
                 <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
                     <p class="h3">@review.Title</p>
                     <div class="container g-0">

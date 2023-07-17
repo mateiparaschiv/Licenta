@@ -74,7 +74,7 @@ namespace LicentaApp.Repositories
             return albums;
         }
 
-        public async Task<List<AlbumModel>> GetPaginatedFilteredList(string sortOrder, int? year = null, string? genre = null, int pageNumber = 0, int pageSize = 10)
+        public async Task<List<AlbumModel>> GetPaginatedFilteredList(string sortOrder, int? year = null, string? genre = null, string? sentiment = null, int pageNumber = 0, int pageSize = 10)
         {
             var sortDefinition = sortOrder.Equals("asc")
                 ? Builders<AlbumModel>.Sort.Ascending(x => x.Name)
@@ -95,6 +95,12 @@ namespace LicentaApp.Repositories
                 filterDefinition = filterDefinition & genreFilter;
             }
 
+            if (!string.IsNullOrEmpty(sentiment))
+            {
+                var sentimentFilter = filterDefinitionBuilder.Eq(a => a.Sentiment, sentiment);
+                filterDefinition = filterDefinition & sentimentFilter;
+            }
+
             return await _albumCollection.Find(filterDefinition)
                 .Sort(sortDefinition)
                 .Skip(pageNumber * pageSize)
@@ -102,7 +108,7 @@ namespace LicentaApp.Repositories
                 .ToListAsync();
         }
 
-        public async Task<int> GetTotalCountAsync(int? year = null, string? genre = null)
+        public async Task<int> GetTotalCountAsync(int? year = null, string? genre = null, string? sentiment = null)
         {
             var filters = new List<FilterDefinition<AlbumModel>>();
 
@@ -116,13 +122,17 @@ namespace LicentaApp.Repositories
                 filters.Add(Builders<AlbumModel>.Filter.Eq(x => x.Genre, genre));
             }
 
+            if (!string.IsNullOrEmpty(sentiment))
+            {
+                filters.Add(Builders<AlbumModel>.Filter.Eq(x => x.Sentiment, sentiment));
+            }
+
             var filter = filters.Any()
                 ? Builders<AlbumModel>.Filter.And(filters)
                 : FilterDefinition<AlbumModel>.Empty;
 
             return (int)await _albumCollection.CountDocumentsAsync(filter);
         }
-
 
         public async Task UpdateAlbumAsync(string albumName, double compoundScore)
         {

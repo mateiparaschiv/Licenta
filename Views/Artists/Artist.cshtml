@@ -270,11 +270,11 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+        <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">  
             @{
                 if (@reviewList.Count > 0)
                 {
-                    <h3 class="text-muted ps-4">@reviewList.Count() Reviews</h3>
+                    <u class=" h3 text-muted ps-4">@reviewList.Count() Reviews</u>
                 }
                 else
                 {
@@ -284,8 +284,19 @@
             @foreach (var review in @reviewList)
             {
                 <div class="ps-3 pt-3">
-                    <p class="h2">@review.Username</p>
-
+                    <div class="row row-cols-3">
+                        <span class="h2 col text-begin mb-3 mb-md-0">@review.Username</span>
+                        <div class="col text-center d-flex align-items-center">
+                            <span class="h6 col text-center mb-3 mb-md-0">Overall sentiment: @review.Sentiment</span>
+                        </div>
+                        <div class="col text-end d-flex align-items-center">
+                            <span class="h6 col text-end mb-3 mb-md-0">
+                                <a id="deleteReviewLink" data-review-id="@review.Id" class="mb-3 mb-md-0" style="text-decoration:none">
+                                    Delete<i class="bi bi-x-lg"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                     <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
                         <p class="h3">@review.Title</p>
                         <div class="container g-0">

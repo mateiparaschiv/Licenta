@@ -26,5 +26,9 @@ namespace LicentaApp.Controllers
         {
             return View(await _albumService.AlbumsGenre(genre, sortOrder, page));
         }
+        public async Task<IActionResult> Sentiment(string sentiment, string sortOrder, int page)
+        {
+            return View(await _albumService.AlbumsSentiment(sentiment, sortOrder, page));
+        }
     }
 }

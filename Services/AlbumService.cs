@@ -110,6 +110,22 @@ namespace LicentaApp.Services
                 Genre = genre
             };
         }
+        public async Task<IndexAlbumSentimentListViewModel> AlbumsSentiment(string sentiment, string sortOrder, int pageNumber)
+        {
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "asc" : sortOrder;
+            const int pageSize = 9;
+            int totalAlbums = await _albumRepository.GetTotalCountAsync(sentiment: sentiment);
+            int maxPages = (totalAlbums + pageSize - 1) / pageSize;
+
+            return new IndexAlbumSentimentListViewModel
+            {
+                AlbumList = await _albumRepository.GetPaginatedFilteredList(sortOrder: sortOrder, sentiment: sentiment, pageNumber: pageNumber, pageSize: pageSize),
+                SortOrder = sortOrder,
+                PageNumber = pageNumber,
+                MaxPages = maxPages,
+                Sentiment = sentiment
+            };
+        }
 
         private bool UserIsAuthenticated()
         {

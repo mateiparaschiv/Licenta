@@ -26,7 +26,7 @@ namespace LicentaApp.Models
         public string Message { get; set; }
 
         [BsonElement("sentiment")]
-        public string? Sentiment { get; set; }
+        public string Sentiment { get; set; }
 
         [BsonElement("negativeScore")]
         public double NegativeScore { get; set; }

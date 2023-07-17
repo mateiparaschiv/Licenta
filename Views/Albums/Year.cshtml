@@ -1,4 +1,5 @@
-﻿@using Microsoft.Extensions.Configuration
+﻿@using Microsoft.AspNetCore.Http.Extensions;
+@using Microsoft.Extensions.Configuration
 @using LicentaApp.Models.ViewModels
 @inject IConfiguration _configuration
 @model IndexAlbumYearListViewModel
@@ -9,12 +10,18 @@
     var pageNumber = Model.PageNumber;
     var maxPages = Model.MaxPages;
     var year = Model.Year;
+    var returnUrl = Context.Request.GetEncodedUrl();
 }
+@Html.Hidden("returnUrl", returnUrl)
+
 <div class="row align-items-center">
-    <div class="col-4 text-start">
+    <div class="col-6 text-start">
+        @*<a href="@returnUrl" id="sort_buttons">
+            <i class="bi bi-arrow-return-left"></i>
+        </a>*@
         <h2 class="text-muted m-0">Albums from @year</h2>
     </div>
-    <div class="col-4 text-end">
+    <div class="col-6 text-end">
         <span class="text-muted">
             @{
                 if (sortOrder.Equals("asc"))

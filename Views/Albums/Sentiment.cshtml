@@ -1,0 +1,97 @@
+﻿@using Microsoft.Extensions.Configuration
+@using LicentaApp.Models.ViewModels
+@inject IConfiguration _configuration
+@model IndexAlbumSentimentListViewModel
+@{
+    ViewData["Title"] = "Sentiment";
+    var albumList = Model.AlbumList;
+    var sortOrder = Model.SortOrder;
+    var pageNumber = Model.PageNumber;
+    var maxPages = Model.MaxPages;
+    var sentiment = Model.Sentiment;
+}
+<div class="row align-items-center">
+    <div class="col-6 text-start">
+        @if (sentiment.Equals("NoSentiment"))
+        {
+            <h2 class="text-muted m-0">Albums no sentiment rating</h2>
+        }
+        else
+        {
+            <h2 class="text-muted m-0">Albums with @sentiment rating</h2>
+        }
+    </div>
+    <div class="col-6 text-end">
+        <span class="text-muted">
+            @{
+                if (sortOrder.Equals("asc"))
+                {
+                    <a id="sort_buttons" asp-controller="Albums" asp-action="Sentiment" asp-route-sortOrder="desc" asp-route-sentiment="@sentiment">
+                        <i id="sort_buttons" class="bi bi-sort-alpha-down-alt"></i>
+                    </a>
+                }
+                else
+                {
+                    <a id="sort_buttons" asp-controller="Albums" asp-action="Sentiment" asp-route-sortOrder="asc" asp-route-sentiment="@sentiment">
+                        <i id="sort_buttons" class="bi bi-sort-alpha-down"></i>
+                    </a>
+                }
+            }
+        </span>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 py-4">
+    @foreach (var album in albumList)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <a class="nav-link p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
+                    <img id="image_col" src="~/images/Albums/@(album.Name).jpg" class="card-img-top" alt="Album @album.Name">
+                </a>
+                <div class="card-body">
+                    <a class="nav-link active p-0" asp-controller="Albums" asp-action="Album" asp-route-name="@album.Name">
+                        <h1 class="text-center" id="link">
+                            <i>
+                                @album.Name
+                            </i>
+                        </h1>
+                    </a>
+                    <a class="nav-link active p-0" asp-controller="Artists" asp-action="Artist" asp-route-name="@album.Artist">
+                        <h3 class="text-center" id="link">
+                            <i>
+                                @album.Artist
+                            </i>
+                        </h3>
+                    </a>
+                    <a class="nav-link active p-0" asp-controller="Genres" asp-action="Genre" asp-route-name="@album.Genre">
+                        <h5 class="text-center" id="link">
+                            <i>
+                                @album.Genre
+                            </i>
+                        </h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="wrapper d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
+        @if (pageNumber > 0)
+        {
+            <a id="link" asp-controller="Albums" asp-action="Sentiment" asp-route-page="@(pageNumber - 1)" asp-route-sortOrder="@sortOrder" asp-route-sentiment="@sentiment">
+                <i style="font-size: 48px;" class="bi bi-arrow-left-circle"></i>
+                @*backwards*@
+            </a>
+        }
+
+        @if (pageNumber < maxPages - 1)
+        {
+            <a id="link" asp-controller="Albums" asp-action="Sentiment" asp-route-page="@(pageNumber + 1)" asp-route-sortOrder="@sortOrder" asp-route-sentiment="@sentiment">
+                <i style="font-size: 48px;" class="bi bi-arrow-right-circle"></i>
+                @*forwards*@
+            </a>
+        }
+    </div>
+</div>
