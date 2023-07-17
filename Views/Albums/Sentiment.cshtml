@@ -11,7 +11,10 @@
     var sentiment = Model.Sentiment;
 }
 <div class="row align-items-center">
-    <div class="col-6 text-start">
+    <div class="col-6 text-start d-flex align-items-center">
+        <a asp-controller="Albums" asp-action="Index" id="sort_buttons">
+            <i class="bi bi-arrow-return-left"></i>
+        </a>
         @if (sentiment.Equals("NoSentiment"))
         {
             <h2 class="text-muted m-0">Albums no sentiment rating</h2>
@@ -21,6 +24,7 @@
             <h2 class="text-muted m-0">Albums with @sentiment rating</h2>
         }
     </div>
+    
     <div class="col-6 text-end">
         <span class="text-muted">
             @{

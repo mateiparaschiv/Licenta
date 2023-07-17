@@ -6,12 +6,16 @@
     ViewData["Title"] = $"Album - {album.Name}";
     var reviewList = Model.ReviewList;
     var newReview = Model.NewReview;
-    var returnUrl = Context.Request.GetEncodedUrl();
-
+    var returnUrl = Model.ReturnUrl; 
 }
-@Html.Hidden("returnUrl", returnUrl)
-
-<div class="row py-4 g-0">
+@*@Html.Hidden("returnUrl", returnUrl)*@
+<a asp-controller="Albums" asp-action="Index" id="sort_buttons">
+    <i class="bi bi-arrow-return-left"></i>
+</a>
+<a href="@returnUrl" id="sort_buttons">
+    <i class="bi bi-arrow-return-left"></i>
+</a>
+<div class="row pb-4 g-0">
     <div class="col-md-3" id="image_col">
         <img src="~/images/Albums/@(album.Name).jpg" id="artist-album_image">
         <ul class="pt-3 list-group list-group-flush list-group-numbered">

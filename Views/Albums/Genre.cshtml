@@ -11,7 +11,10 @@
     var genre = Model.Genre;
 }
 <div class="row align-items-center">
-    <div class="col-6 text-start">
+    <div class="col-6 text-start d-flex align-items-center">
+        <a asp-controller="Albums" asp-action="Index" id="sort_buttons">
+            <i class="bi bi-arrow-return-left"></i>
+        </a>
         <h2 class="text-muted m-0">Albums from @genre</h2>
     </div>
     <div class="col-6 text-end">

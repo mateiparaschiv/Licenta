@@ -9,7 +9,10 @@
     var reviewList = Model.ReviewList;
     var newReview = Model.NewReview;
 }
-<div class="row py-4 g-0">
+<a asp-controller="Artists" asp-action="Index" id="sort_buttons">
+    <i class="bi bi-arrow-return-left"></i>
+</a>
+<div class="row pb-4 g-0">
     <div class="col-md-3" id="image_col">
         <img src="@artist.Image" id="artist-album_image">
     </div>

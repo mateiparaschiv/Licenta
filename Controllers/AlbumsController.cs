@@ -14,9 +14,9 @@ namespace LicentaApp.Controllers
         {
             return View(await _albumService.IndexAlbumList(sortOrder, page));
         }
-        public async Task<IActionResult> Album(string name)
+        public async Task<IActionResult> Album(string name, string? returnUrl)
         {
-            return View(await _albumService.AlbumName(name));
+            return View(await _albumService.AlbumName(name, returnUrl));
         }
         public async Task<IActionResult> Year(int year, string sortOrder, int page)
         {
