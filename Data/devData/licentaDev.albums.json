@@ -7,7 +7,6 @@
   "genre": "Hip-hop",
   "year": 2012,
   "description": "The Money Store is the debut studio album by American experimental hip hop trio Death Grips. It is the follow-up to their debut mixtape, Exmilitary. The album was officially released on April 24, 2012, but had been leaked to YouTube on April 14, sold by the band at Coachella on cassette on April 20, and made available on vinyl on April 21 to celebrate Record Store Day. The Money Store was announced alongside the group's second album, No Love Deep Web, which was released later in the year.",
-  "rating": 4.07,
   "songs": [
     "Get Got",
     "The Fever",
@@ -24,11 +23,11 @@
     "Hacker"
   ],
   "image": "https://i.discogs.com/BfzaMvlcBRat3xYGRhrjAEYeyWcz5SZF7i-xofZ_d9E/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ3NzAz/NDgtMTQyMDQ3ODE4/My03NTg2LmpwZWc.jpeg",
-  "shortDescription": "Upon its release, Death Grips' debut studio album became their magnum opus. The Money Store instantly marked an evolutionary step forward in experimental, industrial, and underground hip-hop.Death Grips created one of the most innovative musical releases of the decade through utilization of the trio’s individual and collective strengths; MC Ride’s raw, visceral, and abrasive vocals, Andy ‘Flatlander’ Morin’s distorted, mechanical sonics, and Zach Hill’s explosive drumming style, coupled with his adept creative direction.",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "6436d46bb43d618d9ae41a5a"
   },
@@ -37,7 +36,6 @@
   "genre": "Hip-hop",
   "year": 2012,
   "description": "No Love Deep Web is the second studio album by American experimental hip hop group Death Grips, originally released via their website on October 1, 2012. \nRecorded from May to August 2012, it exhibited what the group described as a darker, more minimal style, and was leaked by Death Grips themselves due to complications over its release date with their label Epic Records, who subsequently dropped them; the album was later made available for purchase via the band's own Third Worlds imprint and Harvest Records.",
-  "rating": 3.68,
   "songs": [
     "Come Up and Get Me",
     "Lil Boy",
@@ -54,11 +52,11 @@
     "Artificial Death in the West"
   ],
   "image": "https://i.discogs.com/vFJISACcmLHgRsge2-kzUaq2NuA4pBx46C63srmx3DE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0MDkz/ODU3LTE2NjczNzQ2/MjQtNjYxOC5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "6437b12ef609eb57574057c7"
   },
@@ -67,7 +65,6 @@
   "genre": "Hip-hop",
   "year": 2013,
   "description": "Government Plates is the third studio album by experimental hip hop group Death Grips. It was released for free download on November 13, 2013. It was also uploaded by the band to multiple file sharing sites, and music videos for every song were uploaded to the band's YouTube page. On January 14, 2014, Government Plates was made available for purchase through iTunes. The album has sold 13,000 copies as of March 2015.",
-  "rating": 3.41,
   "songs": [
     "You Might Think He Loves You for Your Money But I Know What He Really Loves You for It's Your Brand New Leopard Skin Pillbox Hat",
     "Anne Bonny",
@@ -82,11 +79,11 @@
     "Whatever I Want (Fuck Who's Watching)"
   ],
   "image": "https://i.discogs.com/nBh5wVSBrox0QH65jlvZ9-Lw_NMYrEkyRMJJ6JBnUL8/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTUwOTY5/MTEtMTM4NDM4NDA4/MC0zMDU2LmpwZWc.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "6437b279f609eb57574057c8"
   },
@@ -95,7 +92,6 @@
   "genre": "Hip-hop",
   "year": 2011,
   "description": "The mixtape was released for free on April 25, 2011, through the group's official website, thirdworlds.net, and later appeared on the net label Grindcore Karaoke. It was simultaneously released through iTunes. The track \"Guillotine\" was released through iTunes on August 3, 2011. \"Guillotine\" has become one of the band's most recognized songs, with more than fourteen million YouTube views on their music video as of October 28, 2022. Other tracks released as music videos include \"Known for it\", \"Culture Shock\", \"Lord of the Game\", \"Spread Eagle Cross the Block\", \"Takyon (Death Yon)\", and \"Beware\". According to Andy Morin, the cover art \"[is a] photograph that one of our members carried in their wallet for roughly 10 years straight. It’s a power object.\" The photo was eventually identified as \"Bearded Man at Oenpelli\", taken by Douglass Baglin in 1968 for his book \"The Dark Australians\" by him and David R. Moore.\nThe mixtape was later released exclusively through the band's website in vinyl, compact disc and cassette formats.",
-  "rating": 4.1,
   "songs": [
     "Beware",
     "Guillotine",
@@ -111,11 +107,11 @@
     "Blood Creepin"
   ],
   "image": "https://i.discogs.com/HJ9iAr72BZ-8blVbqO7o0Y65pTHMGcTEn5GPnOXU2WE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTY5NzE2/NjQtMTQzMDY5ODQ0/NS05NjA3LmpwZWc.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64380bcefa0f1d760e393827"
   },
@@ -124,7 +120,6 @@
   "genre": "Hip-hop",
   "year": 2016,
   "description": "Bottomless Pit is the fifth studio album by experimental hip hop group Death Grips, released on May 6, 2016, through Third Worlds and Harvest Records. On October 21, 2015, the group uploaded a video to their YouTube page titled Bottomless Pit. It features footage from 2013 of the late American actress Karen Black reciting lines from a film script that Death Grips drummer Zach Hill wrote months before her death. They also posted on their website and Facebook page that this would be the title for their upcoming fifth official studio album. Later, on December 16, the group posted a tweet containing the phrase 'it won't lit', eventually revealed to be a lyric from the Bottomless Pit track 'BB Poison'. On February 6, 2016, Death Grips released the song 'Hot Head' from their upcoming album onto their SoundCloud and YouTube accounts. The cover art and tracklisting were then revealed on March 18, followed on April 19 by the announcement of a May 6 release date and a download link for a document containing lyrics for each track on the album. On April 29, 2016, the album was leaked in its entirety from the band's SoundCloud page. ",
-  "rating": 3.9,
   "songs": [
     "Giving Bad People Good Ideas",
     "Hot Head",
@@ -141,11 +136,11 @@
     "Bottomless Pit"
   ],
   "image": "https://i.discogs.com/6BaFglAmAP1EwsOAu8tcSdiucUY0Aavx6v4pJ_d6yOc/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg0ODQx/NDgtMTQ2MjUyMTU0/MC04NTcxLmpwZWc.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64380d14fa0f1d760e393828"
   },
@@ -154,7 +149,6 @@
   "genre": "Hip-hop",
   "year": 2018,
   "description": "Year of the Snitch is the sixth studio album by experimental hip hop group Death Grips, released on June 22, 2018, through Third Worlds and Harvest Records. ",
-  "rating": 3.65,
   "songs": [
     "Death Grips Is Online",
     "Flies",
@@ -171,11 +165,11 @@
     "Disappointed"
   ],
   "image": "https://i.discogs.com/IRiz_qbXvXCfZIKqRyibSkgCGH6Lx37svs8aXmMDAsk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyMTY2/Mjg4LTE1Mjk2Mjcz/MDYtOTc3Mi5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643951dfbaa95da954a16705"
   },
@@ -184,7 +178,6 @@
   "genre": "Hip-hop",
   "year": 2015,
   "description": "Fashion Week is an instrumental 'soundtrack' album by experimental hip hop group Death Grips. It was self-released, available for free, on January 4, 2015, via Third Worlds, without any prior announcement. It was the band's first release after their supposed disbandment in 2014, and also the first release to not feature vocals from frontman MC Ride, which was a major factor in its mixed-to-positive critical reception. Fashion Week was released on vinyl as the first LP in a 2LP package alongside Death Grips' instrumental EP Interview 2016 for Record Store Day 2016.",
-  "rating": 2.94,
   "songs": [
     "Runway J",
     "Runway E",
@@ -202,11 +195,11 @@
     "Runway N"
   ],
   "image": "https://i.discogs.com/ayAxUAJzIXhOiCjg1afPQOwSom_xGVRzU5LuUWhSXGA/rs:fit/g:sm/q:90/h:501/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTY0ODk1/MDUtMTQyMDQzMTM0/NC04ODk1LmpwZWc.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64395421baa95da954a16706"
   },
@@ -215,7 +208,6 @@
   "genre": "Trap",
   "year": 2016,
   "description": "Eversince (alternatively stylized 3V3R51NC3) is the debut studio album by Swedish rapper and Drain Gang member Bladee. It was released on May 25, 2016 by YEAR0001. The album contains elements of hip hop, R&B, gothic rock, new wave music, and electronic music.",
-  "rating": 3.59,
   "songs": [
     "Who Goes There",
     "So What",
@@ -231,11 +223,11 @@
     "Skin"
   ],
   "image": "https://i.discogs.com/tFPKUR5tkjzjXDe_TQQ0_C0C4duYacWjDoyZSHri-Y8/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg5MzY5/NTItMTQ3MTgxNzA2/OC04OTA3LmpwZWc.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64395581baa95da954a16707"
   },
@@ -244,7 +236,6 @@
   "genre": "Trap",
   "year": 2017,
   "description": "",
-  "rating": 3.54,
   "songs": [
     "Redlight Moments",
     "Lordship",
@@ -257,11 +248,11 @@
     "Best Buy"
   ],
   "image": "https://i.discogs.com/_mLwOMIRbvNG-cRtaef04KgFR4mKYxSxi3EIE8TT7eY/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNTA2/NjA0LTE1MzY2MjE5/NDEtOTI1NS5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64395658baa95da954a16708"
   },
@@ -270,7 +261,6 @@
   "genre": "Trap",
   "year": 2018,
   "description": "Red Light is the second studio album by Swedish rapper Bladee. It was released on 11 May 2018 by YEAR0001. The album was released to digital retailers and streaming services along with an announcement that Bladee would be performing his first major solo show at London's O2 Academy Islington the following week.",
-  "rating": 3.28,
   "songs": [
     "1d",
     "Golden Boy",
@@ -288,11 +278,11 @@
     "I'm Goofy"
   ],
   "image": "https://i.discogs.com/CBap4rhhKlLvqr0_0sZBVYE04gSJ8XBZ16MDsh3dixk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExOTg0/NDk3LTE1MjYwMDUw/MzgtMTI2Mi5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64395899baa95da954a16709"
   },
@@ -301,7 +291,6 @@
   "genre": "Trap",
   "year": 2014,
   "description": "",
-  "rating": 3.64,
   "songs": [
     "Deletee (Intro)",
     "Safehouse",
@@ -314,11 +303,11 @@
     "Unreal"
   ],
   "image": "https://i.discogs.com/YCjd-AmlrMeRQzGrxamTxgvNJdwoeSR4OLWG8d_-Plk/rs:fit/g:sm/q:90/h:500/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg5Mzcw/ODAtMTQ3MTgxOTcy/MC04Nzc0LmpwZWc.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643959bcbaa95da954a1670a"
   },
@@ -327,7 +316,6 @@
   "genre": "Trap",
   "year": 2020,
   "description": "Red Light is the second studio album by Swedish rapper Bladee. It was released on 11 May 2018 by YEAR0001. The album was released to digital retailers and streaming services along with an announcement that BlExeter is the third studio album by Swedish rapper Bladee. It was released on 8 April 2020 by YEAR0001. The entirety of the project was produced by Gud. In an interview with Spotify, Bladee revealed that the project was recorded over a week-long period while Gud and Bladee had stayed in Gotland, Sweden. Red Light is the second studio album by Swedish rapper Bladee. It was released on 11 May 2018 by YEAR0001. The album was released to digital retailers and streaming services along with an announcement that BlExeter is the third studio album by Swedish rapper Bladee. It was released on 8 April 2020 by YEAR0001. The entirety of the project was produced by Gud. In an interview with Spotify, Bladee revealed that the project was recorded over a week-long period while Gud and Bladee had stayed in Gotland, Sweden.",
-  "rating": 3.41,
   "songs": [
     "Mirror (Hymn) (Intro)",
     "Wonderland",
@@ -340,11 +328,11 @@
     "Imaginary"
   ],
   "image": "https://i.discogs.com/1n8PKtGZDEJILOGFeRoaCzFNV-fntlr2dY5xmaQXjFQ/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE1MDcx/OTc3LTE1ODYzMTAw/NjAtOTM2Ni5wbmc.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64395a7ebaa95da954a1670b"
   },
@@ -353,7 +341,6 @@
   "genre": "Trap",
   "year": 2018,
   "description": "",
-  "rating": 3.71,
   "songs": [
     "SmartWater",
     "Okk",
@@ -375,11 +362,11 @@
     "The Silent Boy Cries (Ripsquadd Outro)"
   ],
   "image": "https://i.discogs.com/IXklRuG5Da5xRdSZlgEjmXjEU-PwnuV0qJM10YYEn3g/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzNjMx/OTUzLTE1NTc5MTMz/NjYtMjM3MS5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64395cefbaa95da954a16711"
   },
@@ -388,7 +375,6 @@
   "genre": "Rock",
   "year": 1973,
   "description": "",
-  "rating": 4.23,
   "songs": [
     "Speak to Me",
     "Breathe",
@@ -402,11 +388,11 @@
     "Eclipse"
   ],
   "image": "https://i.discogs.com/pbXBLwvb00FqksB7ILTZMTvXqcV3Fhkr7oHyeX7iVQ8/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2NzEw/NC0xNDU3MDc4MjI4/LTUwOTQuanBlZw.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "6439602cbaa95da954a1672a"
   },
@@ -414,8 +400,7 @@
   "artist": "Bladee",
   "genre": "Trap",
   "year": 2020,
-  "description": "",
-  "rating": 3.49,
+  "description": "333 is the fourth studio album by Swedish rapper Bladee. It was released on July 16, 2020, by YEAR0001, making it Bladee's second release of 2020, following April's Exeter. 333 is notable among Bladee's discography in featuring no collaborations from fellow Drain Gang members Thaiboy Digital and Ecco2K. The album has been associated with the hyperpop microgenre that rose to popularity in 2020, with one writer describing it as \"hyperpop-adjacent\".",
   "songs": [
     "Wings in Motion",
     "Don't Worry",
@@ -435,11 +420,11 @@
     "Swan Lake"
   ],
   "image": "https://i.discogs.com/PXXDh6DSwY-OMlaQ-bJJg1NGv7J4FEzff-j75m8Si3g/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE1NjMz/NTg2LTE1OTQ5MTc0/NTQtMzkwNy5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "64396115baa95da954a1672b"
   },
@@ -448,7 +433,6 @@
   "genre": "Pop",
   "year": 2021,
   "description": "",
-  "rating": 2.81,
   "songs": [
     "Intro",
     "Rainbow",
@@ -460,11 +444,11 @@
     "Grace"
   ],
   "image": "https://i.discogs.com/10iOgTFb4P6LAltKp_qw3KRDq8b1BL_ryh7tfNUUHBY/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE2NDIx/NjE2LTE2MDc2Mzgz/OTQtOTg5Ny5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643961d2baa95da954a1672c"
   },
@@ -473,7 +457,6 @@
   "genre": "Trap",
   "year": 2021,
   "description": "",
-  "rating": 3.5,
   "songs": [
     "The Fool Intro",
     "Let's Ride",
@@ -490,11 +473,11 @@
     "Wett (Water2)"
   ],
   "image": "https://i.discogs.com/gYkdMevBoB_EJcoZNXzF9xportxHBuDKnVU_y-JC26A/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4OTE4/MTM2LTE2MjIzNDkz/NzItOTk3OC5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643962d8baa95da954a1672d"
   },
@@ -503,7 +486,6 @@
   "genre": "Trap",
   "year": 2022,
   "description": "",
-  "rating": 3.33,
   "songs": [
     "Understatement",
     "Its OK Not to Be OK",
@@ -520,8 +502,7 @@
     "Uriel Outro"
   ],
   "image": "https://i.discogs.com/oyM4kuHkJ-uaIGCcxUOBtr8oQ8LaOHlSFzT8uhvRrBo/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0NzA2/ODI2LTE2NjQ3OTgw/NDAtNjkyNi5qcGVn.jpeg",
-  "shortDescription": "",
   "compoundScore": 0,
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "reviewCount": 0
 }]

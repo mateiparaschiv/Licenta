@@ -1,0 +1,200 @@
+[{
+  "_id": {
+    "$oid": "6474e2e5c3c887cfabce41d6"
+  },
+  "name": "Pink Floyd",
+  "description": "Pink Floyd is a British rock band who managed to carve a path for progressive and psychedelic music in a way that was uniquely fascinating at the time and has remained equally momentous in the modern age. The name “Pink Floyd” came from two blues musicians that founding member Syd Barrett idolized—Pink Anderson and Floyd Council.",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "1963",
+  "disbanded": null,
+  "image": "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?20210720144017",
+  "compoundScore": 0,
+  "sentiment": "NoSentiment",
+  "reviewCount": 0
+},
+{
+  "_id": {
+    "$oid": "6474fbc9c3c887cfabce41e1"
+  },
+  "name": "Daft Punk",
+  "description": "Description",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "1993, Paris, Île-de-France, France",
+  "disbanded": "22 February 2021",
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "64750098c3c887cfabce41ef"
+  },
+  "name": "Coldplay",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "1998",
+  "disbanded": null,
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "647500acc3c887cfabce41f2"
+  },
+  "name": "Gorillaz",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "1998",
+  "disbanded": null,
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "647500c8c3c887cfabce41f5"
+  },
+  "name": "Led Zeppelin",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "July 1968, London, Greater London, United Kingdom",
+  "disbanded": "4 December 1980",
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "647500dec3c887cfabce41f8"
+  },
+  "name": "Red Hot Chili Peppers",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "1983, Los Angeles, CA, United States",
+  "disbanded": null,
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "647500f2c3c887cfabce41fb"
+  },
+  "name": "Björk",
+  "description": "Björk Guðmundsdóttir",
+  "band": false,
+  "dob": {
+    "$date": {
+      "$numberLong": "-129772800000"
+    }
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "64750113c3c887cfabce41ff"
+  },
+  "name": "Adele",
+  "description": "Adele Laurie Blue Adkins",
+  "band": false,
+  "dob": {
+    "$date": "1988-05-05T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "64750122c3c887cfabce4203"
+  },
+  "name": "Metallica",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "28 October 1981, Los Angeles, CA, United States",
+  "disbanded": null,
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "64750132c3c887cfabce4206"
+  },
+  "name": "Nirvana",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "1987, Aberdeen, WA, United States",
+  "disbanded": "8 April 1994, Seattle, WA, United States",
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "64750141c3c887cfabce4209"
+  },
+  "name": "Harry Styles",
+  "description": "Harry Edward Styles",
+  "band": false,
+  "dob": {
+    "$date": "1994-02-01T00:00:00.000Z"
+  },
+  "dod": null,
+  "formed": null,
+  "disbanded": null,
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "64750153c3c887cfabce420c"
+  },
+  "name": "Florence + The Machine",
+  "description": "",
+  "band": true,
+  "dob": null,
+  "dod": null,
+  "formed": "2007, Camberwell, Greater London, United Kingdom",
+  "disbanded": null,
+  "image": "",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+}]

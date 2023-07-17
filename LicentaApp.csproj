@@ -16,7 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="prodData\" />
+	  <Folder Include="Data\prodData\" />
 	</ItemGroup>
 
 </Project>

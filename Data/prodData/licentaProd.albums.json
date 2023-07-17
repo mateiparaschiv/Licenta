@@ -1,0 +1,216 @@
+[{
+  "_id": {
+    "$oid": "6437afe3f609eb57574057c3"
+  },
+  "name": "The Dark Side of the Moon",
+  "artist": "Pink Floyd",
+  "genre": "Rock",
+  "year": 1973,
+  "description": "The Dark Side of the Moon is the eighth studio album by the English rock band Pink Floyd, released on 1 March 1973 by Harvest Records. Developed during live performances before recording began, it was conceived as a concept album that would focus on the pressures faced by the band during their arduous lifestyle, and also deal with the mental health problems of former band member Syd Barrett, who departed the group in 1968. New material was recorded in two sessions in 1972 and 1973 at EMI Studios (now Abbey Road Studios) in London.",
+  "rating": 0,
+  "songs": [
+    "Speak to Me",
+    "Breathe",
+    "On the Run",
+    "Time",
+    "The Great Gig in the Sky",
+    "Money",
+    "Us and Them",
+    "Any Colour You Like",
+    "Brain Damage",
+    "Eclipse"
+  ],
+  "image": "//e.snmc.io/i/300/w/c8a40548b0fee5fa10095de3b97d3f90/10745116",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "6474ea73c3c887cfabce41db"
+  },
+  "name": "Wish You Were Here",
+  "artist": "Pink Floyd",
+  "genre": "Rock",
+  "year": 1975,
+  "description": "\"Description\"",
+  "rating": 0,
+  "songs": [
+    "Shine On You Crazy Diamond, Pts.1-5",
+    "Welcome To The Machine",
+    "Have A Cigar",
+    "Wish You Were Here",
+    "Shine On You Crazy Diamond, Pts. 6-9"
+  ],
+  "image": "https://i.discogs.com/YMUBiIscutL11EdQfQddkB8K9NhOgGYByxG9B7EFVrM/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM3NTc1/Ni0xMzk5NzM1MjQy/LTIxNDkuanBlZw.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "6474ebc3c3c887cfabce41dd"
+  },
+  "name": "Animals",
+  "artist": "Pink Floyd",
+  "genre": "Rock",
+  "year": 1977,
+  "description": "\"Description\"",
+  "rating": 0,
+  "songs": [
+    "Pigs on the Wing 1",
+    "Dogs",
+    "Pigs (Three Different Ones)",
+    "Sheep",
+    "Pigs on the Wing 2"
+  ],
+  "image": "https://i.discogs.com/4Hxf3HdivnSYH-o7N3Ri4D3kcrBupW1ZZTbAHaYNmnc/rs:fit/g:sm/q:90/h:600/w:592/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM5MTMy/Mi0xNjQ4NDkwODk1/LTI2NzkuanBlZw.jpeg",
+  "shortDescription": null,
+  "compoundScore": 0,
+  "sentiment": "NoSentiment",
+  "reviewCount": 0
+},
+{
+  "_id": {
+    "$oid": "6474ed22c3c887cfabce41de"
+  },
+  "name": "Meddle",
+  "artist": "Pink Floyd",
+  "genre": "Rock",
+  "year": 1971,
+  "description": "\"Description\"",
+  "rating": 0,
+  "songs": [
+    "One of These Days",
+    "A Pillow of Winds",
+    "Fearless",
+    "San Tropez",
+    "Seamus",
+    "Echoes"
+  ],
+  "image": "https://i.discogs.com/nlcHURJ-xZgDIezGAne4lRoiOZJYbb-qHxf7NMfwTQw/rs:fit/g:sm/q:90/h:592/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQxMzc0/OTMtMTUzNzIxNjkz/NS05NzUzLmpwZWc.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "6474fa69c3c887cfabce41df"
+  },
+  "name": "The Piper at the Gates of Dawn",
+  "artist": "Pink Floyd",
+  "genre": "Rock",
+  "year": 1967,
+  "description": "\"Description\"",
+  "rating": 0,
+  "songs": [
+    "Astronomy Dominé",
+    "Lucifer Sam",
+    "Matilda Mother",
+    "Pow R. Toc H.",
+    "Take Up Thy Stethoscope and Walk",
+    "Interstellar Overdrive",
+    "The Gnome",
+    "Chapter 24",
+    "The Scarecrow",
+    "Bike"
+  ],
+  "image": "https://i.discogs.com/hb2vfQoi-csFMlMpGEHrDNUFVlOnLUVQgWYyFyXOQNs/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5MDEy/MDMtMTYwNzE4NTk0/OS0xNDMxLmpwZWc.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "6474fc3ac3c887cfabce41e3"
+  },
+  "name": "Random Access Memories",
+  "artist": "Daft Punk",
+  "genre": "Disco",
+  "year": 2013,
+  "description": "\"Description\"",
+  "rating": 0,
+  "songs": [
+    "Give Life Back to Music",
+    "The Game of Love",
+    "Giorgio by Moroder",
+    "Within",
+    "Instant Crush",
+    "Lose Yourself to Dance",
+    "Touch",
+    "Get Lucky",
+    "Beyond",
+    "Motherboard",
+    "Fragments of Time",
+    "Doin' It Right",
+    "Contact"
+  ],
+  "image": "https://i.discogs.com/-k1e9_8eWbOqpMVOhIOBbBngcKrOT-k83KxltvbdmbE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkyMTYw/ODgtMTQ4Mzc0NjQy/MC0yODMyLmpwZWc.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "6474fd55c3c887cfabce41e4"
+  },
+  "name": "Discovery",
+  "artist": "Daft Punk",
+  "genre": "French House",
+  "year": 2001,
+  "description": "\"Description\"",
+  "rating": 0,
+  "songs": [
+    "One More Time",
+    "Aerodynamic",
+    "Digital Love",
+    "Harder, Better, Faster, Stronger",
+    "Crescendolls",
+    "Nightvision",
+    "Superheroes",
+    "High Life",
+    "Something About Us",
+    "Voyager",
+    "Veridis Quo",
+    "Short Circuit",
+    "Face to Face",
+    "Too Long"
+  ],
+  "image": "https://i.discogs.com/6gMPje3DUKa1LMojsHtGTE5o4fIQon5lYaIJvALlvVM/rs:fit/g:sm/q:90/h:600/w:592/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4Nzkt/MTIzNjAzNTQ3Mi5q/cGVn.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+},
+{
+  "_id": {
+    "$oid": "6474fe76c3c887cfabce41e5"
+  },
+  "name": "Homework",
+  "artist": "Daft Punk",
+  "genre": "French House",
+  "year": 1997,
+  "description": "\"Description\"",
+  "rating": 0,
+  "songs": [
+    "Daftendirekt",
+    "Wdpk 83.7 fm",
+    "Revolution 909",
+    "Da Funk",
+    "Phoenix",
+    "Fresh",
+    "Around the World",
+    "Rollin' & Scratchin'",
+    "Teachers",
+    "High Fidelity",
+    "Rock'n Roll",
+    "Oh Yeah",
+    "Burnin",
+    "Indo Silver Club",
+    "Alive",
+    "Funk Ad"
+  ],
+  "image": "https://i.discogs.com/2VO0mCLNP2TIxzPLEbECRQs5emikxhXghNQquabdsJs/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYwODQ4/Ny0xMjAwMjIzMjkx/LmpwZWc.jpeg",
+  "sentiment": "NoSentiment",
+  "reviewCount": 0,
+  "compoundScore": 0
+}]

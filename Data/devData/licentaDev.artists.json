@@ -10,10 +10,11 @@
   "formed": "1998",
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643968ee4460aa67e33e66df"
   },
@@ -27,10 +28,11 @@
   "formed": null,
   "disbanded": null,
   "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flastfm.freetls.fastly.net%2Fi%2Fu%2Far0%2F474e6db5ec3c4e010a3700c51419182b.jpg&f=1&nofb=1&ipt=0425893f3883fdce2b5a5ad8ece4c36644a409ece424b02b43a472c6b311d4c1&ipo=images",
-  "sentiment": "",
   "compoundScore": 0,
+  "sentiment": "NoSentiment",
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643968ee4460aa67e33e66de"
   },
@@ -42,10 +44,11 @@
   "formed": "2010",
   "disbanded": null,
   "image": "https://i.discogs.com/qkmI4A6L5Mq8DRzXCP1PLPqU665LRAF5YVwMcxDP8TQ/rs:fit/g:sm/q:90/h:398/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTIyMjU3/NTYtMTY1MDIxNzQ2/Ni04NTIxLmpwZWc.jpeg",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643968ee4460aa67e33e66dd"
   },
@@ -57,10 +60,11 @@
   "formed": "1963",
   "disbanded": null,
   "image": "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?20210720144017",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c58ddab7f72e0098a7916"
   },
@@ -72,10 +76,11 @@
   "formed": "1998",
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c58ffab7f72e0098a7917"
   },
@@ -89,10 +94,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c5978ab7f72e0098a7918"
   },
@@ -106,10 +112,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c59ddab7f72e0098a7919"
   },
@@ -123,10 +130,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c5a13ab7f72e0098a791a"
   },
@@ -140,10 +148,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c5a55ab7f72e0098a791b"
   },
@@ -157,10 +166,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c5abcab7f72e0098a791c"
   },
@@ -172,10 +182,11 @@
   "formed": "1983, Los Angeles, CA, United States",
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c5c5dab7f72e0098a791e"
   },
@@ -189,10 +200,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643c5d33ab7f72e0098a791f"
   },
@@ -208,10 +220,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cf7bc4b90811d14e9d5b2"
   },
@@ -223,10 +236,11 @@
   "formed": "2002, Sheffield, South Yorkshire, United Kingdom",
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cf8074b90811d14e9d5b3"
   },
@@ -240,10 +254,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cf8a04b90811d14e9d5b4"
   },
@@ -255,10 +270,11 @@
   "formed": "2007, Camberwell, Greater London, United Kingdom",
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cf9a34b90811d14e9d5b5"
   },
@@ -272,10 +288,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cfa234b90811d14e9d5b6"
   },
@@ -287,10 +304,11 @@
   "formed": "July 1968, London, Greater London, United Kingdom",
   "disbanded": "4 December 1980",
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cfc334b90811d14e9d5b7"
   },
@@ -302,10 +320,11 @@
   "formed": "1987, Aberdeen, WA, United States",
   "disbanded": "8 April 1994, Seattle, WA, United States",
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cfc854b90811d14e9d5b9"
   },
@@ -317,10 +336,11 @@
   "formed": "28 October 1981, Los Angeles, CA, United States",
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cfd034b90811d14e9d5ba"
   },
@@ -334,10 +354,11 @@
   "formed": null,
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
-},{
+},
+{
   "_id": {
     "$oid": "643cfdbe4b90811d14e9d5bb"
   },
@@ -349,7 +370,7 @@
   "formed": "27 June 1970, London, Greater London, United Kingdom",
   "disbanded": null,
   "image": "",
-  "sentiment": "",
+  "sentiment": "NoSentiment",
   "compoundScore": 0,
   "reviewCount": 0
 }]

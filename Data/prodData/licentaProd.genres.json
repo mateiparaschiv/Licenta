@@ -4,25 +4,29 @@
   },
   "name": "Hip-hop",
   "description": "Emerging on the eastern coast of the United States in the early 1970s, hip hop is a form of music emphasizing rhythmic beat patterns and spoken delivery rather than harmonic melodies and sung vocals. Much of hip hop's roots can be traced to Deejay, a form of Reggae music that immigrant DJ Kool Herc hoped to emulate in the Bronx borough of New York City. The style quickly took over in more populated areas like Harlem and Queens, where many enjoyed the loose, Afrocentric nature of the parties Herc would put on. Adapting the format to Disco and Funk breaks rather than the reggae Herc utilized further enhanced the genre's appeal in urban communities.\r\n\r\nThe music quickly took over in New York and Connecticut while expanding across the United States and eventually other countries through the 1980s and 1990s. Eventually incorporating Soul and Jazz breaks into its musical lexicon, hip hop as it is known today continues to incorporate sampling of both popular and obscure tracks from the past and present that one or more MCs rap lyrics over in a stylized, rhythmic response or addition to the beat."
-},{
+},
+{
   "_id": {
     "$oid": "64395bf6baa95da954a1670d"
   },
   "name": "Trap",
   "description": "Trap music is a form of Hip Hop originating in Atlanta in the early 2000s. While diverse stylistically, trap is united by its distinctive fast hi-hat sound and heavy 808s set around 140 BPM. Trap has its roots in Southern Hip Hop, Dirty South specifically, and other Southern hip hop styles stretching back to the 1990s; so is the word 'Trap', an Atlanta slang term for a place where drugs are sold. However, it was T.I.'s 2003 album Trap Muzik that first coined 'trap music' as term for the style. Jeezy and Gucci Mane are also considered early pioneers in trap. These rappers combined 808-driven beats and fast hi-hats, with lyrics about drug dealing, gang activity, and other Gangsta Rap topics. The new style was contrasted with the more danceable Crunk, which was still popular at the time."
-},{
+},
+{
   "_id": {
     "$oid": "64395dc6baa95da954a16713"
   },
   "name": "Rock",
   "description": "Rock is a widely popular and vast genre that gathers together a wide range of different styles. Its origins can be traced to US recordings in the late 1940s that combined major elements from Jump Blues and Swing, with increased prominence given to the role of the electric guitar drawn from Chicago Blues. Even though the term 'rock' was originally used by some Blues performers in the late 1930s to describe the bawdier version of their music with faster tempo songs, it went largely unrecorded until the late 1940s."
-},{
+},
+{
   "_id": {
     "$oid": "6474ffa6c3c887cfabce41e7"
   },
   "name": "French House",
   "description": "French House is House music characterized by the use of filtered (low-pass, phaser, cut-off, etc.) Funk and Disco samples. Bass lines are often funky and heavy, and vocals often soulful and vocoded. The genre rose to prominence with Daft Punk's debut album Homework as well as the single Music Sounds Better With You by Stardust. French House was a large part of the French Touch scene, the wave of critically-acclaimed French Electronic producers (including the aforementioned Daft Punk as well as AIR, Bob Sinclar, Dimitri From Paris, and St Germain) in the late 1990s and early 2000s. Due to their success the French Touch scene, despite being very varied, has become eponymous with French House."
-},{
+},
+{
   "_id": {
     "$oid": "64750036c3c887cfabce41eb"
   },
