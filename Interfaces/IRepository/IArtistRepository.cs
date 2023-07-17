@@ -8,7 +8,7 @@ namespace LicentaApp.Interfaces.IService
         Task<List<ArtistModel>> GetAsyncFilteredByName();
         Task<int> GetTotalCountAsync(string? sentiment = null, bool? band = null);
         Task<List<ArtistModel>> GetPaginatedFilteredList(string sortOrder, int pageNumber = 0, int pageSize = 10, string? sentiment = null, bool? band = null);
-        Task UpdateArtistAsync(string artistName, double compoundScore);
+        Task UpdateArtistAsync(string artistName, double compoundScore, string reviewSentiment);
         Task<List<ArtistModel>> GetFilteredListByCompoundScore(int? count);
     }
 }

@@ -21,3 +21,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 });
+
+$(document).ready(function () {
+    $('#Message').keydown(function (event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            $(this).closest('form').submit();
+        }
+    });
+});

@@ -31,11 +31,11 @@ namespace LicentaApp.Services
             await _reviewRepository.CreateAsync(newReview);
             if (newReview.SubjectType.Equals("artist"))
             {
-                await _artistRepository.UpdateArtistAsync(newReview.Subject, newReview.CompoundScore);
+                await _artistRepository.UpdateArtistAsync(newReview.Subject, newReview.CompoundScore, newReview.Sentiment);
             }
             if (newReview.SubjectType.Equals("album"))
             {
-                await _albumRepository.UpdateAlbumAsync(newReview.Subject, newReview.CompoundScore);
+                await _albumRepository.UpdateAlbumAsync(newReview.Subject, newReview.CompoundScore, newReview.Sentiment);
             }
         }
         private async Task DeleteReview(string reviewId)

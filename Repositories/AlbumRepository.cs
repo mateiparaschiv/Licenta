@@ -134,7 +134,7 @@ namespace LicentaApp.Repositories
             return (int)await _albumCollection.CountDocumentsAsync(filter);
         }
 
-        public async Task UpdateAlbumAsync(string albumName, double compoundScore)
+        public async Task UpdateAlbumAsync(string albumName, double compoundScore, string reviewSentiment)
         {
             var filter = Builders<AlbumModel>.Filter.Eq(x => x.Name, albumName);
 
@@ -148,6 +148,11 @@ namespace LicentaApp.Repositories
 
             // Determine the sentiment based on the new compound score
             string newSentiment = GetSentiment(newCompoundScore);
+
+            if (reviewCount == 0)
+            {
+                newSentiment = reviewSentiment;
+            }
 
             var update = Builders<AlbumModel>.Update
                 .Inc(x => x.ReviewCount, 1)
