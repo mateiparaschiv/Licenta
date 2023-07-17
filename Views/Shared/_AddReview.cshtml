@@ -23,7 +23,7 @@
 
                 <div class="mb-3">
                     <label for="@Model.Message" class="col-form-label">What do you have to say about it?</label>
-                    <textarea id="@Model.Message" name="Message" class="form-control" placeholder="Enter your message">@Model.Message</textarea>
+                    <textarea id="Message" name="Message" class="form-control" placeholder="Enter your message">@Model.Message</textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -33,3 +33,14 @@
         </div>
     </div>
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#Message').keydown(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                $(this).closest('form').submit();
+            }
+        });
+    });
+</script>
